@@ -13,7 +13,11 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,6 +26,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -114,6 +119,7 @@ private fun ReadingScreenFullPreviewLight() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReadingScreenContent(
     chapter: Chapter,
@@ -125,6 +131,9 @@ fun ReadingScreenContent(
 
     val settings = appSettings()
     var showFullScreen by rememberSaveable { mutableStateOf(showFullScreen) }
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
+        rememberTopAppBarState()
+    )
 
     MyBackHandler {
         if (showFullScreen) showFullScreen = false
@@ -146,9 +155,11 @@ fun ReadingScreenContent(
 
     MyScreen(
         space = 0.dp,
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             if (showFullScreen.not()) {
                 Header(
+                    scrollBehavior = scrollBehavior,
                     isContinueMode = settings.versesMode.isContinues,
                     chapterName = chapter.chapterFullName(),
                     fullScreen = { showFullScreen },
@@ -209,6 +220,7 @@ fun ReadingScreenContent(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Header(
+    scrollBehavior: TopAppBarScrollBehavior,
     isContinueMode: Boolean,
     chapterName: String,
     fullScreen: () -> Boolean,
@@ -217,11 +229,15 @@ private fun Header(
     onPlay: () -> Unit,
     onBack: () -> Unit
 ) {
+    val isVisible by remember { derivedStateOf { scrollBehavior.state.collapsedFraction < 1 } }
+
     Column {
         TopAppBar(
+            scrollBehavior = scrollBehavior,
             modifier = Modifier.padding(vertical = 0.dp),
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.background
+                containerColor = MaterialTheme.colorScheme.background,
+                scrolledContainerColor = MaterialTheme.colorScheme.background,
             ),
             title = {
                 SuraName(
@@ -251,7 +267,7 @@ private fun Header(
             }
 
         )
-        HorizontalDivider()
+        if (isVisible) HorizontalDivider()
     }
 }
 

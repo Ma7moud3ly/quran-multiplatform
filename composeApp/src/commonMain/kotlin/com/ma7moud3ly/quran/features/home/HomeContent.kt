@@ -1,7 +1,6 @@
 package com.ma7moud3ly.quran.features.home
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,9 +10,9 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -23,6 +22,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
@@ -31,6 +31,10 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -40,8 +44,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -57,6 +63,8 @@ import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.platform.MyBackHandler
+import com.ma7moud3ly.quran.platform.getPlatform
+import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
@@ -74,9 +82,10 @@ import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.app_name
 import quran.composeapp.generated.resources.app_repo
 import quran.composeapp.generated.resources.app_version
-import quran.composeapp.generated.resources.bug_report
+import quran.composeapp.generated.resources.github
 import quran.composeapp.generated.resources.home_search
 import quran.composeapp.generated.resources.home_settings
+import quran.composeapp.generated.resources.home_slogan
 import quran.composeapp.generated.resources.home_support
 import quran.composeapp.generated.resources.home_support_long
 import quran.composeapp.generated.resources.logo
@@ -112,6 +121,7 @@ private fun HomeScreenPreviewLight() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreenContent(
     chapters: () -> List<Chapter>,
@@ -121,6 +131,10 @@ fun HomeScreenContent(
     uiEvents: (HomeEvents) -> Unit
 ) {
     val pagerState = rememberPagerState(pageCount = { 3 })
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
+        rememberTopAppBarState()
+    )
+
     val coroutineScope = rememberCoroutineScope()
     fun isRecitersPage() = pagerState.currentPage == HomeTab.Reciters.index
 
@@ -136,15 +150,23 @@ fun HomeScreenContent(
 
     MyScreen(
         space = 8.dp,
-        modifier = Modifier.padding(8.dp),
+        modifier = Modifier
+            .padding(8.dp)
+            .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             if (isCompactDevice()) Header(
+                scrollBehavior = scrollBehavior,
                 pagerState = pagerState,
                 onOpenSettings = {
                     uiEvents(HomeEvents.OpenSettings(reading = isRecitersPage().not()))
                 },
                 onOpenSearch = { uiEvents(HomeEvents.Search) },
             )
+        },
+        bottomBar = {
+            if (isCompactDevice()) {
+                SectionSupport(Modifier.fillMaxWidth().navigationBarsPadding())
+            }
         }
     ) {
         Row(
@@ -202,37 +224,50 @@ fun HomeScreenContent(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Header(
+    scrollBehavior: TopAppBarScrollBehavior,
     pagerState: PagerState,
     onOpenSearch: () -> Unit,
     onOpenSettings: () -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .background(MaterialTheme.colorScheme.background)
-            .statusBarsPadding()
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, end = 8.dp, top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Logo()
-            Spacer(Modifier.width(8.dp))
-            SectionSupport(Modifier.weight(1f))
-            RoundButton(
-                icon = Res.drawable.search,
-                onClick = onOpenSearch,
-                iconPadding = 6.dp
-            )
-            RoundButton(
-                icon = Res.drawable.settings,
-                onClick = onOpenSettings,
-                iconPadding = 6.dp
-            )
-        }
+    Column {
+        TopAppBar(
+            modifier = Modifier.fillMaxWidth(),
+            colors = TopAppBarDefaults.mediumTopAppBarColors(
+                containerColor = MaterialTheme.colorScheme.background,
+                scrolledContainerColor = MaterialTheme.colorScheme.background
+            ),
+            scrollBehavior = scrollBehavior,
+            navigationIcon = {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    Logo(size = 45.dp)
+                    Text(
+                        text = stringResource(Res.string.home_slogan),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            },
+            actions = {
+                RoundButton(
+                    icon = Res.drawable.search,
+                    onClick = onOpenSearch,
+                    iconSize = 20.dp,
+                    iconPadding = 6.dp
+                )
+                RoundButton(
+                    icon = Res.drawable.settings,
+                    onClick = onOpenSettings,
+                    iconSize = 20.dp,
+                    iconPadding = 6.dp
+                )
+            },
+            title = {}
+        )
         SectionTabs(
             pagerState = pagerState,
             modifier = Modifier.fillMaxWidth()
@@ -411,28 +446,47 @@ private fun SectionSupport(modifier: Modifier) {
         uriHandler.openUri(appRepo)
     }
     if (isCompactDevice()) {
-        Column(modifier = modifier) {
-            Text(
-                text = stringResource(Res.string.app_name) + " " +
-                        stringResource(Res.string.app_version),
-                style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.Normal
-            )
+        Column {
 
-            Text(
-                text = stringResource(Res.string.home_support_long),
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.secondary,
-                maxLines = 1,
-                fontWeight = FontWeight.Normal,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(horizontal = 4.dp).clickable(onClick = ::onSupport)
-            )
+            HorizontalDivider()
+            Row(
+                modifier = modifier.then(
+                    if (getPlatform().isMobile) Modifier
+                    else Modifier.padding(bottom = 8.dp)
+                ),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = stringResource(Res.string.app_name) + " " +
+                            stringResource(Res.string.app_version),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.tertiary,
+                    fontWeight = FontWeight.Normal
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(Res.string.home_support_long),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    maxLines = 1,
+                    textDecoration = TextDecoration.Underline,
+                    fontWeight = FontWeight.Normal,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(horizontal = 4.dp).clickable(onClick = ::onSupport)
+                )
+                Icon(
+                    painter = painterResource(Res.drawable.github),
+                    contentDescription = "",
+                    tint = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.size(14.dp)
+                )
+            }
         }
     } else {
         HeaderTextButton(
             text = Res.string.home_support,
-            icon = Res.drawable.bug_report,
+            icon = Res.drawable.github,
             iconSize = 22.dp,
             onClick = ::onSupport
         )
