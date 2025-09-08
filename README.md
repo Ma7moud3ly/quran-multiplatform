@@ -9,6 +9,12 @@
 
 ---
 
+✨ Quran App: A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
+
+✨ تطبيق القران الكريم: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
+.
+<image src="screens/banner.png">
+
 ### Application Features:
 🎧 Listen live or download recitations for offline listening.  
 📜 Display verses continuously, separately, or one verse at a time, according to your choice.  
@@ -16,9 +22,6 @@
 🌟 A distinctive recitation display system with wonderful backgrounds and videos for an enjoyable and engaging reading and listening experience.  
 🖥️ Simple and easy-to-use interface to make the experience of reading the Quran pleasant and calm.
 
-
-✨ تطبيق القران الكريم: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
-.
 ### مميزات التطبيق:
 🎧 استماع مباشر أو تحميل التلاوات للاستماع بدون إنترنت.  
 📜 عرض الآيات بشكل متصل، منفصل، أو آية واحدة حسب اختيارك.  
