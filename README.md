@@ -13,7 +13,7 @@
 
 ✨ تطبيق القران الكريم: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
 .
-<image src="screens/banner.png">
+<image src="images/banner.png">
 
 ### Application Features:
 🎧 Listen live or download recitations for offline listening.  
@@ -79,27 +79,27 @@ The Android app provides a native experience on Android devices and tablets.
 
 **Dark Mode:**
 <div>
-<img src="screens/android/android6_dark.png" width="200"/>
+<img src="images/android/android6_dark.png" width="200"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/android/android7_dark.png" width="200"/>
+<img src="images/android/android7_dark.png" width="200"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/android/android8_dark.png" width="200"/>
+<img src="images/android/android8_dark.png" width="200"/>
 </div>
 
 **Light Mode:**
 <div>
-<img src="screens/android/android1_light.png" width="200"/>
+<img src="images/android/android1_light.png" width="200"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/android/android3_light.png" width="200"/>
+<img src="images/android/android3_light.png" width="200"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/android/android4_light.png" width="200"/>
+<img src="images/android/android4_light.png" width="200"/>
 </div>
 
 **Tablet:**
 <div>
-<img src="screens/tablet/tablet-10inches-1-light.png" width="300"/>
+<img src="images/tablet/tablet-10inches-1-light.png" width="300"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/tablet/tablet-10inches-6-light.png" width="300"/>
+<img src="images/tablet/tablet-10inches-6-light.png" width="300"/>
 </div>
 <br><br>
 
@@ -130,11 +130,11 @@ The app can be packaged into platform-specific installers (`.deb`, `.exe`, `.dmg
 
 **Light Mode:**
 <div>
-<img src="screens/desktop/desktop1-windows.png" width="250"/>
+<img src="images/desktop/desktop1-windows.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/desktop/desktop3-windows.png" width="250"/>
+<img src="images/desktop/desktop3-windows.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/desktop/desktop8-windows.png" width="250"/>
+<img src="images/desktop/desktop8-windows.png" width="250"/>
 </div>
 
 **How to Build:**
@@ -157,20 +157,20 @@ allowing it to run directly in modern browsers without plugins.
 
 **Dark Mode:**
 <div>
-<img src="screens/web/web2-dark.png" width="250"/>
+<img src="images/web/web2-dark.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/web/web3-dark.png" width="250"/>
+<img src="images/web/web3-dark.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/web/web4-dark.png" width="250"/>
+<img src="images/web/web4-dark.png" width="250"/>
 </div>
 
 **Light Mode:**
 <div>
-<img src="screens/web/web1-light.png" width="250"/>
+<img src="images/web/web1-light.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/web/web6-light.png" width="250"/>
+<img src="images/web/web6-light.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="screens/web/web6-dark.png" width="250"/>
+<img src="images/web/web6-dark.png" width="250"/>
 </div>
 
 **How to Build:**
@@ -201,7 +201,7 @@ DEBUG_KEY_ALIAS=
 DEBUG_KEY_PASSWORD=
 
 RELEASE_STORE_FILE=../keys/release.keystore
-RELEASE_STORE_PASSWORD=@nowayout2018
+RELEASE_STORE_PASSWORD=
 RELEASE_KEY_ALIAS=
 RELEASE_KEY_PASSWORD=
 ```
