@@ -1,0 +1,151 @@
+package com.ma7moud3ly.quran.features.recitation.config
+
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import com.ma7moud3ly.quran.model.ScreenMode
+import com.ma7moud3ly.quran.model.Recitation
+import com.ma7moud3ly.quran.platform.rememberNotificationsPermissionsState
+import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
+import quran.composeapp.generated.resources.Res
+import quran.composeapp.generated.resources.recite_permission_required
+
+private const val TAG = "RecitationConfigScreen"
+
+@Composable
+fun RecitationConfigScreen(
+    viewModel: RecitationViewModel,
+    canChangeChapter: Boolean,
+    canChangeReciter: Boolean,
+    canChangeVerse: Boolean,
+    recitationEvents: (RecitationEvents) -> Unit,
+) {
+
+    val coroutineScope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val chapter by viewModel.chapterFlow.collectAsState()
+    val reciters = remember { viewModel.reciters }
+    val permissionsState = rememberNotificationsPermissionsState()
+    val downloadedChapters = remember { viewModel.downloadedChapters }
+    val recitationState by remember { viewModel.recitationState }
+    val message = stringResource(Res.string.recite_permission_required)
+
+    LaunchedEffect(Unit) {
+        recitationState.setContentLock(
+            canChangeChapter = canChangeChapter,
+            canChangeReciter = canChangeReciter,
+            canChangeVerse = canChangeVerse
+        )
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            viewModel.saveLastReciters()
+        }
+    }
+
+    fun initRecitation(screenMode: ScreenMode) {
+        val chapter = chapter ?: return
+        val lastVerse = recitationState.getLastVerse()
+        val recitation = Recitation(
+            chapter = chapter.copy(verses = chapter.verses.subList(0, lastVerse)),
+            reciters = reciters,
+            screenMode = screenMode,
+            selectedVerse = recitationState.getFirstVerse(),
+            lastVerseNumber = lastVerse,
+            reelMode = recitationState.getReelMode(),
+            playInBackground = recitationState.getPlayInBackground(),
+            playLocally = true,
+            shuffleReciters = recitationState.getShuffleMode()
+        )
+
+        coroutineScope.launch {
+            val reciter = reciters.first()
+            val event = if (viewModel.platformSupportDownloading()) {
+                if (recitationState.getMultiReciters()) {
+                    RecitationEvents.StartOnline
+                } else if (reciter.canDownload && viewModel.isFullyDownloaded(recitation)) {
+                    RecitationEvents.StartLocally
+                } else if (reciter.canListen && viewModel.isFullyCachedCached(recitation)) {
+                    RecitationEvents.StartOnline
+                } else if (reciter.canDownload) {
+                    RecitationEvents.ConfirmDownload
+                } else if (reciter.canListen) {
+                    RecitationEvents.StartOnline
+                } else null
+            } else if (reciter.canListen) {
+                RecitationEvents.StartOnline
+            } else null
+
+            if (event.playOnline) recitation.setOnlineDatasource()
+            viewModel.setRecitation(recitation)
+            if (event != null) recitationEvents(event)
+        }
+    }
+
+    fun checkNotificationsPermission(mode: ScreenMode) {
+        if (recitationState.getPlayInBackground().not()) {
+            initRecitation(mode)
+        } else {
+            if (permissionsState.isGranted()) initRecitation(mode)
+            else permissionsState.request { granted ->
+                if (granted) initRecitation(mode)
+                else coroutineScope.launch {
+                    snackbarHostState.showSnackbar(message)
+                }
+            }
+        }
+    }
+
+    RecitationConfigScreenContent(
+        snackbarHostState = snackbarHostState,
+        downloadedChapters = {
+            if (recitationState.multiRecitersState.value) emptyList()
+            else downloadedChapters
+        },
+        selectedChapter = { chapter },
+        reciters = { reciters },
+        recitationState = { recitationState },
+        uiEvents = {
+            when (it) {
+                is ConfigEvents.OnBack -> {
+                    recitationEvents(RecitationEvents.OnBack)
+                }
+
+                is ConfigEvents.PickChapters -> {
+                    recitationEvents(RecitationEvents.ChaptersDialog(chapter?.id))
+                }
+
+                is ConfigEvents.PickReciters -> {
+                    val event = RecitationEvents.RecitersDialog(
+                        reciterId = reciters.lastOrNull()?.id,
+                        filter = recitationState.getMultiReciters()
+                    )
+                    recitationEvents(event)
+                }
+
+                is ConfigEvents.RemoveReciter -> {
+                    viewModel.removeReciter(it.reciter)
+                }
+
+                is ConfigEvents.ToggleReciters -> {
+                    viewModel.restReciters(it.multiple)
+                }
+
+                is ConfigEvents.SelectChapter -> {
+                    viewModel.getChapter(it.chapter.id)
+                }
+
+                is ConfigEvents.InitRecitation -> {
+                    checkNotificationsPermission(it.mode)
+                }
+            }
+        }
+    )
+}

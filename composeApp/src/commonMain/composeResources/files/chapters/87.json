@@ -1,0 +1,122 @@
+{
+    "id": 87,
+    "name": "الأعلى",
+    "transliteration": "Al-A'la",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "سَبِّحِ ٱسۡمَ رَبِّكَ ٱلۡأَعۡلَى",
+            "textNormalized": "سبح اسم ربك الاعلي",
+            "transliteration": "Sabbihi isma rabbika alaAAla"
+        },
+        {
+            "id": 2,
+            "text": "ٱلَّذِي خَلَقَ فَسَوَّىٰ",
+            "textNormalized": "الذي خلق فسوي",
+            "transliteration": "Allathee khalaqa fasawwa"
+        },
+        {
+            "id": 3,
+            "text": "وَٱلَّذِي قَدَّرَ فَهَدَىٰ",
+            "textNormalized": "والذي قدر فهدي",
+            "transliteration": "Waallathee qaddara fahada"
+        },
+        {
+            "id": 4,
+            "text": "وَٱلَّذِيٓ أَخۡرَجَ ٱلۡمَرۡعَىٰ",
+            "textNormalized": "والذي اخرج المرعي",
+            "transliteration": "Waallathee akhraja almarAAa"
+        },
+        {
+            "id": 5,
+            "text": "فَجَعَلَهُۥ غُثَآءً أَحۡوَىٰ",
+            "textNormalized": "فجعله غثاء احوي",
+            "transliteration": "FajaAAalahu ghuthaan ahwa"
+        },
+        {
+            "id": 6,
+            "text": "سَنُقۡرِئُكَ فَلَا تَنسَىٰٓ",
+            "textNormalized": "سنقريك فلا تنسي",
+            "transliteration": "Sanuqrioka fala tansa"
+        },
+        {
+            "id": 7,
+            "text": "إِلَّا مَا شَآءَ ٱللَّهُۚ إِنَّهُۥ يَعۡلَمُ ٱلۡجَهۡرَ وَمَا يَخۡفَىٰ",
+            "textNormalized": "الا ما شاء الله انه يعلم الجهر وما يخفي",
+            "transliteration": "Illa ma shaa Allahu innahu yaAAlamu aljahra wama yakhfa"
+        },
+        {
+            "id": 8,
+            "text": "وَنُيَسِّرُكَ لِلۡيُسۡرَىٰ",
+            "textNormalized": "ونيسرك لليسري",
+            "transliteration": "Wanuyassiruka lilyusra"
+        },
+        {
+            "id": 9,
+            "text": "فَذَكِّرۡ إِن نَّفَعَتِ ٱلذِّكۡرَىٰ",
+            "textNormalized": "فذكر ان نفعت الذكري",
+            "transliteration": "Fathakkir in nafaAAati alththikra"
+        },
+        {
+            "id": 10,
+            "text": "سَيَذَّكَّرُ مَن يَخۡشَىٰ",
+            "textNormalized": "سيذكر من يخشي",
+            "transliteration": "Sayaththakkaru man yakhsha"
+        },
+        {
+            "id": 11,
+            "text": "وَيَتَجَنَّبُهَا ٱلۡأَشۡقَى",
+            "textNormalized": "ويتجنبها الاشقي",
+            "transliteration": "Wayatajannabuha alashqa"
+        },
+        {
+            "id": 12,
+            "text": "ٱلَّذِي يَصۡلَى ٱلنَّارَ ٱلۡكُبۡرَىٰ",
+            "textNormalized": "الذي يصلي النار الكبري",
+            "transliteration": "Allathee yasla alnnara alkubra"
+        },
+        {
+            "id": 13,
+            "text": "ثُمَّ لَا يَمُوتُ فِيهَا وَلَا يَحۡيَىٰ",
+            "textNormalized": "ثم لا يموت فيها ولا يحيي",
+            "transliteration": "Thumma la yamootu feeha wala yahya"
+        },
+        {
+            "id": 14,
+            "text": "قَدۡ أَفۡلَحَ مَن تَزَكَّىٰ",
+            "textNormalized": "قد افلح من تزكي",
+            "transliteration": "Qad aflaha man tazakka"
+        },
+        {
+            "id": 15,
+            "text": "وَذَكَرَ ٱسۡمَ رَبِّهِۦ فَصَلَّىٰ",
+            "textNormalized": "وذكر اسم ربه فصلي",
+            "transliteration": "Wathakara isma rabbihi fasalla"
+        },
+        {
+            "id": 16,
+            "text": "بَلۡ تُؤۡثِرُونَ ٱلۡحَيَوٰةَ ٱلدُّنۡيَا",
+            "textNormalized": "بل توثرون الحيوه الدنيا",
+            "transliteration": "Bal tuthiroona alhayata alddunya"
+        },
+        {
+            "id": 17,
+            "text": "وَٱلۡأٓخِرَةُ خَيۡرٞ وَأَبۡقَىٰٓ",
+            "textNormalized": "والاخره خير وابقي",
+            "transliteration": "Waalakhiratu khayrun waabqa"
+        },
+        {
+            "id": 18,
+            "text": "إِنَّ هَٰذَا لَفِي ٱلصُّحُفِ ٱلۡأُولَىٰ",
+            "textNormalized": "ان هذا لفي الصحف الاولي",
+            "transliteration": "Inna hatha lafee alssuhufi aloola"
+        },
+        {
+            "id": 19,
+            "text": "صُحُفِ إِبۡرَٰهِيمَ وَمُوسَىٰ",
+            "textNormalized": "صحف ابرهيم وموسي",
+            "transliteration": "Suhufi ibraheema wamoosa"
+        }
+    ]
+}

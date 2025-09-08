@@ -1,0 +1,44 @@
+{
+    "id": 114,
+    "name": "الناس",
+    "transliteration": "An-Nas",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "قُلۡ أَعُوذُ بِرَبِّ ٱلنَّاسِ",
+            "textNormalized": "قل اعوذ برب الناس",
+            "transliteration": "Qul aAAoothu birabbi alnnasi"
+        },
+        {
+            "id": 2,
+            "text": "مَلِكِ ٱلنَّاسِ",
+            "textNormalized": "ملك الناس",
+            "transliteration": "Maliki alnnasi"
+        },
+        {
+            "id": 3,
+            "text": "إِلَٰهِ ٱلنَّاسِ",
+            "textNormalized": "اله الناس",
+            "transliteration": "Ilahi alnnasi"
+        },
+        {
+            "id": 4,
+            "text": "مِن شَرِّ ٱلۡوَسۡوَاسِ ٱلۡخَنَّاسِ",
+            "textNormalized": "من شر الوسواس الخناس",
+            "transliteration": "Min sharri alwaswasi alkhannasi"
+        },
+        {
+            "id": 5,
+            "text": "ٱلَّذِي يُوَسۡوِسُ فِي صُدُورِ ٱلنَّاسِ",
+            "textNormalized": "الذي يوسوس في صدور الناس",
+            "transliteration": "Allathee yuwaswisu fee sudoori alnnasi"
+        },
+        {
+            "id": 6,
+            "text": "مِنَ ٱلۡجِنَّةِ وَٱلنَّاسِ",
+            "textNormalized": "من الجنه والناس",
+            "transliteration": "Mina aljinnati wa alnnasm"
+        }
+    ]
+}

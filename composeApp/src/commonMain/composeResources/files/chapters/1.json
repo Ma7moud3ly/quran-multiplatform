@@ -1,0 +1,50 @@
+{
+    "id": 1,
+    "name": "الفاتحة",
+    "transliteration": "Al-Fatihah",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+            "textNormalized": "بسم الله الرحمن الرحيم",
+            "transliteration": "Bismi Allahi alrrahmani alrraheemi"
+        },
+        {
+            "id": 2,
+            "text": "ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "الحمد لله رب العلمين",
+            "transliteration": "Alhamdu lillahi rabbi alAAalameena"
+        },
+        {
+            "id": 3,
+            "text": "ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+            "textNormalized": "الرحمن الرحيم",
+            "transliteration": "Alrrahmani alrraheemi"
+        },
+        {
+            "id": 4,
+            "text": "مَٰلِكِ يَوۡمِ ٱلدِّينِ",
+            "textNormalized": "ملك يوم الدين",
+            "transliteration": "Maliki yawmi alddeeni"
+        },
+        {
+            "id": 5,
+            "text": "إِيَّاكَ نَعۡبُدُ وَإِيَّاكَ نَسۡتَعِينُ",
+            "textNormalized": "اياك نعبد واياك نستعين",
+            "transliteration": "Iyyaka naAAbudu waiyyaka nastaAAeenu"
+        },
+        {
+            "id": 6,
+            "text": "ٱهۡدِنَا ٱلصِّرَٰطَ ٱلۡمُسۡتَقِيمَ",
+            "textNormalized": "اهدنا الصرط المستقيم",
+            "transliteration": "Ihdina alssirata almustaqeema"
+        },
+        {
+            "id": 7,
+            "text": "صِرَٰطَ ٱلَّذِينَ أَنۡعَمۡتَ عَلَيۡهِمۡ غَيۡرِ ٱلۡمَغۡضُوبِ عَلَيۡهِمۡ وَلَا ٱلضَّآلِّينَ",
+            "textNormalized": "صرط الذين انعمت عليهم غير المغضوب عليهم ولا الضالين",
+            "transliteration": "Sirata allatheena anAAamta AAalayhim ghayri almaghdoobi AAalayhim wala alddalleena"
+        }
+    ]
+}

@@ -1,0 +1,1370 @@
+{
+    "id": 26,
+    "name": "الشعراء",
+    "transliteration": "Ash-Shu'ara",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "طسٓمٓ",
+            "textNormalized": "طسم",
+            "transliteration": "Taseenmeem"
+        },
+        {
+            "id": 2,
+            "text": "تِلۡكَ ءَايَٰتُ ٱلۡكِتَٰبِ ٱلۡمُبِينِ",
+            "textNormalized": "تلك ءايت الكتب المبين",
+            "transliteration": "Tilka ayatu alkitabi almubeeni"
+        },
+        {
+            "id": 3,
+            "text": "لَعَلَّكَ بَٰخِعٞ نَّفۡسَكَ أَلَّا يَكُونُواْ مُؤۡمِنِينَ",
+            "textNormalized": "لعلك بخع نفسك الا يكونوا مومنين",
+            "transliteration": "LaAAallaka bakhiAAun nafsaka alla yakoonoo mumineena"
+        },
+        {
+            "id": 4,
+            "text": "إِن نَّشَأۡ نُنَزِّلۡ عَلَيۡهِم مِّنَ ٱلسَّمَآءِ ءَايَةٗ فَظَلَّتۡ أَعۡنَٰقُهُمۡ لَهَا خَٰضِعِينَ",
+            "textNormalized": "ان نشا ننزل عليهم من السماء ءايه فظلت اعنقهم لها خضعين",
+            "transliteration": "In nasha nunazzil AAalayhim mina alssamai ayatan fathallat aAAnaquhum laha khadiAAeena"
+        },
+        {
+            "id": 5,
+            "text": "وَمَا يَأۡتِيهِم مِّن ذِكۡرٖ مِّنَ ٱلرَّحۡمَٰنِ مُحۡدَثٍ إِلَّا كَانُواْ عَنۡهُ مُعۡرِضِينَ",
+            "textNormalized": "وما ياتيهم من ذكر من الرحمن محدث الا كانوا عنه معرضين",
+            "transliteration": "Wama yateehim min thikrin mina alrrahmani muhdathin illa kanoo AAanhu muAArideena"
+        },
+        {
+            "id": 6,
+            "text": "فَقَدۡ كَذَّبُواْ فَسَيَأۡتِيهِمۡ أَنۢبَـٰٓؤُاْ مَا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ",
+            "textNormalized": "فقد كذبوا فسياتيهم انبوا ما كانوا به يستهزءون",
+            "transliteration": "Faqad kaththaboo fasayateehim anbao ma kanoo bihi yastahzioona"
+        },
+        {
+            "id": 7,
+            "text": "أَوَلَمۡ يَرَوۡاْ إِلَى ٱلۡأَرۡضِ كَمۡ أَنۢبَتۡنَا فِيهَا مِن كُلِّ زَوۡجٖ كَرِيمٍ",
+            "textNormalized": "اولم يروا الي الارض كم انبتنا فيها من كل زوج كريم",
+            "transliteration": "Awalam yaraw ila alardi kam anbatna feeha min kulli zawjin kareemin"
+        },
+        {
+            "id": 8,
+            "text": "إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 9,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 10,
+            "text": "وَإِذۡ نَادَىٰ رَبُّكَ مُوسَىٰٓ أَنِ ٱئۡتِ ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ",
+            "textNormalized": "واذ نادي ربك موسي ان ايت القوم الظلمين",
+            "transliteration": "Waith nada rabbuka moosa ani iti alqawma alththalimeena"
+        },
+        {
+            "id": 11,
+            "text": "قَوۡمَ فِرۡعَوۡنَۚ أَلَا يَتَّقُونَ",
+            "textNormalized": "قوم فرعون الا يتقون",
+            "transliteration": "Qawma firAAawna ala yattaqoona"
+        },
+        {
+            "id": 12,
+            "text": "قَالَ رَبِّ إِنِّيٓ أَخَافُ أَن يُكَذِّبُونِ",
+            "textNormalized": "قال رب اني اخاف ان يكذبون",
+            "transliteration": "Qala rabbi innee akhafu an yukaththibooni"
+        },
+        {
+            "id": 13,
+            "text": "وَيَضِيقُ صَدۡرِي وَلَا يَنطَلِقُ لِسَانِي فَأَرۡسِلۡ إِلَىٰ هَٰرُونَ",
+            "textNormalized": "ويضيق صدري ولا ينطلق لساني فارسل الي هرون",
+            "transliteration": "Wayadeequ sadree wala yantaliqu lisanee faarsil ila haroona"
+        },
+        {
+            "id": 14,
+            "text": "وَلَهُمۡ عَلَيَّ ذَنۢبٞ فَأَخَافُ أَن يَقۡتُلُونِ",
+            "textNormalized": "ولهم علي ذنب فاخاف ان يقتلون",
+            "transliteration": "Walahum AAalayya thanbun faakhafu an yaqtulooni"
+        },
+        {
+            "id": 15,
+            "text": "قَالَ كَلَّاۖ فَٱذۡهَبَا بِـَٔايَٰتِنَآۖ إِنَّا مَعَكُم مُّسۡتَمِعُونَ",
+            "textNormalized": "قال كلا فاذهبا بايتنا انا معكم مستمعون",
+            "transliteration": "Qala kalla faithhaba biayatina inna maAAakum mustamiAAoona"
+        },
+        {
+            "id": 16,
+            "text": "فَأۡتِيَا فِرۡعَوۡنَ فَقُولَآ إِنَّا رَسُولُ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "فاتيا فرعون فقولا انا رسول رب العلمين",
+            "transliteration": "Fatiya firAAawna faqoola inna rasoolu rabbi alAAalameena"
+        },
+        {
+            "id": 17,
+            "text": "أَنۡ أَرۡسِلۡ مَعَنَا بَنِيٓ إِسۡرَـٰٓءِيلَ",
+            "textNormalized": "ان ارسل معنا بني اسرءيل",
+            "transliteration": "An arsil maAAana banee israeela"
+        },
+        {
+            "id": 18,
+            "text": "قَالَ أَلَمۡ نُرَبِّكَ فِينَا وَلِيدٗا وَلَبِثۡتَ فِينَا مِنۡ عُمُرِكَ سِنِينَ",
+            "textNormalized": "قال الم نربك فينا وليدا ولبثت فينا من عمرك سنين",
+            "transliteration": "Qala alam nurabbika feena waleedan walabithta feena min AAumurika sineena"
+        },
+        {
+            "id": 19,
+            "text": "وَفَعَلۡتَ فَعۡلَتَكَ ٱلَّتِي فَعَلۡتَ وَأَنتَ مِنَ ٱلۡكَٰفِرِينَ",
+            "textNormalized": "وفعلت فعلتك التي فعلت وانت من الكفرين",
+            "transliteration": "WafaAAalta faAAlataka allatee faAAalta waanta mina alkafireena"
+        },
+        {
+            "id": 20,
+            "text": "قَالَ فَعَلۡتُهَآ إِذٗا وَأَنَا۠ مِنَ ٱلضَّآلِّينَ",
+            "textNormalized": "قال فعلتها اذا وانا من الضالين",
+            "transliteration": "Qala faAAaltuha ithan waana mina alddalleena"
+        },
+        {
+            "id": 21,
+            "text": "فَفَرَرۡتُ مِنكُمۡ لَمَّا خِفۡتُكُمۡ فَوَهَبَ لِي رَبِّي حُكۡمٗا وَجَعَلَنِي مِنَ ٱلۡمُرۡسَلِينَ",
+            "textNormalized": "ففررت منكم لما خفتكم فوهب لي ربي حكما وجعلني من المرسلين",
+            "transliteration": "Fafarartu minkum lamma khiftukum fawahaba lee rabbee hukman wajaAAalanee mina almursaleena"
+        },
+        {
+            "id": 22,
+            "text": "وَتِلۡكَ نِعۡمَةٞ تَمُنُّهَا عَلَيَّ أَنۡ عَبَّدتَّ بَنِيٓ إِسۡرَـٰٓءِيلَ",
+            "textNormalized": "وتلك نعمه تمنها علي ان عبدت بني اسرءيل",
+            "transliteration": "Watilka niAAmatun tamunnuha AAalayya an AAabbadta banee israeela"
+        },
+        {
+            "id": 23,
+            "text": "قَالَ فِرۡعَوۡنُ وَمَا رَبُّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "قال فرعون وما رب العلمين",
+            "transliteration": "Qala firAAawnu wama rabbu alAAalameena"
+        },
+        {
+            "id": 24,
+            "text": "قَالَ رَبُّ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ وَمَا بَيۡنَهُمَآۖ إِن كُنتُم مُّوقِنِينَ",
+            "textNormalized": "قال رب السموت والارض وما بينهما ان كنتم موقنين",
+            "transliteration": "Qala rabbu alssamawati waalardi wama baynahuma in kuntum mooqineena"
+        },
+        {
+            "id": 25,
+            "text": "قَالَ لِمَنۡ حَوۡلَهُۥٓ أَلَا تَسۡتَمِعُونَ",
+            "textNormalized": "قال لمن حوله الا تستمعون",
+            "transliteration": "Qala liman hawlahu ala tastamiAAoona"
+        },
+        {
+            "id": 26,
+            "text": "قَالَ رَبُّكُمۡ وَرَبُّ ءَابَآئِكُمُ ٱلۡأَوَّلِينَ",
+            "textNormalized": "قال ربكم ورب ءابايكم الاولين",
+            "transliteration": "Qala rabbukum warabbu abaikumu alawwaleena"
+        },
+        {
+            "id": 27,
+            "text": "قَالَ إِنَّ رَسُولَكُمُ ٱلَّذِيٓ أُرۡسِلَ إِلَيۡكُمۡ لَمَجۡنُونٞ",
+            "textNormalized": "قال ان رسولكم الذي ارسل اليكم لمجنون",
+            "transliteration": "Qala inna rasoolakumu allathee orsila ilaykum lamajnoonun"
+        },
+        {
+            "id": 28,
+            "text": "قَالَ رَبُّ ٱلۡمَشۡرِقِ وَٱلۡمَغۡرِبِ وَمَا بَيۡنَهُمَآۖ إِن كُنتُمۡ تَعۡقِلُونَ",
+            "textNormalized": "قال رب المشرق والمغرب وما بينهما ان كنتم تعقلون",
+            "transliteration": "Qala rabbu almashriqi waalmaghribi wama baynahuma in kuntum taAAqiloona"
+        },
+        {
+            "id": 29,
+            "text": "قَالَ لَئِنِ ٱتَّخَذۡتَ إِلَٰهًا غَيۡرِي لَأَجۡعَلَنَّكَ مِنَ ٱلۡمَسۡجُونِينَ",
+            "textNormalized": "قال لين اتخذت الها غيري لاجعلنك من المسجونين",
+            "transliteration": "Qala laini ittakhathta ilahan ghayree laajAAalannaka mina almasjooneena"
+        },
+        {
+            "id": 30,
+            "text": "قَالَ أَوَلَوۡ جِئۡتُكَ بِشَيۡءٖ مُّبِينٖ",
+            "textNormalized": "قال اولو جيتك بشيء مبين",
+            "transliteration": "Qala awalaw jituka bishayin mubeenin"
+        },
+        {
+            "id": 31,
+            "text": "قَالَ فَأۡتِ بِهِۦٓ إِن كُنتَ مِنَ ٱلصَّـٰدِقِينَ",
+            "textNormalized": "قال فات به ان كنت من الصدقين",
+            "transliteration": "Qala fati bihi in kunta mina alssadiqeena"
+        },
+        {
+            "id": 32,
+            "text": "فَأَلۡقَىٰ عَصَاهُ فَإِذَا هِيَ ثُعۡبَانٞ مُّبِينٞ",
+            "textNormalized": "فالقي عصاه فاذا هي ثعبان مبين",
+            "transliteration": "Faalqa AAasahu faitha hiya thuAAbanun mubeenun"
+        },
+        {
+            "id": 33,
+            "text": "وَنَزَعَ يَدَهُۥ فَإِذَا هِيَ بَيۡضَآءُ لِلنَّـٰظِرِينَ",
+            "textNormalized": "ونزع يده فاذا هي بيضاء للنظرين",
+            "transliteration": "WanazaAAa yadahu faitha hiya baydao lilnnathireena"
+        },
+        {
+            "id": 34,
+            "text": "قَالَ لِلۡمَلَإِ حَوۡلَهُۥٓ إِنَّ هَٰذَا لَسَٰحِرٌ عَلِيمٞ",
+            "textNormalized": "قال للملا حوله ان هذا لسحر عليم",
+            "transliteration": "Qala lilmalai hawlahu inna hatha lasahirun AAaleemun"
+        },
+        {
+            "id": 35,
+            "text": "يُرِيدُ أَن يُخۡرِجَكُم مِّنۡ أَرۡضِكُم بِسِحۡرِهِۦ فَمَاذَا تَأۡمُرُونَ",
+            "textNormalized": "يريد ان يخرجكم من ارضكم بسحره فماذا تامرون",
+            "transliteration": "Yureedu an yukhrijakum min ardikum bisihrihi famatha tamuroona"
+        },
+        {
+            "id": 36,
+            "text": "قَالُوٓاْ أَرۡجِهۡ وَأَخَاهُ وَٱبۡعَثۡ فِي ٱلۡمَدَآئِنِ حَٰشِرِينَ",
+            "textNormalized": "قالوا ارجه واخاه وابعث في المداين حشرين",
+            "transliteration": "Qaloo arjih waakhahu waibAAath fee almadaini hashireena"
+        },
+        {
+            "id": 37,
+            "text": "يَأۡتُوكَ بِكُلِّ سَحَّارٍ عَلِيمٖ",
+            "textNormalized": "ياتوك بكل سحار عليم",
+            "transliteration": "Yatooka bikulli sahharin AAaleemin"
+        },
+        {
+            "id": 38,
+            "text": "فَجُمِعَ ٱلسَّحَرَةُ لِمِيقَٰتِ يَوۡمٖ مَّعۡلُومٖ",
+            "textNormalized": "فجمع السحره لميقت يوم معلوم",
+            "transliteration": "FajumiAAa alssaharatu limeeqati yawmin maAAloomin"
+        },
+        {
+            "id": 39,
+            "text": "وَقِيلَ لِلنَّاسِ هَلۡ أَنتُم مُّجۡتَمِعُونَ",
+            "textNormalized": "وقيل للناس هل انتم مجتمعون",
+            "transliteration": "Waqeela lilnnasi hal antum mujtamiAAoona"
+        },
+        {
+            "id": 40,
+            "text": "لَعَلَّنَا نَتَّبِعُ ٱلسَّحَرَةَ إِن كَانُواْ هُمُ ٱلۡغَٰلِبِينَ",
+            "textNormalized": "لعلنا نتبع السحره ان كانوا هم الغلبين",
+            "transliteration": "LaAAallana nattabiAAu alssaharata in kanoo humu alghalibeena"
+        },
+        {
+            "id": 41,
+            "text": "فَلَمَّا جَآءَ ٱلسَّحَرَةُ قَالُواْ لِفِرۡعَوۡنَ أَئِنَّ لَنَا لَأَجۡرًا إِن كُنَّا نَحۡنُ ٱلۡغَٰلِبِينَ",
+            "textNormalized": "فلما جاء السحره قالوا لفرعون اين لنا لاجرا ان كنا نحن الغلبين",
+            "transliteration": "Falamma jaa alssaharatu qaloo lifirAAawna ainna lana laajran in kunna nahnu alghalibeena"
+        },
+        {
+            "id": 42,
+            "text": "قَالَ نَعَمۡ وَإِنَّكُمۡ إِذٗا لَّمِنَ ٱلۡمُقَرَّبِينَ",
+            "textNormalized": "قال نعم وانكم اذا لمن المقربين",
+            "transliteration": "Qala naAAam wainnakum ithan lamina almuqarrabeena"
+        },
+        {
+            "id": 43,
+            "text": "قَالَ لَهُم مُّوسَىٰٓ أَلۡقُواْ مَآ أَنتُم مُّلۡقُونَ",
+            "textNormalized": "قال لهم موسي القوا ما انتم ملقون",
+            "transliteration": "Qala lahum moosa alqoo ma antum mulqoona"
+        },
+        {
+            "id": 44,
+            "text": "فَأَلۡقَوۡاْ حِبَالَهُمۡ وَعِصِيَّهُمۡ وَقَالُواْ بِعِزَّةِ فِرۡعَوۡنَ إِنَّا لَنَحۡنُ ٱلۡغَٰلِبُونَ",
+            "textNormalized": "فالقوا حبالهم وعصيهم وقالوا بعزه فرعون انا لنحن الغلبون",
+            "transliteration": "Faalqaw hibalahum waAAisiyyahum waqaloo biAAizzati firAAawna inna lanahnu alghaliboona"
+        },
+        {
+            "id": 45,
+            "text": "فَأَلۡقَىٰ مُوسَىٰ عَصَاهُ فَإِذَا هِيَ تَلۡقَفُ مَا يَأۡفِكُونَ",
+            "textNormalized": "فالقي موسي عصاه فاذا هي تلقف ما يافكون",
+            "transliteration": "Faalqa moosa AAasahu faitha hiya talqafu ma yafikoona"
+        },
+        {
+            "id": 46,
+            "text": "فَأُلۡقِيَ ٱلسَّحَرَةُ سَٰجِدِينَ",
+            "textNormalized": "فالقي السحره سجدين",
+            "transliteration": "Faolqiya alssaharatu sajideena"
+        },
+        {
+            "id": 47,
+            "text": "قَالُوٓاْ ءَامَنَّا بِرَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "قالوا ءامنا برب العلمين",
+            "transliteration": "Qaloo amanna birabbi alAAalameena"
+        },
+        {
+            "id": 48,
+            "text": "رَبِّ مُوسَىٰ وَهَٰرُونَ",
+            "textNormalized": "رب موسي وهرون",
+            "transliteration": "Rabbi moosa waharoona"
+        },
+        {
+            "id": 49,
+            "text": "قَالَ ءَامَنتُمۡ لَهُۥ قَبۡلَ أَنۡ ءَاذَنَ لَكُمۡۖ إِنَّهُۥ لَكَبِيرُكُمُ ٱلَّذِي عَلَّمَكُمُ ٱلسِّحۡرَ فَلَسَوۡفَ تَعۡلَمُونَۚ لَأُقَطِّعَنَّ أَيۡدِيَكُمۡ وَأَرۡجُلَكُم مِّنۡ خِلَٰفٖ وَلَأُصَلِّبَنَّكُمۡ أَجۡمَعِينَ",
+            "textNormalized": "قال ءامنتم له قبل ان ءاذن لكم انه لكبيركم الذي علمكم السحر فلسوف تعلمون لاقطعن ايديكم وارجلكم من خلف ولاصلبنكم اجمعين",
+            "transliteration": "Qala amantum lahu qabla an athana lakum innahu lakabeerukumu allathee AAallamakumu alssihra falasawfa taAAlamoona laoqattiAAanna aydiyakum waarjulakum min khilafin walaosallibannakum ajmaAAeena"
+        },
+        {
+            "id": 50,
+            "text": "قَالُواْ لَا ضَيۡرَۖ إِنَّآ إِلَىٰ رَبِّنَا مُنقَلِبُونَ",
+            "textNormalized": "قالوا لا ضير انا الي ربنا منقلبون",
+            "transliteration": "Qaloo la dayra inna ila rabbina munqaliboona"
+        },
+        {
+            "id": 51,
+            "text": "إِنَّا نَطۡمَعُ أَن يَغۡفِرَ لَنَا رَبُّنَا خَطَٰيَٰنَآ أَن كُنَّآ أَوَّلَ ٱلۡمُؤۡمِنِينَ",
+            "textNormalized": "انا نطمع ان يغفر لنا ربنا خطينا ان كنا اول المومنين",
+            "transliteration": "Inna natmaAAu an yaghfira lana rabbuna khatayana an kunna awwala almumineena"
+        },
+        {
+            "id": 52,
+            "text": "۞وَأَوۡحَيۡنَآ إِلَىٰ مُوسَىٰٓ أَنۡ أَسۡرِ بِعِبَادِيٓ إِنَّكُم مُّتَّبَعُونَ",
+            "textNormalized": "واوحينا الي موسي ان اسر بعبادي انكم متبعون",
+            "transliteration": "Waawhayna ila moosa an asri biAAibadee innakum muttabaAAoona"
+        },
+        {
+            "id": 53,
+            "text": "فَأَرۡسَلَ فِرۡعَوۡنُ فِي ٱلۡمَدَآئِنِ حَٰشِرِينَ",
+            "textNormalized": "فارسل فرعون في المداين حشرين",
+            "transliteration": "Faarsala firAAawnu fee almadaini hashireena"
+        },
+        {
+            "id": 54,
+            "text": "إِنَّ هَـٰٓؤُلَآءِ لَشِرۡذِمَةٞ قَلِيلُونَ",
+            "textNormalized": "ان هولاء لشرذمه قليلون",
+            "transliteration": "Inna haolai lashirthimatun qaleeloona"
+        },
+        {
+            "id": 55,
+            "text": "وَإِنَّهُمۡ لَنَا لَغَآئِظُونَ",
+            "textNormalized": "وانهم لنا لغايظون",
+            "transliteration": "Wainnahum lana laghaithoona"
+        },
+        {
+            "id": 56,
+            "text": "وَإِنَّا لَجَمِيعٌ حَٰذِرُونَ",
+            "textNormalized": "وانا لجميع حذرون",
+            "transliteration": "Wainna lajameeAAun hathiroona"
+        },
+        {
+            "id": 57,
+            "text": "فَأَخۡرَجۡنَٰهُم مِّن جَنَّـٰتٖ وَعُيُونٖ",
+            "textNormalized": "فاخرجنهم من جنت وعيون",
+            "transliteration": "Faakhrajnahum min jannatin waAAuyoonin"
+        },
+        {
+            "id": 58,
+            "text": "وَكُنُوزٖ وَمَقَامٖ كَرِيمٖ",
+            "textNormalized": "وكنوز ومقام كريم",
+            "transliteration": "Wakunoozin wamaqamin kareemin"
+        },
+        {
+            "id": 59,
+            "text": "كَذَٰلِكَۖ وَأَوۡرَثۡنَٰهَا بَنِيٓ إِسۡرَـٰٓءِيلَ",
+            "textNormalized": "كذلك واورثنها بني اسرءيل",
+            "transliteration": "Kathalika waawrathnaha banee israeela"
+        },
+        {
+            "id": 60,
+            "text": "فَأَتۡبَعُوهُم مُّشۡرِقِينَ",
+            "textNormalized": "فاتبعوهم مشرقين",
+            "transliteration": "FaatbaAAoohum mushriqeena"
+        },
+        {
+            "id": 61,
+            "text": "فَلَمَّا تَرَـٰٓءَا ٱلۡجَمۡعَانِ قَالَ أَصۡحَٰبُ مُوسَىٰٓ إِنَّا لَمُدۡرَكُونَ",
+            "textNormalized": "فلما ترءا الجمعان قال اصحب موسي انا لمدركون",
+            "transliteration": "Falamma taraa aljamAAani qala ashabu moosa inna lamudrakoona"
+        },
+        {
+            "id": 62,
+            "text": "قَالَ كَلَّآۖ إِنَّ مَعِيَ رَبِّي سَيَهۡدِينِ",
+            "textNormalized": "قال كلا ان معي ربي سيهدين",
+            "transliteration": "Qala kalla inna maAAiya rabbee sayahdeeni"
+        },
+        {
+            "id": 63,
+            "text": "فَأَوۡحَيۡنَآ إِلَىٰ مُوسَىٰٓ أَنِ ٱضۡرِب بِّعَصَاكَ ٱلۡبَحۡرَۖ فَٱنفَلَقَ فَكَانَ كُلُّ فِرۡقٖ كَٱلطَّوۡدِ ٱلۡعَظِيمِ",
+            "textNormalized": "فاوحينا الي موسي ان اضرب بعصاك البحر فانفلق فكان كل فرق كالطود العظيم",
+            "transliteration": "Faawhayna ila moosa ani idrib biAAasaka albahra fainfalaqa fakana kullu firqin kaalttawdi alAAatheemi"
+        },
+        {
+            "id": 64,
+            "text": "وَأَزۡلَفۡنَا ثَمَّ ٱلۡأٓخَرِينَ",
+            "textNormalized": "وازلفنا ثم الاخرين",
+            "transliteration": "Waazlafna thamma alakhareena"
+        },
+        {
+            "id": 65,
+            "text": "وَأَنجَيۡنَا مُوسَىٰ وَمَن مَّعَهُۥٓ أَجۡمَعِينَ",
+            "textNormalized": "وانجينا موسي ومن معه اجمعين",
+            "transliteration": "Waanjayna moosa waman maAAahu ajmaAAeena"
+        },
+        {
+            "id": 66,
+            "text": "ثُمَّ أَغۡرَقۡنَا ٱلۡأٓخَرِينَ",
+            "textNormalized": "ثم اغرقنا الاخرين",
+            "transliteration": "Thumma aghraqna alakhareena"
+        },
+        {
+            "id": 67,
+            "text": "إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 68,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 69,
+            "text": "وَٱتۡلُ عَلَيۡهِمۡ نَبَأَ إِبۡرَٰهِيمَ",
+            "textNormalized": "واتل عليهم نبا ابرهيم",
+            "transliteration": "Waotlu AAalayhim nabaa ibraheema"
+        },
+        {
+            "id": 70,
+            "text": "إِذۡ قَالَ لِأَبِيهِ وَقَوۡمِهِۦ مَا تَعۡبُدُونَ",
+            "textNormalized": "اذ قال لابيه وقومه ما تعبدون",
+            "transliteration": "Ith qala liabeehi waqawmihi ma taAAbudoona"
+        },
+        {
+            "id": 71,
+            "text": "قَالُواْ نَعۡبُدُ أَصۡنَامٗا فَنَظَلُّ لَهَا عَٰكِفِينَ",
+            "textNormalized": "قالوا نعبد اصناما فنظل لها عكفين",
+            "transliteration": "Qaloo naAAbudu asnaman fanathallu laha AAakifeena"
+        },
+        {
+            "id": 72,
+            "text": "قَالَ هَلۡ يَسۡمَعُونَكُمۡ إِذۡ تَدۡعُونَ",
+            "textNormalized": "قال هل يسمعونكم اذ تدعون",
+            "transliteration": "Qala hal yasmaAAoonakum ith tadAAoona"
+        },
+        {
+            "id": 73,
+            "text": "أَوۡ يَنفَعُونَكُمۡ أَوۡ يَضُرُّونَ",
+            "textNormalized": "او ينفعونكم او يضرون",
+            "transliteration": "Aw yanfaAAoonakum aw yadurroona"
+        },
+        {
+            "id": 74,
+            "text": "قَالُواْ بَلۡ وَجَدۡنَآ ءَابَآءَنَا كَذَٰلِكَ يَفۡعَلُونَ",
+            "textNormalized": "قالوا بل وجدنا ءاباءنا كذلك يفعلون",
+            "transliteration": "Qaloo bal wajadna abaana kathalika yafAAaloona"
+        },
+        {
+            "id": 75,
+            "text": "قَالَ أَفَرَءَيۡتُم مَّا كُنتُمۡ تَعۡبُدُونَ",
+            "textNormalized": "قال افرءيتم ما كنتم تعبدون",
+            "transliteration": "Qala afaraaytum ma kuntum taAAbudoona"
+        },
+        {
+            "id": 76,
+            "text": "أَنتُمۡ وَءَابَآؤُكُمُ ٱلۡأَقۡدَمُونَ",
+            "textNormalized": "انتم وءاباوكم الاقدمون",
+            "transliteration": "Antum waabaokumu alaqdamoona"
+        },
+        {
+            "id": 77,
+            "text": "فَإِنَّهُمۡ عَدُوّٞ لِّيٓ إِلَّا رَبَّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "فانهم عدو لي الا رب العلمين",
+            "transliteration": "Fainnahum AAaduwwun lee illa rabba alAAalameena"
+        },
+        {
+            "id": 78,
+            "text": "ٱلَّذِي خَلَقَنِي فَهُوَ يَهۡدِينِ",
+            "textNormalized": "الذي خلقني فهو يهدين",
+            "transliteration": "Allathee khalaqanee fahuwa yahdeeni"
+        },
+        {
+            "id": 79,
+            "text": "وَٱلَّذِي هُوَ يُطۡعِمُنِي وَيَسۡقِينِ",
+            "textNormalized": "والذي هو يطعمني ويسقين",
+            "transliteration": "Waallathee huwa yutAAimunee wayasqeeni"
+        },
+        {
+            "id": 80,
+            "text": "وَإِذَا مَرِضۡتُ فَهُوَ يَشۡفِينِ",
+            "textNormalized": "واذا مرضت فهو يشفين",
+            "transliteration": "Waitha maridtu fahuwa yashfeeni"
+        },
+        {
+            "id": 81,
+            "text": "وَٱلَّذِي يُمِيتُنِي ثُمَّ يُحۡيِينِ",
+            "textNormalized": "والذي يميتني ثم يحيين",
+            "transliteration": "Waallathee yumeetunee thumma yuhyeeni"
+        },
+        {
+            "id": 82,
+            "text": "وَٱلَّذِيٓ أَطۡمَعُ أَن يَغۡفِرَ لِي خَطِيٓـَٔتِي يَوۡمَ ٱلدِّينِ",
+            "textNormalized": "والذي اطمع ان يغفر لي خطيتي يوم الدين",
+            "transliteration": "Waallathee atmaAAu an yaghfira lee khateeatee yawma alddeeni"
+        },
+        {
+            "id": 83,
+            "text": "رَبِّ هَبۡ لِي حُكۡمٗا وَأَلۡحِقۡنِي بِٱلصَّـٰلِحِينَ",
+            "textNormalized": "رب هب لي حكما والحقني بالصلحين",
+            "transliteration": "Rabbi hab lee hukman waalhiqnee bialssaliheena"
+        },
+        {
+            "id": 84,
+            "text": "وَٱجۡعَل لِّي لِسَانَ صِدۡقٖ فِي ٱلۡأٓخِرِينَ",
+            "textNormalized": "واجعل لي لسان صدق في الاخرين",
+            "transliteration": "WaijAAal lee lisana sidqin fee alakhireena"
+        },
+        {
+            "id": 85,
+            "text": "وَٱجۡعَلۡنِي مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ",
+            "textNormalized": "واجعلني من ورثه جنه النعيم",
+            "transliteration": "WaijAAalnee min warathati jannati alnnaAAeemi"
+        },
+        {
+            "id": 86,
+            "text": "وَٱغۡفِرۡ لِأَبِيٓ إِنَّهُۥ كَانَ مِنَ ٱلضَّآلِّينَ",
+            "textNormalized": "واغفر لابي انه كان من الضالين",
+            "transliteration": "Waighfir liabee innahu kana mina alddalleena"
+        },
+        {
+            "id": 87,
+            "text": "وَلَا تُخۡزِنِي يَوۡمَ يُبۡعَثُونَ",
+            "textNormalized": "ولا تخزني يوم يبعثون",
+            "transliteration": "Wala tukhzinee yawma yubAAathoona"
+        },
+        {
+            "id": 88,
+            "text": "يَوۡمَ لَا يَنفَعُ مَالٞ وَلَا بَنُونَ",
+            "textNormalized": "يوم لا ينفع مال ولا بنون",
+            "transliteration": "Yawma la yanfaAAu malun wala banoona"
+        },
+        {
+            "id": 89,
+            "text": "إِلَّا مَنۡ أَتَى ٱللَّهَ بِقَلۡبٖ سَلِيمٖ",
+            "textNormalized": "الا من اتي الله بقلب سليم",
+            "transliteration": "Illa man ata Allaha biqalbin saleemin"
+        },
+        {
+            "id": 90,
+            "text": "وَأُزۡلِفَتِ ٱلۡجَنَّةُ لِلۡمُتَّقِينَ",
+            "textNormalized": "وازلفت الجنه للمتقين",
+            "transliteration": "Waozlifati aljannatu lilmuttaqeena"
+        },
+        {
+            "id": 91,
+            "text": "وَبُرِّزَتِ ٱلۡجَحِيمُ لِلۡغَاوِينَ",
+            "textNormalized": "وبرزت الجحيم للغاوين",
+            "transliteration": "Waburrizati aljaheemu lilghaweena"
+        },
+        {
+            "id": 92,
+            "text": "وَقِيلَ لَهُمۡ أَيۡنَ مَا كُنتُمۡ تَعۡبُدُونَ",
+            "textNormalized": "وقيل لهم اين ما كنتم تعبدون",
+            "transliteration": "Waqeela lahum ayna ma kuntum taAAbudoona"
+        },
+        {
+            "id": 93,
+            "text": "مِن دُونِ ٱللَّهِ هَلۡ يَنصُرُونَكُمۡ أَوۡ يَنتَصِرُونَ",
+            "textNormalized": "من دون الله هل ينصرونكم او ينتصرون",
+            "transliteration": "Min dooni Allahi hal yansuroonakum aw yantasiroona"
+        },
+        {
+            "id": 94,
+            "text": "فَكُبۡكِبُواْ فِيهَا هُمۡ وَٱلۡغَاوُۥنَ",
+            "textNormalized": "فكبكبوا فيها هم والغاون",
+            "transliteration": "Fakubkiboo feeha hum waalghawoona"
+        },
+        {
+            "id": 95,
+            "text": "وَجُنُودُ إِبۡلِيسَ أَجۡمَعُونَ",
+            "textNormalized": "وجنود ابليس اجمعون",
+            "transliteration": "Wajunoodu ibleesa ajmaAAoona"
+        },
+        {
+            "id": 96,
+            "text": "قَالُواْ وَهُمۡ فِيهَا يَخۡتَصِمُونَ",
+            "textNormalized": "قالوا وهم فيها يختصمون",
+            "transliteration": "Qaloo wahum feeha yakhtasimoona"
+        },
+        {
+            "id": 97,
+            "text": "تَٱللَّهِ إِن كُنَّا لَفِي ضَلَٰلٖ مُّبِينٍ",
+            "textNormalized": "تالله ان كنا لفي ضلل مبين",
+            "transliteration": "TaAllahi in kunna lafee dalalin mubeenin"
+        },
+        {
+            "id": 98,
+            "text": "إِذۡ نُسَوِّيكُم بِرَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "اذ نسويكم برب العلمين",
+            "transliteration": "Ith nusawweekum birabbi alAAalameena"
+        },
+        {
+            "id": 99,
+            "text": "وَمَآ أَضَلَّنَآ إِلَّا ٱلۡمُجۡرِمُونَ",
+            "textNormalized": "وما اضلنا الا المجرمون",
+            "transliteration": "Wama adallana illa almujrimoona"
+        },
+        {
+            "id": 100,
+            "text": "فَمَا لَنَا مِن شَٰفِعِينَ",
+            "textNormalized": "فما لنا من شفعين",
+            "transliteration": "Fama lana min shafiAAeena"
+        },
+        {
+            "id": 101,
+            "text": "وَلَا صَدِيقٍ حَمِيمٖ",
+            "textNormalized": "ولا صديق حميم",
+            "transliteration": "Wala sadeeqin hameemin"
+        },
+        {
+            "id": 102,
+            "text": "فَلَوۡ أَنَّ لَنَا كَرَّةٗ فَنَكُونَ مِنَ ٱلۡمُؤۡمِنِينَ",
+            "textNormalized": "فلو ان لنا كره فنكون من المومنين",
+            "transliteration": "Falaw anna lana karratan fanakoona mina almumineena"
+        },
+        {
+            "id": 103,
+            "text": "إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 104,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 105,
+            "text": "كَذَّبَتۡ قَوۡمُ نُوحٍ ٱلۡمُرۡسَلِينَ",
+            "textNormalized": "كذبت قوم نوح المرسلين",
+            "transliteration": "Kaththabat qawmu noohin almursaleena"
+        },
+        {
+            "id": 106,
+            "text": "إِذۡ قَالَ لَهُمۡ أَخُوهُمۡ نُوحٌ أَلَا تَتَّقُونَ",
+            "textNormalized": "اذ قال لهم اخوهم نوح الا تتقون",
+            "transliteration": "Ith qala lahum akhoohum noohun ala tattaqoona"
+        },
+        {
+            "id": 107,
+            "text": "إِنِّي لَكُمۡ رَسُولٌ أَمِينٞ",
+            "textNormalized": "اني لكم رسول امين",
+            "transliteration": "Innee lakum rasoolun ameenun"
+        },
+        {
+            "id": 108,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 109,
+            "text": "وَمَآ أَسۡـَٔلُكُمۡ عَلَيۡهِ مِنۡ أَجۡرٍۖ إِنۡ أَجۡرِيَ إِلَّا عَلَىٰ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "وما اسلكم عليه من اجر ان اجري الا علي رب العلمين",
+            "transliteration": "Wama asalukum AAalayhi min ajrin in ajriya illa AAala rabbi alAAalameena"
+        },
+        {
+            "id": 110,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 111,
+            "text": "۞قَالُوٓاْ أَنُؤۡمِنُ لَكَ وَٱتَّبَعَكَ ٱلۡأَرۡذَلُونَ",
+            "textNormalized": "قالوا انومن لك واتبعك الارذلون",
+            "transliteration": "Qaloo anuminu laka waittabaAAaka alarthaloona"
+        },
+        {
+            "id": 112,
+            "text": "قَالَ وَمَا عِلۡمِي بِمَا كَانُواْ يَعۡمَلُونَ",
+            "textNormalized": "قال وما علمي بما كانوا يعملون",
+            "transliteration": "Qala wama AAilmee bima kanoo yaAAmaloona"
+        },
+        {
+            "id": 113,
+            "text": "إِنۡ حِسَابُهُمۡ إِلَّا عَلَىٰ رَبِّيۖ لَوۡ تَشۡعُرُونَ",
+            "textNormalized": "ان حسابهم الا علي ربي لو تشعرون",
+            "transliteration": "In hisabuhum illa AAala rabbee law tashAAuroona"
+        },
+        {
+            "id": 114,
+            "text": "وَمَآ أَنَا۠ بِطَارِدِ ٱلۡمُؤۡمِنِينَ",
+            "textNormalized": "وما انا بطارد المومنين",
+            "transliteration": "Wama ana bitaridi almumineena"
+        },
+        {
+            "id": 115,
+            "text": "إِنۡ أَنَا۠ إِلَّا نَذِيرٞ مُّبِينٞ",
+            "textNormalized": "ان انا الا نذير مبين",
+            "transliteration": "In ana illa natheerun mubeenun"
+        },
+        {
+            "id": 116,
+            "text": "قَالُواْ لَئِن لَّمۡ تَنتَهِ يَٰنُوحُ لَتَكُونَنَّ مِنَ ٱلۡمَرۡجُومِينَ",
+            "textNormalized": "قالوا لين لم تنته ينوح لتكونن من المرجومين",
+            "transliteration": "Qaloo lain lam tantahi ya noohu latakoonanna mina almarjoomeena"
+        },
+        {
+            "id": 117,
+            "text": "قَالَ رَبِّ إِنَّ قَوۡمِي كَذَّبُونِ",
+            "textNormalized": "قال رب ان قومي كذبون",
+            "transliteration": "Qala rabbi inna qawmee kaththabooni"
+        },
+        {
+            "id": 118,
+            "text": "فَٱفۡتَحۡ بَيۡنِي وَبَيۡنَهُمۡ فَتۡحٗا وَنَجِّنِي وَمَن مَّعِيَ مِنَ ٱلۡمُؤۡمِنِينَ",
+            "textNormalized": "فافتح بيني وبينهم فتحا ونجني ومن معي من المومنين",
+            "transliteration": "Faiftah baynee wabaynahum fathan wanajjinee waman maAAiya mina almumineena"
+        },
+        {
+            "id": 119,
+            "text": "فَأَنجَيۡنَٰهُ وَمَن مَّعَهُۥ فِي ٱلۡفُلۡكِ ٱلۡمَشۡحُونِ",
+            "textNormalized": "فانجينه ومن معه في الفلك المشحون",
+            "transliteration": "Faanjaynahu waman maAAahu fee alfulki almashhooni"
+        },
+        {
+            "id": 120,
+            "text": "ثُمَّ أَغۡرَقۡنَا بَعۡدُ ٱلۡبَاقِينَ",
+            "textNormalized": "ثم اغرقنا بعد الباقين",
+            "transliteration": "Thumma aghraqna baAAdu albaqeena"
+        },
+        {
+            "id": 121,
+            "text": "إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 122,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 123,
+            "text": "كَذَّبَتۡ عَادٌ ٱلۡمُرۡسَلِينَ",
+            "textNormalized": "كذبت عاد المرسلين",
+            "transliteration": "Kaththabat AAadun almursaleena"
+        },
+        {
+            "id": 124,
+            "text": "إِذۡ قَالَ لَهُمۡ أَخُوهُمۡ هُودٌ أَلَا تَتَّقُونَ",
+            "textNormalized": "اذ قال لهم اخوهم هود الا تتقون",
+            "transliteration": "Ith qala lahum akhoohum hoodun ala tattaqoona"
+        },
+        {
+            "id": 125,
+            "text": "إِنِّي لَكُمۡ رَسُولٌ أَمِينٞ",
+            "textNormalized": "اني لكم رسول امين",
+            "transliteration": "Innee lakum rasoolun ameenun"
+        },
+        {
+            "id": 126,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 127,
+            "text": "وَمَآ أَسۡـَٔلُكُمۡ عَلَيۡهِ مِنۡ أَجۡرٍۖ إِنۡ أَجۡرِيَ إِلَّا عَلَىٰ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "وما اسلكم عليه من اجر ان اجري الا علي رب العلمين",
+            "transliteration": "Wama asalukum AAalayhi min ajrin in ajriya illa AAala rabbi alAAalameena"
+        },
+        {
+            "id": 128,
+            "text": "أَتَبۡنُونَ بِكُلِّ رِيعٍ ءَايَةٗ تَعۡبَثُونَ",
+            "textNormalized": "اتبنون بكل ريع ءايه تعبثون",
+            "transliteration": "Atabnoona bikulli reeAAin ayatan taAAbathoona"
+        },
+        {
+            "id": 129,
+            "text": "وَتَتَّخِذُونَ مَصَانِعَ لَعَلَّكُمۡ تَخۡلُدُونَ",
+            "textNormalized": "وتتخذون مصانع لعلكم تخلدون",
+            "transliteration": "Watattakhithoona masaniAAa laAAallakum takhludoona"
+        },
+        {
+            "id": 130,
+            "text": "وَإِذَا بَطَشۡتُم بَطَشۡتُمۡ جَبَّارِينَ",
+            "textNormalized": "واذا بطشتم بطشتم جبارين",
+            "transliteration": "Waitha batashtum batashtum jabbareena"
+        },
+        {
+            "id": 131,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 132,
+            "text": "وَٱتَّقُواْ ٱلَّذِيٓ أَمَدَّكُم بِمَا تَعۡلَمُونَ",
+            "textNormalized": "واتقوا الذي امدكم بما تعلمون",
+            "transliteration": "Waittaqoo allathee amaddakum bima taAAlamoona"
+        },
+        {
+            "id": 133,
+            "text": "أَمَدَّكُم بِأَنۡعَٰمٖ وَبَنِينَ",
+            "textNormalized": "امدكم بانعم وبنين",
+            "transliteration": "Amaddakum bianAAamin wabaneena"
+        },
+        {
+            "id": 134,
+            "text": "وَجَنَّـٰتٖ وَعُيُونٍ",
+            "textNormalized": "وجنت وعيون",
+            "transliteration": "Wajannatin waAAuyoonin"
+        },
+        {
+            "id": 135,
+            "text": "إِنِّيٓ أَخَافُ عَلَيۡكُمۡ عَذَابَ يَوۡمٍ عَظِيمٖ",
+            "textNormalized": "اني اخاف عليكم عذاب يوم عظيم",
+            "transliteration": "Innee akhafu AAalaykum AAathaba yawmin AAatheemin"
+        },
+        {
+            "id": 136,
+            "text": "قَالُواْ سَوَآءٌ عَلَيۡنَآ أَوَعَظۡتَ أَمۡ لَمۡ تَكُن مِّنَ ٱلۡوَٰعِظِينَ",
+            "textNormalized": "قالوا سواء علينا اوعظت ام لم تكن من الوعظين",
+            "transliteration": "Qaloo sawaon AAalayna awaAAathta am lam takun mina alwaAAitheena"
+        },
+        {
+            "id": 137,
+            "text": "إِنۡ هَٰذَآ إِلَّا خُلُقُ ٱلۡأَوَّلِينَ",
+            "textNormalized": "ان هذا الا خلق الاولين",
+            "transliteration": "In hatha illa khuluqu alawwaleena"
+        },
+        {
+            "id": 138,
+            "text": "وَمَا نَحۡنُ بِمُعَذَّبِينَ",
+            "textNormalized": "وما نحن بمعذبين",
+            "transliteration": "Wama nahnu bimuAAaththabeena"
+        },
+        {
+            "id": 139,
+            "text": "فَكَذَّبُوهُ فَأَهۡلَكۡنَٰهُمۡۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "فكذبوه فاهلكنهم ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Fakaththaboohu faahlaknahum inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 140,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 141,
+            "text": "كَذَّبَتۡ ثَمُودُ ٱلۡمُرۡسَلِينَ",
+            "textNormalized": "كذبت ثمود المرسلين",
+            "transliteration": "Kaththabat thamoodu almursaleena"
+        },
+        {
+            "id": 142,
+            "text": "إِذۡ قَالَ لَهُمۡ أَخُوهُمۡ صَٰلِحٌ أَلَا تَتَّقُونَ",
+            "textNormalized": "اذ قال لهم اخوهم صلح الا تتقون",
+            "transliteration": "Ith qala lahum akhoohum salihun ala tattaqoona"
+        },
+        {
+            "id": 143,
+            "text": "إِنِّي لَكُمۡ رَسُولٌ أَمِينٞ",
+            "textNormalized": "اني لكم رسول امين",
+            "transliteration": "Innee lakum rasoolun ameenun"
+        },
+        {
+            "id": 144,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 145,
+            "text": "وَمَآ أَسۡـَٔلُكُمۡ عَلَيۡهِ مِنۡ أَجۡرٍۖ إِنۡ أَجۡرِيَ إِلَّا عَلَىٰ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "وما اسلكم عليه من اجر ان اجري الا علي رب العلمين",
+            "transliteration": "Wama asalukum AAalayhi min ajrin in ajriya illa AAala rabbi alAAalameena"
+        },
+        {
+            "id": 146,
+            "text": "أَتُتۡرَكُونَ فِي مَا هَٰهُنَآ ءَامِنِينَ",
+            "textNormalized": "اتتركون في ما ههنا ءامنين",
+            "transliteration": "Atutrakoona fee ma hahuna amineena"
+        },
+        {
+            "id": 147,
+            "text": "فِي جَنَّـٰتٖ وَعُيُونٖ",
+            "textNormalized": "في جنت وعيون",
+            "transliteration": "Fee jannatin waAAuyoonin"
+        },
+        {
+            "id": 148,
+            "text": "وَزُرُوعٖ وَنَخۡلٖ طَلۡعُهَا هَضِيمٞ",
+            "textNormalized": "وزروع ونخل طلعها هضيم",
+            "transliteration": "WazurooAAin wanakhlin talAAuha hadeemun"
+        },
+        {
+            "id": 149,
+            "text": "وَتَنۡحِتُونَ مِنَ ٱلۡجِبَالِ بُيُوتٗا فَٰرِهِينَ",
+            "textNormalized": "وتنحتون من الجبال بيوتا فرهين",
+            "transliteration": "Watanhitoona mina aljibali buyootan fariheena"
+        },
+        {
+            "id": 150,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 151,
+            "text": "وَلَا تُطِيعُوٓاْ أَمۡرَ ٱلۡمُسۡرِفِينَ",
+            "textNormalized": "ولا تطيعوا امر المسرفين",
+            "transliteration": "Wala tuteeAAoo amra almusrifeena"
+        },
+        {
+            "id": 152,
+            "text": "ٱلَّذِينَ يُفۡسِدُونَ فِي ٱلۡأَرۡضِ وَلَا يُصۡلِحُونَ",
+            "textNormalized": "الذين يفسدون في الارض ولا يصلحون",
+            "transliteration": "Allatheena yufsidoona fee alardi wala yuslihoona"
+        },
+        {
+            "id": 153,
+            "text": "قَالُوٓاْ إِنَّمَآ أَنتَ مِنَ ٱلۡمُسَحَّرِينَ",
+            "textNormalized": "قالوا انما انت من المسحرين",
+            "transliteration": "Qaloo innama anta mina almusahhareena"
+        },
+        {
+            "id": 154,
+            "text": "مَآ أَنتَ إِلَّا بَشَرٞ مِّثۡلُنَا فَأۡتِ بِـَٔايَةٍ إِن كُنتَ مِنَ ٱلصَّـٰدِقِينَ",
+            "textNormalized": "ما انت الا بشر مثلنا فات بايه ان كنت من الصدقين",
+            "transliteration": "Ma anta illa basharun mithluna fati biayatin in kunta mina alssadiqeena"
+        },
+        {
+            "id": 155,
+            "text": "قَالَ هَٰذِهِۦ نَاقَةٞ لَّهَا شِرۡبٞ وَلَكُمۡ شِرۡبُ يَوۡمٖ مَّعۡلُومٖ",
+            "textNormalized": "قال هذه ناقه لها شرب ولكم شرب يوم معلوم",
+            "transliteration": "Qala hathihi naqatun laha shirbun walakum shirbu yawmin maAAloomin"
+        },
+        {
+            "id": 156,
+            "text": "وَلَا تَمَسُّوهَا بِسُوٓءٖ فَيَأۡخُذَكُمۡ عَذَابُ يَوۡمٍ عَظِيمٖ",
+            "textNormalized": "ولا تمسوها بسوء فياخذكم عذاب يوم عظيم",
+            "transliteration": "Wala tamassooha bisooin fayakhuthakum AAathabu yawmin AAatheemin"
+        },
+        {
+            "id": 157,
+            "text": "فَعَقَرُوهَا فَأَصۡبَحُواْ نَٰدِمِينَ",
+            "textNormalized": "فعقروها فاصبحوا ندمين",
+            "transliteration": "FaAAaqarooha faasbahoo nadimeena"
+        },
+        {
+            "id": 158,
+            "text": "فَأَخَذَهُمُ ٱلۡعَذَابُۚ إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "فاخذهم العذاب ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Faakhathahumu alAAathabu inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 159,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 160,
+            "text": "كَذَّبَتۡ قَوۡمُ لُوطٍ ٱلۡمُرۡسَلِينَ",
+            "textNormalized": "كذبت قوم لوط المرسلين",
+            "transliteration": "Kaththabat qawmu lootin almursaleena"
+        },
+        {
+            "id": 161,
+            "text": "إِذۡ قَالَ لَهُمۡ أَخُوهُمۡ لُوطٌ أَلَا تَتَّقُونَ",
+            "textNormalized": "اذ قال لهم اخوهم لوط الا تتقون",
+            "transliteration": "Ith qala lahum akhoohum lootun ala tattaqoona"
+        },
+        {
+            "id": 162,
+            "text": "إِنِّي لَكُمۡ رَسُولٌ أَمِينٞ",
+            "textNormalized": "اني لكم رسول امين",
+            "transliteration": "Innee lakum rasoolun ameenun"
+        },
+        {
+            "id": 163,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 164,
+            "text": "وَمَآ أَسۡـَٔلُكُمۡ عَلَيۡهِ مِنۡ أَجۡرٍۖ إِنۡ أَجۡرِيَ إِلَّا عَلَىٰ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "وما اسلكم عليه من اجر ان اجري الا علي رب العلمين",
+            "transliteration": "Wama asalukum AAalayhi min ajrin in ajriya illa AAala rabbi alAAalameena"
+        },
+        {
+            "id": 165,
+            "text": "أَتَأۡتُونَ ٱلذُّكۡرَانَ مِنَ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "اتاتون الذكران من العلمين",
+            "transliteration": "Atatoona alththukrana mina alAAalameena"
+        },
+        {
+            "id": 166,
+            "text": "وَتَذَرُونَ مَا خَلَقَ لَكُمۡ رَبُّكُم مِّنۡ أَزۡوَٰجِكُمۚ بَلۡ أَنتُمۡ قَوۡمٌ عَادُونَ",
+            "textNormalized": "وتذرون ما خلق لكم ربكم من ازوجكم بل انتم قوم عادون",
+            "transliteration": "Watatharoona ma khalaqa lakum rabbukum min azwajikum bal antum qawmun AAadoona"
+        },
+        {
+            "id": 167,
+            "text": "قَالُواْ لَئِن لَّمۡ تَنتَهِ يَٰلُوطُ لَتَكُونَنَّ مِنَ ٱلۡمُخۡرَجِينَ",
+            "textNormalized": "قالوا لين لم تنته يلوط لتكونن من المخرجين",
+            "transliteration": "Qaloo lain lam tantahi ya lootu latakoonanna mina almukhrajeena"
+        },
+        {
+            "id": 168,
+            "text": "قَالَ إِنِّي لِعَمَلِكُم مِّنَ ٱلۡقَالِينَ",
+            "textNormalized": "قال اني لعملكم من القالين",
+            "transliteration": "Qala innee liAAamalikum mina alqaleena"
+        },
+        {
+            "id": 169,
+            "text": "رَبِّ نَجِّنِي وَأَهۡلِي مِمَّا يَعۡمَلُونَ",
+            "textNormalized": "رب نجني واهلي مما يعملون",
+            "transliteration": "Rabbi najjinee waahlee mimma yaAAmaloona"
+        },
+        {
+            "id": 170,
+            "text": "فَنَجَّيۡنَٰهُ وَأَهۡلَهُۥٓ أَجۡمَعِينَ",
+            "textNormalized": "فنجينه واهله اجمعين",
+            "transliteration": "Fanajjaynahu waahlahu ajmaAAeena"
+        },
+        {
+            "id": 171,
+            "text": "إِلَّا عَجُوزٗا فِي ٱلۡغَٰبِرِينَ",
+            "textNormalized": "الا عجوزا في الغبرين",
+            "transliteration": "Illa AAajoozan fee alghabireena"
+        },
+        {
+            "id": 172,
+            "text": "ثُمَّ دَمَّرۡنَا ٱلۡأٓخَرِينَ",
+            "textNormalized": "ثم دمرنا الاخرين",
+            "transliteration": "Thumma dammarna alakhareena"
+        },
+        {
+            "id": 173,
+            "text": "وَأَمۡطَرۡنَا عَلَيۡهِم مَّطَرٗاۖ فَسَآءَ مَطَرُ ٱلۡمُنذَرِينَ",
+            "textNormalized": "وامطرنا عليهم مطرا فساء مطر المنذرين",
+            "transliteration": "Waamtarna AAalayhim mataran fasaa mataru almunthareena"
+        },
+        {
+            "id": 174,
+            "text": "إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 175,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 176,
+            "text": "كَذَّبَ أَصۡحَٰبُ لۡـَٔيۡكَةِ ٱلۡمُرۡسَلِينَ",
+            "textNormalized": "كذب اصحب ليكه المرسلين",
+            "transliteration": "Kaththaba ashabu alaykati almursaleena"
+        },
+        {
+            "id": 177,
+            "text": "إِذۡ قَالَ لَهُمۡ شُعَيۡبٌ أَلَا تَتَّقُونَ",
+            "textNormalized": "اذ قال لهم شعيب الا تتقون",
+            "transliteration": "Ith qala lahum shuAAaybun ala tattaqoona"
+        },
+        {
+            "id": 178,
+            "text": "إِنِّي لَكُمۡ رَسُولٌ أَمِينٞ",
+            "textNormalized": "اني لكم رسول امين",
+            "transliteration": "Innee lakum rasoolun ameenun"
+        },
+        {
+            "id": 179,
+            "text": "فَٱتَّقُواْ ٱللَّهَ وَأَطِيعُونِ",
+            "textNormalized": "فاتقوا الله واطيعون",
+            "transliteration": "Faittaqoo Allaha waateeAAooni"
+        },
+        {
+            "id": 180,
+            "text": "وَمَآ أَسۡـَٔلُكُمۡ عَلَيۡهِ مِنۡ أَجۡرٍۖ إِنۡ أَجۡرِيَ إِلَّا عَلَىٰ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "وما اسلكم عليه من اجر ان اجري الا علي رب العلمين",
+            "transliteration": "Wama asalukum AAalayhi min ajrin in ajriya illa AAala rabbi alAAalameena"
+        },
+        {
+            "id": 181,
+            "text": "۞أَوۡفُواْ ٱلۡكَيۡلَ وَلَا تَكُونُواْ مِنَ ٱلۡمُخۡسِرِينَ",
+            "textNormalized": "اوفوا الكيل ولا تكونوا من المخسرين",
+            "transliteration": "Awfoo alkayla wala takoonoo mina almukhsireena"
+        },
+        {
+            "id": 182,
+            "text": "وَزِنُواْ بِٱلۡقِسۡطَاسِ ٱلۡمُسۡتَقِيمِ",
+            "textNormalized": "وزنوا بالقسطاس المستقيم",
+            "transliteration": "Wazinoo bialqistasi almustaqeemi"
+        },
+        {
+            "id": 183,
+            "text": "وَلَا تَبۡخَسُواْ ٱلنَّاسَ أَشۡيَآءَهُمۡ وَلَا تَعۡثَوۡاْ فِي ٱلۡأَرۡضِ مُفۡسِدِينَ",
+            "textNormalized": "ولا تبخسوا الناس اشياءهم ولا تعثوا في الارض مفسدين",
+            "transliteration": "Wala tabkhasoo alnnasa ashyaahum wala taAAthaw fee alardi mufsideena"
+        },
+        {
+            "id": 184,
+            "text": "وَٱتَّقُواْ ٱلَّذِي خَلَقَكُمۡ وَٱلۡجِبِلَّةَ ٱلۡأَوَّلِينَ",
+            "textNormalized": "واتقوا الذي خلقكم والجبله الاولين",
+            "transliteration": "Waittaqoo allathee khalaqakum waaljibillata alawwaleena"
+        },
+        {
+            "id": 185,
+            "text": "قَالُوٓاْ إِنَّمَآ أَنتَ مِنَ ٱلۡمُسَحَّرِينَ",
+            "textNormalized": "قالوا انما انت من المسحرين",
+            "transliteration": "Qaloo innama anta mina almusahhareena"
+        },
+        {
+            "id": 186,
+            "text": "وَمَآ أَنتَ إِلَّا بَشَرٞ مِّثۡلُنَا وَإِن نَّظُنُّكَ لَمِنَ ٱلۡكَٰذِبِينَ",
+            "textNormalized": "وما انت الا بشر مثلنا وان نظنك لمن الكذبين",
+            "transliteration": "Wama anta illa basharun mithluna wain nathunnuka lamina alkathibeena"
+        },
+        {
+            "id": 187,
+            "text": "فَأَسۡقِطۡ عَلَيۡنَا كِسَفٗا مِّنَ ٱلسَّمَآءِ إِن كُنتَ مِنَ ٱلصَّـٰدِقِينَ",
+            "textNormalized": "فاسقط علينا كسفا من السماء ان كنت من الصدقين",
+            "transliteration": "Faasqit AAalayna kisafan mina alssamai in kunta mina alssadiqeena"
+        },
+        {
+            "id": 188,
+            "text": "قَالَ رَبِّيٓ أَعۡلَمُ بِمَا تَعۡمَلُونَ",
+            "textNormalized": "قال ربي اعلم بما تعملون",
+            "transliteration": "Qala rabbee aAAlamu bima taAAmaloona"
+        },
+        {
+            "id": 189,
+            "text": "فَكَذَّبُوهُ فَأَخَذَهُمۡ عَذَابُ يَوۡمِ ٱلظُّلَّةِۚ إِنَّهُۥ كَانَ عَذَابَ يَوۡمٍ عَظِيمٍ",
+            "textNormalized": "فكذبوه فاخذهم عذاب يوم الظله انه كان عذاب يوم عظيم",
+            "transliteration": "Fakaththaboohu faakhathahum AAathabu yawmi alththullati innahu kana AAathaba yawmin AAatheemin"
+        },
+        {
+            "id": 190,
+            "text": "إِنَّ فِي ذَٰلِكَ لَأٓيَةٗۖ وَمَا كَانَ أَكۡثَرُهُم مُّؤۡمِنِينَ",
+            "textNormalized": "ان في ذلك لايه وما كان اكثرهم مومنين",
+            "transliteration": "Inna fee thalika laayatan wama kana aktharuhum mumineena"
+        },
+        {
+            "id": 191,
+            "text": "وَإِنَّ رَبَّكَ لَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+            "textNormalized": "وان ربك لهو العزيز الرحيم",
+            "transliteration": "Wainna rabbaka lahuwa alAAazeezu alrraheemu"
+        },
+        {
+            "id": 192,
+            "text": "وَإِنَّهُۥ لَتَنزِيلُ رَبِّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "وانه لتنزيل رب العلمين",
+            "transliteration": "Wainnahu latanzeelu rabbi alAAalameena"
+        },
+        {
+            "id": 193,
+            "text": "نَزَلَ بِهِ ٱلرُّوحُ ٱلۡأَمِينُ",
+            "textNormalized": "نزل به الروح الامين",
+            "transliteration": "Nazala bihi alrroohu alameenu"
+        },
+        {
+            "id": 194,
+            "text": "عَلَىٰ قَلۡبِكَ لِتَكُونَ مِنَ ٱلۡمُنذِرِينَ",
+            "textNormalized": "علي قلبك لتكون من المنذرين",
+            "transliteration": "AAala qalbika litakoona mina almunthireena"
+        },
+        {
+            "id": 195,
+            "text": "بِلِسَانٍ عَرَبِيّٖ مُّبِينٖ",
+            "textNormalized": "بلسان عربي مبين",
+            "transliteration": "Bilisanin AAarabiyyin mubeenin"
+        },
+        {
+            "id": 196,
+            "text": "وَإِنَّهُۥ لَفِي زُبُرِ ٱلۡأَوَّلِينَ",
+            "textNormalized": "وانه لفي زبر الاولين",
+            "transliteration": "Wainnahu lafee zuburi alawwaleena"
+        },
+        {
+            "id": 197,
+            "text": "أَوَلَمۡ يَكُن لَّهُمۡ ءَايَةً أَن يَعۡلَمَهُۥ عُلَمَـٰٓؤُاْ بَنِيٓ إِسۡرَـٰٓءِيلَ",
+            "textNormalized": "اولم يكن لهم ءايه ان يعلمه علموا بني اسرءيل",
+            "transliteration": "Awalam yakun lahum ayatan an yaAAlamahu AAulamao banee israeela"
+        },
+        {
+            "id": 198,
+            "text": "وَلَوۡ نَزَّلۡنَٰهُ عَلَىٰ بَعۡضِ ٱلۡأَعۡجَمِينَ",
+            "textNormalized": "ولو نزلنه علي بعض الاعجمين",
+            "transliteration": "Walaw nazzalnahu AAala baAAdi alaAAjameena"
+        },
+        {
+            "id": 199,
+            "text": "فَقَرَأَهُۥ عَلَيۡهِم مَّا كَانُواْ بِهِۦ مُؤۡمِنِينَ",
+            "textNormalized": "فقراه عليهم ما كانوا به مومنين",
+            "transliteration": "Faqaraahu AAalayhim ma kanoo bihi mumineena"
+        },
+        {
+            "id": 200,
+            "text": "كَذَٰلِكَ سَلَكۡنَٰهُ فِي قُلُوبِ ٱلۡمُجۡرِمِينَ",
+            "textNormalized": "كذلك سلكنه في قلوب المجرمين",
+            "transliteration": "Kathalika salaknahu fee quloobi almujrimeena"
+        },
+        {
+            "id": 201,
+            "text": "لَا يُؤۡمِنُونَ بِهِۦ حَتَّىٰ يَرَوُاْ ٱلۡعَذَابَ ٱلۡأَلِيمَ",
+            "textNormalized": "لا يومنون به حتي يروا العذاب الاليم",
+            "transliteration": "La yuminoona bihi hatta yarawoo alAAathaba alaleema"
+        },
+        {
+            "id": 202,
+            "text": "فَيَأۡتِيَهُم بَغۡتَةٗ وَهُمۡ لَا يَشۡعُرُونَ",
+            "textNormalized": "فياتيهم بغته وهم لا يشعرون",
+            "transliteration": "Fayatiyahum baghtatan wahum la yashAAuroona"
+        },
+        {
+            "id": 203,
+            "text": "فَيَقُولُواْ هَلۡ نَحۡنُ مُنظَرُونَ",
+            "textNormalized": "فيقولوا هل نحن منظرون",
+            "transliteration": "Fayaqooloo hal nahnu muntharoona"
+        },
+        {
+            "id": 204,
+            "text": "أَفَبِعَذَابِنَا يَسۡتَعۡجِلُونَ",
+            "textNormalized": "افبعذابنا يستعجلون",
+            "transliteration": "AfabiAAathabina yastaAAjiloona"
+        },
+        {
+            "id": 205,
+            "text": "أَفَرَءَيۡتَ إِن مَّتَّعۡنَٰهُمۡ سِنِينَ",
+            "textNormalized": "افرءيت ان متعنهم سنين",
+            "transliteration": "Afaraayta in mattaAAnahum sineena"
+        },
+        {
+            "id": 206,
+            "text": "ثُمَّ جَآءَهُم مَّا كَانُواْ يُوعَدُونَ",
+            "textNormalized": "ثم جاءهم ما كانوا يوعدون",
+            "transliteration": "Thumma jaahum ma kanoo yooAAadoona"
+        },
+        {
+            "id": 207,
+            "text": "مَآ أَغۡنَىٰ عَنۡهُم مَّا كَانُواْ يُمَتَّعُونَ",
+            "textNormalized": "ما اغني عنهم ما كانوا يمتعون",
+            "transliteration": "Ma aghna AAanhum ma kanoo yumattaAAoona"
+        },
+        {
+            "id": 208,
+            "text": "وَمَآ أَهۡلَكۡنَا مِن قَرۡيَةٍ إِلَّا لَهَا مُنذِرُونَ",
+            "textNormalized": "وما اهلكنا من قريه الا لها منذرون",
+            "transliteration": "Wama ahlakna min qaryatin illa laha munthiroona"
+        },
+        {
+            "id": 209,
+            "text": "ذِكۡرَىٰ وَمَا كُنَّا ظَٰلِمِينَ",
+            "textNormalized": "ذكري وما كنا ظلمين",
+            "transliteration": "Thikra wama kunna thalimeena"
+        },
+        {
+            "id": 210,
+            "text": "وَمَا تَنَزَّلَتۡ بِهِ ٱلشَّيَٰطِينُ",
+            "textNormalized": "وما تنزلت به الشيطين",
+            "transliteration": "Wama tanazzalat bihi alshshayateenu"
+        },
+        {
+            "id": 211,
+            "text": "وَمَا يَنۢبَغِي لَهُمۡ وَمَا يَسۡتَطِيعُونَ",
+            "textNormalized": "وما ينبغي لهم وما يستطيعون",
+            "transliteration": "Wama yanbaghee lahum wama yastateeAAoona"
+        },
+        {
+            "id": 212,
+            "text": "إِنَّهُمۡ عَنِ ٱلسَّمۡعِ لَمَعۡزُولُونَ",
+            "textNormalized": "انهم عن السمع لمعزولون",
+            "transliteration": "Innahum AAani alssamAAi lamaAAzooloona"
+        },
+        {
+            "id": 213,
+            "text": "فَلَا تَدۡعُ مَعَ ٱللَّهِ إِلَٰهًا ءَاخَرَ فَتَكُونَ مِنَ ٱلۡمُعَذَّبِينَ",
+            "textNormalized": "فلا تدع مع الله الها ءاخر فتكون من المعذبين",
+            "transliteration": "Fala tadAAu maAAa Allahi ilahan akhara fatakoona mina almuAAaththabeena"
+        },
+        {
+            "id": 214,
+            "text": "وَأَنذِرۡ عَشِيرَتَكَ ٱلۡأَقۡرَبِينَ",
+            "textNormalized": "وانذر عشيرتك الاقربين",
+            "transliteration": "Waanthir AAasheerataka alaqrabeena"
+        },
+        {
+            "id": 215,
+            "text": "وَٱخۡفِضۡ جَنَاحَكَ لِمَنِ ٱتَّبَعَكَ مِنَ ٱلۡمُؤۡمِنِينَ",
+            "textNormalized": "واخفض جناحك لمن اتبعك من المومنين",
+            "transliteration": "Waikhfid janahaka limani ittabaAAaka mina almumineena"
+        },
+        {
+            "id": 216,
+            "text": "فَإِنۡ عَصَوۡكَ فَقُلۡ إِنِّي بَرِيٓءٞ مِّمَّا تَعۡمَلُونَ",
+            "textNormalized": "فان عصوك فقل اني بريء مما تعملون",
+            "transliteration": "Fain AAasawka faqul innee bareeon mimma taAAmaloona"
+        },
+        {
+            "id": 217,
+            "text": "وَتَوَكَّلۡ عَلَى ٱلۡعَزِيزِ ٱلرَّحِيمِ",
+            "textNormalized": "وتوكل علي العزيز الرحيم",
+            "transliteration": "Watawakkal AAala alAAazeezi alrraheemi"
+        },
+        {
+            "id": 218,
+            "text": "ٱلَّذِي يَرَىٰكَ حِينَ تَقُومُ",
+            "textNormalized": "الذي يريك حين تقوم",
+            "transliteration": "Allathee yaraka heena taqoomu"
+        },
+        {
+            "id": 219,
+            "text": "وَتَقَلُّبَكَ فِي ٱلسَّـٰجِدِينَ",
+            "textNormalized": "وتقلبك في السجدين",
+            "transliteration": "Wataqallubaka fee alssajideena"
+        },
+        {
+            "id": 220,
+            "text": "إِنَّهُۥ هُوَ ٱلسَّمِيعُ ٱلۡعَلِيمُ",
+            "textNormalized": "انه هو السميع العليم",
+            "transliteration": "Innahu huwa alssameeAAu alAAaleemu"
+        },
+        {
+            "id": 221,
+            "text": "هَلۡ أُنَبِّئُكُمۡ عَلَىٰ مَن تَنَزَّلُ ٱلشَّيَٰطِينُ",
+            "textNormalized": "هل انبيكم علي من تنزل الشيطين",
+            "transliteration": "Hal onabbiokum AAala man tanazzalu alshshayateenu"
+        },
+        {
+            "id": 222,
+            "text": "تَنَزَّلُ عَلَىٰ كُلِّ أَفَّاكٍ أَثِيمٖ",
+            "textNormalized": "تنزل علي كل افاك اثيم",
+            "transliteration": "Tanazzalu AAala kulli affakin atheemin"
+        },
+        {
+            "id": 223,
+            "text": "يُلۡقُونَ ٱلسَّمۡعَ وَأَكۡثَرُهُمۡ كَٰذِبُونَ",
+            "textNormalized": "يلقون السمع واكثرهم كذبون",
+            "transliteration": "Yulqoona alssamAAa waaktharuhum kathiboona"
+        },
+        {
+            "id": 224,
+            "text": "وَٱلشُّعَرَآءُ يَتَّبِعُهُمُ ٱلۡغَاوُۥنَ",
+            "textNormalized": "والشعراء يتبعهم الغاون",
+            "transliteration": "WaalshshuAAarao yattabiAAuhumu alghawoona"
+        },
+        {
+            "id": 225,
+            "text": "أَلَمۡ تَرَ أَنَّهُمۡ فِي كُلِّ وَادٖ يَهِيمُونَ",
+            "textNormalized": "الم تر انهم في كل واد يهيمون",
+            "transliteration": "Alam tara annahum fee kulli wadin yaheemoona"
+        },
+        {
+            "id": 226,
+            "text": "وَأَنَّهُمۡ يَقُولُونَ مَا لَا يَفۡعَلُونَ",
+            "textNormalized": "وانهم يقولون ما لا يفعلون",
+            "transliteration": "Waannahum yaqooloona ma la yafAAaloona"
+        },
+        {
+            "id": 227,
+            "text": "إِلَّا ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِ وَذَكَرُواْ ٱللَّهَ كَثِيرٗا وَٱنتَصَرُواْ مِنۢ بَعۡدِ مَا ظُلِمُواْۗ وَسَيَعۡلَمُ ٱلَّذِينَ ظَلَمُوٓاْ أَيَّ مُنقَلَبٖ يَنقَلِبُونَ",
+            "textNormalized": "الا الذين ءامنوا وعملوا الصلحت وذكروا الله كثيرا وانتصروا من بعد ما ظلموا وسيعلم الذين ظلموا اي منقلب ينقلبون",
+            "transliteration": "Illa allatheena amanoo waAAamiloo alssalihati wathakaroo Allaha katheeran waintasaroo min baAAdi ma thulimoo wasayaAAlamu allatheena thalamoo ayya munqalabin yanqaliboona"
+        }
+    ]
+}

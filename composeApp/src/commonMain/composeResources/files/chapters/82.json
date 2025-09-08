@@ -1,0 +1,122 @@
+{
+    "id": 82,
+    "name": "الإنفطار",
+    "transliteration": "Al-Infitar",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "إِذَا ٱلسَّمَآءُ ٱنفَطَرَتۡ",
+            "textNormalized": "اذا السماء انفطرت",
+            "transliteration": "Itha alssamao infatarat"
+        },
+        {
+            "id": 2,
+            "text": "وَإِذَا ٱلۡكَوَاكِبُ ٱنتَثَرَتۡ",
+            "textNormalized": "واذا الكواكب انتثرت",
+            "transliteration": "Waitha alkawakibu intatharat"
+        },
+        {
+            "id": 3,
+            "text": "وَإِذَا ٱلۡبِحَارُ فُجِّرَتۡ",
+            "textNormalized": "واذا البحار فجرت",
+            "transliteration": "Waitha albiharu fujjirat"
+        },
+        {
+            "id": 4,
+            "text": "وَإِذَا ٱلۡقُبُورُ بُعۡثِرَتۡ",
+            "textNormalized": "واذا القبور بعثرت",
+            "transliteration": "Waitha alqubooru buAAthirat"
+        },
+        {
+            "id": 5,
+            "text": "عَلِمَتۡ نَفۡسٞ مَّا قَدَّمَتۡ وَأَخَّرَتۡ",
+            "textNormalized": "علمت نفس ما قدمت واخرت",
+            "transliteration": "AAalimat nafsun ma qaddamat waakhkharat"
+        },
+        {
+            "id": 6,
+            "text": "يَـٰٓأَيُّهَا ٱلۡإِنسَٰنُ مَا غَرَّكَ بِرَبِّكَ ٱلۡكَرِيمِ",
+            "textNormalized": "يايها الانسن ما غرك بربك الكريم",
+            "transliteration": "Ya ayyuha alinsanu ma gharraka birabbika alkareemi"
+        },
+        {
+            "id": 7,
+            "text": "ٱلَّذِي خَلَقَكَ فَسَوَّىٰكَ فَعَدَلَكَ",
+            "textNormalized": "الذي خلقك فسويك فعدلك",
+            "transliteration": "Allathee khalaqaka fasawwaka faAAadalaka"
+        },
+        {
+            "id": 8,
+            "text": "فِيٓ أَيِّ صُورَةٖ مَّا شَآءَ رَكَّبَكَ",
+            "textNormalized": "في اي صوره ما شاء ركبك",
+            "transliteration": "Fee ayyi sooratin ma shaa rakkabaka"
+        },
+        {
+            "id": 9,
+            "text": "كَلَّا بَلۡ تُكَذِّبُونَ بِٱلدِّينِ",
+            "textNormalized": "كلا بل تكذبون بالدين",
+            "transliteration": "Kalla bal tukaththiboona bialddeeni"
+        },
+        {
+            "id": 10,
+            "text": "وَإِنَّ عَلَيۡكُمۡ لَحَٰفِظِينَ",
+            "textNormalized": "وان عليكم لحفظين",
+            "transliteration": "Wainna AAalaykum lahafitheena"
+        },
+        {
+            "id": 11,
+            "text": "كِرَامٗا كَٰتِبِينَ",
+            "textNormalized": "كراما كتبين",
+            "transliteration": "Kiraman katibeena"
+        },
+        {
+            "id": 12,
+            "text": "يَعۡلَمُونَ مَا تَفۡعَلُونَ",
+            "textNormalized": "يعلمون ما تفعلون",
+            "transliteration": "YaAAlamoona ma tafAAaloona"
+        },
+        {
+            "id": 13,
+            "text": "إِنَّ ٱلۡأَبۡرَارَ لَفِي نَعِيمٖ",
+            "textNormalized": "ان الابرار لفي نعيم",
+            "transliteration": "Inna alabrara lafee naAAeemin"
+        },
+        {
+            "id": 14,
+            "text": "وَإِنَّ ٱلۡفُجَّارَ لَفِي جَحِيمٖ",
+            "textNormalized": "وان الفجار لفي جحيم",
+            "transliteration": "Wainna alfujjara lafee jaheemin"
+        },
+        {
+            "id": 15,
+            "text": "يَصۡلَوۡنَهَا يَوۡمَ ٱلدِّينِ",
+            "textNormalized": "يصلونها يوم الدين",
+            "transliteration": "Yaslawnaha yawma alddeeni"
+        },
+        {
+            "id": 16,
+            "text": "وَمَا هُمۡ عَنۡهَا بِغَآئِبِينَ",
+            "textNormalized": "وما هم عنها بغايبين",
+            "transliteration": "Wama hum AAanha bighaibeena"
+        },
+        {
+            "id": 17,
+            "text": "وَمَآ أَدۡرَىٰكَ مَا يَوۡمُ ٱلدِّينِ",
+            "textNormalized": "وما ادريك ما يوم الدين",
+            "transliteration": "Wama adraka ma yawmu alddeeni"
+        },
+        {
+            "id": 18,
+            "text": "ثُمَّ مَآ أَدۡرَىٰكَ مَا يَوۡمُ ٱلدِّينِ",
+            "textNormalized": "ثم ما ادريك ما يوم الدين",
+            "transliteration": "Thumma ma adraka ma yawmu alddeeni"
+        },
+        {
+            "id": 19,
+            "text": "يَوۡمَ لَا تَمۡلِكُ نَفۡسٞ لِّنَفۡسٖ شَيۡـٔٗاۖ وَٱلۡأَمۡرُ يَوۡمَئِذٖ لِّلَّهِ",
+            "textNormalized": "يوم لا تملك نفس لنفس شيا والامر يوميذ لله",
+            "transliteration": "Yawma la tamliku nafsun linafsin shayan waalamru yawmaithin lillahi"
+        }
+    ]
+}

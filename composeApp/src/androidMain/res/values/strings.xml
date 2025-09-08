@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">القرآن الكريم</string>
+    <string name="playback_play">تشغيل</string>
+    <string name="playback_stop">إيقاف التشغيل</string>
+    <string name="playback_pause">إيقاف مؤقت</string>
+    <string name="playback_reciter">الشيخ - %s</string>
+    <string name="playback_chapter">سورة %s</string>
+</resources>

@@ -1,0 +1,26 @@
+{
+    "id": 108,
+    "name": "الكوثر",
+    "transliteration": "Al-Kawthar",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "إِنَّآ أَعۡطَيۡنَٰكَ ٱلۡكَوۡثَرَ",
+            "textNormalized": "انا اعطينك الكوثر",
+            "transliteration": "Inna aAAtaynaka alkawthara"
+        },
+        {
+            "id": 2,
+            "text": "فَصَلِّ لِرَبِّكَ وَٱنۡحَرۡ",
+            "textNormalized": "فصل لربك وانحر",
+            "transliteration": "Fasalli lirabbika wainhar"
+        },
+        {
+            "id": 3,
+            "text": "إِنَّ شَانِئَكَ هُوَ ٱلۡأَبۡتَرُ",
+            "textNormalized": "ان شانيك هو الابتر",
+            "transliteration": "Inna shaniaka huwa alabtaru"
+        }
+    ]
+}

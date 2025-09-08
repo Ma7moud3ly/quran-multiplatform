@@ -1,0 +1,38 @@
+{
+    "id": 113,
+    "name": "الفلق",
+    "transliteration": "Al-Falaq",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "قُلۡ أَعُوذُ بِرَبِّ ٱلۡفَلَقِ",
+            "textNormalized": "قل اعوذ برب الفلق",
+            "transliteration": "Qul aAAoothu birabbi alfalaqi"
+        },
+        {
+            "id": 2,
+            "text": "مِن شَرِّ مَا خَلَقَ",
+            "textNormalized": "من شر ما خلق",
+            "transliteration": "Min sharri ma khalaqa"
+        },
+        {
+            "id": 3,
+            "text": "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ",
+            "textNormalized": "ومن شر غاسق اذا وقب",
+            "transliteration": "Wamin sharri ghasiqin itha waqaba"
+        },
+        {
+            "id": 4,
+            "text": "وَمِن شَرِّ ٱلنَّفَّـٰثَٰتِ فِي ٱلۡعُقَدِ",
+            "textNormalized": "ومن شر النفثت في العقد",
+            "transliteration": "Wamin sharri alnnaffathati fee alAAuqadi"
+        },
+        {
+            "id": 5,
+            "text": "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+            "textNormalized": "ومن شر حاسد اذا حسد",
+            "transliteration": "Wamin sharri hasidin itha hasada"
+        }
+    ]
+}
