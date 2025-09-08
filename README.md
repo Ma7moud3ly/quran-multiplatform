@@ -1,10 +1,13 @@
 # Quran App - تطبيق القرآن الكريم
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="60">](https://play.google.com/store/apps/details?id=com.ma7moud3ly.quran)
-[<img src="screens/logo.png" alt="Website" height="60">](https://quran-multiplatform.web.app/)
+## 📥 Download التحميل
 
-✨ [Quran App](https://quran-multiplatform.web.app/): A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
-<image src="screens/banner.png">
+- 🤖 [Android (Google Play)](https://play.google.com/store/apps/details?id=com.ma7moud3ly.quran)
+- 🍎 iOS (App Store) *(coming soon)*
+- 🌐 [Web Version](https://quran-multiplatform.web.app/)
+- 📦 [Latest Release (GitHub)](https://github.com/ma7moud3ly/quran-multiplatform/releases)
+
+---
 
 ### Application Features:
 🎧 Listen live or download recitations for offline listening.  
