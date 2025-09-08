@@ -1,0 +1,32 @@
+{
+    "id": 112,
+    "name": "الإخلاص",
+    "transliteration": "Al-Ikhlas",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "قُلۡ هُوَ ٱللَّهُ أَحَدٌ",
+            "textNormalized": "قل هو الله احد",
+            "transliteration": "Qul huwa Allahu ahadun"
+        },
+        {
+            "id": 2,
+            "text": "ٱللَّهُ ٱلصَّمَدُ",
+            "textNormalized": "الله الصمد",
+            "transliteration": "Allahu alssamadu"
+        },
+        {
+            "id": 3,
+            "text": "لَمۡ يَلِدۡ وَلَمۡ يُولَدۡ",
+            "textNormalized": "لم يلد ولم يولد",
+            "transliteration": "Lam yalid walam yooladu"
+        },
+        {
+            "id": 4,
+            "text": "وَلَمۡ يَكُن لَّهُۥ كُفُوًا أَحَدُۢ",
+            "textNormalized": "ولم يكن له كفوا احد",
+            "transliteration": "Walam yakun lahu kufuwan ahadun"
+        }
+    ]
+}

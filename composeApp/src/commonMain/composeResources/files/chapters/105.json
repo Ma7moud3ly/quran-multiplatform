@@ -1,0 +1,38 @@
+{
+    "id": 105,
+    "name": "الفيل",
+    "transliteration": "Al-Fil",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "أَلَمۡ تَرَ كَيۡفَ فَعَلَ رَبُّكَ بِأَصۡحَٰبِ ٱلۡفِيلِ",
+            "textNormalized": "الم تر كيف فعل ربك باصحب الفيل",
+            "transliteration": "Alam tara kayfa faAAala rabbuka biashabi alfeeli"
+        },
+        {
+            "id": 2,
+            "text": "أَلَمۡ يَجۡعَلۡ كَيۡدَهُمۡ فِي تَضۡلِيلٖ",
+            "textNormalized": "الم يجعل كيدهم في تضليل",
+            "transliteration": "Alam yajAAal kaydahum fee tadleelin"
+        },
+        {
+            "id": 3,
+            "text": "وَأَرۡسَلَ عَلَيۡهِمۡ طَيۡرًا أَبَابِيلَ",
+            "textNormalized": "وارسل عليهم طيرا ابابيل",
+            "transliteration": "Waarsala AAalayhim tayran ababeela"
+        },
+        {
+            "id": 4,
+            "text": "تَرۡمِيهِم بِحِجَارَةٖ مِّن سِجِّيلٖ",
+            "textNormalized": "ترميهم بحجاره من سجيل",
+            "transliteration": "Tarmeehim bihijaratin min sijjeelin"
+        },
+        {
+            "id": 5,
+            "text": "فَجَعَلَهُمۡ كَعَصۡفٖ مَّأۡكُولِۭ",
+            "textNormalized": "فجعلهم كعصف ماكول",
+            "transliteration": "FajaAAalahum kaAAasfin makoolin"
+        }
+    ]
+}

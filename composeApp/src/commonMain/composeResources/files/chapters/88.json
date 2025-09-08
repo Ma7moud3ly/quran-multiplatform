@@ -1,0 +1,164 @@
+{
+    "id": 88,
+    "name": "الغاشية",
+    "transliteration": "Al-Ghashiyah",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "هَلۡ أَتَىٰكَ حَدِيثُ ٱلۡغَٰشِيَةِ",
+            "textNormalized": "هل اتيك حديث الغشيه",
+            "transliteration": "Hal ataka hadeethu alghashiyati"
+        },
+        {
+            "id": 2,
+            "text": "وُجُوهٞ يَوۡمَئِذٍ خَٰشِعَةٌ",
+            "textNormalized": "وجوه يوميذ خشعه",
+            "transliteration": "Wujoohun yawmaithin khashiAAatun"
+        },
+        {
+            "id": 3,
+            "text": "عَامِلَةٞ نَّاصِبَةٞ",
+            "textNormalized": "عامله ناصبه",
+            "transliteration": "AAamilatun nasibatun"
+        },
+        {
+            "id": 4,
+            "text": "تَصۡلَىٰ نَارًا حَامِيَةٗ",
+            "textNormalized": "تصلي نارا حاميه",
+            "transliteration": "Tasla naran hamiyatan"
+        },
+        {
+            "id": 5,
+            "text": "تُسۡقَىٰ مِنۡ عَيۡنٍ ءَانِيَةٖ",
+            "textNormalized": "تسقي من عين ءانيه",
+            "transliteration": "Tusqa min AAaynin aniyatin"
+        },
+        {
+            "id": 6,
+            "text": "لَّيۡسَ لَهُمۡ طَعَامٌ إِلَّا مِن ضَرِيعٖ",
+            "textNormalized": "ليس لهم طعام الا من ضريع",
+            "transliteration": "Laysa lahum taAAamun illa min dareeAAin"
+        },
+        {
+            "id": 7,
+            "text": "لَّا يُسۡمِنُ وَلَا يُغۡنِي مِن جُوعٖ",
+            "textNormalized": "لا يسمن ولا يغني من جوع",
+            "transliteration": "La yusminu wala yughnee min jooAAin"
+        },
+        {
+            "id": 8,
+            "text": "وُجُوهٞ يَوۡمَئِذٖ نَّاعِمَةٞ",
+            "textNormalized": "وجوه يوميذ ناعمه",
+            "transliteration": "Wujoohun yawmaithin naAAimatun"
+        },
+        {
+            "id": 9,
+            "text": "لِّسَعۡيِهَا رَاضِيَةٞ",
+            "textNormalized": "لسعيها راضيه",
+            "transliteration": "LisaAAyiha radiyatun"
+        },
+        {
+            "id": 10,
+            "text": "فِي جَنَّةٍ عَالِيَةٖ",
+            "textNormalized": "في جنه عاليه",
+            "transliteration": "Fee jannatin AAaliyatin"
+        },
+        {
+            "id": 11,
+            "text": "لَّا تَسۡمَعُ فِيهَا لَٰغِيَةٗ",
+            "textNormalized": "لا تسمع فيها لغيه",
+            "transliteration": "La tasmaAAu feeha laghiyatan"
+        },
+        {
+            "id": 12,
+            "text": "فِيهَا عَيۡنٞ جَارِيَةٞ",
+            "textNormalized": "فيها عين جاريه",
+            "transliteration": "Feeha AAaynun jariyatun"
+        },
+        {
+            "id": 13,
+            "text": "فِيهَا سُرُرٞ مَّرۡفُوعَةٞ",
+            "textNormalized": "فيها سرر مرفوعه",
+            "transliteration": "Feeha sururun marfooAAatun"
+        },
+        {
+            "id": 14,
+            "text": "وَأَكۡوَابٞ مَّوۡضُوعَةٞ",
+            "textNormalized": "واكواب موضوعه",
+            "transliteration": "Waakwabun mawdooAAatun"
+        },
+        {
+            "id": 15,
+            "text": "وَنَمَارِقُ مَصۡفُوفَةٞ",
+            "textNormalized": "ونمارق مصفوفه",
+            "transliteration": "Wanamariqu masfoofatun"
+        },
+        {
+            "id": 16,
+            "text": "وَزَرَابِيُّ مَبۡثُوثَةٌ",
+            "textNormalized": "وزرابي مبثوثه",
+            "transliteration": "Wazarabiyyu mabthoothatun"
+        },
+        {
+            "id": 17,
+            "text": "أَفَلَا يَنظُرُونَ إِلَى ٱلۡإِبِلِ كَيۡفَ خُلِقَتۡ",
+            "textNormalized": "افلا ينظرون الي الابل كيف خلقت",
+            "transliteration": "Afala yanthuroona ila alibili kayfa khuliqat"
+        },
+        {
+            "id": 18,
+            "text": "وَإِلَى ٱلسَّمَآءِ كَيۡفَ رُفِعَتۡ",
+            "textNormalized": "والي السماء كيف رفعت",
+            "transliteration": "Waila alssamai kayfa rufiAAat"
+        },
+        {
+            "id": 19,
+            "text": "وَإِلَى ٱلۡجِبَالِ كَيۡفَ نُصِبَتۡ",
+            "textNormalized": "والي الجبال كيف نصبت",
+            "transliteration": "Waila aljibali kayfa nusibat"
+        },
+        {
+            "id": 20,
+            "text": "وَإِلَى ٱلۡأَرۡضِ كَيۡفَ سُطِحَتۡ",
+            "textNormalized": "والي الارض كيف سطحت",
+            "transliteration": "Waila alardi kayfa sutihat"
+        },
+        {
+            "id": 21,
+            "text": "فَذَكِّرۡ إِنَّمَآ أَنتَ مُذَكِّرٞ",
+            "textNormalized": "فذكر انما انت مذكر",
+            "transliteration": "Fathakkir innama anta muthakkirun"
+        },
+        {
+            "id": 22,
+            "text": "لَّسۡتَ عَلَيۡهِم بِمُصَيۡطِرٍ",
+            "textNormalized": "لست عليهم بمصيطر",
+            "transliteration": "Lasta AAalayhim bimusaytirin"
+        },
+        {
+            "id": 23,
+            "text": "إِلَّا مَن تَوَلَّىٰ وَكَفَرَ",
+            "textNormalized": "الا من تولي وكفر",
+            "transliteration": "Illa man tawalla wakafara"
+        },
+        {
+            "id": 24,
+            "text": "فَيُعَذِّبُهُ ٱللَّهُ ٱلۡعَذَابَ ٱلۡأَكۡبَرَ",
+            "textNormalized": "فيعذبه الله العذاب الاكبر",
+            "transliteration": "FayuAAaththibuhu Allahu alAAathaba alakbara"
+        },
+        {
+            "id": 25,
+            "text": "إِنَّ إِلَيۡنَآ إِيَابَهُمۡ",
+            "textNormalized": "ان الينا ايابهم",
+            "transliteration": "Inna ilayna iyabahum"
+        },
+        {
+            "id": 26,
+            "text": "ثُمَّ إِنَّ عَلَيۡنَا حِسَابَهُم",
+            "textNormalized": "ثم ان علينا حسابهم",
+            "transliteration": "Thumma inna AAalayna hisabahum"
+        }
+    ]
+}

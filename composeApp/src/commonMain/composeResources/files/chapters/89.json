@@ -1,0 +1,188 @@
+{
+    "id": 89,
+    "name": "الفجر",
+    "transliteration": "Al-Fajr",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "وَٱلۡفَجۡرِ",
+            "textNormalized": "والفجر",
+            "transliteration": "Waalfajri"
+        },
+        {
+            "id": 2,
+            "text": "وَلَيَالٍ عَشۡرٖ",
+            "textNormalized": "وليال عشر",
+            "transliteration": "Walayalin AAashrin"
+        },
+        {
+            "id": 3,
+            "text": "وَٱلشَّفۡعِ وَٱلۡوَتۡرِ",
+            "textNormalized": "والشفع والوتر",
+            "transliteration": "WaalshshafAAi waalwatri"
+        },
+        {
+            "id": 4,
+            "text": "وَٱلَّيۡلِ إِذَا يَسۡرِ",
+            "textNormalized": "واليل اذا يسر",
+            "transliteration": "Waallayli itha yasri"
+        },
+        {
+            "id": 5,
+            "text": "هَلۡ فِي ذَٰلِكَ قَسَمٞ لِّذِي حِجۡرٍ",
+            "textNormalized": "هل في ذلك قسم لذي حجر",
+            "transliteration": "Hal fee thalika qasamun lithee hijrin"
+        },
+        {
+            "id": 6,
+            "text": "أَلَمۡ تَرَ كَيۡفَ فَعَلَ رَبُّكَ بِعَادٍ",
+            "textNormalized": "الم تر كيف فعل ربك بعاد",
+            "transliteration": "Alam tara kayfa faAAala rabbuka biAAadin"
+        },
+        {
+            "id": 7,
+            "text": "إِرَمَ ذَاتِ ٱلۡعِمَادِ",
+            "textNormalized": "ارم ذات العماد",
+            "transliteration": "Irama thati alAAimadi"
+        },
+        {
+            "id": 8,
+            "text": "ٱلَّتِي لَمۡ يُخۡلَقۡ مِثۡلُهَا فِي ٱلۡبِلَٰدِ",
+            "textNormalized": "التي لم يخلق مثلها في البلد",
+            "transliteration": "Allatee lam yukhlaq mithluha fee albiladi"
+        },
+        {
+            "id": 9,
+            "text": "وَثَمُودَ ٱلَّذِينَ جَابُواْ ٱلصَّخۡرَ بِٱلۡوَادِ",
+            "textNormalized": "وثمود الذين جابوا الصخر بالواد",
+            "transliteration": "Wathamooda allatheena jaboo alssakhra bialwadi"
+        },
+        {
+            "id": 10,
+            "text": "وَفِرۡعَوۡنَ ذِي ٱلۡأَوۡتَادِ",
+            "textNormalized": "وفرعون ذي الاوتاد",
+            "transliteration": "WafirAAawna thee alawtadi"
+        },
+        {
+            "id": 11,
+            "text": "ٱلَّذِينَ طَغَوۡاْ فِي ٱلۡبِلَٰدِ",
+            "textNormalized": "الذين طغوا في البلد",
+            "transliteration": "Allatheena taghaw fee albiladi"
+        },
+        {
+            "id": 12,
+            "text": "فَأَكۡثَرُواْ فِيهَا ٱلۡفَسَادَ",
+            "textNormalized": "فاكثروا فيها الفساد",
+            "transliteration": "Faaktharoo feeha alfasada"
+        },
+        {
+            "id": 13,
+            "text": "فَصَبَّ عَلَيۡهِمۡ رَبُّكَ سَوۡطَ عَذَابٍ",
+            "textNormalized": "فصب عليهم ربك سوط عذاب",
+            "transliteration": "Fasabba AAalayhim rabbuka sawta AAathabin"
+        },
+        {
+            "id": 14,
+            "text": "إِنَّ رَبَّكَ لَبِٱلۡمِرۡصَادِ",
+            "textNormalized": "ان ربك لبالمرصاد",
+            "transliteration": "Inna rabbaka labialmirsadi"
+        },
+        {
+            "id": 15,
+            "text": "فَأَمَّا ٱلۡإِنسَٰنُ إِذَا مَا ٱبۡتَلَىٰهُ رَبُّهُۥ فَأَكۡرَمَهُۥ وَنَعَّمَهُۥ فَيَقُولُ رَبِّيٓ أَكۡرَمَنِ",
+            "textNormalized": "فاما الانسن اذا ما ابتليه ربه فاكرمه ونعمه فيقول ربي اكرمن",
+            "transliteration": "Faamma alinsanu itha ma ibtalahu rabbuhu faakramahu wanaAAAAamahu fayaqoolu rabbee akramani"
+        },
+        {
+            "id": 16,
+            "text": "وَأَمَّآ إِذَا مَا ٱبۡتَلَىٰهُ فَقَدَرَ عَلَيۡهِ رِزۡقَهُۥ فَيَقُولُ رَبِّيٓ أَهَٰنَنِ",
+            "textNormalized": "واما اذا ما ابتليه فقدر عليه رزقه فيقول ربي اهنن",
+            "transliteration": "Waamma itha ma ibtalahu faqadara AAalayhi rizqahu fayaqoolu rabbee ahanani"
+        },
+        {
+            "id": 17,
+            "text": "كَلَّاۖ بَل لَّا تُكۡرِمُونَ ٱلۡيَتِيمَ",
+            "textNormalized": "كلا بل لا تكرمون اليتيم",
+            "transliteration": "Kalla bal la tukrimoona alyateema"
+        },
+        {
+            "id": 18,
+            "text": "وَلَا تَحَـٰٓضُّونَ عَلَىٰ طَعَامِ ٱلۡمِسۡكِينِ",
+            "textNormalized": "ولا تحضون علي طعام المسكين",
+            "transliteration": "Wala tahaddoona AAala taAAami almiskeeni"
+        },
+        {
+            "id": 19,
+            "text": "وَتَأۡكُلُونَ ٱلتُّرَاثَ أَكۡلٗا لَّمّٗا",
+            "textNormalized": "وتاكلون التراث اكلا لما",
+            "transliteration": "Watakuloona altturatha aklan lamman"
+        },
+        {
+            "id": 20,
+            "text": "وَتُحِبُّونَ ٱلۡمَالَ حُبّٗا جَمّٗا",
+            "textNormalized": "وتحبون المال حبا جما",
+            "transliteration": "Watuhibboona almala hubban jamman"
+        },
+        {
+            "id": 21,
+            "text": "كَلَّآۖ إِذَا دُكَّتِ ٱلۡأَرۡضُ دَكّٗا دَكّٗا",
+            "textNormalized": "كلا اذا دكت الارض دكا دكا",
+            "transliteration": "Kalla itha dukkati alardu dakkan dakkan"
+        },
+        {
+            "id": 22,
+            "text": "وَجَآءَ رَبُّكَ وَٱلۡمَلَكُ صَفّٗا صَفّٗا",
+            "textNormalized": "وجاء ربك والملك صفا صفا",
+            "transliteration": "Wajaa rabbuka waalmalaku saffan saffan"
+        },
+        {
+            "id": 23,
+            "text": "وَجِاْيٓءَ يَوۡمَئِذِۭ بِجَهَنَّمَۚ يَوۡمَئِذٖ يَتَذَكَّرُ ٱلۡإِنسَٰنُ وَأَنَّىٰ لَهُ ٱلذِّكۡرَىٰ",
+            "textNormalized": "وجايء يوميذ بجهنم يوميذ يتذكر الانسن واني له الذكري",
+            "transliteration": "Wajeea yawmaithin bijahannama yawmaithin yatathakkaru alinsanu waanna lahu alththikra"
+        },
+        {
+            "id": 24,
+            "text": "يَقُولُ يَٰلَيۡتَنِي قَدَّمۡتُ لِحَيَاتِي",
+            "textNormalized": "يقول يليتني قدمت لحياتي",
+            "transliteration": "Yaqoolu ya laytanee qaddamtu lihayatee"
+        },
+        {
+            "id": 25,
+            "text": "فَيَوۡمَئِذٖ لَّا يُعَذِّبُ عَذَابَهُۥٓ أَحَدٞ",
+            "textNormalized": "فيوميذ لا يعذب عذابه احد",
+            "transliteration": "Fayawmaithin la yuAAaththibu AAathabahu ahadun"
+        },
+        {
+            "id": 26,
+            "text": "وَلَا يُوثِقُ وَثَاقَهُۥٓ أَحَدٞ",
+            "textNormalized": "ولا يوثق وثاقه احد",
+            "transliteration": "Wala yoothiqu wathaqahu ahadun"
+        },
+        {
+            "id": 27,
+            "text": "يَـٰٓأَيَّتُهَا ٱلنَّفۡسُ ٱلۡمُطۡمَئِنَّةُ",
+            "textNormalized": "يايتها النفس المطمينه",
+            "transliteration": "Ya ayyatuha alnnafsu almutmainnatu"
+        },
+        {
+            "id": 28,
+            "text": "ٱرۡجِعِيٓ إِلَىٰ رَبِّكِ رَاضِيَةٗ مَّرۡضِيَّةٗ",
+            "textNormalized": "ارجعي الي ربك راضيه مرضيه",
+            "transliteration": "IrjiAAee ila rabbiki radiyatan mardiyyatan"
+        },
+        {
+            "id": 29,
+            "text": "فَٱدۡخُلِي فِي عِبَٰدِي",
+            "textNormalized": "فادخلي في عبدي",
+            "transliteration": "Faodkhulee fee AAibadee"
+        },
+        {
+            "id": 30,
+            "text": "وَٱدۡخُلِي جَنَّتِي",
+            "textNormalized": "وادخلي جنتي",
+            "transliteration": "Waodkhulee jannatee"
+        }
+    ]
+}

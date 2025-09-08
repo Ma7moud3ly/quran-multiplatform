@@ -1,0 +1,686 @@
+[
+    {
+        "id": 1,
+        "name": "الفاتحة",
+        "type": "meccan",
+        "count": 7
+    },
+    {
+        "id": 2,
+        "name": "البقرة",
+        "type": "medinan",
+        "count": 286
+    },
+    {
+        "id": 3,
+        "name": "آل عمران",
+        "type": "medinan",
+        "count": 200
+    },
+    {
+        "id": 4,
+        "name": "النساء",
+        "type": "medinan",
+        "count": 176
+    },
+    {
+        "id": 5,
+        "name": "المائدة",
+        "type": "medinan",
+        "count": 120
+    },
+    {
+        "id": 6,
+        "name": "الأنعام",
+        "type": "meccan",
+        "count": 165
+    },
+    {
+        "id": 7,
+        "name": "الأعراف",
+        "type": "meccan",
+        "count": 206
+    },
+    {
+        "id": 8,
+        "name": "الأنفال",
+        "type": "medinan",
+        "count": 75
+    },
+    {
+        "id": 9,
+        "name": "التوبة",
+        "type": "medinan",
+        "count": 129
+    },
+    {
+        "id": 10,
+        "name": "يونس",
+        "type": "meccan",
+        "count": 109
+    },
+    {
+        "id": 11,
+        "name": "هود",
+        "type": "meccan",
+        "count": 123
+    },
+    {
+        "id": 12,
+        "name": "يوسف",
+        "type": "meccan",
+        "count": 111
+    },
+    {
+        "id": 13,
+        "name": "الرعد",
+        "type": "medinan",
+        "count": 43
+    },
+    {
+        "id": 14,
+        "name": "ابراهيم",
+        "type": "meccan",
+        "count": 52
+    },
+    {
+        "id": 15,
+        "name": "الحجر",
+        "type": "meccan",
+        "count": 99
+    },
+    {
+        "id": 16,
+        "name": "النحل",
+        "type": "meccan",
+        "count": 128
+    },
+    {
+        "id": 17,
+        "name": "الإسراء",
+        "type": "meccan",
+        "count": 111
+    },
+    {
+        "id": 18,
+        "name": "الكهف",
+        "type": "meccan",
+        "count": 110
+    },
+    {
+        "id": 19,
+        "name": "مريم",
+        "type": "meccan",
+        "count": 98
+    },
+    {
+        "id": 20,
+        "name": "طه",
+        "type": "meccan",
+        "count": 135
+    },
+    {
+        "id": 21,
+        "name": "الأنبياء",
+        "type": "meccan",
+        "count": 112
+    },
+    {
+        "id": 22,
+        "name": "الحج",
+        "type": "medinan",
+        "count": 78
+    },
+    {
+        "id": 23,
+        "name": "المؤمنون",
+        "type": "meccan",
+        "count": 118
+    },
+    {
+        "id": 24,
+        "name": "النور",
+        "type": "medinan",
+        "count": 64
+    },
+    {
+        "id": 25,
+        "name": "الفرقان",
+        "type": "meccan",
+        "count": 77
+    },
+    {
+        "id": 26,
+        "name": "الشعراء",
+        "type": "meccan",
+        "count": 227
+    },
+    {
+        "id": 27,
+        "name": "النمل",
+        "type": "meccan",
+        "count": 93
+    },
+    {
+        "id": 28,
+        "name": "القصص",
+        "type": "meccan",
+        "count": 88
+    },
+    {
+        "id": 29,
+        "name": "العنكبوت",
+        "type": "meccan",
+        "count": 69
+    },
+    {
+        "id": 30,
+        "name": "الروم",
+        "type": "meccan",
+        "count": 60
+    },
+    {
+        "id": 31,
+        "name": "لقمان",
+        "type": "meccan",
+        "count": 34
+    },
+    {
+        "id": 32,
+        "name": "السجدة",
+        "type": "meccan",
+        "count": 30
+    },
+    {
+        "id": 33,
+        "name": "الأحزاب",
+        "type": "medinan",
+        "count": 73
+    },
+    {
+        "id": 34,
+        "name": "سبإ",
+        "type": "meccan",
+        "count": 54
+    },
+    {
+        "id": 35,
+        "name": "فاطر",
+        "type": "meccan",
+        "count": 45
+    },
+    {
+        "id": 36,
+        "name": "يس",
+        "type": "meccan",
+        "count": 83
+    },
+    {
+        "id": 37,
+        "name": "الصافات",
+        "type": "meccan",
+        "count": 182
+    },
+    {
+        "id": 38,
+        "name": "ص",
+        "type": "meccan",
+        "count": 88
+    },
+    {
+        "id": 39,
+        "name": "الزمر",
+        "type": "meccan",
+        "count": 75
+    },
+    {
+        "id": 40,
+        "name": "غافر",
+        "type": "meccan",
+        "count": 85
+    },
+    {
+        "id": 41,
+        "name": "فصلت",
+        "type": "meccan",
+        "count": 54
+    },
+    {
+        "id": 42,
+        "name": "الشورى",
+        "type": "meccan",
+        "count": 53
+    },
+    {
+        "id": 43,
+        "name": "الزخرف",
+        "type": "meccan",
+        "count": 89
+    },
+    {
+        "id": 44,
+        "name": "الدخان",
+        "type": "meccan",
+        "count": 59
+    },
+    {
+        "id": 45,
+        "name": "الجاثية",
+        "type": "meccan",
+        "count": 37
+    },
+    {
+        "id": 46,
+        "name": "الأحقاف",
+        "type": "meccan",
+        "count": 35
+    },
+    {
+        "id": 47,
+        "name": "محمد",
+        "type": "medinan",
+        "count": 38
+    },
+    {
+        "id": 48,
+        "name": "الفتح",
+        "type": "medinan",
+        "count": 29
+    },
+    {
+        "id": 49,
+        "name": "الحجرات",
+        "type": "medinan",
+        "count": 18
+    },
+    {
+        "id": 50,
+        "name": "ق",
+        "type": "meccan",
+        "count": 45
+    },
+    {
+        "id": 51,
+        "name": "الذاريات",
+        "type": "meccan",
+        "count": 60
+    },
+    {
+        "id": 52,
+        "name": "الطور",
+        "type": "meccan",
+        "count": 49
+    },
+    {
+        "id": 53,
+        "name": "النجم",
+        "type": "meccan",
+        "count": 62
+    },
+    {
+        "id": 54,
+        "name": "القمر",
+        "type": "meccan",
+        "count": 55
+    },
+    {
+        "id": 55,
+        "name": "الرحمن",
+        "type": "medinan",
+        "count": 78
+    },
+    {
+        "id": 56,
+        "name": "الواقعة",
+        "type": "meccan",
+        "count": 96
+    },
+    {
+        "id": 57,
+        "name": "الحديد",
+        "type": "medinan",
+        "count": 29
+    },
+    {
+        "id": 58,
+        "name": "المجادلة",
+        "type": "medinan",
+        "count": 22
+    },
+    {
+        "id": 59,
+        "name": "الحشر",
+        "type": "medinan",
+        "count": 24
+    },
+    {
+        "id": 60,
+        "name": "الممتحنة",
+        "type": "medinan",
+        "count": 13
+    },
+    {
+        "id": 61,
+        "name": "الصف",
+        "type": "medinan",
+        "count": 14
+    },
+    {
+        "id": 62,
+        "name": "الجمعة",
+        "type": "medinan",
+        "count": 11
+    },
+    {
+        "id": 63,
+        "name": "المنافقون",
+        "type": "medinan",
+        "count": 11
+    },
+    {
+        "id": 64,
+        "name": "التغابن",
+        "type": "medinan",
+        "count": 18
+    },
+    {
+        "id": 65,
+        "name": "الطلاق",
+        "type": "medinan",
+        "count": 12
+    },
+    {
+        "id": 66,
+        "name": "التحريم",
+        "type": "medinan",
+        "count": 12
+    },
+    {
+        "id": 67,
+        "name": "الملك",
+        "type": "meccan",
+        "count": 30
+    },
+    {
+        "id": 68,
+        "name": "القلم",
+        "type": "meccan",
+        "count": 52
+    },
+    {
+        "id": 69,
+        "name": "الحاقة",
+        "type": "meccan",
+        "count": 52
+    },
+    {
+        "id": 70,
+        "name": "المعارج",
+        "type": "meccan",
+        "count": 44
+    },
+    {
+        "id": 71,
+        "name": "نوح",
+        "type": "meccan",
+        "count": 28
+    },
+    {
+        "id": 72,
+        "name": "الجن",
+        "type": "meccan",
+        "count": 28
+    },
+    {
+        "id": 73,
+        "name": "المزمل",
+        "type": "meccan",
+        "count": 20
+    },
+    {
+        "id": 74,
+        "name": "المدثر",
+        "type": "meccan",
+        "count": 56
+    },
+    {
+        "id": 75,
+        "name": "القيامة",
+        "type": "meccan",
+        "count": 40
+    },
+    {
+        "id": 76,
+        "name": "الانسان",
+        "type": "medinan",
+        "count": 31
+    },
+    {
+        "id": 77,
+        "name": "المرسلات",
+        "type": "meccan",
+        "count": 50
+    },
+    {
+        "id": 78,
+        "name": "النبإ",
+        "type": "meccan",
+        "count": 40
+    },
+    {
+        "id": 79,
+        "name": "النازعات",
+        "type": "meccan",
+        "count": 46
+    },
+    {
+        "id": 80,
+        "name": "عبس",
+        "type": "meccan",
+        "count": 42
+    },
+    {
+        "id": 81,
+        "name": "التكوير",
+        "type": "meccan",
+        "count": 29
+    },
+    {
+        "id": 82,
+        "name": "الإنفطار",
+        "type": "meccan",
+        "count": 19
+    },
+    {
+        "id": 83,
+        "name": "المطففين",
+        "type": "meccan",
+        "count": 36
+    },
+    {
+        "id": 84,
+        "name": "الإنشقاق",
+        "type": "meccan",
+        "count": 25
+    },
+    {
+        "id": 85,
+        "name": "البروج",
+        "type": "meccan",
+        "count": 22
+    },
+    {
+        "id": 86,
+        "name": "الطارق",
+        "type": "meccan",
+        "count": 17
+    },
+    {
+        "id": 87,
+        "name": "الأعلى",
+        "type": "meccan",
+        "count": 19
+    },
+    {
+        "id": 88,
+        "name": "الغاشية",
+        "type": "meccan",
+        "count": 26
+    },
+    {
+        "id": 89,
+        "name": "الفجر",
+        "type": "meccan",
+        "count": 30
+    },
+    {
+        "id": 90,
+        "name": "البلد",
+        "type": "meccan",
+        "count": 20
+    },
+    {
+        "id": 91,
+        "name": "الشمس",
+        "type": "meccan",
+        "count": 15
+    },
+    {
+        "id": 92,
+        "name": "الليل",
+        "type": "meccan",
+        "count": 21
+    },
+    {
+        "id": 93,
+        "name": "الضحى",
+        "type": "meccan",
+        "count": 11
+    },
+    {
+        "id": 94,
+        "name": "الشرح",
+        "type": "meccan",
+        "count": 8
+    },
+    {
+        "id": 95,
+        "name": "التين",
+        "type": "meccan",
+        "count": 8
+    },
+    {
+        "id": 96,
+        "name": "العلق",
+        "type": "meccan",
+        "count": 19
+    },
+    {
+        "id": 97,
+        "name": "القدر",
+        "type": "meccan",
+        "count": 5
+    },
+    {
+        "id": 98,
+        "name": "البينة",
+        "type": "medinan",
+        "count": 8
+    },
+    {
+        "id": 99,
+        "name": "الزلزلة",
+        "type": "medinan",
+        "count": 8
+    },
+    {
+        "id": 100,
+        "name": "العاديات",
+        "type": "meccan",
+        "count": 11
+    },
+    {
+        "id": 101,
+        "name": "القارعة",
+        "type": "meccan",
+        "count": 11
+    },
+    {
+        "id": 102,
+        "name": "التكاثر",
+        "type": "meccan",
+        "count": 8
+    },
+    {
+        "id": 103,
+        "name": "العصر",
+        "type": "meccan",
+        "count": 3
+    },
+    {
+        "id": 104,
+        "name": "الهمزة",
+        "type": "meccan",
+        "count": 9
+    },
+    {
+        "id": 105,
+        "name": "الفيل",
+        "type": "meccan",
+        "count": 5
+    },
+    {
+        "id": 106,
+        "name": "قريش",
+        "type": "meccan",
+        "count": 4
+    },
+    {
+        "id": 107,
+        "name": "الماعون",
+        "type": "meccan",
+        "count": 7
+    },
+    {
+        "id": 108,
+        "name": "الكوثر",
+        "type": "meccan",
+        "count": 3
+    },
+    {
+        "id": 109,
+        "name": "الكافرون",
+        "type": "meccan",
+        "count": 6
+    },
+    {
+        "id": 110,
+        "name": "النصر",
+        "type": "medinan",
+        "count": 3
+    },
+    {
+        "id": 111,
+        "name": "المسد",
+        "type": "meccan",
+        "count": 5
+    },
+    {
+        "id": 112,
+        "name": "الإخلاص",
+        "type": "meccan",
+        "count": 4
+    },
+    {
+        "id": 113,
+        "name": "الفلق",
+        "type": "meccan",
+        "count": 5
+    },
+    {
+        "id": 114,
+        "name": "الناس",
+        "type": "meccan",
+        "count": 6
+    }
+]

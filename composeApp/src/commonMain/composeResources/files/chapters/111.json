@@ -1,0 +1,38 @@
+{
+    "id": 111,
+    "name": "المسد",
+    "transliteration": "Al-Masad",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "تَبَّتۡ يَدَآ أَبِي لَهَبٖ وَتَبَّ",
+            "textNormalized": "تبت يدا ابي لهب وتب",
+            "transliteration": "Tabbat yada abee lahabin watabba"
+        },
+        {
+            "id": 2,
+            "text": "مَآ أَغۡنَىٰ عَنۡهُ مَالُهُۥ وَمَا كَسَبَ",
+            "textNormalized": "ما اغني عنه ماله وما كسب",
+            "transliteration": "Ma aghna AAanhu maluhu wama kasaba"
+        },
+        {
+            "id": 3,
+            "text": "سَيَصۡلَىٰ نَارٗا ذَاتَ لَهَبٖ",
+            "textNormalized": "سيصلي نارا ذات لهب",
+            "transliteration": "Sayasla naran thata lahabin"
+        },
+        {
+            "id": 4,
+            "text": "وَٱمۡرَأَتُهُۥ حَمَّالَةَ ٱلۡحَطَبِ",
+            "textNormalized": "وامراته حماله الحطب",
+            "transliteration": "Waimraatuhu hammalata alhatabi"
+        },
+        {
+            "id": 5,
+            "text": "فِي جِيدِهَا حَبۡلٞ مِّن مَّسَدِۭ",
+            "textNormalized": "في جيدها حبل من مسد",
+            "transliteration": "Fee jeediha hablun min masadin"
+        }
+    ]
+}

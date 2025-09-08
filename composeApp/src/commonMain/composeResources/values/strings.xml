@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">القرآن الكريم</string>
+    <string name="app_version">V1.0</string>
+    <string name="app_repo">https://github.com/Ma7moud3ly/quran-multiplatform</string>
+
+    <string name="home_slogan">القرآن\nالكريم</string>
+    <string name="home_index">السور</string>
+    <string name="home_reciters">القراء</string>
+    <string name="home_history">السجل</string>
+    <string name="home_search">البحث</string>
+    <string name="home_settings">الضبط</string>
+    <string name="home_support">الدعم</string>
+    <string name="home_support_long">للمقترحات والدعم 🐞</string>
+
+    <string name="index_title">السور</string>
+    <string name="index_history">السجل</string>
+    <string name="index_mecca">مكية</string>
+    <string name="index_madina">مدنية</string>
+    <string name="index_verse">%1$d آية</string>
+    <string name="index_verses">%1$d آيات</string>
+    <plurals name="index_verses_number">
+        <item quantity="zero">%1$d آيات</item>
+        <item quantity="one">%1$d آية</item>
+        <item quantity="two">%1$d آيتان</item>
+        <item quantity="few">%1$d آيات</item>    <!-- For 3-10 in Arabic -->
+        <item quantity="many">%1$d آية</item>   <!-- For 11-99 in Arabic -->
+        <item quantity="other">%1$d آية</item>
+    </plurals>
+
+
+    <string name="sora_translation">عرض الترجمة</string>
+    <string name="readers">القُراء</string>
+    <string name="readers_search">أدخل اسم القارئ للبحث عنه</string>
+
+    <string name="settings">الإعدادت</string>
+    <string name="settings_of_reading">إعدادت القراءة</string>
+    <string name="settings_of_recitation">إعدادت التلاوة</string>
+    <string name="settings_save">حفظ الإعدادات</string>
+    <string name="settings_night">الوضع الليلي</string>
+    <string name="settings_shuffle">تبديل القراء</string>
+    <string name="settings_shuffle_description">التبديل بين القراء مع كل آية في حالة اختيار أكثر من قارئ</string>
+    <string name="settings_reel">وضع Reel</string>
+    <string name="settings_reel_description">تغير حجم مشغل الآيات إلي 9:16 حتي يتوافق مع أبعاد الريلز علي مواقع التواصل الإجتماعي إذا قمت بتصوير الشاشة.</string>
+    <string name="settings_background">تشغيل في الخلفية</string>
+    <string name="settings_background_description">السماح بتشغيل التلاوة عند قفل الشاشة أو نزول التطبيق في الخلفية</string>
+    <string name="settings_font_size">حجم الخط</string>
+    <string name="settings_font_type">نوع الخط</string>
+    <string name="settings_mode">عرض الآيات</string>
+    <string name="settings_mode_single">آية واحدة</string>
+    <string name="settings_mode_multiple">آيات متتابعة</string>
+    <string name="settings_mode_continues">آيات متصلة</string>
+
+    <string name="audio_quality">الجودة %1$s</string>
+
+    <string name="recite">التلاوة</string>
+    <string name="recite_start">بدء التلاوة</string>
+    <string name="recite_mode_normal">الوضع العادي</string>
+    <string name="recite_mode_tv">وضع التلفاز</string>
+    <string name="recite_quality">الجودة %1$s</string>
+    <string name="recite_listen">استماع</string>
+    <string name="reciter_name">القـارئ / %1$s</string>
+    <string name="recite_reciter_select">حدد القارئ</string>
+    <string name="recite_chapter">السورة</string>
+    <string name="recite_verse">الآية</string>
+    <string name="recite_chapter_select">حدد السورة</string>
+    <string name="recite_select_begin">حدد بداية التلاوة</string>
+    <string name="recite_select_end">حدد نهاية التلاوة</string>
+    <string name="recite_range">نطاق التلاوة</string>
+    <string name="recite_range_from">من الآية</string>
+    <string name="recite_range_to">الي</string>
+    <string name="recite_range_single">آية واحدة</string>
+    <string name="recite_range_details">سورة %1$s</string>
+    <string name="recite_loop_range">تكرار النطاق</string>
+    <string name="recite_loop_ayat">تكرار الآيات</string>
+    <string name="recite_permission_required">لا يمكنك التشغيل في الخلفية بدون تفعيل  notifications permission</string>
+
+    <string name="reciter">القـارئ</string>
+    <string name="reciter_add_multiple">أضف أكثر من قارئ</string>
+    <string name="reciter_more">أضف المزيد</string>
+
+    <string name="search">بحث</string>
+    <string name="search_chapters">السور</string>
+    <string name="search_hint">ابحث في الآيات والسور والقراء</string>
+    <string name="search_chapter_hint">ابحث باسم السورة</string>
+    <string name="search_reciters">القراء</string>
+    <string name="search_verses">الآيات</string>
+    <string name="search_reciter_hint">ابحث باسم القارئ</string>
+    <string name="search_verse_hint">ابحث في الآيات</string>
+    <string name="search_results">نتائج البحث</string>
+
+    <string name="download">تحميل سورة</string>
+    <string name="downloaded">تم تحميله</string>
+    <string name="download_audio_quality">الجودة</string>
+    <string name="download_size">الحجـم</string>
+    <string name="download_size_mb">%1$s ميجا</string>
+    <string name="download_cancel">إلغاء التحميل</string>
+    <string name="download_message">يحتاج البرنامج إلي تحميل هذا الملف</string>
+    <string name="download_require_internet">لابد أن تكون متصلاً بالإنترنت</string>
+    <string name="download_deny">تشغيل أونلاين</string>
+    <string name="download_deny_message">أو يمكنك التشغيل أونلاين بدون تحميل</string>
+
+    <string name="copied">تم نسخة الآية</string>
+    <string name="ok">موافق</string>
+    <string name="cancel">رفض</string>
+
+</resources>

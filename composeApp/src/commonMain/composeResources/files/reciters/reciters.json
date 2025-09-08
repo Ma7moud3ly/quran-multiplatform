@@ -1,0 +1,783 @@
+[
+  {
+    "id": "shatry",
+    "name": "أبو بكر الشاطري",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Abu_Bakr_Ash-Shaatree"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/64kb----quran----6236---ayaat-----__verse--by---verse----_-by----alshatery----_370"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/MP3--6236-full-quran-6236-ayah-by--ALSHATERY---every-sorah-in-folder-114-file"
+      }
+    ]
+  },
+  {
+    "id": "ajamy",
+    "name": "أحمد بن علي العجمي",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Ahmed_ibn_Ali_al-Ajamy"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/64kb---al3agamy-------64------kb---mp3------------quran----6236---ayaat-----__"
+      },
+      {
+        "quality": 32,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--al3agami---every-sorah-in-folder-114-file"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb--al3agamy------128----kb---mp3------------quran----6236---ayaat-----__ve"
+      }
+    ]
+  },
+  {
+    "id": "minshawi/murattal",
+    "name": "محمد صديق المنشاوي – مرتل",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Minshawy_Murattal"
+      },
+      {
+        "quality": 48,
+        "id": "Minshawy_Murattal"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb____--mp3-------full-----quran----6236---ayaat-----__verse--by---verse---"
+      },
+      {
+        "quality": 16,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--ALMINSHAWI-MORATTAL---every-sorah-in-folder-114-"
+      }
+    ]
+  },
+  {
+    "id": "minshawi/moalem",
+    "name": "محمد صديق المنشاوي – معلم",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Minshawy_Teacher"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128_kb---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by-"
+      },
+      {
+        "quality": 32,
+        "id": "https://archive.org/download/full-----quran-6236-ayah--verse-by-verse----___by_____alminshawy-----teacher--"
+      }
+    ]
+  },
+  {
+    "id": "minshawi/mogawwad",
+    "name": "محمد صديق المنشاوي – مجود",
+    "listen": [
+      {
+        "quality": 192,
+        "id": "Minshawy_Mujawwad"
+      },
+      {
+        "quality": 64,
+        "id": "Minshawy_Mujawwad"
+      }
+    ],
+    "download": [
+      {
+        "quality": 192,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--alminshawi-mogawwad-192kb--verse-by-verse"
+      }
+    ]
+  },
+  {
+    "id": "basit/murattal",
+    "name": "عبد الباسط عبد الصمد – مرتل",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Abdul_Basit_Murattal"
+      },
+      {
+        "quality": 40,
+        "id": "Abdul_Basit_Murattal"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/192kb----morattal----quran----6236---ayaat-----__verse--by---verse----_-by--ab_525"
+      },
+      {
+        "quality": 192,
+        "id": "https://archive.org/download/192kb----morattal----quran----6236---ayaat-----__verse--by---verse----_-by--ab_525"
+      }
+    ]
+  },
+  {
+    "id": "basit/mogawwad",
+    "name": "عبد الباسط عبد الصمد – مجود",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "AbdulSamad"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--abd-albasit---every-sorah-in-folder-114-file"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--abd-albasit---every-sorah-in-folder-114-file"
+      }
+    ]
+  },
+  {
+    "id": "hosary/murattal",
+    "name": "محمود خليل الحصري – مرتل",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Husary"
+      },
+      {
+        "quality": 40,
+        "id": "Husary"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/64kb___--mp3-----quran----6236---ayaat-----__verse--by---verse----_-by---alhos"
+      }
+    ]
+  },
+  {
+    "id": "hosary/qasr",
+    "name": "محمود خليل الحصري – قصر",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "husary_qasr"
+      }
+    ],
+    "download": []
+  },
+  {
+    "id": "hosary/mogawwad",
+    "name": "محمود خليل الحصري – مجود",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Husary_Mujawwad"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/64kb----quran----6236---ayaat-----__verse--by---verse----_-by---alhosary---mog_167"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/full-quran-6236-ayah-by--alhosary-mogawwad--128kb--verse-by-verse"
+      }
+    ]
+  },
+  {
+    "id": "hosary/moalem",
+    "name": "محمود خليل الحصري – معلم",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Hussary.teacher"
+      },
+      {
+        "quality": 64,
+        "id": "Hussary.teacher"
+      },
+      {
+        "quality": 32,
+        "id": "Hussary.teacher"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--alhosary-teacher-without-repeat-kids-128kb--ever"
+      }
+    ]
+  },
+  {
+    "id": "hosary/qaloon",
+    "name": "محمود خليل الحصري – رواية قالون",
+    "listen": [],
+    "download": [
+      {
+        "quality": 32,
+        "id": "https://archive.org/download/32kb------6236-ayah--verse-by-verse----quran-----mp3----32kb___by__alhosary---"
+      }
+    ]
+  },
+  {
+    "id": "tablawi",
+    "name": "محمد محمود الطبلاوي",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Mohammad_al_Tablaway"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/64kb__---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by-"
+      }
+    ]
+  },
+  {
+    "id": "banna",
+    "listen": [
+      {
+        "quality": 32,
+        "id": "Banna"
+      }
+    ],
+    "name": "محمود علي البنا – مرتل",
+    "download": [
+      {
+        "quality": 32,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--albanna--morattal---every-sorah-in-folder-114-file"
+      }
+    ]
+  },
+  {
+    "id": "n3eina3",
+    "name": "أحمد نعينع - مرتل",
+    "listen": [],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb---a7mad--n3ena3---morattal------quran----6236---ayaat-----__verse--by---_189"
+      }
+    ]
+  },
+  {
+    "id": "mostafa_ismail",
+    "name": "مصطفي إسماعيل",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Mostafa_Ismail"
+      }
+    ],
+    "download": []
+  },
+  {
+    "id": "hozayfi",
+    "name": "علي عبد الرحمن الحذيفي",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Hudhaify"
+      },
+      {
+        "quality": 64,
+        "id": "Hudhaify"
+      },
+      {
+        "quality": 32,
+        "id": "Hudhaify"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb--quran----6236---ayaat-----__verse--by---verse----_-by--alhozifi-------f_443"
+      }
+    ]
+  },
+  {
+    "id": "maher",
+    "name": "ماهر المعقلي",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Maher_AlMuaiqly"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/128kb__---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb__---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by"
+      }
+    ]
+  },
+  {
+    "id": "afasy",
+    "name": "مشاري العفاسي",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Alafasy"
+      },
+      {
+        "quality": 64,
+        "id": "Alafasy"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--mshari-al3afasi--every-sorah-in-folder-114-file"
+      }
+    ]
+  },
+  {
+    "id": "gebreel",
+    "name": "محمد جبريل",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Muhammad_Jibreel"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/64kb-quran----6236---ayaat-----__verse--by---verse----_-by--mohammad----gebree"
+      }
+    ]
+  },
+  {
+    "id": "fares-abbad",
+    "name": "فارس عباد",
+    "listen": [],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/6236--aya---ayat---64kb--fares--abbad--_--by--verse--by--verse---full---moshaf"
+      }
+    ]
+  },
+  {
+    "id": "ghamdy",
+    "name": "سعد الغامدي",
+    "listen": [
+      {
+        "quality": 40,
+        "id": "Ghamadi"
+      }
+    ],
+    "download": [
+      {
+        "quality": 40,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--sa3d-alghamdy--every-sorah-in-folder-114-file"
+      }
+    ]
+  },
+  {
+    "id": "shoreim",
+    "name": "سعود الشريم",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Saood_ash-Shuraym"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/KORAN-6236-full-quran-6236-ayah-by--ALSHOREAM--every-sorah-in-folder-114-file"
+      }
+    ]
+  },
+  {
+    "id": "sudais",
+    "name": "عبد الرحمن السديس",
+    "listen": [
+      {
+        "quality": 192,
+        "id": "Abdurrahmaan_As-Sudais"
+      },
+      {
+        "quality": 64,
+        "id": "Abdurrahmaan_As-Sudais"
+      }
+    ],
+    "download": [
+      {
+        "quality": 192,
+        "id": "https://archive.org/download/192------kb---mp3------------quran----6236---ayaat-----__verse--by---verse----"
+      }
+    ]
+  },
+  {
+    "id": "qetamy",
+    "name": "ناصر القطامي",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Nasser_Alqatami"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236--aya---ayat---128kb---naser--alqetamy--by--verse--by--verse---full---mosh"
+      }
+    ]
+  },
+  {
+    "id": "dosari",
+    "name": "ياسر الدوسري",
+    "listen": [],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236--aya---ayat---128kb--yaser--aldosry--by--verse--by--verse---full---moshaf"
+      }
+    ]
+  },
+  {
+    "id": "ayoub",
+    "name": "محمد أيوب",
+    "listen": [
+      {
+        "quality": 32,
+        "id": "Muhammad_Ayyoub"
+      },
+      {
+        "quality": 64,
+        "id": "Muhammad_Ayyoub"
+      },
+      {
+        "quality": 128,
+        "id": "Muhammad_Ayyoub"
+      }
+    ],
+    "download": [
+      {
+        "quality": 32,
+        "id": "https://archive.org/download/6236__full-quran-6236-ayah-by--mohammad-ayyoob---every-sorah-in-folder-114-file"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/koran--mp3--__128kb---mp3------------quran----6236---ayaat-----__verse--by---v"
+      }
+    ]
+  },
+  {
+    "id": "akhdar",
+    "name": "إبراهيم الأخضر",
+    "listen": [
+      {
+        "quality": 32,
+        "id": "Ibrahim_Akhdar"
+      }
+    ],
+    "download": [
+      {
+        "quality": 32,
+        "id": "https://archive.org/download/6236--aya---ayat---32kb---ibraheem---alakhdar---by--verse--by--verse---full---"
+      }
+    ]
+  },
+  {
+    "id": "bedir",
+    "name": "صلاح البدير",
+    "listen": [],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb----6236---ayaat---quran--__verse--by---verse----_-by---slah---albedear--"
+      }
+    ]
+  },
+  {
+    "id": "matrood",
+    "name": "عبد الله المطرود",
+    "listen": [],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/full-quran-6236-ayah-by--abd-allah-almatrood-128kb--verse-by-verse"
+      }
+    ]
+  },
+  {
+    "id": "qasem",
+    "name": "عبد المحسن القاسم",
+    "listen": [
+      {
+        "quality": 192,
+        "id": "Muhsin_Al_Qasim"
+      }
+    ],
+    "download": [
+      {
+        "quality": 192,
+        "id": "https://archive.org/download/192kb---quran----6236---ayaat-----__verse--by---verse----_-by--abd--amuhsin--a_353"
+      }
+    ]
+  },
+  {
+    "id": "basfar",
+    "name": "عبد الله بصفر - مجود",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "Abdullah_Basfar"
+      },
+      {
+        "quality": 32,
+        "id": "Abdullah_Basfar"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/full-quran-6236-ayah-by--abd-allah-basfar-mogawwad--64kb--verse-by-verse"
+      },
+      {
+        "quality": 192,
+        "id": "https://archive.org/download/192kb-------mogawwad-------quran----6236---ayaat-----__verse--by---verse----_-_268"
+      }
+    ]
+  },
+  {
+    "id": "salama",
+    "name": "ياسر سلامة – ترتيل متأنٍ",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Yaser_Salamah"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236--aya---ayat---128kb---yaser--salama--by--al7adr--by--verse--by--verse---f"
+      }
+    ]
+  },
+  {
+    "id": "johany",
+    "name": "عبد الله الجهني",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "Abdullaah_3awwaad_Al-Juhaynee"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb----6236--ayah---quran-128_126"
+      }
+    ]
+  },
+  {
+    "id": "sweasy",
+    "name": "علي حجاج السويسي",
+    "listen": [],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb___--by---aly--7ajjaj---alseweasy----quran----6236---ayaat-----__verse--b"
+      }
+    ]
+  },
+  {
+    "id": "jabir",
+    "name": "علي عبد الله جابر",
+    "listen": [],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/6236--aya---ayat---64kb--aly--abd--allah--gaber--by--verse--by--verse---full--"
+      }
+    ]
+  },
+  {
+    "id": "mansory",
+    "name": "كريم منصوري – مجود",
+    "listen": [],
+    "download": [
+      {
+        "quality": 40,
+        "id": "https://archive.org/download/koran-full-quran-6236-ayah-by--kareem-mansoory--40--kb--verse-by-verse"
+      }
+    ]
+  },
+  {
+    "id": "abdulkareem",
+    "name": "محمد عبد الكريم",
+    "listen": [],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--MOHAMMAD-ABD-ALKAREEM----every-sorah-in-folder-1"
+      }
+    ]
+  },
+  {
+    "id": "refa3y",
+    "name": "هاني الرفاعي",
+    "listen": [
+      {
+        "quality": 192,
+        "id": "Hani_Rifai"
+      }
+    ],
+    "download": [
+      {
+        "quality": 192,
+        "id": "https://archive.org/download/6236--ayah--ayat---mp3-------192kb---hany--alrefa3y-----quran----6236---ayaat-"
+      }
+    ]
+  },
+  {
+    "id": "ibrahim-dosari/warsh",
+    "name": "إبراهيم الدوسري – ورش عن نافع",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "warsh_dossary"
+      },
+      {
+        "quality": 32,
+        "id": "warsh_dossary"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236--aya---ayat---128kb---ibraheem---aldosry--by---warsh---by--verse--by--ver"
+      }
+    ]
+  },
+  {
+    "id": "alaqmy",
+    "name": "أكرم العلاقمي",
+    "listen": [],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/6236--aya---ayat---128kb---akram--al3alaqmy---by--verse--by--verse---full---mo"
+      }
+    ]
+  },
+  {
+    "id": "teneagy",
+    "name": "خليفة الطنيجي - مرتل",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "tunaiji"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/6236--_-_aya----ayat---64kb--khalifa--alteneagy---moratal---by--verse--by--ver"
+      }
+    ]
+  },
+  {
+    "id": "yasin",
+    "name": "سهل ياسين",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "warsh_yassin"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/128kb---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by--_382"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by--_382"
+      }
+    ]
+  },
+  {
+    "id": "berhizkar",
+    "name": "شهريار برهيز كار",
+    "listen": [],
+    "download": [
+      {
+        "quality": 48,
+        "id": "https://archive.org/download/48kb--quran----6236---ayaat-----_-_verse--by---verse----_-by--shehraiar--ber"
+      }
+    ]
+  },
+  {
+    "id": "alhashem",
+    "name": "صلاح الهاشم",
+    "listen": [],
+    "download": [
+      {
+        "quality": 32,
+        "id": "https://archive.org/download/MP3--6236-full-quran-6236-ayah-by--SLAA7-ALHASHEM----every-sorah-in-folder-114"
+      }
+    ]
+  },
+  {
+    "id": "translation-en",
+    "name": "مصحف مترجم – ترجمة إنجليزية",
+    "listen": [],
+    "download": [
+      {
+        "quality": 192,
+        "id": "https://archive.org/download/192kb---------quran--english---translation--_409"
+      }
+    ]
+  },
+  {
+    "id": "translation-az",
+    "name": "مصحف مترجم – ترجمة أذربيجاني",
+    "listen": [],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://archive.org/download/64kb--"
+      }
+    ]
+  },
+  {
+    "id": "translation-ur",
+    "name": "مصحف مترجم – ترجمة أردو",
+    "download": [
+      {
+        "quality": 46,
+        "id": "https://archive.org/download/46kb----mp3--quran-----ayaat----6236----verse----by---verse---TRANSLATION--URD"
+      }
+    ]
+  }
+]

@@ -1,0 +1,56 @@
+{
+    "id": 94,
+    "name": "الشرح",
+    "transliteration": "Ash-Sharh",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "أَلَمۡ نَشۡرَحۡ لَكَ صَدۡرَكَ",
+            "textNormalized": "الم نشرح لك صدرك",
+            "transliteration": "Alam nashrah laka sadraka"
+        },
+        {
+            "id": 2,
+            "text": "وَوَضَعۡنَا عَنكَ وِزۡرَكَ",
+            "textNormalized": "ووضعنا عنك وزرك",
+            "transliteration": "WawadaAAna AAanka wizraka"
+        },
+        {
+            "id": 3,
+            "text": "ٱلَّذِيٓ أَنقَضَ ظَهۡرَكَ",
+            "textNormalized": "الذي انقض ظهرك",
+            "transliteration": "Allathee anqada thahraka"
+        },
+        {
+            "id": 4,
+            "text": "وَرَفَعۡنَا لَكَ ذِكۡرَكَ",
+            "textNormalized": "ورفعنا لك ذكرك",
+            "transliteration": "WarafaAAna laka thikraka"
+        },
+        {
+            "id": 5,
+            "text": "فَإِنَّ مَعَ ٱلۡعُسۡرِ يُسۡرًا",
+            "textNormalized": "فان مع العسر يسرا",
+            "transliteration": "Fainna maAAa alAAusri yusran"
+        },
+        {
+            "id": 6,
+            "text": "إِنَّ مَعَ ٱلۡعُسۡرِ يُسۡرٗا",
+            "textNormalized": "ان مع العسر يسرا",
+            "transliteration": "Inna maAAa alAAusri yusran"
+        },
+        {
+            "id": 7,
+            "text": "فَإِذَا فَرَغۡتَ فَٱنصَبۡ",
+            "textNormalized": "فاذا فرغت فانصب",
+            "transliteration": "Faitha faraghta fainsab"
+        },
+        {
+            "id": 8,
+            "text": "وَإِلَىٰ رَبِّكَ فَٱرۡغَب",
+            "textNormalized": "والي ربك فارغب",
+            "transliteration": "Waila rabbika fairghab"
+        }
+    ]
+}

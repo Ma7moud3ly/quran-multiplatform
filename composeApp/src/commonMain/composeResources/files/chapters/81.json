@@ -1,0 +1,182 @@
+{
+    "id": 81,
+    "name": "التكوير",
+    "transliteration": "At-Takwir",
+    "type": "meccan",
+    "verses": [
+        {
+            "id": 1,
+            "text": "إِذَا ٱلشَّمۡسُ كُوِّرَتۡ",
+            "textNormalized": "اذا الشمس كورت",
+            "transliteration": "Itha alshshamsu kuwwirat"
+        },
+        {
+            "id": 2,
+            "text": "وَإِذَا ٱلنُّجُومُ ٱنكَدَرَتۡ",
+            "textNormalized": "واذا النجوم انكدرت",
+            "transliteration": "Waitha alnnujoomu inkadarat"
+        },
+        {
+            "id": 3,
+            "text": "وَإِذَا ٱلۡجِبَالُ سُيِّرَتۡ",
+            "textNormalized": "واذا الجبال سيرت",
+            "transliteration": "Waitha aljibalu suyyirat"
+        },
+        {
+            "id": 4,
+            "text": "وَإِذَا ٱلۡعِشَارُ عُطِّلَتۡ",
+            "textNormalized": "واذا العشار عطلت",
+            "transliteration": "Waitha alAAisharu AAuttilat"
+        },
+        {
+            "id": 5,
+            "text": "وَإِذَا ٱلۡوُحُوشُ حُشِرَتۡ",
+            "textNormalized": "واذا الوحوش حشرت",
+            "transliteration": "Waitha alwuhooshu hushirat"
+        },
+        {
+            "id": 6,
+            "text": "وَإِذَا ٱلۡبِحَارُ سُجِّرَتۡ",
+            "textNormalized": "واذا البحار سجرت",
+            "transliteration": "Waitha albiharu sujjirat"
+        },
+        {
+            "id": 7,
+            "text": "وَإِذَا ٱلنُّفُوسُ زُوِّجَتۡ",
+            "textNormalized": "واذا النفوس زوجت",
+            "transliteration": "Waitha alnnufoosu zuwwijat"
+        },
+        {
+            "id": 8,
+            "text": "وَإِذَا ٱلۡمَوۡءُۥدَةُ سُئِلَتۡ",
+            "textNormalized": "واذا الموءده سيلت",
+            "transliteration": "Waitha almawoodatu suilat"
+        },
+        {
+            "id": 9,
+            "text": "بِأَيِّ ذَنۢبٖ قُتِلَتۡ",
+            "textNormalized": "باي ذنب قتلت",
+            "transliteration": "Biayyi thanbin qutilat"
+        },
+        {
+            "id": 10,
+            "text": "وَإِذَا ٱلصُّحُفُ نُشِرَتۡ",
+            "textNormalized": "واذا الصحف نشرت",
+            "transliteration": "Waitha alssuhufu nushirat"
+        },
+        {
+            "id": 11,
+            "text": "وَإِذَا ٱلسَّمَآءُ كُشِطَتۡ",
+            "textNormalized": "واذا السماء كشطت",
+            "transliteration": "Waitha alssamao kushitat"
+        },
+        {
+            "id": 12,
+            "text": "وَإِذَا ٱلۡجَحِيمُ سُعِّرَتۡ",
+            "textNormalized": "واذا الجحيم سعرت",
+            "transliteration": "Waitha aljaheemu suAAAAirat"
+        },
+        {
+            "id": 13,
+            "text": "وَإِذَا ٱلۡجَنَّةُ أُزۡلِفَتۡ",
+            "textNormalized": "واذا الجنه ازلفت",
+            "transliteration": "Waitha aljannatu ozlifat"
+        },
+        {
+            "id": 14,
+            "text": "عَلِمَتۡ نَفۡسٞ مَّآ أَحۡضَرَتۡ",
+            "textNormalized": "علمت نفس ما احضرت",
+            "transliteration": "AAalimat nafsun ma ahdarat"
+        },
+        {
+            "id": 15,
+            "text": "فَلَآ أُقۡسِمُ بِٱلۡخُنَّسِ",
+            "textNormalized": "فلا اقسم بالخنس",
+            "transliteration": "Fala oqsimu bialkhunnasi"
+        },
+        {
+            "id": 16,
+            "text": "ٱلۡجَوَارِ ٱلۡكُنَّسِ",
+            "textNormalized": "الجوار الكنس",
+            "transliteration": "Aljawari alkunnasi"
+        },
+        {
+            "id": 17,
+            "text": "وَٱلَّيۡلِ إِذَا عَسۡعَسَ",
+            "textNormalized": "واليل اذا عسعس",
+            "transliteration": "Waallayli itha AAasAAasa"
+        },
+        {
+            "id": 18,
+            "text": "وَٱلصُّبۡحِ إِذَا تَنَفَّسَ",
+            "textNormalized": "والصبح اذا تنفس",
+            "transliteration": "Waalssubhi itha tanaffasa"
+        },
+        {
+            "id": 19,
+            "text": "إِنَّهُۥ لَقَوۡلُ رَسُولٖ كَرِيمٖ",
+            "textNormalized": "انه لقول رسول كريم",
+            "transliteration": "Innahu laqawlu rasoolin kareemin"
+        },
+        {
+            "id": 20,
+            "text": "ذِي قُوَّةٍ عِندَ ذِي ٱلۡعَرۡشِ مَكِينٖ",
+            "textNormalized": "ذي قوه عند ذي العرش مكين",
+            "transliteration": "Thee quwwatin AAinda thee alAAarshi makeenin"
+        },
+        {
+            "id": 21,
+            "text": "مُّطَاعٖ ثَمَّ أَمِينٖ",
+            "textNormalized": "مطاع ثم امين",
+            "transliteration": "MutaAAin thamma ameenin"
+        },
+        {
+            "id": 22,
+            "text": "وَمَا صَاحِبُكُم بِمَجۡنُونٖ",
+            "textNormalized": "وما صاحبكم بمجنون",
+            "transliteration": "Wama sahibukum bimajnoonin"
+        },
+        {
+            "id": 23,
+            "text": "وَلَقَدۡ رَءَاهُ بِٱلۡأُفُقِ ٱلۡمُبِينِ",
+            "textNormalized": "ولقد رءاه بالافق المبين",
+            "transliteration": "Walaqad raahu bialofuqi almubeeni"
+        },
+        {
+            "id": 24,
+            "text": "وَمَا هُوَ عَلَى ٱلۡغَيۡبِ بِضَنِينٖ",
+            "textNormalized": "وما هو علي الغيب بضنين",
+            "transliteration": "Wama huwa AAala alghaybi bidaneenin"
+        },
+        {
+            "id": 25,
+            "text": "وَمَا هُوَ بِقَوۡلِ شَيۡطَٰنٖ رَّجِيمٖ",
+            "textNormalized": "وما هو بقول شيطن رجيم",
+            "transliteration": "Wama huwa biqawli shaytanin rajeemin"
+        },
+        {
+            "id": 26,
+            "text": "فَأَيۡنَ تَذۡهَبُونَ",
+            "textNormalized": "فاين تذهبون",
+            "transliteration": "Faayna tathhaboona"
+        },
+        {
+            "id": 27,
+            "text": "إِنۡ هُوَ إِلَّا ذِكۡرٞ لِّلۡعَٰلَمِينَ",
+            "textNormalized": "ان هو الا ذكر للعلمين",
+            "transliteration": "In huwa illa thikrun lilAAalameena"
+        },
+        {
+            "id": 28,
+            "text": "لِمَن شَآءَ مِنكُمۡ أَن يَسۡتَقِيمَ",
+            "textNormalized": "لمن شاء منكم ان يستقيم",
+            "transliteration": "Liman shaa minkum an yastaqeema"
+        },
+        {
+            "id": 29,
+            "text": "وَمَا تَشَآءُونَ إِلَّآ أَن يَشَآءَ ٱللَّهُ رَبُّ ٱلۡعَٰلَمِينَ",
+            "textNormalized": "وما تشاءون الا ان يشاء الله رب العلمين",
+            "transliteration": "Wama tashaoona illa an yashaa Allahu rabbu alAAalameena"
+        }
+    ]
+}
