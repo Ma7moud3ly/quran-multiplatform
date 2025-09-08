@@ -1,24 +1,27 @@
 # Quran App - تطبيق القرآن الكريم
 
-✨ Quran App: A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="60">](https://play.google.com/store/apps/details?id=com.ma7moud3ly.quran)
+[<img src="screens/logo.png" alt="Website" height="60">](https://quran-multiplatform.web.app/)
+
+✨ [Quran App](https://quran-multiplatform.web.app/): A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
 <image src="screens/banner.png">
 
-### Application Features:  
+### Application Features:
 🎧 Listen live or download recitations for offline listening.  
 📜 Display verses continuously, separately, or one verse at a time, according to your choice.  
 🎤 Play recitations in multi-reciter mode, enabling you to hear the same verses by different reciters or switch between reciters with each verse.  
 🌟 A distinctive recitation display system with wonderful backgrounds and videos for an enjoyable and engaging reading and listening experience.  
-🖥️ Simple and easy-to-use interface to make the experience of reading the Quran pleasant and calm.  
+🖥️ Simple and easy-to-use interface to make the experience of reading the Quran pleasant and calm.
 
 
 ✨ تطبيق القران الكريم: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
-.  
-### مميزات التطبيق:  
+.
+### مميزات التطبيق:
 🎧 استماع مباشر أو تحميل التلاوات للاستماع بدون إنترنت.  
 📜 عرض الآيات بشكل متصل، منفصل، أو آية واحدة حسب اختيارك.  
 🎤 تشغيل التلاوة في وضع متعدد القراء يمكنك من سماع نفس الآيات بعدة قراء مختلفين أو التبديل بين القراء مع كل آية.  
 🌟 نظام عرض التلاوة بشمل مميز بخلفيات وفيديوهات مميزة.  
-🖥️ واجهة بسيطة وسهلة الاستخدام لتجعل تجربة قراءة القرآن ممتعة وهادئة.  
+🖥️ واجهة بسيطة وسهلة الاستخدام لتجعل تجربة قراءة القرآن ممتعة وهادئة.
 
 
 ---
@@ -39,13 +42,13 @@ This application is built using a modern technology stack, leveraging the power 
   - **ViewModel:** Handles UI state and business logic.
   - **Data:** Responsible for repositories, network, and storage.
   - **Model:** Core entities and domain logic.
-- **UI & Navigation:** Jetpack Compose libraries for building UI and navigation.  
-- **Dependency Injection:** Koin for managing dependencies.  
-- **Data Handling & Storage:** Kotlinx libraries for datetime, serialization, and [settings](https://github.com/russhwolf/multiplatform-settings).  
-- **Networking:** Ktor as the HTTP client across platforms.  
-- **File System & I/O:** Okio for efficient I/O operations.  
-- **Media Playback:** ExoPlayer (Android) and MP3SPI (Desktop).  
-- **Firebase (GMS Flavor):** Crashlytics and Analytics support.  
+- **UI & Navigation:** Jetpack Compose libraries for building UI and navigation.
+- **Dependency Injection:** Koin for managing dependencies.
+- **Data Handling & Storage:** Kotlinx libraries for datetime, serialization, and [settings](https://github.com/russhwolf/multiplatform-settings).
+- **Networking:** Ktor as the HTTP client across platforms.
+- **File System & I/O:** Okio for efficient I/O operations.
+- **Media Playback:** ExoPlayer (Android) and MP3SPI (Desktop).
+- **Firebase (GMS Flavor):** Crashlytics and Analytics support.
 
 
 ---
@@ -58,9 +61,9 @@ This application is designed to run on multiple platforms. Below are the details
 
 Before building for any platform, ensure you have the following prerequisites installed:
 
-1. **Android Studio (recommended):** The easiest way to build, run, and debug the project across all supported platforms.  
-2. **Java Development Kit (JDK):** Version 17 or higher.  
-3. **Gradle:** Already bundled with Android Studio, or use the included Gradle wrapper (`./gradlew`).  
+1. **Android Studio (recommended):** The easiest way to build, run, and debug the project across all supported platforms.
+2. **Java Development Kit (JDK):** Version 17 or higher.
+3. **Gradle:** Already bundled with Android Studio, or use the included Gradle wrapper (`./gradlew`).
 
 ---
 
@@ -112,8 +115,8 @@ Requires google-services.json to be placed at:
 ```
 
 - **Output APKs:**
-All APKs will be located in:
-```composeApp/build/outputs/apk/[flavor]/```
+  All APKs will be located in:
+  ```composeApp/build/outputs/apk/[flavor]/```
 
 ### Desktop (JVM - Linux, Windows, macOS)
 
@@ -177,7 +180,7 @@ Output will be in:
 
 ### iOS (Planned)
 
-iOS support is planned for the future using Kotlin Multiplatform.  
+iOS support is planned for the future using Kotlin Multiplatform.
 
 ---
 
@@ -197,8 +200,8 @@ RELEASE_KEY_ALIAS=
 RELEASE_KEY_PASSWORD=
 ```
 
-- `debug.keystore` → used for local/debug builds.  
-- `release.keystore` → used for production/release builds.  
+- `debug.keystore` → used for local/debug builds.
+- `release.keystore` → used for production/release builds.
 
 > **Security note:** Avoid committing `local.properties` or keystore files to version control.
 
@@ -207,25 +210,25 @@ RELEASE_KEY_PASSWORD=
 ## CI/CD Automation
 
 For continuous integration and deployment, please check the **Fastlane** and **GitHub Actions** scripts included in the project.  
-They handle environment setup, signing, and automated publishing workflows.  
+They handle environment setup, signing, and automated publishing workflows.
 
 ---
 
 ## Resources and Inspirations
 
-- **Quran Text:** [Risan's Quran JSON](https://github.com/risan/quran-json/tree/main), [Quran CDN](https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/index.json)  
-- **Fonts and Symbols:** [King Fahd Complex](https://qurancomplex.gov.sa/en/techquran/dev/), [Amiri Quran Font](https://t.me/s/quranfont/78), [Qul Tarteel AI](https://qul.tarteel.ai/resources/)  
-- **Recitations and Audio:** [Archive.org](https://archive.org/details/Ay4574357345757atWin), [KSU Ayat Project](https://quran.ksu.edu.sa/ayat/)  
-- **Videos and Backgrounds:** [Pixabay - natsu_444](https://pixabay.com/users/natsu_444-37854495/), [Pixabay - mosque_ai](https://pixabay.com/users/mosque_ai-50397212/)  
-- **Design Inspiration:** [Islamhouse MP3 Figma](https://www.figma.com/design/uFynscVz9MYU5NAWkhPHO1/islamhouse-mp3?node-id=143-6495&p=f&t=TCoVWBzjlA0nxIkr-0)  
-- **Logo:** [FreeSVG - Quran Vector](https://freesvg.org/logo-quran-arabic-calligraphy-islamic-vector)  
+- **Quran Text:** [Risan's Quran JSON](https://github.com/risan/quran-json/tree/main), [Quran CDN](https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/index.json)
+- **Fonts and Symbols:** [King Fahd Complex](https://qurancomplex.gov.sa/en/techquran/dev/), [Amiri Quran Font](https://t.me/s/quranfont/78), [Qul Tarteel AI](https://qul.tarteel.ai/resources/)
+- **Recitations and Audio:** [Archive.org](https://archive.org/details/Ay4574357345757atWin), [KSU Ayat Project](https://quran.ksu.edu.sa/ayat/)
+- **Videos and Backgrounds:** [Pixabay - natsu_444](https://pixabay.com/users/natsu_444-37854495/), [Pixabay - mosque_ai](https://pixabay.com/users/mosque_ai-50397212/)
+- **Design Inspiration:** [Islamhouse MP3 Figma](https://www.figma.com/design/uFynscVz9MYU5NAWkhPHO1/islamhouse-mp3?node-id=143-6495&p=f&t=TCoVWBzjlA0nxIkr-0)
+- **Logo:** [FreeSVG - Quran Vector](https://freesvg.org/logo-quran-arabic-calligraphy-islamic-vector)
 
 ---
 
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute, please fork the repository and submit a pull request.  
-For major changes, please open an issue first to discuss what you would like to change.  
+For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 

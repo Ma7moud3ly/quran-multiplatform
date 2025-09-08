@@ -6,6 +6,9 @@ on:
       - test
     tags:
       - "v*"
+  pull_request:
+    branches:
+      - test
 
 jobs:
   # ---- Build Android + WASM + Linux desktop ----
