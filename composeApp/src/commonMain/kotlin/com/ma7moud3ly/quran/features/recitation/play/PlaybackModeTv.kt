@@ -62,10 +62,10 @@ import com.ma7moud3ly.quran.model.testSlidesManager
 import com.ma7moud3ly.quran.platform.MyBackHandler
 import com.ma7moud3ly.quran.platform.ShowFullScreen
 import com.ma7moud3ly.quran.platform.VideoPlayer
-import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.platform.rememberVideoPlayerState
 import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.SwipeableBox
 import kotlinx.coroutines.FlowPreview
@@ -453,6 +453,7 @@ private fun ItemSlide(
     modifier: Modifier,
     onClick: () -> Unit
 ) {
+    val platform = LocalPlatform.current
     Surface(
         onClick = onClick,
         shape = RoundedCornerShape(8.dp),
@@ -467,7 +468,7 @@ private fun ItemSlide(
             painter = painterResource(slide.video.thumbnail),
             contentDescription = null,
             modifier = modifier,
-            contentScale = if (getPlatform().isMobile) ContentScale.FillWidth
+            contentScale = if (platform.isMobile) ContentScale.FillWidth
             else ContentScale.Crop
         )
     }

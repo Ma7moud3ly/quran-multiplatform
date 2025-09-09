@@ -16,7 +16,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,9 +43,9 @@ import com.ma7moud3ly.quran.model.testReadingSettings
 import com.ma7moud3ly.quran.model.testVersesManager
 import com.ma7moud3ly.quran.platform.MyBackHandler
 import com.ma7moud3ly.quran.platform.ShowFullScreen
-import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.RoundButton
@@ -230,6 +229,7 @@ private fun Header(
     onBack: () -> Unit
 ) {
     val isVisible by remember { derivedStateOf { scrollBehavior.state.collapsedFraction < 1 } }
+    val platform = LocalPlatform.current
 
     Column {
         TopAppBar(
@@ -255,7 +255,7 @@ private fun Header(
                     icon = Res.drawable.settings,
                     onClick = onOpenSettings
                 )
-                if (isContinueMode && getPlatform().isMobile) {
+                if (isContinueMode && platform.isMobile) {
                     if (fullScreen()) RoundButton(
                         icon = Res.drawable.fullscreen_exit,
                         onClick = onToggleScreen

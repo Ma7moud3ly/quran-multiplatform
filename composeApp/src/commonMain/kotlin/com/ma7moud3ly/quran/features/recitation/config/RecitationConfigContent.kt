@@ -60,10 +60,10 @@ import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.model.testChapter
 import com.ma7moud3ly.quran.model.testDownloadedChapter
 import com.ma7moud3ly.quran.model.testRecitationState
-import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.isAndroid
 import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.MyButton
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
@@ -136,6 +136,7 @@ internal fun RecitationConfigScreenContent(
     reciters: () -> List<Reciter>,
     uiEvents: (ConfigEvents) -> Unit,
 ) {
+    val platform = LocalPlatform.current
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
         rememberTopAppBarState()
     )
@@ -237,13 +238,13 @@ internal fun RecitationConfigScreenContent(
 
         ShuffleMode(recitationState)
 
-        if (getPlatform().isMobile && isCompactDevice()) {
+        if (platform.isMobile && isCompactDevice()) {
             HorizontalDivider()
             SectionReelMode(
                 recitationState().reelModeState
             )
         }
-        if (getPlatform().isAndroid) {
+        if (platform.isAndroid) {
             HorizontalDivider()
             SectionPlayInBackground(
                 recitationState().playInBgState

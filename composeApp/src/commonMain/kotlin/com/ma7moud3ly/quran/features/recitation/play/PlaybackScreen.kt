@@ -8,8 +8,8 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.ma7moud3ly.quran.platform.Log
-import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.isAndroid
+import com.ma7moud3ly.quran.ui.LocalPlatform
 import kotlinx.coroutines.FlowPreview
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -22,6 +22,7 @@ fun PlaybackScreen(
     onBack: () -> Unit,
     onSettings: () -> Unit
 ) {
+    val platform = LocalPlatform.current
     val appSettings by viewModel.settingFlow.collectAsState()
     val mediaPlayerManager = remember { viewModel.getMediaPlayerManager() }
 
@@ -35,10 +36,10 @@ fun PlaybackScreen(
 
     LifecycleResumeEffect(LocalLifecycleOwner) {
         viewModel.keepScreenOn(true)
-        if (getPlatform().isAndroid) mediaPlayerManager.resume()
+        if (platform.isAndroid) mediaPlayerManager.resume()
         onPauseOrDispose {
             viewModel.keepScreenOn(false)
-            if (getPlatform().isAndroid &&
+            if (platform.isAndroid &&
                 !mediaPlayerManager.playInBackground
             ) {
                 mediaPlayerManager.pause()

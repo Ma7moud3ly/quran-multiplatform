@@ -63,9 +63,9 @@ import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.platform.MyBackHandler
-import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
 import com.ma7moud3ly.quran.ui.RoundButton
@@ -130,11 +130,11 @@ fun HomeScreenContent(
     onDeleteHistory: (History) -> Unit,
     uiEvents: (HomeEvents) -> Unit
 ) {
-    val pagerState = rememberPagerState(pageCount = { 3 })
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
         rememberTopAppBarState()
     )
-
+    val showAppBars = isCompactDevice()
+    val pagerState = rememberPagerState(pageCount = { 3 })
     val coroutineScope = rememberCoroutineScope()
     fun isRecitersPage() = pagerState.currentPage == HomeTab.Reciters.index
 
@@ -152,9 +152,12 @@ fun HomeScreenContent(
         space = 8.dp,
         modifier = Modifier
             .padding(8.dp)
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
+            .then(
+                if (showAppBars) Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                else Modifier
+            ),
         topBar = {
-            if (isCompactDevice()) Header(
+            if (showAppBars) Header(
                 scrollBehavior = scrollBehavior,
                 pagerState = pagerState,
                 onOpenSettings = {
@@ -164,7 +167,7 @@ fun HomeScreenContent(
             )
         },
         bottomBar = {
-            if (isCompactDevice()) {
+            if (showAppBars) {
                 SectionSupport(Modifier.fillMaxWidth().navigationBarsPadding())
             }
         }
@@ -173,7 +176,7 @@ fun HomeScreenContent(
             modifier = Modifier.fillMaxSize(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            if (isCompactDevice().not()) {
+            if (showAppBars.not()) {
                 SideMenu(
                     pagerState = pagerState,
                     onOpenSettings = {
@@ -441,6 +444,7 @@ private fun HeaderTextButton(
 @Composable
 private fun SectionSupport(modifier: Modifier) {
     val uriHandler = LocalUriHandler.current
+    val platform = LocalPlatform.current
     val appRepo = stringResource(Res.string.app_repo)
     fun onSupport() {
         uriHandler.openUri(appRepo)
@@ -451,8 +455,8 @@ private fun SectionSupport(modifier: Modifier) {
             HorizontalDivider()
             Row(
                 modifier = modifier.then(
-                    if (getPlatform().isMobile) Modifier
-                    else Modifier.padding(bottom = 8.dp)
+                    if (platform.isMobile) Modifier
+                    else Modifier.padding(vertical = 8.dp)
                 ),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center

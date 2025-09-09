@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.model.Chapter
-import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.isAndroid
 import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.MySurface
 import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.suraNameFontFamily
@@ -142,10 +142,11 @@ internal fun ItemChapterIndex(
                 else Res.string.index_verses,
                 chapter.count
             )
+            val platform = LocalPlatform.current
             Text(
                 text = "$location - $verses",
                 modifier = Modifier.offset(y = (0).dp),
-                style = if (getPlatform().isAndroid) MaterialTheme.typography.bodySmall
+                style = if (platform.isAndroid) MaterialTheme.typography.bodySmall
                 else MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.4f)
             )

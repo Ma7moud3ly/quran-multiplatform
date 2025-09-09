@@ -9,6 +9,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
+import com.ma7moud3ly.quran.platform.getPlatform
 
 
 private val lightColors = lightColorScheme(
@@ -48,7 +49,10 @@ fun AppTheme(
     darkTheme: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+    CompositionLocalProvider(
+        LocalLayoutDirection provides LayoutDirection.Rtl,
+        LocalPlatform provides getPlatform()
+    ) {
         MaterialTheme(
             colorScheme = themeColors(darkTheme),
             typography = appTypography(),
