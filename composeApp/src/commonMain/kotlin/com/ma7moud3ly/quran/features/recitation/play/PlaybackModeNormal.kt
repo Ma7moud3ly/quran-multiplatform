@@ -292,6 +292,7 @@ private fun HeaderInReelMode(
             navigationIcon = {
                 SuraName(
                     chapterName = mediaPlayer.chapterName,
+                    icon = null,
                     onClick = onBack,
                     iconSize = 25.dp,
                     fontSize = 25.sp

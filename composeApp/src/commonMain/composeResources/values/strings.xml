@@ -40,7 +40,7 @@
     <string name="settings_shuffle">تبديل القراء</string>
     <string name="settings_shuffle_description">التبديل بين القراء مع كل آية في حالة اختيار أكثر من قارئ</string>
     <string name="settings_reel">وضع Reel</string>
-    <string name="settings_reel_description">تغير حجم مشغل الآيات إلي 9:16 حتي يتوافق مع أبعاد الريلز علي مواقع التواصل الإجتماعي إذا قمت بتصوير الشاشة.</string>
+    <string name="settings_reel_description">تغير حجم مشغل الآيات إلي 9:16 حتي يتوافق مع أبعاد الريلز علي مواقع التواصل الإجتماعي إذا أردت تصوير الشاشة.</string>
     <string name="settings_background">تشغيل في الخلفية</string>
     <string name="settings_background_description">السماح بتشغيل التلاوة عند قفل الشاشة أو نزول التطبيق في الخلفية</string>
     <string name="settings_font_size">حجم الخط</string>
