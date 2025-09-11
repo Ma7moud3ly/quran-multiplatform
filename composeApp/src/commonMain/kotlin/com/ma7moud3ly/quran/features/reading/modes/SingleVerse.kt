@@ -92,7 +92,7 @@ internal fun ColumnScope.SectionSingleVerse(
             modifier = Modifier.weight(1f),
             verticalScroll = false,
             contentAlignment = Alignment.Center,
-            onSwipeRight = versesManager::nextVerse,
+            onSwipeRight = versesManager::nextForwardVerse,
             onSwipeLeft = versesManager::previousVerse
         ) {
             selectedVerse?.let {
@@ -108,7 +108,7 @@ internal fun ColumnScope.SectionSingleVerse(
             }
         }
         if (showNavigation && isCompactDevice().not()) {
-            IconButton(onClick = versesManager::nextVerse) {
+            IconButton(onClick = versesManager::nextForwardVerse) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Default.ArrowForward,
                     contentDescription = "",

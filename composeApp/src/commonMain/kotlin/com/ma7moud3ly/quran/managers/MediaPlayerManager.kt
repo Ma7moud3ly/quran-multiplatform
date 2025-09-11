@@ -18,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -41,11 +43,11 @@ import org.koin.core.annotation.Single
 @Single
 class MediaPlayerManager(
     private val recitationRepository: RecitationRepository,
-    private val downloadsRepository: DownloadsRepository?,
+    private val downloadsRepository: DownloadsRepository,
     private val platform: Platform
 ) {
     /** Coroutine scope for managing background tasks. */
-    private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val playerCoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     /** Job for the current verse playback. */
     private var versePlaybackJob: Job? = null
@@ -122,7 +124,7 @@ class MediaPlayerManager(
         }
 
         audioFocus.requestAudioFocus()
-        coroutineScope.launch {
+        playerCoroutineScope.launch {
             audioFocus.audioFocusFlow.collect { event ->
                 when (event) {
                     AudioFocusEvents.PLAY -> {
@@ -145,7 +147,7 @@ class MediaPlayerManager(
             }
         }
 
-        coroutineScope.launch {
+        playerCoroutineScope.launch {
             currentVerse.debounce(200).collect { verse ->
                 if (verse == null) {
                     Log.v(TAG, "verse:null")
@@ -182,6 +184,52 @@ class MediaPlayerManager(
     }
 
     /**
+     * Retrieves the [MediaFile] for the given [Verse].
+     *
+     * This function determines the remote URI and local path for the verse's media
+     * based on the current [recitation] and then uses the [downloadsRepository]
+     * to create a [MediaFile] object.
+     *
+     * @return The [MediaFile] corresponding to this verse.
+     */
+    private fun Verse.getMediaFile(): MediaFile {
+        val (link, path) = recitation.mediaRemoteUri(this)
+        val mediaFile = downloadsRepository.toMediaFile(path, link)
+        return mediaFile
+    }
+
+    /**
+     * Proactively downloads the next verse if it's not already cached.
+     * This helps ensure smoother playback transitions.
+     * It checks for the next verse, its media file, and downloads it if missing.
+     */
+    private suspend fun downloadNextVerse(): Boolean {
+        // when there is not next verse, return true
+        val verse = versesManager.getNextVerse() ?: return true
+        val mediaFile = verse.getMediaFile()
+        // verse has previously downloaded
+        if (mediaFile.exists) return true
+        Log.i(TAG, "-----> Started downloading next verse ${verse.id}")
+        val file = downloadsRepository.downloadVerse(mediaFile)
+        Log.i(TAG, "-----< Finished downloading verse ${verse.id} - success: ${file.exists}")
+        return file.exists
+    }
+
+    /**
+     * Downloads the current verse if not locally available.
+     * Updates [isDownloadingVerse] state during the download.
+     *
+     * @param mediaFile The verse to download.
+     * @return The [MediaFile] with the local path if successful.
+     */
+    private suspend fun downloadCurrentVerse(mediaFile: MediaFile): MediaFile {
+        isDownloadingVerse.value = true
+        val file = downloadsRepository.downloadVerse(mediaFile)
+        isDownloadingVerse.value = false
+        return file
+    }
+
+    /**
      * Prepares a verse for playback.
      *
      * This is a suspend function that uses a cancellable coroutine.
@@ -215,21 +263,25 @@ class MediaPlayerManager(
      * @param verse The verse to play.
      */
     private suspend fun playRemoteVerse(verse: Verse): Boolean {
-        val (link, versePath) = recitation.mediaRemoteUri(verse)
-        val mediaFile = downloadsRepository?.toMediaFile(versePath, link) ?: return false
+        val mediaFile = verse.getMediaFile()
         Log.v(TAG, "playOnlineVerse: $mediaFile")
         if (downloadsRepository.platformSupportDownloading) {
             if (mediaFile.exists) {
-                prepareVerse(mediaFile)
+                return coroutineScope {
+                    val prepared = async { prepareVerse(mediaFile) }
+                    val downloaded = async { downloadNextVerse() }
+                    prepared.await()
+                    downloaded.await()
+                }
             } else {
-                isDownloadingVerse.value = true
-                val file = downloadsRepository.downloadVerse(
-                    url = mediaFile.url,
-                    path = mediaFile.path
-                )
-                isDownloadingVerse.value = false
-                if (file.exists) prepareVerse(file)
-                else return false
+                val downloadedFile = downloadCurrentVerse(mediaFile)
+                if (downloadedFile.exists.not()) return false
+                return coroutineScope {
+                    val prepared = async { prepareVerse(downloadedFile) }
+                    val downloaded = async { downloadNextVerse() }
+                    prepared.await()
+                    downloaded.await()
+                }
             }
         } else {
             prepareVerse(mediaFile)
@@ -245,7 +297,7 @@ class MediaPlayerManager(
      */
     private suspend fun playLocalVerse(verse: Verse): Boolean {
         val versePath = recitation.medialLocalUri(verse)
-        val mediaFile = downloadsRepository?.toMediaFile(versePath) ?: return false
+        val mediaFile = downloadsRepository.toMediaFile(versePath)
         Log.v(TAG, "playLocalVerse: $mediaFile")
         if (mediaFile.exists) prepareVerse(mediaFile)
         return mediaFile.exists
@@ -345,7 +397,7 @@ class MediaPlayerManager(
      * @param finishOnLastVerse Whether to finish playback if this is the last verse.
      */
     fun next(finishOnLastVerse: Boolean = false) {
-        coroutineScope.launch {
+        playerCoroutineScope.launch {
             val hasNext = if (recitation.isSequentialPlayback()) {
                 nextVerseOrReciter()
             } else {
@@ -362,7 +414,7 @@ class MediaPlayerManager(
      * Moves to the previous verse or reciter.
      */
     fun previous(finishOnLastVerse: Boolean = false) {
-        coroutineScope.launch {
+        playerCoroutineScope.launch {
             val hasPrevious = if (recitation.isSequentialPlayback()) {
                 previousVerseOrReciter()
             } else {
@@ -406,7 +458,7 @@ class MediaPlayerManager(
      * Emits `true` to the [finishPlayback] shared flow.
      */
     private fun onFinishCallback() {
-        coroutineScope.launch {
+        playerCoroutineScope.launch {
             _finishPlayback.emit(true)
         }
     }

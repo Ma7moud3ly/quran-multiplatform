@@ -104,9 +104,11 @@ class DownloadsRepositoryImpl(
         return MediaFile(path = fullPath, exists = exists, url = link)
     }
 
-    override suspend fun downloadVerse(url: String, path: String): MediaFile =
+    override suspend fun downloadVerse(mediaFile: MediaFile): MediaFile =
         withContext(dispatcher) {
-            Log.v(TAG,"downloadVerse $path - $url")
+            val path = mediaFile.path
+            val url = mediaFile.url
+            Log.v(TAG, "downloadVerse $path - $url")
             val downloaded = downloadManager.downloadFile(url = url, path = path)
             MediaFile(
                 path = path,

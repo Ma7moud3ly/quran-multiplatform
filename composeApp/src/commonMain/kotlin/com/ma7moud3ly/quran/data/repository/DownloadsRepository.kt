@@ -29,7 +29,7 @@ interface DownloadsRepository {
 
     fun toMediaFile(path: String, link: String = ""): MediaFile
 
-    suspend fun downloadVerse(url: String, path: String): MediaFile
+    suspend fun downloadVerse(mediaFile: MediaFile): MediaFile
 }
 
 

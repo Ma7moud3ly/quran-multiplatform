@@ -82,18 +82,15 @@ class VersesManager(
      */
     fun hasPrevious(): Boolean = selectedVerseIndex > initialVerse.id - 1
 
+
     /**
-     * Selects the next verse in the list. If the current verse is the last one,
-     * it wraps around to the first verse.
+     * Retrieves the next verse in the sequence after the currently selected verse.
+     *
+     * @return The next [Verse] if it exists, otherwise `null` if the current verse is the last one.
      */
-    fun nextVerse() {
-        if (versesMap.isEmpty()) return
-        val currentIndex = selectedVerseIndex
-        if (currentIndex < lastVerseIndex) {
-            selectVerse(versesMap[currentIndex + 1])
-        } else {
-            selectVerse(versesMap[firstVerseIndex])
-        }
+    fun getNextVerse(): Verse? {
+        return if (hasNext()) versesMap[selectedVerseIndex + 1]
+        else null
     }
 
     /**

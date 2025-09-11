@@ -1,5 +1,6 @@
 package com.ma7moud3ly.quran.model
 
+import com.ma7moud3ly.quran.data.repository.DownloadsRepository
 import com.ma7moud3ly.quran.data.repository.RecitationRepository
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
 import com.ma7moud3ly.quran.managers.VersesManager
@@ -103,12 +104,45 @@ internal val testVersesManager = VersesManager(
 
 fun testMediaPlayerManager() = MediaPlayerManager(
     TestRecitationRepImpl(testRecitation),
-    null,
+    TestDownloadsRepositoryImpl(),
     getPlatform()
 )
 
 fun testMediaPlayerManagerInReelMode() = MediaPlayerManager(
     TestRecitationRepImpl(testRecitationWithReelMode),
-    null,
+    TestDownloadsRepositoryImpl(),
     getPlatform()
 )
+
+
+private class TestDownloadsRepositoryImpl : DownloadsRepository {
+    override val platformSupportDownloading: Boolean
+        get() = true
+    override val downloadProgress: Flow<DownloadProgress>
+        get() = flow { DownloadProgress() }
+    override val downloadComplete: Flow<DownloadResult>
+        get() = flow { DownloadResult() }
+
+    override suspend fun isFullyDownloaded(
+        path: String,
+        verses: Int
+    ): Boolean {
+        return false
+    }
+
+    override suspend fun getDownloadedChapters(reciterPath: String): List<Int> {
+        return listOf()
+    }
+
+    override suspend fun downloadChapter(
+        downloadId: String,
+        url: String,
+        outputPath: String
+    ) {
+
+    }
+
+    override fun toMediaFile(path: String, link: String) = MediaFile("", true)
+    override suspend fun downloadVerse(mediaFile: MediaFile) = MediaFile("", true)
+
+}

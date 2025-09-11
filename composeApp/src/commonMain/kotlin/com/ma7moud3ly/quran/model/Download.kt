@@ -1,8 +1,8 @@
 package com.ma7moud3ly.quran.model
 
 data class DownloadResult(
-    val id: String,
-    val success: Boolean
+    val id: String = "",
+    val success: Boolean = false
 )
 
 data class DownloadProgress(
