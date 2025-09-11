@@ -73,8 +73,13 @@ data class Reciter(
 data class Quality(
     val quality: Int,
     val id: String
-)
+) {
+    val hostedOnGithub: Boolean get() = id.startsWith("https://github.com/")
+}
 
-/** The base URL for streaming audio of this quality. Format: "https://quran.ksu.edu.sa/ayat/mp3/[id]_[quality]kbps" */
-val Quality.qualityBaseUrl: String get() = "https://quran.ksu.edu.sa/ayat/mp3/${id}_${quality}kbps"
+/** The base URL for streaming audio of this quality**/
+val Quality.qualityBaseUrl: String
+    get() =
+        if (this.hostedOnGithub) "$id/raw/refs/heads/main/verses"
+        else "https://quran.ksu.edu.sa/ayat/mp3/${id}_${quality}kbps"
 

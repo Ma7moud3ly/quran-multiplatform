@@ -474,7 +474,7 @@ private fun SectionSupport(modifier: Modifier) {
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onPrimary,
                     maxLines = 1,
-                    textDecoration = TextDecoration.Underline,
+                    //textDecoration = TextDecoration.Underline,
                     fontWeight = FontWeight.Normal,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.padding(horizontal = 4.dp).clickable(onClick = ::onSupport)
