@@ -73,7 +73,7 @@ class MediaPlayerManager(
     val playInBackground get() = recitation.playInBackground
     val chapterName get() = recitation.chapter.chapterFullName()
     val reciterState get() = recitation.reciterState
-    val currentVerse get() = versesManager.selectedVerse
+    val currentVerseState get() = versesManager.selectedVerse
     val selectedVerseId get() = versesManager.selectedVerseId
     val loops get() = recitation.loops
     var hasReleased: Boolean = true
@@ -98,7 +98,7 @@ class MediaPlayerManager(
      * 4. Sets up background playback if enabled and supported by the platform.
      * 5. Requests audio focus.
      * 6. Collects audio focus events to pause or resume playback accordingly.
-     * 7. Collects changes to the [currentVerse] and initiates playback for the new verse.
+     * 7. Collects changes to the [currentVerseState] and initiates playback for the new verse.
      *    - It handles looping of the verse.
      *    - It automatically moves to the next verse after the current one finishes (if applicable).
      */
@@ -149,7 +149,7 @@ class MediaPlayerManager(
         }
 
         playerCoroutineScope.launch {
-            currentVerse.collect { verse ->
+            currentVerseState.collect { verse ->
                 if (verse == null) {
                     Log.v(TAG, "verse:null")
                     return@collect

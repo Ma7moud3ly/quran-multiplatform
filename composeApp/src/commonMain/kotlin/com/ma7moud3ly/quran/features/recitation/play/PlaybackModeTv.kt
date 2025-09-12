@@ -46,6 +46,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.ma7moud3ly.quran.features.reading.SuraName
@@ -151,7 +152,7 @@ fun TvPlayback(
     val settings = appSettings()
     val isPreview: Boolean = LocalInspectionMode.current
     val videoPlayerState = rememberVideoPlayerState()
-    val selectedVerse by mediaPlayerManager.currentVerse.collectAsState(null)
+    val selectedVerse by mediaPlayerManager.currentVerseState.collectAsState(null)
     val isPlaying by remember { mediaPlayerManager.isPlaying }
     var showControls by remember { mutableStateOf(mediaPlayerManager.isReelMode.not()) }
     var slide by remember { mutableStateOf(slides[settings.tvSlide]) }
@@ -325,12 +326,14 @@ private fun Header(
     val showControls = showControls()
     Row(
         modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         SuraName(
             chapterName = mediaPlayer.chapterName,
             background = if (showControls) background
             else Color.Transparent,
+            fontSize = 24.sp,
             color = color,
             icon = null,
             onClick = onBack
@@ -358,23 +361,31 @@ private fun Header(
                 icon = Res.drawable.back,
                 onClick = mediaPlayer::previous,
                 color = color,
+                iconSize = 22.dp,
+                iconPadding = 6.dp,
                 background = background,
             )
             if (isPlaying) RoundButton(
                 icon = Res.drawable.pause,
                 onClick = mediaPlayer::pause,
                 color = color,
+                iconSize = 22.dp,
+                iconPadding = 6.dp,
                 background = background,
             ) else RoundButton(
                 icon = Res.drawable.play,
                 onClick = mediaPlayer::resume,
                 color = color,
+                iconSize = 22.dp,
+                iconPadding = 6.dp,
                 background = background,
             )
             RoundButton(
                 icon = Res.drawable.forward,
                 onClick = mediaPlayer::next,
                 color = color,
+                iconSize = 22.dp,
+                iconPadding = 6.dp,
                 background = background,
             )
             Spacer(Modifier.width(8.dp))
@@ -382,6 +393,8 @@ private fun Header(
                 icon = Res.drawable.close,
                 background = background,
                 color = color,
+                iconSize = 22.dp,
+                iconPadding = 6.dp,
                 onClick = onBack
             )
         }
@@ -396,6 +409,7 @@ private fun ItemVerse(
     background: Color,
     modifier: Modifier = Modifier
 ) {
+    val platform = LocalPlatform.current
     Surface(
         color = background,
         shape = RoundedCornerShape(8.dp),
@@ -405,8 +419,8 @@ private fun ItemVerse(
             text = formatVerse(verse()),
             textAlign = TextAlign.Justify,
             fontFamily = FontFamily(Font(Res.font.elgharib_noon_hafs)),
-            fontSize = 22.sp,
-            lineHeight = 40.sp,
+            fontSize = if (platform.isMobile) 16.sp else 20.sp,
+            lineHeight = 2.em,
             color = color,
             modifier = Modifier
                 .height(IntrinsicSize.Min)

@@ -10,9 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 actual class AudioFocus : AudioManager.OnAudioFocusChangeListener {
-    private val audioManager = AndroidApp.INSTANCE.getSystemService(
-        Context.AUDIO_SERVICE
-    ) as AudioManager
+    private var audioManager: AudioManager? = null
     private var audioFocusRequest: AudioFocusRequest? = null // For Android O and above
     private var hasAudioFocus = false
     private var playWhenFocusGained = false // To resume playback after temporary loss
@@ -21,7 +19,11 @@ actual class AudioFocus : AudioManager.OnAudioFocusChangeListener {
 
     actual fun requestAudioFocus(): Boolean {
         if (hasAudioFocus) return true
-        val result: Int
+        if (audioManager == null) {
+            val context = AndroidApp.getContext() ?: return false
+            audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        }
+        val result: Int?
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             audioFocusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN).run {
                 setAudioAttributes(
@@ -34,10 +36,10 @@ actual class AudioFocus : AudioManager.OnAudioFocusChangeListener {
                 setOnAudioFocusChangeListener(this@AudioFocus)
                 build()
             }
-            result = audioManager.requestAudioFocus(audioFocusRequest!!)
+            result = audioManager?.requestAudioFocus(audioFocusRequest!!)
         } else {
             @Suppress("DEPRECATION")
-            result = audioManager.requestAudioFocus(
+            result = audioManager?.requestAudioFocus(
                 this@AudioFocus,
                 AudioManager.STREAM_MUSIC,
                 AudioManager.AUDIOFOCUS_GAIN
@@ -61,11 +63,11 @@ actual class AudioFocus : AudioManager.OnAudioFocusChangeListener {
 
         Log.v(TAG, "Abandoning audio focus")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            audioFocusRequest?.let { audioManager.abandonAudioFocusRequest(it) }
+            audioFocusRequest?.let { audioManager?.abandonAudioFocusRequest(it) }
             audioFocusRequest = null
         } else {
             @Suppress("DEPRECATION")
-            (audioManager.abandonAudioFocus(this@AudioFocus))
+            (audioManager?.abandonAudioFocus(this@AudioFocus))
         }
         hasAudioFocus = false
     }

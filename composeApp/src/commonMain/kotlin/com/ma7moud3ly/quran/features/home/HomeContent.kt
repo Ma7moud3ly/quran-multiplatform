@@ -256,18 +256,20 @@ private fun Header(
                 }
             },
             actions = {
-                RoundButton(
-                    icon = Res.drawable.search,
-                    onClick = onOpenSearch,
-                    iconSize = 20.dp,
-                    iconPadding = 6.dp
-                )
-                RoundButton(
-                    icon = Res.drawable.settings,
-                    onClick = onOpenSettings,
-                    iconSize = 20.dp,
-                    iconPadding = 6.dp
-                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    RoundButton(
+                        icon = Res.drawable.search,
+                        onClick = onOpenSearch,
+                        iconSize = 20.dp,
+                        iconPadding = 6.dp
+                    )
+                    RoundButton(
+                        icon = Res.drawable.settings,
+                        onClick = onOpenSettings,
+                        iconSize = 20.dp,
+                        iconPadding = 6.dp
+                    )
+                }
             },
             title = {}
         )

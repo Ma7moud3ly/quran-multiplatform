@@ -41,7 +41,11 @@ class PlaybackViewModel(
         super.onCleared()
         Log.v(TAG, "onCleared")
         saveHistory()
-        if (mediaPlayerManager.playInBackground.not()) mediaPlayerManager.release()
+        if (mediaPlayerManager.playInBackground.not()) {
+            mediaPlayerManager.release()
+            val lastPlayedVerseId = mediaPlayerManager.selectedVerseId
+            recitationRepository.recitationState.value.setFirstVerse(lastPlayedVerseId)
+        }
     }
 
     val settingFlow: StateFlow<RecitationSettings> = settingsRepository.recitationSettingsFlow

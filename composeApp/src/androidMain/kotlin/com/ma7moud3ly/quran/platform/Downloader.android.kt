@@ -15,8 +15,9 @@ actual fun getPlatformFileSystem(): FileSystem = FileSystem.SYSTEM
 
 actual fun getAppLocalDataStoragePath(): String {
     try {
-        return AndroidApp.INSTANCE.filesDir.absolutePath
+        return AndroidApp.requireContext().filesDir.absolutePath
     } catch (e: UninitializedPropertyAccessException) {
+        e.printStackTrace()
         throw IllegalStateException(
             "ApplicationContext has not been initialized. " +
                     "Ensure MyApplication.appContext is set before calling this function."

@@ -1,5 +1,7 @@
 package com.ma7moud3ly.quran.model
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import com.ma7moud3ly.quran.data.repository.DownloadsRepository
 import com.ma7moud3ly.quran.data.repository.RecitationRepository
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
@@ -93,6 +95,7 @@ internal val testRecitationSettings = RecitationSettings()
 private class TestRecitationRepImpl(
     private val recitation: Recitation
 ) : RecitationRepository {
+    override val recitationState: MutableState<RecitationState> = mutableStateOf(RecitationState())
     override val recitationFlow: Flow<Recitation?> get() = flow { recitation }
     override fun getRecitation() = recitation
 }
@@ -106,13 +109,17 @@ fun testMediaPlayerManager() = MediaPlayerManager(
     TestRecitationRepImpl(testRecitation),
     TestDownloadsRepositoryImpl(),
     getPlatform()
-)
+).apply {
+    initPlayBack()
+}
 
 fun testMediaPlayerManagerInReelMode() = MediaPlayerManager(
     TestRecitationRepImpl(testRecitationWithReelMode),
     TestDownloadsRepositoryImpl(),
     getPlatform()
-)
+).apply {
+    initPlayBack()
+}
 
 
 private class TestDownloadsRepositoryImpl : DownloadsRepository {

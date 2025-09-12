@@ -18,8 +18,14 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
 object AndroidApp {
-    lateinit var INSTANCE: Application
+    private var INSTANCE: Application? = null
     lateinit var window: Window
+    fun init(application: Application) {
+        this.INSTANCE = application
+    }
+
+    fun getContext(): Context? = INSTANCE
+    fun requireContext() = INSTANCE ?: throw IllegalStateException("Context not initialized")
 }
 
 class AndroidPlatform : Platform {
@@ -32,7 +38,7 @@ actual fun getPlatform(): Platform = AndroidPlatform()
 actual fun ioDispatcher(): CoroutineDispatcher = Dispatchers.IO
 
 actual fun createSettings(): Settings {
-    val context: Context = AndroidApp.INSTANCE
+    val context = AndroidApp.requireContext()
     return SharedPreferencesSettings(
         context.getSharedPreferences(
             "app_settings",

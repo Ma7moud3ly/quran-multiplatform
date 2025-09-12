@@ -13,7 +13,7 @@ import org.koin.ksp.generated.module
 class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        AndroidApp.INSTANCE = this
+        AndroidApp.init(this)
         startKoin {
             androidLogger(Level.DEBUG) // Or Level.INFO, Level.ERROR
             androidContext(this@MyApp)

@@ -73,8 +73,7 @@ actual class MediaPlayer : MediaPlayer.OnCompletionListener {
 
 
     actual fun playInBackground() {
-        val context = AndroidApp.INSTANCE
-
+        val context = AndroidApp.getContext() ?: return
         val isNotificationsPermissionGranted =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 (ContextCompat.checkSelfPermission(
@@ -96,7 +95,7 @@ actual class MediaPlayer : MediaPlayer.OnCompletionListener {
     }
 
     actual fun hideBackgroundNotification() {
-        val context = AndroidApp.INSTANCE
+        val context = AndroidApp.getContext() ?: return
         val stopIntent = Intent(context, PlaybackService::class.java).apply {
             action = PlaybackService.ACTION_HIDE_PLAYBACK_NOTIFICATION
         }
@@ -104,11 +103,11 @@ actual class MediaPlayer : MediaPlayer.OnCompletionListener {
     }
 
     actual fun releaseBackgroundService() {
-        val context = AndroidApp.INSTANCE
+        val context = AndroidApp.getContext()
         val stopIntent = Intent(context, PlaybackService::class.java).apply {
             action = PlaybackService.ACTION_STOP_PLAYBACK
         }
-        context.stopService(stopIntent)
+        context?.stopService(stopIntent)
     }
 
     companion object {

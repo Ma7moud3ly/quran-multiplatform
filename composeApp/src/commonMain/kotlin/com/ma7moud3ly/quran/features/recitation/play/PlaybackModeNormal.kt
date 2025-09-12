@@ -212,8 +212,8 @@ private fun Header(
                 SuraName(
                     chapterName = chapterName,
                     onClick = onBack,
-                    iconSize = 28.dp,
-                    fontSize = 28.sp
+                    iconSize = 24.dp,
+                    fontSize = 24.sp
                 )
             },
             title = {
@@ -400,23 +400,25 @@ private fun MediaControllers(
     mediaPlayer: MediaPlayerManager,
     onSettings: () -> Unit,
 ) {
-    RoundButton(
-        icon = Res.drawable.back,
-        onClick = mediaPlayer::previous
-    )
-    if (isPlaying) RoundButton(
-        icon = Res.drawable.pause,
-        onClick = mediaPlayer::pause
-    ) else RoundButton(
-        icon = Res.drawable.play,
-        onClick = mediaPlayer::resume
-    )
-    RoundButton(
-        icon = Res.drawable.forward,
-        onClick = mediaPlayer::next
-    )
-    RoundButton(
-        icon = Res.drawable.settings,
-        onClick = onSettings
-    )
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        RoundButton(
+            icon = Res.drawable.back,
+            onClick = mediaPlayer::previous
+        )
+        if (isPlaying) RoundButton(
+            icon = Res.drawable.pause,
+            onClick = mediaPlayer::pause
+        ) else RoundButton(
+            icon = Res.drawable.play,
+            onClick = mediaPlayer::resume
+        )
+        RoundButton(
+            icon = Res.drawable.forward,
+            onClick = mediaPlayer::next
+        )
+        RoundButton(
+            icon = Res.drawable.settings,
+            onClick = onSettings
+        )
+    }
 }

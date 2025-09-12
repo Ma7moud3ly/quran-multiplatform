@@ -1,7 +1,6 @@
 package com.ma7moud3ly.quran.features.recitation.config
 
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ma7moud3ly.quran.AppRoutes
@@ -38,7 +37,8 @@ class RecitationViewModel(
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
-    val recitationState = mutableStateOf(RecitationState())
+    val recitationState = recitationRepository.recitationState
+
     val recitationFlow: StateFlow<Recitation?> = recitationRepository.recitationFlow.stateIn(
         scope = viewModelScope,
         started = SharingStarted.Companion.WhileSubscribed(5000),

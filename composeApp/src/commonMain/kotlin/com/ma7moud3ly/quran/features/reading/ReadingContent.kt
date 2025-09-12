@@ -1,6 +1,8 @@
 package com.ma7moud3ly.quran.features.reading
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -243,29 +245,31 @@ private fun Header(
                 SuraName(
                     chapterName = chapterName,
                     onClick = onBack,
-                    iconSize = 28.dp,
-                    fontSize = 28.sp
+                    iconSize = 24.dp,
+                    fontSize = 24.sp
                 )
             }, actions = {
-                if (isContinueMode.not()) RoundButton(
-                    icon = Res.drawable.audio_file,
-                    onClick = onPlay
-                )
-                RoundButton(
-                    icon = Res.drawable.settings,
-                    onClick = onOpenSettings
-                )
-                if (isContinueMode && platform.isMobile) {
-                    if (fullScreen()) RoundButton(
-                        icon = Res.drawable.fullscreen_exit,
-                        onClick = onToggleScreen
-                    ) else RoundButton(
-                        icon = Res.drawable.fullscreen,
-                        onClick = onToggleScreen
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
+                    if (isContinueMode.not()) RoundButton(
+                        icon = Res.drawable.audio_file,
+                        onClick = onPlay
                     )
+                    RoundButton(
+                        icon = Res.drawable.settings,
+                        onClick = onOpenSettings
+                    )
+                    if (isContinueMode && platform.isMobile) {
+                        if (fullScreen()) RoundButton(
+                            icon = Res.drawable.fullscreen_exit,
+                            onClick = onToggleScreen
+                        ) else RoundButton(
+                            icon = Res.drawable.fullscreen,
+                            onClick = onToggleScreen
+                        )
+                    }
                 }
             }
-
         )
         if (isVisible) HorizontalDivider()
     }
@@ -276,9 +280,9 @@ internal fun SuraName(
     chapterName: String,
     color: Color = MaterialTheme.colorScheme.onPrimary,
     background: Color = MaterialTheme.colorScheme.surface,
-    iconSize: Dp = 28.dp,
+    iconSize: Dp = 24.dp,
     icon: DrawableResource? = Res.drawable.menu,
-    fontSize: TextUnit = 28.sp,
+    fontSize: TextUnit = 24.sp,
     onClick: (() -> Unit)? = null
 ) {
     MySurfaceRow(

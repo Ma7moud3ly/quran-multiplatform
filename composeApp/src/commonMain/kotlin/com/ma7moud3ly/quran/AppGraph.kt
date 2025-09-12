@@ -128,7 +128,7 @@ fun AppGraph(
                                     chapterId = result.chapterId,
                                     verseId = result.verseId,
                                     canChangeChapter = false,
-                                    canChangeVerse = false
+                                    canChangeVerse = true
                                 )
                             } else {
                                 AppRoutes.ReadingScreen(
@@ -171,7 +171,7 @@ fun AppGraph(
                     val route = AppRoutes.Recitation.Config(
                         chapterId = chapterId,
                         verseId = verseId,
-                        canChangeVerse = false,
+                        canChangeVerse = true,
                         canChangeChapter = false
                     )
                     navController.navigate(route)

@@ -1,6 +1,7 @@
 package com.ma7moud3ly.quran.ui
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -37,6 +38,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -295,18 +297,18 @@ fun MyButtonSmall(
 @Composable
 internal fun RoundButton(
     icon: DrawableResource,
-    iconSize: Dp = 24.dp,
-    iconPadding: Dp = 8.dp,
+    iconSize: Dp = 22.dp,
+    iconPadding: Dp = 6.dp,
     modifier: Modifier = Modifier,
     background: Color = MaterialTheme.colorScheme.surface,
     color: Color = MaterialTheme.colorScheme.onPrimary,
     onClick: () -> Unit
 ) {
     Surface(
-        modifier = modifier,
+        modifier = modifier.clip(CircleShape).clickable(onClick = onClick),
         shape = CircleShape,
         color = background,
-        onClick = onClick
+        //onClick = onClick // adds extra padding 🤷
     ) {
         Icon(
             painter = painterResource(icon),
