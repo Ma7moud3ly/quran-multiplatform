@@ -10,6 +10,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -85,6 +87,8 @@ private fun ConfirmDownloadDialogContent(
     onPlayOnline: () -> Unit,
     onDismiss: () -> Unit
 ) {
+    val reciter by remember(recitation) { recitation.reciterState }
+
     MyMiniDialog(
         onDismissRequest = onDismiss,
         space = 8.dp,
@@ -110,14 +114,14 @@ private fun ConfirmDownloadDialogContent(
         )
         ItemDetails(
             title = Res.string.reciter,
-            value = recitation.reciter.name
+            value = reciter.name
         )
         ItemDetails(
             title = Res.string.download_audio_quality,
-            value = recitation.reciter.downloadQuality
+            value = reciter.downloadQuality
         )
 
-        if (recitation.reciter.canListen) Text(
+        if (reciter.canListen) Text(
             text = stringResource(Res.string.download_deny_message),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.error
@@ -132,7 +136,7 @@ private fun ConfirmDownloadDialogContent(
                 onClick = onDownload,
                 modifier = Modifier.weight(0.5f)
             )
-            if (recitation.reciter.canListen) MyButton(
+            if (reciter.canListen) MyButton(
                 text = Res.string.download_deny,
                 onClick = onPlayOnline,
                 color = MaterialTheme.colorScheme.onPrimary,

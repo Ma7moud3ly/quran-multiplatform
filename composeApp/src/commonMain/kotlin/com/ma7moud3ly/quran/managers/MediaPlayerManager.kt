@@ -4,11 +4,13 @@ import androidx.compose.runtime.mutableStateOf
 import com.ma7moud3ly.quran.data.repository.DownloadsRepository
 import com.ma7moud3ly.quran.data.repository.RecitationRepository
 import com.ma7moud3ly.quran.model.MediaFile
-import com.ma7moud3ly.quran.model.ScreenMode
+import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.model.Recitation
+import com.ma7moud3ly.quran.model.Reciter
+import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.Verse
-import com.ma7moud3ly.quran.platform.AudioFocusEvents
 import com.ma7moud3ly.quran.platform.AudioFocus
+import com.ma7moud3ly.quran.platform.AudioFocusEvents
 import com.ma7moud3ly.quran.platform.Log
 import com.ma7moud3ly.quran.platform.MediaPlayer
 import com.ma7moud3ly.quran.platform.Platform
@@ -23,7 +25,6 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import org.koin.core.annotation.Single
@@ -108,8 +109,8 @@ class MediaPlayerManager(
             Log.i(TAG, "ResumePlayBack")
             return
         }
-        Log.i(TAG, "initPlayBack")
         recitation = newRecitation
+        Log.i(TAG, "initPlayBack - ${recitation.playbackMode}")
         hasReleased = false
         versesManager = VersesManager(
             verses = recitation.chapter.verses,
@@ -148,7 +149,7 @@ class MediaPlayerManager(
         }
 
         playerCoroutineScope.launch {
-            currentVerse.debounce(200).collect { verse ->
+            currentVerse.collect { verse ->
                 if (verse == null) {
                     Log.v(TAG, "verse:null")
                     return@collect
@@ -192,8 +193,8 @@ class MediaPlayerManager(
      *
      * @return The [MediaFile] corresponding to this verse.
      */
-    private fun Verse.getMediaFile(): MediaFile {
-        val (link, path) = recitation.mediaRemoteUri(this)
+    private fun Verse.getMediaFile(reciter: Reciter): MediaFile {
+        val (link, path) = recitation.mediaRemoteUri(reciter, verse = this)
         val mediaFile = downloadsRepository.toMediaFile(path, link)
         return mediaFile
     }
@@ -201,17 +202,44 @@ class MediaPlayerManager(
     /**
      * Proactively downloads the next verse if it's not already cached.
      * This helps ensure smoother playback transitions.
-     * It checks for the next verse, its media file, and downloads it if missing.
+     * It determines the next verse and reciter based on the current [PlaybackMode].
+     * If the next verse's media file is not found locally, it attempts to download it.
+     *
+     * @return `true` if the next verse is already cached or successfully downloaded,
+     *         or if there is no next verse/reciter. Returns `false` if the download fails.
      */
     private suspend fun downloadNextVerse(): Boolean {
-        // when there is not next verse, return true
-        val verse = versesManager.getNextVerse() ?: return true
-        val mediaFile = verse.getMediaFile()
+        val nextVerse: Verse?
+        val reciter: Reciter?
+        when (recitation.playbackMode) {
+            PlaybackMode.Single -> {
+                nextVerse = versesManager.getNextVerse()
+                reciter = recitation.currentReciter
+            }
+
+            PlaybackMode.Multiple -> {
+                if (versesManager.hasNext()) {
+                    nextVerse = versesManager.getNextVerse()
+                    reciter = recitation.currentReciter
+                } else {
+                    nextVerse = versesManager.initialVerse
+                    reciter = recitation.geNextReciter(loop = false)
+                }
+            }
+
+            PlaybackMode.Shuffling -> {
+                nextVerse = versesManager.getNextVerse()
+                reciter = recitation.geNextReciter(loop = true)
+            }
+        }
+
+        if (nextVerse == null || reciter == null) return true
+        val mediaFile = nextVerse.getMediaFile(reciter)
         // verse has previously downloaded
         if (mediaFile.exists) return true
-        Log.i(TAG, "-----> Started downloading next verse ${verse.id}")
+        Log.i(TAG, "-----> Started downloading next verse ${nextVerse.id} - ${reciter.id}")
         val file = downloadsRepository.downloadVerse(mediaFile)
-        Log.i(TAG, "-----< Finished downloading verse ${verse.id} - success: ${file.exists}")
+        Log.i(TAG, "-----< Finished downloading verse ${nextVerse.id} - success: ${file.exists}")
         return file.exists
     }
 
@@ -263,7 +291,7 @@ class MediaPlayerManager(
      * @param verse The verse to play.
      */
     private suspend fun playRemoteVerse(verse: Verse): Boolean {
-        val mediaFile = verse.getMediaFile()
+        val mediaFile = verse.getMediaFile(recitation.currentReciter)
         Log.v(TAG, "playOnlineVerse: $mediaFile")
         if (downloadsRepository.platformSupportDownloading) {
             if (mediaFile.exists) {
@@ -317,77 +345,6 @@ class MediaPlayerManager(
         else playRemoteVerse(verse)
     }
 
-    /**
-     * Moves to the next verse or reciter based on the playback mode.
-     * Pauses playback before attempting to move.
-     *
-     * @return `true` if successfully moved to the next verse/reciter,
-     * `false` otherwise (e.g., end of recitation).
-     */
-    private suspend fun nextVerseOrReciter(): Boolean {
-        pause()
-        Log.v(TAG, "nextVerseOrReciter")
-        val nextVerse = versesManager.nextForwardVerse()
-        if (nextVerse.not()) {
-            val nextReciter = recitation.nextReciter()
-            if (nextReciter) versesManager.reset()
-            else return false
-        }
-        return true
-    }
-
-    /**
-     * Moves to the previous verse or reciter based on the playback mode.
-     * Pauses playback before attempting to move.
-     *
-     * @return `true` if successfully moved to the previous verse/reciter,
-     * `false` otherwise (e.g., beginning of recitation).
-     */
-    private suspend fun previousVerseOrReciter(): Boolean {
-        pause()
-        Log.v(TAG, "previousVerseOrReciter")
-        val previousVerse = versesManager.previousVerseInRange()
-        if (previousVerse.not()) {
-            val previousReciter = recitation.previousReciter()
-            if (previousReciter) versesManager.reset()
-            else return false
-        }
-        return true
-    }
-
-    /**
-     * Moves to the next verse and rotates to the next reciter.
-     * This is used when playback is not sequential (e.g., rotating reciters for each verse).
-     * Pauses playback before attempting to move.
-     *
-     * @return `true` if successfully moved to the next verse,
-     * `false` if there is no next verse.
-     */
-    private fun nextVerseAndReciter(): Boolean {
-        if (versesManager.hasNext().not()) return false
-        pause()
-        Log.v(TAG, "nextVerseAndReciter")
-        recitation.rotateReciters()
-        val nextVerse = versesManager.nextForwardVerse()
-        return nextVerse
-    }
-
-    /**
-     * Moves to the previous verse and rotates back to the previous reciter.
-     * This is used when playback is not sequential (e.g., rotating reciters for each verse).
-     * Pauses playback before attempting to move.
-     *
-     * @return `true` if successfully moved to the previous verse,
-     * `false` if there is no previous verse.
-     */
-    private fun previousVerseAndReciter(): Boolean {
-        if (versesManager.hasPrevious().not()) return false
-        pause()
-        Log.v(TAG, "previousVerseAndReciter")
-        recitation.rotateBackReciters()
-        val previousVerse = versesManager.previousVerseInRange()
-        return previousVerse
-    }
 
     /**
      * Moves to the next verse or reciter.
@@ -398,16 +355,37 @@ class MediaPlayerManager(
      */
     fun next(finishOnLastVerse: Boolean = false) {
         playerCoroutineScope.launch {
-            val hasNext = if (recitation.isSequentialPlayback()) {
-                nextVerseOrReciter()
-            } else {
-                nextVerseAndReciter()
+            pause()
+            val hasMore = when (recitation.playbackMode) {
+                PlaybackMode.Single -> {
+                    val nextVerse = versesManager.nextForwardVerse()
+                    nextVerse
+                }
+
+                PlaybackMode.Multiple -> {
+                    val nextVerse = versesManager.nextForwardVerse()
+                    if (nextVerse) {
+                        true
+                    } else {
+                        val hasNextReciter = recitation.nextForwardReciter()
+                        if (hasNextReciter) versesManager.reset()
+                        hasNextReciter
+                    }
+                }
+
+                PlaybackMode.Shuffling -> {
+                    recitation.rotateReciters()
+                    val nextVerse = versesManager.nextForwardVerse()
+                    nextVerse
+                }
             }
-            if (hasNext.not() && finishOnLastVerse) {
+
+            if (hasMore.not() && finishOnLastVerse) {
                 onFinishCallback()
                 release()
             }
         }
+
     }
 
     /**
@@ -415,10 +393,35 @@ class MediaPlayerManager(
      */
     fun previous(finishOnLastVerse: Boolean = false) {
         playerCoroutineScope.launch {
-            val hasPrevious = if (recitation.isSequentialPlayback()) {
-                previousVerseOrReciter()
-            } else {
-                previousVerseAndReciter()
+            pause()
+            val hasPrevious = when (recitation.playbackMode) {
+                PlaybackMode.Single -> {
+                    val previousVerse = versesManager.previousVerseInRange()
+                    Log.v(TAG, "previousVerse $previousVerse")
+                    previousVerse
+                }
+
+                PlaybackMode.Multiple -> {
+                    val previousVerse = versesManager.previousVerseInRange()
+                    if (previousVerse) {
+                        Log.v(TAG, "previousVerse $previousVerse")
+                        true
+                    } else {
+                        val previousReciter = recitation.previousReciter()
+                        if (previousReciter) versesManager.reset()
+                        Log.v(TAG, "previousReciter $previousReciter")
+                        previousReciter
+                    }
+                }
+
+                PlaybackMode.Shuffling -> {
+                    if (versesManager.hasPrevious()) {
+                        recitation.rotateBackReciters()
+                        val previousVerse = versesManager.previousVerseInRange()
+                        Log.v(TAG, "previousVerse $previousVerse")
+                        previousVerse
+                    } else false
+                }
             }
             if (hasPrevious.not() && finishOnLastVerse) {
                 onFinishCallback()

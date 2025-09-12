@@ -266,7 +266,12 @@ fun AppGraph(
                     viewModel.setOnlineDataSource()
                     navController.navigate(AppRoutes.Recitation.Playback)
                 },
-                onDismiss = { navController.popBackStack() }
+                onDismiss = {
+                    navController.popBackStack(
+                        AppRoutes.Recitation.Download.Confirm::class,
+                        inclusive = true
+                    )
+                }
             )
         }
 

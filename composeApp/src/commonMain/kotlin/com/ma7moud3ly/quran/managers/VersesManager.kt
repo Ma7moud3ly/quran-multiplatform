@@ -26,7 +26,7 @@ class VersesManager(
     private val firstVerseIndex: Int = verses.first().id - 1
     private val lastVerseIndex: Int = verses.last().id - 1
     private val versesMap: Map<Int, Verse> = verses.associateBy { it.id - 1 }
-    private val initialVerse: Verse get() = versesMap[(initialVerseId ?: 1) - 1] ?: verses.first()
+    val initialVerse: Verse get() = versesMap[(initialVerseId ?: 1) - 1] ?: verses.first()
     private val _selectedVerse = MutableStateFlow<Verse?>(initialVerse)
 
     /**

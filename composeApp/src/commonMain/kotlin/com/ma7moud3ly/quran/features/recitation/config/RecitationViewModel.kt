@@ -12,9 +12,12 @@ import com.ma7moud3ly.quran.data.repository.RecitersRepository
 import com.ma7moud3ly.quran.data.repository.SettingsRepository
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.History
+import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.model.Recitation
 import com.ma7moud3ly.quran.model.RecitationState
 import com.ma7moud3ly.quran.model.Reciter
+import com.ma7moud3ly.quran.model.isSingleReciter
+import com.ma7moud3ly.quran.model.toPlaybackMode
 import com.ma7moud3ly.quran.platform.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -63,7 +66,7 @@ class RecitationViewModel(
                 reelMode = history.reelMode,
                 playInBackground = history.playInBackground,
                 playLocally = history.playLocally,
-                shuffleReciters = history.shuffleReciters
+                playbackMode = history.playbackMode.toPlaybackMode,
             )
             Log.v(TAG, " $recitation")
             recitationRepository.setRecitation(recitation)
@@ -122,17 +125,18 @@ class RecitationViewModel(
     val reciters = mutableStateListOf<Reciter>()
 
     fun addReciter(id: String, clear: Boolean = false) {
+        val state = recitationState.value
         if (clear) {
             reciters.clear()
-            recitationState.value.setMultiReciters(false)
+            state.setPlaybackMode(PlaybackMode.Single)
         }
         viewModelScope.launch {
             val reciter = recitersRepository.getReciter(id) ?: return@launch
-            val multiple = recitationState.value.isMultiReciter()
-            if (multiple.not()) reciters.clear()
+            val single = state.getPlaybackMode().isSingleReciter
+            if (single) reciters.clear()
             if (reciters.contains(reciter).not()) {
-                if (multiple && reciter.canListen) reciters.add(reciter)
-                else if (multiple.not()) reciters.add(reciter)
+                if (single) reciters.add(reciter)
+                else if (reciter.canListen) reciters.add(reciter)
             }
             reciters.firstOrNull()?.let { getDownloadedChapters(it) }
         }
@@ -140,13 +144,7 @@ class RecitationViewModel(
 
     fun removeReciter(reciter: Reciter) {
         reciters.remove(reciter)
-    }
-
-    fun restReciters(multiple: Boolean) {
-        val firstReciter = if (multiple) reciters.firstOrNull { it.canListen }
-        else reciters.firstOrNull()
-        reciters.clear()
-        if (firstReciter != null) reciters.add(firstReciter)
+        if (reciters.size == 1) recitationState.value.setPlaybackMode(PlaybackMode.Single)
     }
 
     fun saveLastReciters() {
@@ -168,7 +166,9 @@ class RecitationViewModel(
                 clear()
                 addAll(lastReciters)
             }
-            recitationState.value.setMultiReciters(lastReciters.size > 1)
+            val playbackMode = if (lastReciters.size > 1) PlaybackMode.Multiple
+            else PlaybackMode.Single
+            recitationState.value.setPlaybackMode(playbackMode)
             reciters.firstOrNull()?.let { getDownloadedChapters(it) }
         }
     }
@@ -213,7 +213,7 @@ class RecitationViewModel(
 
     suspend fun isFullyCachedCached(recitation: Recitation): Boolean {
         return downloadsRepository.isFullyDownloaded(
-            path = recitation.listenDirectory,
+            path = recitation.remoteStorageDirectory(),
             verses = recitation.chapter.verses.size
         )
     }

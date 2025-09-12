@@ -10,6 +10,7 @@ import com.ma7moud3ly.quran.managers.MediaPlayerManager
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.RecitationSettings
+import com.ma7moud3ly.quran.model.toInt
 import com.ma7moud3ly.quran.platform.Log
 import com.ma7moud3ly.quran.platform.platformKeepScreenOn
 import kotlinx.coroutines.FlowPreview
@@ -70,14 +71,14 @@ class PlaybackViewModel(
                     type = History.LISTENING,
                     chapterId = recitation.chapter.id,
                     chapterName = recitation.chapter.name,
-                    reciterId = recitation.reciter.id,
-                    reciterName = recitation.reciter.name,
+                    reciterId = recitation.currentReciter.id,
+                    reciterName = recitation.currentReciter.name,
                     verseId = mediaPlayerManager.selectedVerseId,
                     screenMode = if (recitation.screenMode is ScreenMode.Normal) 1 else 2,
                     reelMode = recitation.reelMode,
                     playInBackground = recitation.playInBackground,
                     playLocally = recitation.playLocally,
-                    shuffleReciters = recitation.shuffleReciters
+                    playbackMode = recitation.playbackMode.toInt
                 )
                 historyRepository.saveHistory(history)
             }

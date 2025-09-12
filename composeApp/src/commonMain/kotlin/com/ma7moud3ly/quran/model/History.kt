@@ -22,7 +22,7 @@ data class History(
     val reelMode: Boolean = false,
     val playInBackground: Boolean = false,
     val playLocally: Boolean = false,
-    val shuffleReciters: Boolean = false
+    val playbackMode: Int = PlaybackMode.Single.toInt,
 ) {
     val id: String
         get() = if (isReading) chapterId.toString()

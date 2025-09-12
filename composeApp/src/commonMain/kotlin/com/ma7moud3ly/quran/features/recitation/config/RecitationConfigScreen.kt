@@ -62,13 +62,13 @@ fun RecitationConfigScreen(
             reelMode = recitationState.getReelMode(),
             playInBackground = recitationState.getPlayInBackground(),
             playLocally = true,
-            shuffleReciters = recitationState.getShuffleMode()
+            playbackMode = recitationState.getPlaybackMode()
         )
 
         coroutineScope.launch {
             val reciter = reciters.first()
             val event = if (viewModel.platformSupportDownloading()) {
-                if (recitationState.getMultiReciters()) {
+                if (recitationState.isSingleReciterMode().not()) {
                     RecitationEvents.StartOnline
                 } else if (reciter.canDownload && viewModel.isFullyDownloaded(recitation)) {
                     RecitationEvents.StartLocally
@@ -106,8 +106,8 @@ fun RecitationConfigScreen(
     RecitationConfigScreenContent(
         snackbarHostState = snackbarHostState,
         downloadedChapters = {
-            if (recitationState.multiRecitersState.value) emptyList()
-            else downloadedChapters
+            if (recitationState.isSingleReciterMode()) downloadedChapters
+            else emptyList()
         },
         selectedChapter = { chapter },
         reciters = { reciters },
@@ -125,17 +125,13 @@ fun RecitationConfigScreen(
                 is ConfigEvents.PickReciters -> {
                     val event = RecitationEvents.RecitersDialog(
                         reciterId = reciters.lastOrNull()?.id,
-                        filter = recitationState.getMultiReciters()
+                        filter = recitationState.isSingleReciterMode().not()
                     )
                     recitationEvents(event)
                 }
 
                 is ConfigEvents.RemoveReciter -> {
                     viewModel.removeReciter(it.reciter)
-                }
-
-                is ConfigEvents.ToggleReciters -> {
-                    viewModel.restReciters(it.multiple)
                 }
 
                 is ConfigEvents.SelectChapter -> {

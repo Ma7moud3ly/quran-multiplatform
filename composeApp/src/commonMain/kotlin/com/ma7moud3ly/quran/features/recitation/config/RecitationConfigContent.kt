@@ -53,10 +53,13 @@ import com.ma7moud3ly.quran.features.search.chapter.ItemChapter
 import com.ma7moud3ly.quran.features.search.reciter.ItemReciter
 import com.ma7moud3ly.quran.features.settings.SettingsLabel
 import com.ma7moud3ly.quran.model.Chapter
+import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.RecitationState
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.asVerseNumber
+import com.ma7moud3ly.quran.model.isShufflingReciters
+import com.ma7moud3ly.quran.model.isSingleReciter
 import com.ma7moud3ly.quran.model.testChapter
 import com.ma7moud3ly.quran.model.testDownloadedChapter
 import com.ma7moud3ly.quran.model.testRecitationState
@@ -172,7 +175,6 @@ internal fun RecitationConfigScreenContent(
                 reciters = reciters,
                 recitationState = recitationState,
                 onPickReciter = { uiEvents(ConfigEvents.PickReciters) },
-                onToggleReciters = { uiEvents(ConfigEvents.ToggleReciters(it)) },
                 onRemoveReciter = { uiEvents(ConfigEvents.RemoveReciter(it)) }
             )
             HorizontalDivider()
@@ -207,7 +209,6 @@ internal fun RecitationConfigScreenContent(
                         reciters = reciters,
                         recitationState = recitationState,
                         onPickReciter = { uiEvents(ConfigEvents.PickReciters) },
-                        onToggleReciters = { uiEvents(ConfigEvents.ToggleReciters(it)) },
                         onRemoveReciter = { uiEvents(ConfigEvents.RemoveReciter(it)) }
                     )
                 }
@@ -236,7 +237,7 @@ internal fun RecitationConfigScreenContent(
         }
 
 
-        ShuffleMode(recitationState)
+        if (reciters().size > 1) ShuffleMode(recitationState)
 
         if (platform.isMobile && isCompactDevice()) {
             HorizontalDivider()
@@ -259,23 +260,16 @@ private fun SectionReciters(
     recitationState: () -> RecitationState,
     reciters: () -> List<Reciter>,
     onPickReciter: () -> Unit,
-    onToggleReciters: (multiple: Boolean) -> Unit,
     onRemoveReciter: (Reciter) -> Unit
 ) {
     val state = recitationState()
     val canChangeReciter by remember { state.canChangeReciterState }
     val reciters = reciters()
-    var multiReciters by remember { state.multiRecitersState }
+    var playbackMode by remember { state.playbackModeState }
 
     fun initMultipleReciterMode() {
-        multiReciters = true
-        onToggleReciters(multiReciters)
+        playbackMode = PlaybackMode.Multiple
         onPickReciter()
-    }
-
-    fun initSingleReciterMode() {
-        multiReciters = false
-        onToggleReciters(multiReciters)
     }
 
     Column(
@@ -283,7 +277,7 @@ private fun SectionReciters(
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         SettingsLabel(Res.string.reciter)
-        if (multiReciters.not()) {
+        if (playbackMode.isSingleReciter) {
             ItemReciter(
                 reciter = reciters.firstOrNull(),
                 showArrow = canChangeReciter,
@@ -304,10 +298,7 @@ private fun SectionReciters(
                 reciters.forEach { reciter ->
                     MiniReciter(
                         text = reciter.name,
-                        onIconClick = {
-                            if (reciters.size == 1) initSingleReciterMode()
-                            onRemoveReciter(reciter)
-                        }
+                        onIconClick = { onRemoveReciter(reciter) }
                     )
                 }
                 MiniReciter(
@@ -499,12 +490,11 @@ private fun SectionRange(
 }
 
 @Composable
-private fun ShuffleMode(recitationState: () -> RecitationState) {
+private fun ShuffleMode(
+    recitationState: () -> RecitationState
+) {
     val state = recitationState()
-    if (state.multiRecitersState.value.not()
-        || state.singleVerseState.value
-    ) return
-    var shuffleModeState by remember { state.shuffleModeState }
+    var playbackMode by remember { state.playbackModeState }
 
     HorizontalDivider()
     Column(
@@ -518,8 +508,11 @@ private fun ShuffleMode(recitationState: () -> RecitationState) {
             SettingsLabel(Res.string.settings_shuffle)
             Spacer(modifier = Modifier.weight(1f))
             MySwitch(
-                enabled = { shuffleModeState },
-                onToggle = { shuffleModeState = it }
+                enabled = { playbackMode.isShufflingReciters },
+                onToggle = { enable ->
+                    playbackMode = if (enable) PlaybackMode.Shuffling
+                    else PlaybackMode.Multiple
+                }
             )
         }
         Text(

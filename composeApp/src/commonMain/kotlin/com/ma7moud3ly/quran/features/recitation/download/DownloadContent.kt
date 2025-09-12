@@ -129,15 +129,15 @@ fun DownloadDialogContent(
                         title = Res.string.recite_chapter,
                         value = recitation.chapter.name
                     )
-
+                    val reciter by remember(recitation) { recitation.reciterState }
                     ItemDetails(
                         title = Res.string.reciter,
-                        value = recitation.reciter.name
+                        value = reciter.name
                     )
 
                     ItemDetails(
                         title = Res.string.download_audio_quality,
-                        value = recitation.reciter.downloadQuality
+                        value = reciter.downloadQuality
                     )
 
                     if (totalSize != 0.0) ItemDetails(
