@@ -5,11 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.ma7moud3ly.quran.data.repository.HistoryRepository
 import com.ma7moud3ly.quran.data.repository.RecitationRepository
 import com.ma7moud3ly.quran.data.repository.SettingsRepository
-import com.ma7moud3ly.quran.data.repository.SlidesRepository
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
+import com.ma7moud3ly.quran.managers.SlidesManager
 import com.ma7moud3ly.quran.model.History
-import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.RecitationSettings
+import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.toInt
 import com.ma7moud3ly.quran.platform.Log
 import com.ma7moud3ly.quran.platform.platformKeepScreenOn
@@ -26,12 +26,13 @@ import org.koin.android.annotation.KoinViewModel
 class PlaybackViewModel(
     private val settingsRepository: SettingsRepository,
     private val historyRepository: HistoryRepository,
-    private val slidesRepository: SlidesRepository,
     private val recitationRepository: RecitationRepository,
-    private val mediaPlayerManager: MediaPlayerManager
+    private val mediaPlayerManager: MediaPlayerManager,
+    private val slidesManager: SlidesManager,
 ) : ViewModel() {
 
     fun getMediaPlayerManager() = mediaPlayerManager
+    fun getSlidesManager() = slidesManager
 
     init {
         mediaPlayerManager.initPlayBack()
@@ -55,12 +56,6 @@ class PlaybackViewModel(
             initialValue = settingsRepository.getRecitationSettings()
         )
 
-
-    fun setTvSlide(index: Int) {
-        viewModelScope.launch {
-            settingsRepository.setTvSlide(index)
-        }
-    }
 
     fun keepScreenOn(on: Boolean) {
         platformKeepScreenOn(on)
@@ -88,8 +83,6 @@ class PlaybackViewModel(
             }
         }
     }
-
-    val tvSlides = slidesRepository.getSlides()
 
     companion object {
         private const val TAG = "PlaybackViewModel"

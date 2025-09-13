@@ -8,6 +8,6 @@ object PreferenceKeys {
     const val RECITATION_FONT_TYPE = "recitation_font_type"
     const val READING_VERSES_MODE = "reading_verses_mode"
     const val RECITATION_VERSES_MODE = "listening_verses_Mode"
-    const val TV_SLIDE = "tv_slide"
+    const val TV_SLIDE_ID = "tv_slide_id"
     const val RECITERS = "last_reciter"
 }

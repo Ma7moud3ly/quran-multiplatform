@@ -1,12 +1,12 @@
 package com.ma7moud3ly.quran.di
 
 import com.ma7moud3ly.quran.managers.DownloadManager
-import com.ma7moud3ly.quran.managers.SlidesManager
-import com.ma7moud3ly.quran.managers.getSlidesManager
 import com.ma7moud3ly.quran.platform.Platform
+import com.ma7moud3ly.quran.platform.PlaybackVideos
 import com.ma7moud3ly.quran.platform.createSettings
 import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.getPlatformFileSystem
+import com.ma7moud3ly.quran.platform.getPlaybackVideos
 import com.ma7moud3ly.quran.platform.httpClientEngine
 import com.ma7moud3ly.quran.platform.ioDispatcher
 import com.russhwolf.settings.Settings
@@ -22,7 +22,7 @@ import org.koin.core.annotation.Single
 class AppModule {
 
     @Single
-    fun provideSlidesManager(): SlidesManager = getSlidesManager()
+    fun providePlaybackVideos(): PlaybackVideos = getPlaybackVideos()
 
     @Single
     fun providePlatform(): Platform = getPlatform()

@@ -25,9 +25,21 @@ data class MyVideo(
     val path: String get() = Res.getUri("drawable/$name")
 }
 
+
 data class PlaybackStates(
-    val showControls: Boolean,
+    val slideControls: SlideControls,
     val slide: TvSlide,
     val isPlaying: Boolean,
     val selectedVerse: Verse?
 )
+
+sealed interface SlideControls {
+    data object ShowControls : SlideControls
+    data object ShowReciter : SlideControls
+    data object ShowVerse : SlideControls
+    data object HideAll : SlideControls
+}
+
+val SlideControls.showControls: Boolean get() = this is SlideControls.ShowControls
+val SlideControls.showVerse: Boolean get() = this !is SlideControls.HideAll
+val SlideControls.showReciter: Boolean get() = this is SlideControls.ShowReciter

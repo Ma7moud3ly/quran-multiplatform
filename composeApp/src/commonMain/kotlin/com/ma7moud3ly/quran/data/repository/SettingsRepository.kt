@@ -33,8 +33,8 @@ interface SettingsRepository {
     val recitationVersesMode: VersesMode
     fun setRecitationVersesMode(versesMode: VersesMode)
 
-    val tvSlide: Int
-    fun setTvSlide(value: Int)
+    val tvSlide: String
+    fun setTvSlide(value: String)
 
     fun getReadingSettings(): ReadingSettings
     suspend fun updateReadingSettings(settings: ReadingSettings)

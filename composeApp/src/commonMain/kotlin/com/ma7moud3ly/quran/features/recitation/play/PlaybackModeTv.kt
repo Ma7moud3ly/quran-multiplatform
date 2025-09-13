@@ -32,7 +32,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -52,13 +51,16 @@ import androidx.compose.ui.zIndex
 import com.ma7moud3ly.quran.features.reading.SuraName
 import com.ma7moud3ly.quran.features.reading.modes.formatVerse
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
+import com.ma7moud3ly.quran.managers.SlidesManager
 import com.ma7moud3ly.quran.model.PlaybackStates
-import com.ma7moud3ly.quran.model.RecitationSettings
+import com.ma7moud3ly.quran.model.SlideControls
 import com.ma7moud3ly.quran.model.TvSlide
 import com.ma7moud3ly.quran.model.Verse
+import com.ma7moud3ly.quran.model.showControls
+import com.ma7moud3ly.quran.model.showReciter
+import com.ma7moud3ly.quran.model.showVerse
 import com.ma7moud3ly.quran.model.testMediaPlayerManager
 import com.ma7moud3ly.quran.model.testMediaPlayerManagerInReelMode
-import com.ma7moud3ly.quran.model.testRecitationSettings
 import com.ma7moud3ly.quran.model.testSlidesManager
 import com.ma7moud3ly.quran.platform.MyBackHandler
 import com.ma7moud3ly.quran.platform.ShowFullScreen
@@ -89,9 +91,8 @@ import quran.composeapp.generated.resources.play
 private fun TvPlaybackPreview() {
     AppTheme {
         TvPlayback(
-            slides = testSlidesManager.slides,
+            slidesManager = testSlidesManager,
             mediaPlayerManager = testMediaPlayerManager(),
-            appSettings = { testRecitationSettings },
             uiEvents = {}
         )
     }
@@ -102,9 +103,8 @@ private fun TvPlaybackPreview() {
 private fun TvPlaybackPreviewLight() {
     AppTheme(darkTheme = false) {
         TvPlayback(
-            slides = testSlidesManager.slides,
+            slidesManager = testSlidesManager,
             mediaPlayerManager = testMediaPlayerManager(),
-            appSettings = { testRecitationSettings },
             uiEvents = {}
         )
     }
@@ -117,9 +117,8 @@ private fun TvPlayback_ReelMode_Preview() {
     AppTheme(darkTheme = true) {
         PlaybackScreenContent(enableReelMode = true) {
             TvPlayback(
-                slides = testSlidesManager.slides,
+                slidesManager = testSlidesManager,
                 mediaPlayerManager = testMediaPlayerManagerInReelMode(),
-                appSettings = { testRecitationSettings },
                 uiEvents = {}
             )
         }
@@ -132,9 +131,8 @@ private fun TvPlayback_ReelMode_PreviewLight() {
     AppTheme(darkTheme = false) {
         PlaybackScreenContent(enableReelMode = true) {
             TvPlayback(
-                slides = testSlidesManager.slides,
+                slidesManager = testSlidesManager,
                 mediaPlayerManager = testMediaPlayerManagerInReelMode(),
-                appSettings = { testRecitationSettings },
                 uiEvents = {}
             )
         }
@@ -144,59 +142,37 @@ private fun TvPlayback_ReelMode_PreviewLight() {
 @OptIn(FlowPreview::class)
 @Composable
 fun TvPlayback(
-    slides: List<TvSlide>,
     mediaPlayerManager: MediaPlayerManager,
-    appSettings: () -> RecitationSettings,
+    slidesManager: SlidesManager,
     uiEvents: (PlaybackEvents) -> Unit,
 ) {
-    val settings = appSettings()
     val isPreview: Boolean = LocalInspectionMode.current
     val videoPlayerState = rememberVideoPlayerState()
     val selectedVerse by mediaPlayerManager.currentVerseState.collectAsState(null)
     val isPlaying by remember { mediaPlayerManager.isPlaying }
-    var showControls by remember { mutableStateOf(mediaPlayerManager.isReelMode.not()) }
-    var slide by remember { mutableStateOf(slides[settings.tvSlide]) }
+    var slide by remember { slidesManager.selectedSlide }
+    var controls by remember { slidesManager.slideControls }
     val coroutineScope = rememberCoroutineScope()
     val slidesListState = rememberLazyListState()
 
     MyBackHandler {
-        if (showControls.not()) showControls = true
-        else uiEvents(PlaybackEvents.Back)
-    }
-
-    fun saveSlide(index: Int) {
-        settings.tvSlide = index
-        uiEvents(PlaybackEvents.SaveTvSlide(index))
-    }
-
-    fun nextSlide() {
-        var index = settings.tvSlide
-        if (index < slides.size - 1) index++
-        else index = 0
-        slide = slides[index]
-        coroutineScope.launch {
-            slidesListState.animateScrollToItem(index)
+        if (controls.showControls.not()) {
+            slidesManager.showControls()
+        } else {
+            uiEvents(PlaybackEvents.Back)
         }
-        saveSlide(index)
     }
 
-    fun previousSlide() {
-        var index = settings.tvSlide
-        if (index > 0) index--
-        else index = slides.size - 1
-        slide = slides[index]
-        coroutineScope.launch {
-            slidesListState.animateScrollToItem(index)
-        }
-        saveSlide(index)
+    LaunchedEffect(Unit) {
+        if (mediaPlayerManager.isReelMode) slidesManager.toggleSlideControls()
     }
 
     LaunchedEffect(Unit) {
         snapshotFlow {
-            PlaybackStates(showControls, slide, isPlaying, selectedVerse)
-        }.debounce(5000).collect { (currentShowControls, _, _) ->
-            if (currentShowControls) {
-                showControls = false
+            PlaybackStates(controls, slide, isPlaying, selectedVerse)
+        }.debounce(5000).collect { (controls, _, _) ->
+            if (controls.showControls) {
+                slidesManager.toggleSlideControls()
             }
         }
     }
@@ -221,14 +197,32 @@ fun TvPlayback(
             modifier = Modifier
                 .fillMaxSize()
                 .clickable(
-                    onClick = { showControls = showControls.not() },
+                    onClick = slidesManager::toggleSlideControls,
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() }
                 ),
-            onSwipeRight = mediaPlayerManager::next,
-            onSwipeLeft = mediaPlayerManager::previous,
-            onSwipeUp = ::previousSlide,
-            onSwipeDown = ::nextSlide
+            onSwipeRight = {
+                mediaPlayerManager.next()
+                slidesManager.showVerse()
+            },
+            onSwipeLeft = {
+                mediaPlayerManager.previous()
+                slidesManager.showVerse()
+            },
+            onSwipeUp = {
+                slidesManager.nextSlide {
+                    coroutineScope.launch {
+                        slidesListState.animateScrollToItem(it)
+                    }
+                }
+            },
+            onSwipeDown = {
+                slidesManager.previousSlide {
+                    coroutineScope.launch {
+                        slidesListState.animateScrollToItem(it)
+                    }
+                }
+            }
         ) {
             Header(
                 mediaPlayer = mediaPlayerManager,
@@ -244,7 +238,7 @@ fun TvPlayback(
                         top = if (mediaPlayerManager.isReelMode) 8.dp else 24.dp
                     ),
                 slide = { slide },
-                showControls = { showControls },
+                slideControls = { controls },
                 onBack = { uiEvents(PlaybackEvents.Back) }
             )
 
@@ -263,7 +257,7 @@ fun TvPlayback(
                 )
             }
 
-            if (selectedVerse != null) Box(
+            if (controls.showVerse && selectedVerse != null) Box(
                 modifier = Modifier
                     .wrapContentSize()
                     .padding(
@@ -283,16 +277,12 @@ fun TvPlayback(
                 )
             }
 
-            if (showControls) {
+            if (controls.showControls) {
                 SectionSlides(
-                    slides = slides,
+                    slides = slidesManager.slides,
                     listState = slidesListState,
                     selectedSlide = { slide },
-                    onSelect = {
-                        slide = it
-                        showControls = true
-                        saveSlide(slides.indexOf(it))
-                    },
+                    onSelect = slidesManager::selectSlide,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter)
@@ -313,7 +303,7 @@ fun TvPlayback(
 private fun Header(
     modifier: Modifier,
     mediaPlayer: MediaPlayerManager,
-    showControls: () -> Boolean,
+    slideControls: () -> SlideControls,
     slide: () -> TvSlide,
     onBack: () -> Unit
 ) {
@@ -322,31 +312,33 @@ private fun Header(
     val isPlaying by remember(mediaPlayer) { mediaPlayer.isPlaying }
     val isDownloading by remember { mediaPlayer.isDownloadingVerse }
     val reciter by remember { mediaPlayer.reciterState }
+    val controls = slideControls()
 
-    val showControls = showControls()
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        SuraName(
-            chapterName = mediaPlayer.chapterName,
-            background = if (showControls) background
-            else Color.Transparent,
-            fontSize = 24.sp,
-            color = color,
-            icon = null,
-            onClick = onBack
-        )
-        Spacer(Modifier.weight(1f))
-        if (isDownloading) {
-            CircularProgressIndicator(
-                modifier = Modifier.size(20.dp),
-                color = MaterialTheme.colorScheme.secondary
+        if (controls.showControls || controls.showReciter) {
+            SuraName(
+                chapterName = mediaPlayer.chapterName,
+                background = if (controls.showControls) background
+                else Color.Transparent,
+                fontSize = 24.sp,
+                color = color,
+                icon = null,
+                onClick = onBack
             )
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.weight(1f))
+            if (isDownloading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(20.dp),
+                    color = MaterialTheme.colorScheme.secondary
+                )
+                Spacer(Modifier.width(8.dp))
+            }
         }
-        if (showControls.not()) {
+        if (controls.showReciter) {
             Text(
                 text = reciter.name,
                 style = MaterialTheme.typography.bodyLarge,
@@ -356,7 +348,7 @@ private fun Header(
                 fontSize = 12.sp,
                 color = color,
             )
-        } else {
+        } else if (controls.showControls) {
             RoundButton(
                 icon = Res.drawable.back,
                 onClick = mediaPlayer::previous,

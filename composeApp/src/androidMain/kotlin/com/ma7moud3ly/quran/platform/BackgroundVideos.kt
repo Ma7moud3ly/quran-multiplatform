@@ -1,4 +1,4 @@
-package com.ma7moud3ly.quran.managers
+package com.ma7moud3ly.quran.platform
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -31,11 +31,11 @@ import quran.composeapp.generated.resources.video7_thumbnail
 import quran.composeapp.generated.resources.video8_thumbnail
 import quran.composeapp.generated.resources.video9_thumbnail
 
-class AndroidSlidesManager : SlidesManager {
+class AndroidPlaybackVideos : PlaybackVideos {
     override val slides: List<TvSlide> = androidSlides
 }
 
-actual fun getSlidesManager(): SlidesManager = AndroidSlidesManager()
+actual fun getPlaybackVideos(): PlaybackVideos = AndroidPlaybackVideos()
 
 private val androidSlides = listOf(
     TvSlide(

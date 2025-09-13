@@ -4,10 +4,13 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.ma7moud3ly.quran.data.repository.DownloadsRepository
 import com.ma7moud3ly.quran.data.repository.RecitationRepository
+import com.ma7moud3ly.quran.data.repository.SettingsRepository
+import com.ma7moud3ly.quran.data.repository.SlidesRepository
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
+import com.ma7moud3ly.quran.managers.SlidesManager
 import com.ma7moud3ly.quran.managers.VersesManager
-import com.ma7moud3ly.quran.managers.getSlidesManager
 import com.ma7moud3ly.quran.platform.getPlatform
+import com.ma7moud3ly.quran.platform.getPlaybackVideos
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -89,7 +92,95 @@ internal val testRecitationState = RecitationState(
 
 internal val testReadingSettings = ReadingSettings()
 
-internal val testSlidesManager = getSlidesManager()
+internal val testSlidesManager = SlidesManager(
+    slidesRepository = TestSlideRepoImpl(),
+    settingsRepository = TestSettingsRepositoryImpl()
+)
+
+private class TestSlideRepoImpl() : SlidesRepository {
+    override fun getSlides(): List<TvSlide> = getPlaybackVideos().slides
+    override fun getSlide(slideId: String): TvSlide? = null
+}
+
+private class TestSettingsRepositoryImpl() : SettingsRepository {
+    override val darkModeFlow: Flow<Boolean>
+        get() = TODO("Not yet implemented")
+    override val darkMode: Boolean
+        get() = TODO("Not yet implemented")
+
+    override suspend fun toggleDarkMode() {
+        TODO("Not yet implemented")
+    }
+
+    override val readingFont: AppFont
+        get() = TODO("Not yet implemented")
+
+    override fun setReadingFont(value: AppFont) {
+        TODO("Not yet implemented")
+    }
+
+    override val recitationFont: AppFont
+        get() = TODO("Not yet implemented")
+
+    override fun setRecitationFont(value: AppFont) {
+        TODO("Not yet implemented")
+    }
+
+    override val fontList: List<AppFont>
+        get() = TODO("Not yet implemented")
+    override val readingVersesMode: VersesMode
+        get() = TODO("Not yet implemented")
+
+    override fun setReadingVersesMode(versesMode: VersesMode) {
+        TODO("Not yet implemented")
+    }
+
+    override val recitationVersesMode: VersesMode
+        get() = TODO("Not yet implemented")
+
+    override fun setRecitationVersesMode(versesMode: VersesMode) {
+        TODO("Not yet implemented")
+    }
+
+    override val tvSlide: String
+        get() = "video1"
+
+    override fun setTvSlide(value: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getReadingSettings(): ReadingSettings {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateReadingSettings(settings: ReadingSettings) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getRecitationSettings(): RecitationSettings {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateRecitationSettings(settings: RecitationSettings) {
+        TODO("Not yet implemented")
+    }
+
+    override val readingSettingsFlow: Flow<ReadingSettings>
+        get() = TODO("Not yet implemented")
+    override val recitationSettingsFlow: Flow<RecitationSettings>
+        get() = TODO("Not yet implemented")
+
+    override fun saveLastReciters(reciters: List<Reciter>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getLastReciterIds(): List<String> {
+        TODO("Not yet implemented")
+    }
+
+}
+
+
 internal val testRecitationSettings = RecitationSettings()
 
 private class TestRecitationRepImpl(

@@ -1,4 +1,4 @@
-package com.ma7moud3ly.quran.managers
+package com.ma7moud3ly.quran.platform
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -16,7 +16,7 @@ import quran.composeapp.generated.resources.video7_thumbnail_jvm
 import quran.composeapp.generated.resources.video8_thumbnail_jvm
 import quran.composeapp.generated.resources.video9_thumbnail_jvm
 
-class JvmSlidesManager : SlidesManager {
+class JvmPlaybackVideos : PlaybackVideos {
     // drawables at src/jvmMain/composeResources/drawable
     override val slides: List<TvSlide> = listOf(
         TvSlide(
@@ -74,4 +74,4 @@ class JvmSlidesManager : SlidesManager {
     )
 }
 
-actual fun getSlidesManager(): SlidesManager = JvmSlidesManager()
+actual fun getPlaybackVideos(): PlaybackVideos = JvmPlaybackVideos()

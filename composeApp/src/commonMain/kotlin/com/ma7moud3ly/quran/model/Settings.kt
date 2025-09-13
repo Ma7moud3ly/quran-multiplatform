@@ -14,6 +14,5 @@ data class ReadingSettings(
 
 data class RecitationSettings(
     override val font: AppFont = FontsManager.first(),
-    override val versesMode: VersesMode = VersesMode.Multiple,
-    var tvSlide: Int = 0,
+    override val versesMode: VersesMode = VersesMode.Multiple
 ) : AppSettings

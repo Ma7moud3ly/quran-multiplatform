@@ -51,7 +51,6 @@ fun PlaybackScreen(
         when (event) {
             is PlaybackEvents.Back -> onBack()
             is PlaybackEvents.OpenSettings -> onSettings()
-            is PlaybackEvents.SaveTvSlide -> viewModel.setTvSlide(event.index)
         }
     }
 
@@ -64,9 +63,8 @@ fun PlaybackScreen(
             )
         } else {
             TvPlayback(
-                slides = remember { viewModel.tvSlides },
+                slidesManager = viewModel.getSlidesManager(),
                 mediaPlayerManager = mediaPlayerManager,
-                appSettings = { appSettings },
                 uiEvents = ::uiEvents
             )
         }
