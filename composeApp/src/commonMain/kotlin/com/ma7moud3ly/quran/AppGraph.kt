@@ -255,9 +255,8 @@ fun AppGraph(
         }
 
         dialog<AppRoutes.Recitation.Download.Confirm> {
-            val recitation by viewModel.recitationFlow.collectAsState()
             ConfirmDownloadDialog(
-                recitation = recitation,
+                recitationFlow = viewModel.recitationFlow,
                 onDownload = {
                     navController.popBackStack()
                     navController.navigate(AppRoutes.Recitation.Download)

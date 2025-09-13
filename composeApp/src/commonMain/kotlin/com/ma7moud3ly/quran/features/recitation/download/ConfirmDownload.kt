@@ -10,18 +10,22 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.ma7moud3ly.quran.model.Recitation
 import com.ma7moud3ly.quran.model.testRecitation
+import com.ma7moud3ly.quran.platform.Log
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.DialogHeader
 import com.ma7moud3ly.quran.ui.MyButton
 import com.ma7moud3ly.quran.ui.MyMiniDialog
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
@@ -39,8 +43,8 @@ import quran.composeapp.generated.resources.reciter
 @Composable
 private fun ConfirmDownloadDialogPreview() {
     AppTheme(darkTheme = true) {
-        ConfirmDownloadDialogContent(
-            recitation = testRecitation,
+        ConfirmDownloadDialog(
+            recitationFlow = flow { testRecitation },
             onDownload = {},
             onPlayOnline = {},
             onDismiss = {}
@@ -52,8 +56,8 @@ private fun ConfirmDownloadDialogPreview() {
 @Composable
 private fun ConfirmDownloadDialogPreviewLight() {
     AppTheme(darkTheme = false) {
-        ConfirmDownloadDialogContent(
-            recitation = testRecitation,
+        ConfirmDownloadDialog(
+            recitationFlow = flow { testRecitation },
             onDownload = {},
             onPlayOnline = {},
             onDismiss = {}
@@ -61,33 +65,21 @@ private fun ConfirmDownloadDialogPreviewLight() {
     }
 }
 
-@Composable
-fun ConfirmDownloadDialog(
-    recitation: Recitation?,
-    onDownload: () -> Unit,
-    onPlayOnline: () -> Unit,
-    onDismiss: () -> Unit
-) {
-    if (recitation != null) {
-        ConfirmDownloadDialogContent(
-            recitation = recitation,
-            onDownload = onDownload,
-            onPlayOnline = onPlayOnline,
-            onDismiss = onDismiss
-        )
-    }
-}
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ConfirmDownloadDialogContent(
-    recitation: Recitation,
+fun ConfirmDownloadDialog(
+    recitationFlow: Flow<Recitation?>,
     onDownload: () -> Unit,
     onPlayOnline: () -> Unit,
     onDismiss: () -> Unit
 ) {
-    val reciter by remember(recitation) { recitation.reciterState }
+    val recitation by recitationFlow.collectAsState(null)
+    if (recitation == null) return
+    val reciter  = recitation!!.currentReciter
+    LaunchedEffect(reciter) {
+        Log.i("ConfirmDownloadDialogContent", "recitation: $reciter")
+    }
 
     MyMiniDialog(
         onDismissRequest = onDismiss,
@@ -110,7 +102,7 @@ private fun ConfirmDownloadDialogContent(
         Spacer(Modifier.height(8.dp))
         ItemDetails(
             title = Res.string.recite_chapter,
-            value = recitation.chapter.name
+            value = recitation?.chapter?.name.orEmpty()
         )
         ItemDetails(
             title = Res.string.reciter,

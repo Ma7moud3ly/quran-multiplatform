@@ -129,7 +129,7 @@ fun DownloadDialogContent(
                         title = Res.string.recite_chapter,
                         value = recitation.chapter.name
                     )
-                    val reciter by remember(recitation) { recitation.reciterState }
+                    val reciter = recitation.currentReciter
                     ItemDetails(
                         title = Res.string.reciter,
                         value = reciter.name

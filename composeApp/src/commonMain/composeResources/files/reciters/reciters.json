@@ -125,6 +125,10 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/abdulbasit-morattal-64"
+      },
+      {
+        "quality": 64,
         "id": "Abdul_Basit_Murattal"
       },
       {
@@ -135,7 +139,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://archive.org/download/192kb----morattal----quran----6236---ayaat-----__verse--by---verse----_-by--ab_525"
+        "id": "https://github.com/quran-by-verses/abdulbasit-morattal-64/releases/download/v1.0.0"
       },
       {
         "quality": 192,
@@ -149,13 +153,17 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/abdulbasit-mojawwad-64"
+      },
+      {
+        "quality": 64,
         "id": "AbdulSamad"
       }
     ],
     "download": [
       {
         "quality": 64,
-        "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--abd-albasit---every-sorah-in-folder-114-file"
+        "id": "https://github.com/quran-by-verses/abdulbasit-mojawwad-64/releases/download/v1.0.0"
       },
       {
         "quality": 128,
@@ -189,10 +197,19 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-qasr-64"
+      },
+      {
+        "quality": 64,
         "id": "husary_qasr"
       }
     ],
-    "download": []
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-qasr-64/releases/download/v1.0.0"
+      }
+    ]
   },
   {
     "id": "hosary/mogawwad",
@@ -239,10 +256,35 @@
     ]
   },
   {
+    "id": "hosary/warsh",
+    "name": "محمود خليل الحصري – رواية ورش",
+    "listen": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-warsh-64"
+      }
+    ],
+    "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-warsh-64/releases/download/v1.0.0"
+      }
+    ]
+  },
+  {
     "id": "hosary/qaloon",
     "name": "محمود خليل الحصري – رواية قالون",
-    "listen": [],
+    "listen": [
+      {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/alhosary-qaloon-32"
+      }
+    ],
     "download": [
+      {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/alhosary-qaloon-32/releases/download/v1.0.0"
+      },
       {
         "quality": 32,
         "id": "https://archive.org/download/32kb------6236-ayah--verse-by-verse----quran-----mp3----32kb___by__alhosary---"
@@ -342,13 +384,17 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64"
+      },
+      {
+        "quality": 64,
         "id": "Maher_AlMuaiqly"
       }
     ],
     "download": [
       {
         "quality": 64,
-        "id": "https://archive.org/download/128kb__---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by"
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64/releases/download/v1.0.0"
       },
       {
         "quality": 128,

@@ -21,11 +21,7 @@ data class Recitation(
     }
 
     private var reciterIndex = 0
-
-    /** The currently selected [Reciter]. */
     val currentReciter: Reciter get() = reciters[reciterIndex]
-
-    /** A [mutableStateOf] holding the current [Reciter], allowing observation of changes. */
     val reciterState = mutableStateOf(currentReciter)
 
     /**
