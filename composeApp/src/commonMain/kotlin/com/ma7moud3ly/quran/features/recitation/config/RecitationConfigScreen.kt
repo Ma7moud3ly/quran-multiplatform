@@ -55,7 +55,7 @@ fun RecitationConfigScreen(
         val lastVerse = recitationState.getLastVerse()
         val recitation = Recitation(
             chapter = chapter.copy(verses = chapter.verses.subList(0, lastVerse)),
-            reciters = reciters,
+            reciters = ArrayList(reciters),
             screenMode = screenMode,
             selectedVerse = recitationState.getFirstVerse(),
             lastVerseNumber = lastVerse,

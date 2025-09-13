@@ -38,10 +38,7 @@ object AppRoutes {
             data object Confirm
         }
 
-        @Serializable
-        data object NotAvailable
-
-        object Search {
+        object Pick {
             @Serializable
             data class Chapter(val chapterId: Int? = null)
 

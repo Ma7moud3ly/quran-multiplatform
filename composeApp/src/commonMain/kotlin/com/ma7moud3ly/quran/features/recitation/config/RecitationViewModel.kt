@@ -144,7 +144,7 @@ class RecitationViewModel(
 
     fun removeReciter(reciter: Reciter) {
         reciters.remove(reciter)
-        if (reciters.size == 1) recitationState.value.setPlaybackMode(PlaybackMode.Single)
+        if (reciters.size <= 1) recitationState.value.setPlaybackMode(PlaybackMode.Single)
     }
 
     fun saveLastReciters() {

@@ -20,7 +20,9 @@ import org.koin.compose.viewmodel.koinViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val openPlaybackScreen = intent.getBooleanExtra(PlaybackService.OPEN_PLAY_BACK, false)
+        val openPlaybackScreen = intent.getBooleanExtra(
+            PlaybackService.OPEN_PLAY_BACK, false
+        )
         setContent {
             val viewModel: SettingsViewModel = koinViewModel()
             ConfigureSystemBars(viewModel = viewModel)

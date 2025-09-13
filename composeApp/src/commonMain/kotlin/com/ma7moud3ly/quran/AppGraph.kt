@@ -202,12 +202,12 @@ fun AppGraph(
                         }
 
                         is RecitationEvents.ChaptersDialog -> {
-                            val route = AppRoutes.Recitation.Search.Chapter(it.chapterId)
+                            val route = AppRoutes.Recitation.Pick.Chapter(it.chapterId)
                             navController.navigate(route)
                         }
 
                         is RecitationEvents.RecitersDialog -> {
-                            val route = AppRoutes.Recitation.Search.Reciter(
+                            val route = AppRoutes.Recitation.Pick.Reciter(
                                 reciterId = it.reciterId,
                                 filter = it.filter
                             )
@@ -229,8 +229,8 @@ fun AppGraph(
                 }
             )
         }
-        dialog<AppRoutes.Recitation.Search.Chapter> {
-            val chapterId = it.toRoute<AppRoutes.Recitation.Search.Chapter>().chapterId
+        dialog<AppRoutes.Recitation.Pick.Chapter> {
+            val chapterId = it.toRoute<AppRoutes.Recitation.Pick.Chapter>().chapterId
             PickChapterDialog(
                 selectedChapterId = chapterId ?: 1,
                 onBack = { navController.popBackStack() },
@@ -241,10 +241,10 @@ fun AppGraph(
             )
         }
 
-        dialog<AppRoutes.Recitation.Search.Reciter> {
-            val reciterRoute = it.toRoute<AppRoutes.Recitation.Search.Reciter>()
+        dialog<AppRoutes.Recitation.Pick.Reciter> {
+            val reciterRoute = it.toRoute<AppRoutes.Recitation.Pick.Reciter>()
             PickReciterDialog(
-                selectedReciterId = reciterRoute.reciterId ?: "",
+                selectedReciterId = reciterRoute.reciterId.orEmpty(),
                 filterReciters = reciterRoute.filter,
                 onBack = { navController.popBackStack() },
                 onSelectReciter = { reciter ->
