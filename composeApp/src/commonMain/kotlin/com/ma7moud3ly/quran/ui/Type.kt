@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.platform.getPlatform
+import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.platform.isWasmJs
 import org.jetbrains.compose.resources.Font
 import quran.composeapp.generated.resources.Res
@@ -18,6 +19,7 @@ import quran.composeapp.generated.resources.cairo_light
 import quran.composeapp.generated.resources.cairo_medium
 import quran.composeapp.generated.resources.cairo_regular
 import quran.composeapp.generated.resources.cairo_thin
+import quran.composeapp.generated.resources.elgharib_noon_hafs
 import quran.composeapp.generated.resources.hafs_smart_regular
 import quran.composeapp.generated.resources.noto_kufi_black
 import quran.composeapp.generated.resources.noto_kufi_bold
@@ -47,6 +49,13 @@ fun cairoFontFamily() = FontFamily(
     Font(Res.font.cairo_bold, FontWeight.Bold),
     Font(Res.font.cairo_black, FontWeight.Black),
 )
+
+@Composable
+fun tvFontFamily(): FontFamily {
+    val res = if (getPlatform().isMobile) Res.font.elgharib_noon_hafs
+    else Res.font.uthmanic_hafs_bold
+    return FontFamily(Font(res))
+}
 
 @Composable
 fun basmeallahFontFamily(): FontFamily {

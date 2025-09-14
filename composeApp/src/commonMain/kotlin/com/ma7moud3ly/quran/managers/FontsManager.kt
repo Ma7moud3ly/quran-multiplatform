@@ -1,5 +1,7 @@
 package com.ma7moud3ly.quran.managers
 
+import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.model.AppFont
 import org.koin.core.annotation.Single
 import quran.composeapp.generated.resources.Res
@@ -39,7 +41,8 @@ class FontsManager() {
                 id = "amiri_colored",
                 name = "خط الأميرى الملون",
                 fontType = Res.font.amiri_quran_colored,
-                fixedLineHeight = false
+                letterSpacing = 2.sp,
+                lineHeight = 2.5.em
             ),
             AppFont(
                 id = "elgharib_noon",

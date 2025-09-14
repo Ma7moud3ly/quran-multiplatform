@@ -355,6 +355,54 @@
     "download": []
   },
   {
+    "id": "maher/murattal",
+    "name": "ماهر المعيقلي - مرتل",
+    "listen": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-128"
+      },
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64"
+      },
+      {
+        "quality": 64,
+        "id": "Maher_AlMuaiqly"
+      }
+    ],
+    "download": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-128/releases/download/v1.0.0"
+      },
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64/releases/download/v1.0.0"
+      },
+      {
+        "quality": 128,
+        "id": "https://archive.org/download/128kb__---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by"
+      }
+    ]
+  },
+  {
+    "id": "maher/mogawwad",
+    "name": "ماهر المعيقلي - مجود",
+    "listen": [
+      {
+        "quality": 96,
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly_mogawwad-96"
+      }
+    ],
+    "download": [
+      {
+        "quality": 96,
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly_mogawwad-96/releases/download/v1.0.0"
+      }
+    ]
+  },
+  {
     "id": "hozayfi",
     "name": "علي عبد الرحمن الحذيفي",
     "listen": [
@@ -375,30 +423,6 @@
       {
         "quality": 128,
         "id": "https://archive.org/download/128kb--quran----6236---ayaat-----__verse--by---verse----_-by--alhozifi-------f_443"
-      }
-    ]
-  },
-  {
-    "id": "maher",
-    "name": "ماهر المعقلي",
-    "listen": [
-      {
-        "quality": 64,
-        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64"
-      },
-      {
-        "quality": 64,
-        "id": "Maher_AlMuaiqly"
-      }
-    ],
-    "download": [
-      {
-        "quality": 64,
-        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64/releases/download/v1.0.0"
-      },
-      {
-        "quality": 128,
-        "id": "https://archive.org/download/128kb__---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by"
       }
     ]
   },

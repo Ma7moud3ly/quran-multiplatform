@@ -159,7 +159,6 @@ internal fun ItemVerse(
     onCopyVerse: () -> Unit
 ) {
     val clipboard = LocalClipboardManager.current
-    val lineHeight by remember(font) { derivedStateOf { font.getLineHeight() } }
     val interactionSource = remember { MutableInteractionSource() }
 
     fun copyVerse() {
@@ -183,7 +182,8 @@ internal fun ItemVerse(
                 color = MaterialTheme.colorScheme.onPrimary,
                 textAlign = textAlign,
                 fontSize = font.fontSize,
-                lineHeight = 2.em
+                lineHeight = font.lineHeight,
+                letterSpacing = font.letterSpacing
             ),
             autoSize = if (autoSize) TextAutoSize.StepBased(
                 minFontSize = 5.sp,

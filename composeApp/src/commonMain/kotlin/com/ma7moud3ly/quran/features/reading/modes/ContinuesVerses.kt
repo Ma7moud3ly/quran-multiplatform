@@ -21,7 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -114,7 +113,6 @@ internal fun SectionContinuesVerses(
     val coroutineScope = rememberCoroutineScope()
     val selectedVerse by versesManager.selectedVerse.collectAsState(null)
     val hafsFont = SpanStyle(fontFamily = hafsSmartFamily())
-    val lineHeight by remember(font) { derivedStateOf { font.getLineHeight() } }
     val showBasmeallah = chapter.id != 1 && chapter.id != 9
     var textLayoutResult by remember { mutableStateOf<TextLayoutResult?>(null) }
     var verseAnnotated by remember(AnnotatedString) {
@@ -211,7 +209,8 @@ internal fun SectionContinuesVerses(
                         )
                     ),
                     fontSize = font.fontSize,
-                    lineHeight = lineHeight,
+                    lineHeight = font.lineHeight,
+                    letterSpacing = font.letterSpacing,
                     textAlign = TextAlign.Justify,
                     color = MaterialTheme.colorScheme.onPrimary,
                     onTextLayout = { textLayoutResult = it }

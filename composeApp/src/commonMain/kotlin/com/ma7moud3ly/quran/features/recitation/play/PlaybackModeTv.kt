@@ -41,7 +41,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -71,16 +70,15 @@ import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.SwipeableBox
+import com.ma7moud3ly.quran.ui.tvFontFamily
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.back
 import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.elgharib_noon_hafs
 import quran.composeapp.generated.resources.forward
 import quran.composeapp.generated.resources.pause
 import quran.composeapp.generated.resources.play
@@ -410,7 +408,7 @@ private fun ItemVerse(
         Text(
             text = formatVerse(verse()),
             textAlign = TextAlign.Justify,
-            fontFamily = FontFamily(Font(Res.font.elgharib_noon_hafs)),
+            fontFamily = tvFontFamily(),
             fontSize = if (platform.isMobile) 16.sp else 20.sp,
             lineHeight = 2.em,
             color = color,
