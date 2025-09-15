@@ -13,7 +13,6 @@ import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.model.Recitation
-import com.ma7moud3ly.quran.model.RecitationState
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.isSingleReciter
 import com.ma7moud3ly.quran.model.toPlaybackMode
@@ -60,8 +59,8 @@ class RecitationViewModel(
             val recitation = Recitation(
                 reciters = listOf(reciter),
                 chapter = chapter,
-                selectedVerse = history.verseId,
-                lastVerseNumber = chapter.verses.last().id,
+                firstVerse = history.verseId,
+                lastVerse = chapter.verses.last().id,
                 screenMode = history.screenModeName,
                 reelMode = history.reelMode,
                 playInBackground = history.playInBackground,
@@ -166,7 +165,7 @@ class RecitationViewModel(
                 clear()
                 addAll(lastReciters)
             }
-            val playbackMode = if (lastReciters.size > 1) PlaybackMode.Multiple
+            val playbackMode = if (lastReciters.size > 1) PlaybackMode.Repetitive
             else PlaybackMode.Single
             recitationState.value.setPlaybackMode(playbackMode)
             reciters.firstOrNull()?.let { getDownloadedChapters(it) }

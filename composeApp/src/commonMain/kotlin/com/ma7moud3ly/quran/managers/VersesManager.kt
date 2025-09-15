@@ -46,6 +46,13 @@ class VersesManager(
     val selectedVerseIndex: Int get() = selectedVerseId - 1
 
     /**
+     * The index of the currently selected verse relative to the `initialVerse`.
+     * This is calculated as the difference between the ID of the `selectedVerse` and the ID of the `initialVerse`.
+     * It represents the position of the selected verse within the range starting from the `initialVerse`.
+     */
+    val selectedRangeIndex get() = selectedVerseId - initialVerse.id
+
+    /**
      * Handles scrolling the [LazyListState] to keep the [selectedVerse] visible.
      * If the selected verse is not visible, it scrolls to it.
      * Uses `animateScrollToItem` for short distances and `scrollToItem` for longer distances.

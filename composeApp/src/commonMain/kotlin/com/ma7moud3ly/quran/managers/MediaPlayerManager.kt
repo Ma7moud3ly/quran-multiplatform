@@ -73,10 +73,12 @@ class MediaPlayerManager(
     val playInBackground get() = recitation.playInBackground
     val chapterName get() = recitation.chapter.chapterFullName()
     val reciterState get() = recitation.reciterState
-    val currentVerseState get() = versesManager.selectedVerse
     val selectedVerseId get() = versesManager.selectedVerseId
-    val loops get() = recitation.loops
-    var hasReleased: Boolean = true
+    val currentVerseState get() = versesManager.selectedVerse
+    private val canChangeReciter get() = recitation.canChangeReciter(versesManager.selectedRangeIndex)
+    private val loops get() = recitation.loops
+    private var hasReleased: Boolean = true
+
 
     /** Mutable state indicating if a verse is currently being downloaded. */
     val isDownloadingVerse = mutableStateOf(false)
@@ -114,7 +116,7 @@ class MediaPlayerManager(
         hasReleased = false
         versesManager = VersesManager(
             verses = recitation.chapter.verses,
-            initialVerseId = recitation.selectedVerse
+            initialVerseId = recitation.firstVerse
         )
         if (platform.isAndroid) {
             if (playInBackground) {
@@ -217,19 +219,25 @@ class MediaPlayerManager(
                 reciter = recitation.currentReciter
             }
 
-            PlaybackMode.Multiple -> {
+            PlaybackMode.Repetitive -> {
                 if (versesManager.hasNext()) {
                     nextVerse = versesManager.getNextVerse()
                     reciter = recitation.currentReciter
                 } else {
                     nextVerse = versesManager.initialVerse
-                    reciter = recitation.geNextReciter(loop = false)
+                    reciter = recitation.getNextReciter(loop = false)
                 }
             }
 
             PlaybackMode.Shuffling -> {
                 nextVerse = versesManager.getNextVerse()
-                reciter = recitation.geNextReciter(loop = true)
+                reciter = recitation.getNextReciter(loop = true)
+            }
+
+            PlaybackMode.Distributed -> {
+                nextVerse = versesManager.getNextVerse()
+                reciter = if (canChangeReciter) recitation.getNextReciter(loop = false)
+                else recitation.currentReciter
             }
         }
 
@@ -362,7 +370,7 @@ class MediaPlayerManager(
                     nextVerse
                 }
 
-                PlaybackMode.Multiple -> {
+                PlaybackMode.Repetitive -> {
                     val nextVerse = versesManager.nextForwardVerse()
                     if (nextVerse) {
                         true
@@ -374,9 +382,17 @@ class MediaPlayerManager(
                 }
 
                 PlaybackMode.Shuffling -> {
-                    recitation.rotateReciters()
                     val nextVerse = versesManager.nextForwardVerse()
+                    if (nextVerse) recitation.rotateReciters()
                     nextVerse
+                }
+
+                PlaybackMode.Distributed -> {
+                    if (versesManager.hasNext()) {
+                        if (canChangeReciter) recitation.nextForwardReciter()
+                        val nextVerse = versesManager.nextForwardVerse()
+                        nextVerse
+                    } else false
                 }
             }
 
@@ -401,7 +417,7 @@ class MediaPlayerManager(
                     previousVerse
                 }
 
-                PlaybackMode.Multiple -> {
+                PlaybackMode.Repetitive -> {
                     val previousVerse = versesManager.previousVerseInRange()
                     if (previousVerse) {
                         Log.v(TAG, "previousVerse $previousVerse")
@@ -418,6 +434,15 @@ class MediaPlayerManager(
                     if (versesManager.hasPrevious()) {
                         recitation.rotateBackReciters()
                         val previousVerse = versesManager.previousVerseInRange()
+                        Log.v(TAG, "previousVerse $previousVerse")
+                        previousVerse
+                    } else false
+                }
+
+                PlaybackMode.Distributed -> {
+                    if (versesManager.hasPrevious()) {
+                        val previousVerse = versesManager.previousVerseInRange()
+                        if (canChangeReciter) recitation.previousReciter()
                         Log.v(TAG, "previousVerse $previousVerse")
                         previousVerse
                     } else false

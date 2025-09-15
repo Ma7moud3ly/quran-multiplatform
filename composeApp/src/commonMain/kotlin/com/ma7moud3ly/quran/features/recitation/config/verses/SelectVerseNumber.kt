@@ -27,7 +27,9 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -102,33 +104,45 @@ fun SelectVerseNumberDialog(
     }
 
     var number by remember { mutableStateOf<Int?>(current) }
-    var textNumber by remember { mutableStateOf(current.toString()) }
+    var textNumber by remember { mutableStateOf(TextFieldValue("")) }
     val focusRequester = remember { FocusRequester() }
     val keyboardController = LocalSoftwareKeyboardController.current
+
+    fun setTextFieldValue(value: Any?) {
+        if (value == null) return
+        textNumber = TextFieldValue(
+            text = value.toString(),
+            selection = TextRange(value.toString().length)
+        )
+    }
+
+    LaunchedEffect(Unit) {
+        setTextFieldValue(current)
+    }
 
     fun incrementNumber() {
         if (number == null) number = current
         else if (number!! < endValue) number = number!! + 1
-        textNumber = number.toString()
+        setTextFieldValue(number)
     }
 
     fun decrementNumber() {
         if (number == null) number = current
         else if (number!! > startValue) number = number!! - 1
-        textNumber = number.toString()
+        setTextFieldValue(number)
     }
 
     fun resetToStaring() {
         number = startValue
-        textNumber = startValue.toString()
+        setTextFieldValue(startValue)
     }
 
     fun resetToEnd() {
         number = endValue
-        textNumber = endValue.toString()
+        setTextFieldValue(endValue)
     }
 
-    fun getInput(value: String) {
+    fun getNumber(value: String) {
         val newNumber = value.toIntOrNull()
         number = if (newNumber != null && newNumber <= endValue && newNumber >= startValue) {
             newNumber
@@ -175,9 +189,8 @@ fun SelectVerseNumberDialog(
                 value = textNumber,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 onValueChange = { value ->
-                    getInput(value)
-                    textNumber = value
-
+                    getNumber(value.text)
+                    setTextFieldValue(value.text)
                 },
                 modifier = Modifier.weight(1f).focusRequester(focusRequester),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(

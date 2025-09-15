@@ -67,15 +67,15 @@ internal val testReciter = Reciter(
 internal val testRecitation = Recitation(
     chapter = testChapter,
     reciters = listOf(testReciter),
-    selectedVerse = 1,
-    lastVerseNumber = 6,
+    firstVerse = 1,
+    lastVerse = 6,
 )
 
 internal val testRecitationWithReelMode = Recitation(
     chapter = testChapter,
     reciters = listOf(testReciter),
-    selectedVerse = 1,
-    lastVerseNumber = 6,
+    firstVerse = 1,
+    lastVerse = 6,
     reelMode = true
 )
 

@@ -58,7 +58,8 @@ import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.RecitationState
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.asVerseNumber
-import com.ma7moud3ly.quran.model.isShufflingReciters
+import com.ma7moud3ly.quran.model.isDistributed
+import com.ma7moud3ly.quran.model.isShuffling
 import com.ma7moud3ly.quran.model.isSingleReciter
 import com.ma7moud3ly.quran.model.testChapter
 import com.ma7moud3ly.quran.model.testDownloadedChapter
@@ -93,10 +94,11 @@ import quran.composeapp.generated.resources.reciter_add_multiple
 import quran.composeapp.generated.resources.reciter_more
 import quran.composeapp.generated.resources.settings_background
 import quran.composeapp.generated.resources.settings_background_description
+import quran.composeapp.generated.resources.settings_change_reciter
+import quran.composeapp.generated.resources.settings_distributed
 import quran.composeapp.generated.resources.settings_reel
 import quran.composeapp.generated.resources.settings_reel_description
-import quran.composeapp.generated.resources.settings_shuffle
-import quran.composeapp.generated.resources.settings_shuffle_description
+import quran.composeapp.generated.resources.settings_shuffled
 
 
 @Preview
@@ -268,7 +270,7 @@ private fun SectionReciters(
     var playbackMode by remember { state.playbackModeState }
 
     fun initMultipleReciterMode() {
-        playbackMode = PlaybackMode.Multiple
+        playbackMode = PlaybackMode.Repetitive
         onPickReciter()
     }
 
@@ -494,33 +496,53 @@ private fun ShuffleMode(
     recitationState: () -> RecitationState
 ) {
     val state = recitationState()
+    if (state.singleVerseState.value) return
     var playbackMode by remember { state.playbackModeState }
-
     HorizontalDivider()
     Column(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
     ) {
+        SettingsLabel(Res.string.settings_change_reciter)
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            SettingsLabel(Res.string.settings_shuffle)
+            Text(
+                text = stringResource(Res.string.settings_shuffled),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimary,
+                textAlign = TextAlign.Justify
+            )
             Spacer(modifier = Modifier.weight(1f))
             MySwitch(
-                enabled = { playbackMode.isShufflingReciters },
+                enabled = { playbackMode.isShuffling },
                 onToggle = { enable ->
                     playbackMode = if (enable) PlaybackMode.Shuffling
-                    else PlaybackMode.Multiple
+                    else PlaybackMode.Repetitive
                 }
             )
         }
-        Text(
-            text = stringResource(Res.string.settings_shuffle_description),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onPrimary,
-            textAlign = TextAlign.Justify
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Text(
+                text = stringResource(Res.string.settings_distributed),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimary,
+                textAlign = TextAlign.Justify
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            MySwitch(
+                enabled = { playbackMode.isDistributed },
+                onToggle = { enable ->
+                    playbackMode = if (enable) PlaybackMode.Distributed
+                    else PlaybackMode.Repetitive
+                }
+            )
+        }
     }
 }
 

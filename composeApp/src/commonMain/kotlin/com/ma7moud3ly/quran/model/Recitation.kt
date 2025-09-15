@@ -1,13 +1,14 @@
 package com.ma7moud3ly.quran.model
 
 import androidx.compose.runtime.mutableStateOf
+import com.ma7moud3ly.quran.platform.Log
 
 
 data class Recitation(
     val reciters: List<Reciter>,
     val chapter: Chapter,
-    val selectedVerse: Int,
-    val lastVerseNumber: Int,
+    val firstVerse: Int,
+    val lastVerse: Int,
     val screenMode: ScreenMode = ScreenMode.Normal,
     val reelMode: Boolean = false,
     val playInBackground: Boolean = false,
@@ -18,6 +19,24 @@ data class Recitation(
 
     init {
         require(reciters.isNotEmpty()) { println("reciters can't be empty") }
+    }
+
+    private val rotationFactor: Int = {
+        if (playbackMode.isDistributed) {
+            val n = lastVerse + 1 - firstVerse
+            val k = reciters.size
+            val ceil = (n + k - 1) / k       // ceiling division
+            val last = n - (k - 1) * ceil    // last slot if we use ceil
+            if (last == 0) n / k else ceil
+        } else 1
+    }.invoke()
+
+    init {
+        Log.v(
+            "Recitation",
+            "verses: ${reciters.size} ,firstVerse: $firstVerse ,lastVerse: $lastVerse"
+        )
+        Log.v("Recitation", "rotationFactor - $rotationFactor")
     }
 
     private var reciterIndex = 0
@@ -53,6 +72,16 @@ data class Recitation(
     fun singleReciter(): Boolean = reciters.size == 1
 
     /**
+     * Determines if the reciter should be changed based on the current verse number.
+     * This is used in distributed playback mode where different reciters read portions of the chapter.
+     * The reciter changes when the verse number is a multiple of the [rotationFactor].
+     *
+     * @param verseInex The current verse number (1-based index).
+     * @return True if the reciter should be changed, false otherwise.
+     */
+    fun canChangeReciter(verseInex: Int) = verseInex > 0 && (verseInex + 1) % rotationFactor == 0
+
+    /**
      * Advances to the next reciter in the list if available.
      * Updates [currentReciter] and [reciterState].
      * @return True if successfully moved to the next reciter,
@@ -68,7 +97,7 @@ data class Recitation(
         }
     }
 
-    fun geNextReciter(loop: Boolean = false): Reciter? {
+    fun getNextReciter(loop: Boolean = false): Reciter? {
         return if (reciterIndex + 1 < reciters.size) {
             reciters[reciterIndex + 1]
         } else if (loop) {
@@ -200,30 +229,6 @@ sealed interface ScreenMode {
     data object Normal : ScreenMode
     data object Tv : ScreenMode
 }
-
-sealed interface PlaybackMode {
-    data object Single : PlaybackMode
-    data object Multiple : PlaybackMode
-    data object Shuffling : PlaybackMode
-}
-
-val PlaybackMode.isSingleReciter get() = this is PlaybackMode.Single
-val PlaybackMode.isMultipleReciters get() = this is PlaybackMode.Multiple
-val PlaybackMode.isShufflingReciters get() = this is PlaybackMode.Shuffling
-val PlaybackMode.toInt
-    get() = when (this) {
-        is PlaybackMode.Single -> 0
-        is PlaybackMode.Multiple -> 1
-        is PlaybackMode.Shuffling -> 2
-    }
-val Int.toPlaybackMode
-    get() = when (this) {
-        0 -> PlaybackMode.Single
-        1 -> PlaybackMode.Multiple
-        2 -> PlaybackMode.Shuffling
-        else -> PlaybackMode.Single
-    }
-
 
 data class RecitationState(
     private val canChangeChapter: Boolean = true,
