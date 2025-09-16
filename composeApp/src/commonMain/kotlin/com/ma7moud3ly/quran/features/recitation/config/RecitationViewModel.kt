@@ -165,7 +165,7 @@ class RecitationViewModel(
                 clear()
                 addAll(lastReciters)
             }
-            val playbackMode = if (lastReciters.size > 1) PlaybackMode.Repetitive
+            val playbackMode = if (lastReciters.size > 1) PlaybackMode.Distributed
             else PlaybackMode.Single
             recitationState.value.setPlaybackMode(playbackMode)
             reciters.firstOrNull()?.let { getDownloadedChapters(it) }

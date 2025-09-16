@@ -38,8 +38,10 @@
     <string name="settings_save">حفظ الإعدادات</string>
     <string name="settings_night">الوضع الليلي</string>
     <string name="settings_change_reciter">تبديل القراء</string>
-    <string name="settings_shuffled">تبديل القارئ مع كل آية</string>
-    <string name="settings_distributed">تقسيم التلاوة بين القراء</string>
+    <string name="settings_mode_shuffled">تبديل القارئ مع كل آية</string>
+    <string name="settings_mode_distributed">تقسيم التلاوة بين القراء</string>
+    <string name="settings_mode_sequential">تكرار التلاوة كاملة مع كل قارئ</string>
+    <string name="settings_mode_repetitive">تكرار الآية الواحدة بكل القراء</string>
     <string name="settings_reel">وضع Reel</string>
     <string name="settings_reel_description">تغير حجم مشغل الآيات إلي 9:16 حتي يتوافق مع أبعاد الريلز علي مواقع التواصل الإجتماعي إذا أردت تصوير الشاشة.</string>
     <string name="settings_background">تشغيل في الخلفية</string>

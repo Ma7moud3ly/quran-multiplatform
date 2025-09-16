@@ -93,8 +93,8 @@ class SlidesManager(
      */
     fun toggleSlideControls() {
         slideControls.value = when (slideControls.value) {
-            is SlideControls.ShowControls -> SlideControls.ShowReciter
-            is SlideControls.ShowReciter -> SlideControls.ShowVerse
+            is SlideControls.ShowControls -> SlideControls.ShowTitle
+            is SlideControls.ShowTitle -> SlideControls.ShowVerse
             is SlideControls.ShowVerse -> SlideControls.HideAll
             else -> SlideControls.ShowControls
         }

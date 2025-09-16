@@ -166,7 +166,7 @@ class PlaybackService : Service() {
 
         val reciter = getString(
             R.string.playback_reciter,
-            mediaPlayerManager.getReciter().name
+            mediaPlayerManager.reciterName.value
         )
         val chapter = getString(
             R.string.playback_chapter,

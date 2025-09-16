@@ -199,7 +199,7 @@ private fun Header(
     onBack: () -> Unit
 ) {
     val isPlaying by remember(mediaPlayer) { mediaPlayer.isPlaying }
-    val reciter by remember { mediaPlayer.reciterState }
+    val reciterName by remember { mediaPlayer.reciterName }
     val chapterName = mediaPlayer.chapterName
 
     Column {
@@ -218,7 +218,7 @@ private fun Header(
             },
             title = {
                 ReciterName(
-                    reciterName = reciter.name,
+                    reciterName = reciterName,
                     fontSize = 16.sp,
                     modifier = Modifier.fillMaxWidth(0.95f),
                     textModifier = Modifier.weight(1f)
@@ -246,7 +246,7 @@ private fun Header(
             },
             title = {
                 ReciterName(
-                    reciterName = reciter.name,
+                    reciterName = reciterName,
                     fontSize = 16.sp,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -275,7 +275,7 @@ private fun HeaderInReelMode(
 ) {
 
     var showControls by remember { mutableStateOf(true) }
-    val reciter by remember { mediaPlayer.reciterState }
+    val reciterName by remember { mediaPlayer.reciterName }
     LaunchedEffect(showControls) {
         if (showControls) {
             delay(5000)
@@ -305,7 +305,7 @@ private fun HeaderInReelMode(
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     Text(
-                        text = reciter.name,
+                        text = reciterName,
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onPrimary,
                         modifier = Modifier

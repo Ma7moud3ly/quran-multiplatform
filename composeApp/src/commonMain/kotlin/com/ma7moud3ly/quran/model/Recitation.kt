@@ -1,7 +1,9 @@
 package com.ma7moud3ly.quran.model
 
-import androidx.compose.runtime.mutableStateOf
 import com.ma7moud3ly.quran.platform.Log
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 
 data class Recitation(
@@ -25,23 +27,30 @@ data class Recitation(
         if (playbackMode.isDistributed) {
             val n = lastVerse + 1 - firstVerse
             val k = reciters.size
-            val ceil = (n + k - 1) / k       // ceiling division
-            val last = n - (k - 1) * ceil    // last slot if we use ceil
-            if (last == 0) n / k else ceil
+            if (n < k) 1
+            else {
+                val ceil = (n + k - 1) / k       // ceiling division
+                val last = n - (k - 1) * ceil    // last slot if we use ceil
+                if (last <= 0) n / k else ceil
+            }
         } else 1
     }.invoke()
+
+    private var reciterIndex = 0
+    val currentReciter: Reciter get() = reciters[reciterIndex]
+    private val _reciterFlow = MutableStateFlow<Reciter?>(reciters.first())
+    val reciterFlow: Flow<Reciter?> = _reciterFlow.asStateFlow()
 
     init {
         Log.v(
             "Recitation",
-            "verses: ${reciters.size} ,firstVerse: $firstVerse ,lastVerse: $lastVerse"
+            "reciters: ${reciters.size} ,firstVerse: $firstVerse ,lastVerse: $lastVerse"
         )
         Log.v("Recitation", "rotationFactor - $rotationFactor")
+        Log.v("Recitation", "Reciter - ${_reciterFlow.value?.name}")
+
     }
 
-    private var reciterIndex = 0
-    val currentReciter: Reciter get() = reciters[reciterIndex]
-    val reciterState = mutableStateOf(currentReciter)
 
     /**
      * Generates a unique identifier string for this recitation session based on its current settings.
@@ -79,24 +88,40 @@ data class Recitation(
      * @param verseInex The current verse number (1-based index).
      * @return True if the reciter should be changed, false otherwise.
      */
-    fun canChangeReciter(verseInex: Int) = verseInex > 0 && (verseInex + 1) % rotationFactor == 0
+    fun canChangeReciter(verseInex: Int) = (verseInex + 1) % rotationFactor == 0
+
+    /**
+     * Checks if there is a next reciter in the list.
+     * @return True if there is a next reciter, false otherwise.
+     */
+    fun hasNextReciter(): Boolean = reciterIndex + 1 < reciters.size
+
 
     /**
      * Advances to the next reciter in the list if available.
-     * Updates [currentReciter] and [reciterState].
+     * Updates [currentReciter] and [_reciterFlow].
      * @return True if successfully moved to the next reciter,
      * false if already at the last reciter.
      */
     fun nextForwardReciter(): Boolean {
         return if (reciterIndex + 1 < reciters.size) {
             reciterIndex++
-            reciterState.value = currentReciter
+            _reciterFlow.value = currentReciter
             true
         } else {
             false
         }
     }
 
+    /**
+     * Gets the next reciter in the list.
+     * If the current reciter is the last one:
+     * - If [loop] is true, it returns the first reciter.
+     * - If [loop] is false, it returns null.
+     *
+     * @param loop Whether to loop back to the first reciter if at the end of the list. Defaults to false.
+     * @return The next [Reciter] or null if at the end and loop is false.
+     */
     fun getNextReciter(loop: Boolean = false): Reciter? {
         return if (reciterIndex + 1 < reciters.size) {
             reciters[reciterIndex + 1]
@@ -106,15 +131,21 @@ data class Recitation(
     }
 
     /**
+     * Checks if there is a previous reciter in the list.
+     * @return True if there is a reciter before the current one, false otherwise.
+     */
+    fun hasPreviousReciter(): Boolean = reciterIndex - 1 >= 0
+
+    /**
      * Moves to the previous reciter in the list if available.
-     * Updates [currentReciter] and [reciterState].
+     * Updates [currentReciter] and [_reciterFlow].
      * @return True if successfully moved to the previous reciter,
      * false if already at the first reciter.
      */
     fun previousReciter(): Boolean {
         return if (reciterIndex - 1 >= 0) {
             reciterIndex--
-            reciterState.value = currentReciter
+            _reciterFlow.value = currentReciter
             true
         } else {
             false
@@ -123,39 +154,30 @@ data class Recitation(
 
     /**
      * Rotates to the next reciter in the list. If at the end, it wraps around to the first reciter.
-     * Updates [currentReciter] and [reciterState].
+     * Updates [currentReciter] and [_reciterFlow].
      */
     fun rotateReciters() {
         if (reciterIndex + 1 < reciters.size) {
             reciterIndex++
-            reciterState.value = currentReciter
+            _reciterFlow.value = currentReciter
         } else {
             reciterIndex = 0
-            reciterState.value = currentReciter
+            _reciterFlow.value = currentReciter
         }
     }
 
     /**
      * Rotates to the previous reciter in the list. If at the beginning, it wraps around to the last reciter.
-     * Updates [currentReciter] and [reciterState].
+     * Updates [currentReciter] and [_reciterFlow].
      */
     fun rotateBackReciters() {
         return if (reciterIndex - 1 >= 0) {
             reciterIndex--
-            reciterState.value = currentReciter
+            _reciterFlow.value = currentReciter
         } else {
             reciterIndex = reciters.size - 1
-            reciterState.value = currentReciter
+            _reciterFlow.value = currentReciter
         }
-    }
-
-    /**
-     * Resets the current reciter to the first one in the list.
-     * Updates [currentReciter] and [reciterState].
-     */
-    fun reset() {
-        reciterIndex = 0
-        reciterState.value = currentReciter
     }
 
     /**
@@ -228,68 +250,4 @@ data class Recitation(
 sealed interface ScreenMode {
     data object Normal : ScreenMode
     data object Tv : ScreenMode
-}
-
-data class RecitationState(
-    private val canChangeChapter: Boolean = true,
-    private val canChangeReciter: Boolean = true,
-    private val canChangeVerse: Boolean = true,
-    private val firstVerse: Int = 1,
-    private val lastVerse: Int = 1,
-    private val singleVerse: Boolean = canChangeVerse.not(),
-    private val reelMode: Boolean = false,
-    private val playInBackground: Boolean = false,
-    private val playbackMode: PlaybackMode = PlaybackMode.Single
-) {
-
-    val canChangeChapterState = mutableStateOf(canChangeChapter)
-    val canChangeReciterState = mutableStateOf(canChangeReciter)
-    val canChangeVerseState = mutableStateOf(canChangeVerse)
-
-    val firstVerseState = mutableStateOf(firstVerse)
-    val lastVerseState = mutableStateOf(lastVerse)
-    val singleVerseState = mutableStateOf(singleVerse)
-    val reelModeState = mutableStateOf(reelMode)
-    val playbackModeState = mutableStateOf(playbackMode)
-    val playInBgState = mutableStateOf(playInBackground)
-
-    fun getReelMode() = reelModeState.value
-    fun getPlayInBackground() = playInBgState.value
-    fun getFirstVerse() = firstVerseState.value
-    fun getLastVerse(): Int {
-        return if (singleVerseState.value) firstVerseState.value
-        else lastVerseState.value
-    }
-
-    fun getPlaybackMode() = playbackModeState.value
-
-    fun isSingleReciterMode() = playbackModeState.value.isSingleReciter
-
-    fun setPlaybackMode(value: PlaybackMode) {
-        playbackModeState.value = value
-    }
-
-    fun setFirstVerse(value: Int) {
-        firstVerseState.value = value
-    }
-
-    fun setLastVerse(value: Int) {
-        lastVerseState.value = value
-    }
-
-    fun setSingleVerse(value: Boolean) {
-        singleVerseState.value = value
-    }
-
-    fun setContentLock(
-        canChangeChapter: Boolean,
-        canChangeReciter: Boolean,
-        canChangeVerse: Boolean
-    ) {
-        canChangeChapterState.value = canChangeChapter
-        canChangeReciterState.value = canChangeReciter
-        canChangeVerseState.value = canChangeVerse
-    }
-
-
 }

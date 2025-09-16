@@ -53,6 +53,9 @@ class MediaPlayerManager(
     /** Job for the current verse playback. */
     private var versePlaybackJob: Job? = null
 
+    /** Coroutine job for managing current reciter lifecycle. */
+    private var recitationJob: Job? = null
+
     /** The underlying platform media player instance. */
     private val mediaPlayer = MediaPlayer()
 
@@ -66,13 +69,13 @@ class MediaPlayerManager(
     private lateinit var versesManager: VersesManager
 
     fun getChapter() = recitation.chapter
-    fun getReciter() = reciterState.value
     fun getVerseManager() = versesManager
+    fun singleReciter() = recitation.singleReciter()
     val isNormalScreenMode get() = recitation.screenMode == ScreenMode.Normal
     val isReelMode get() = recitation.reelMode
     val playInBackground get() = recitation.playInBackground
     val chapterName get() = recitation.chapter.chapterFullName()
-    val reciterState get() = recitation.reciterState
+    val reciterName = mutableStateOf("")
     val selectedVerseId get() = versesManager.selectedVerseId
     val currentVerseState get() = versesManager.selectedVerse
     private val canChangeReciter get() = recitation.canChangeReciter(versesManager.selectedRangeIndex)
@@ -150,13 +153,21 @@ class MediaPlayerManager(
             }
         }
 
+        recitationJob?.cancel()
+        recitationJob = playerCoroutineScope.launch {
+            recitation.reciterFlow.collect {
+                if (it == null) {
+                    reciterName.value = ""
+                } else {
+                    Log.v(TAG, "current-reciter - ${it.name}")
+                    reciterName.value = it.name
+                }
+            }
+        }
+
         playerCoroutineScope.launch {
             currentVerseState.collect { verse ->
-                if (verse == null) {
-                    Log.v(TAG, "verse:null")
-                    return@collect
-                }
-                Log.v(TAG, "${reciterState.value.name} verse: ${verse.id}")
+                if (verse == null) return@collect
                 versePlaybackJob?.cancel()
                 versePlaybackJob = launch {
                     for (i in 1..loops) {
@@ -219,7 +230,7 @@ class MediaPlayerManager(
                 reciter = recitation.currentReciter
             }
 
-            PlaybackMode.Repetitive -> {
+            PlaybackMode.Sequential -> {
                 if (versesManager.hasNext()) {
                     nextVerse = versesManager.getNextVerse()
                     reciter = recitation.currentReciter
@@ -238,6 +249,15 @@ class MediaPlayerManager(
                 nextVerse = versesManager.getNextVerse()
                 reciter = if (canChangeReciter) recitation.getNextReciter(loop = false)
                 else recitation.currentReciter
+            }
+
+            PlaybackMode.Repetitive -> {
+                nextVerse = if (recitation.hasNextReciter()) {
+                    versesManager.getCurrentVerse()
+                } else {
+                    versesManager.getNextVerse()
+                }
+                reciter = recitation.getNextReciter(loop = true)
             }
         }
 
@@ -348,7 +368,7 @@ class MediaPlayerManager(
      * @param verse The verse to play.
      */
     suspend fun play(verse: Verse): Boolean {
-        Log.i(TAG, "play ${reciterState.value.name} - ${verse.id}")
+        Log.i(TAG, "play ${reciterName.value} - ${verse.id}")
         return if (recitation.playLocally) playLocalVerse(verse)
         else playRemoteVerse(verse)
     }
@@ -370,7 +390,7 @@ class MediaPlayerManager(
                     nextVerse
                 }
 
-                PlaybackMode.Repetitive -> {
+                PlaybackMode.Sequential -> {
                     val nextVerse = versesManager.nextForwardVerse()
                     if (nextVerse) {
                         true
@@ -392,6 +412,19 @@ class MediaPlayerManager(
                         if (canChangeReciter) recitation.nextForwardReciter()
                         val nextVerse = versesManager.nextForwardVerse()
                         nextVerse
+                    } else false
+                }
+
+                PlaybackMode.Repetitive -> {
+                    if (versesManager.hasNext() || recitation.hasNextReciter()) {
+                        val hasMore = if (recitation.hasNextReciter()) {
+                            versesManager.reset()
+                            recitation.nextForwardReciter()
+                        } else {
+                            recitation.rotateReciters()
+                            versesManager.nextForwardVerse()
+                        }
+                        hasMore
                     } else false
                 }
             }
@@ -417,7 +450,7 @@ class MediaPlayerManager(
                     previousVerse
                 }
 
-                PlaybackMode.Repetitive -> {
+                PlaybackMode.Sequential -> {
                     val previousVerse = versesManager.previousVerseInRange()
                     if (previousVerse) {
                         Log.v(TAG, "previousVerse $previousVerse")
@@ -446,6 +479,18 @@ class MediaPlayerManager(
                         Log.v(TAG, "previousVerse $previousVerse")
                         previousVerse
                     } else false
+                }
+
+                PlaybackMode.Repetitive -> {
+                    if (recitation.hasPreviousReciter()) {
+                        recitation.rotateBackReciters()
+                        versesManager.reset()
+                        true
+                    } else {
+                        val previousVerse = versesManager.previousVerseInRange()
+                        Log.v(TAG, "previousVerse $previousVerse")
+                        previousVerse
+                    }
                 }
             }
             if (hasPrevious.not() && finishOnLastVerse) {
@@ -498,7 +543,6 @@ class MediaPlayerManager(
      */
     fun release() {
         Log.i(TAG, "release")
-        recitation.reset()
         mediaPlayer.release()
         hasReleased = true
         isPlaying.value = false

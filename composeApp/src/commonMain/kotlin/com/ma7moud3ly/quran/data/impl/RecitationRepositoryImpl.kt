@@ -18,7 +18,7 @@ class RecitationRepositoryImpl : RecitationRepository {
     override val recitationState = mutableStateOf(RecitationState())
 
     override fun getRecitation(): Recitation {
-        return _recitationFlow.value ?: testRecitation
+        return _recitationFlow.value?.copy() ?: testRecitation
     }
 
     override fun setRecitation(recitation: Recitation) {

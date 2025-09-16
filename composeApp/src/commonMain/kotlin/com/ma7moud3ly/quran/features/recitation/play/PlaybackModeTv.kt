@@ -3,10 +3,10 @@ package com.ma7moud3ly.quran.features.recitation.play
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -43,6 +43,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -56,7 +57,7 @@ import com.ma7moud3ly.quran.model.SlideControls
 import com.ma7moud3ly.quran.model.TvSlide
 import com.ma7moud3ly.quran.model.Verse
 import com.ma7moud3ly.quran.model.showControls
-import com.ma7moud3ly.quran.model.showReciter
+import com.ma7moud3ly.quran.model.showTitle
 import com.ma7moud3ly.quran.model.showVerse
 import com.ma7moud3ly.quran.model.testMediaPlayerManager
 import com.ma7moud3ly.quran.model.testMediaPlayerManagerInReelMode
@@ -194,8 +195,9 @@ fun TvPlayback(
         SwipeableBox(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable(
+                .combinedClickable(
                     onClick = slidesManager::toggleSlideControls,
+                    onLongClick = slidesManager::showControls,
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() }
                 ),
@@ -222,11 +224,8 @@ fun TvPlayback(
                 }
             }
         ) {
-            Header(
-                mediaPlayer = mediaPlayerManager,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .zIndex(2f)
+            Column(
+                modifier = Modifier.zIndex(2f)
                     .statusBarsPadding()
                     .align(Alignment.TopCenter)
                     .padding(
@@ -235,11 +234,22 @@ fun TvPlayback(
                         bottom = 36.dp,
                         top = if (mediaPlayerManager.isReelMode) 8.dp else 24.dp
                     ),
-                slide = { slide },
-                slideControls = { controls },
-                onBack = { uiEvents(PlaybackEvents.Back) }
-            )
-
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Header(
+                    mediaPlayer = mediaPlayerManager,
+                    modifier = Modifier.fillMaxWidth(),
+                    slide = { slide },
+                    slideControls = { controls },
+                    onBack = { uiEvents(PlaybackEvents.Back) }
+                )
+                if (controls.showControls) {
+                    SectionControls(
+                        mediaPlayer = mediaPlayerManager
+                    )
+                }
+            }
             if (isPreview) {
                 Image(
                     painter = painterResource(slide.video.thumbnail),
@@ -255,24 +265,26 @@ fun TvPlayback(
                 )
             }
 
-            if (controls.showVerse && selectedVerse != null) Box(
+            Column(
                 modifier = Modifier
                     .wrapContentSize()
+                    .align(slide.alignment)
                     .padding(
                         start = 16.dp,
                         end = 16.dp,
                         top = slide.paddingTop,
                         bottom = slide.paddingBottom
                     )
-                    .align(slide.alignment)
             ) {
-                ItemVerse(
-                    verse = { selectedVerse!! },
-                    background = if (slide.showVerseBackground)
-                        slide.background
-                    else Color.Transparent,
-                    color = slide.color
-                )
+                if (controls.showVerse && selectedVerse != null) {
+                    ItemVerse(
+                        verse = { selectedVerse!! },
+                        background = if (slide.showVerseBackground)
+                            slide.background
+                        else Color.Transparent,
+                        color = slide.color
+                    )
+                }
             }
 
             if (controls.showControls) {
@@ -305,85 +317,49 @@ private fun Header(
     slide: () -> TvSlide,
     onBack: () -> Unit
 ) {
+    val controls = slideControls()
+    if (controls.showTitle.not()) return
     val background = Color.White.copy(alpha = 0.3f)
     val color = slide().color
-    val isPlaying by remember(mediaPlayer) { mediaPlayer.isPlaying }
     val isDownloading by remember { mediaPlayer.isDownloadingVerse }
-    val reciter by remember { mediaPlayer.reciterState }
-    val controls = slideControls()
-
+    val reciterName by remember { mediaPlayer.reciterName }
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        if (controls.showControls || controls.showReciter) {
-            SuraName(
-                chapterName = mediaPlayer.chapterName,
-                background = if (controls.showControls) background
-                else Color.Transparent,
-                fontSize = 24.sp,
-                color = color,
-                icon = null,
-                onClick = onBack
-            )
-            Spacer(Modifier.weight(1f))
-            if (isDownloading) {
-                CircularProgressIndicator(
-                    modifier = Modifier.size(20.dp),
-                    color = MaterialTheme.colorScheme.secondary
-                )
-                Spacer(Modifier.width(8.dp))
-            }
-        }
-        if (controls.showReciter) {
-            Text(
-                text = reciter.name,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(end = 8.dp),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                fontSize = 12.sp,
-                color = color,
-            )
-        } else if (controls.showControls) {
-            RoundButton(
-                icon = Res.drawable.back,
-                onClick = mediaPlayer::previous,
-                color = color,
-                iconSize = 22.dp,
-                iconPadding = 6.dp,
-                background = background,
-            )
-            if (isPlaying) RoundButton(
-                icon = Res.drawable.pause,
-                onClick = mediaPlayer::pause,
-                color = color,
-                iconSize = 22.dp,
-                iconPadding = 6.dp,
-                background = background,
-            ) else RoundButton(
-                icon = Res.drawable.play,
-                onClick = mediaPlayer::resume,
-                color = color,
-                iconSize = 22.dp,
-                iconPadding = 6.dp,
-                background = background,
-            )
-            RoundButton(
-                icon = Res.drawable.forward,
-                onClick = mediaPlayer::next,
-                color = color,
-                iconSize = 22.dp,
-                iconPadding = 6.dp,
-                background = background,
+        SuraName(
+            chapterName = mediaPlayer.chapterName,
+            background = if (controls.showControls) background
+            else Color.Transparent,
+            fontSize = 24.sp,
+            color = color,
+            icon = null,
+            onClick = onBack
+        )
+        Spacer(Modifier.weight(1f))
+        if (isDownloading) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(20.dp),
+                color = MaterialTheme.colorScheme.secondary
             )
             Spacer(Modifier.width(8.dp))
+        }
+        Text(
+            text = reciterName,
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(end = 8.dp),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            fontSize = 12.sp,
+            color = color,
+        )
+        if (controls.showControls) {
             RoundButton(
                 icon = Res.drawable.close,
                 background = background,
                 color = color,
-                iconSize = 22.dp,
+                iconSize = 24.dp,
                 iconPadding = 6.dp,
                 onClick = onBack
             )
@@ -474,6 +450,55 @@ private fun ItemSlide(
             modifier = modifier,
             contentScale = if (platform.isMobile) ContentScale.FillWidth
             else ContentScale.Crop
+        )
+    }
+}
+
+@Composable
+private fun SectionControls(
+    modifier: Modifier = Modifier,
+    mediaPlayer: MediaPlayerManager,
+    iconSize: Dp = 26.dp,
+    iconPadding: Dp = 6.dp
+) {
+    val isPlaying by remember(mediaPlayer) { mediaPlayer.isPlaying }
+    val background = Color.White.copy(alpha = 0.3f)
+    val color = MaterialTheme.colorScheme.onPrimary
+
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        RoundButton(
+            icon = Res.drawable.back,
+            onClick = mediaPlayer::previous,
+            color = color,
+            iconSize = iconSize,
+            iconPadding = iconPadding,
+            background = background,
+        )
+        if (isPlaying) RoundButton(
+            icon = Res.drawable.pause,
+            onClick = mediaPlayer::pause,
+            color = color,
+            iconSize = iconSize,
+            iconPadding = iconPadding,
+            background = background,
+        ) else RoundButton(
+            icon = Res.drawable.play,
+            onClick = mediaPlayer::resume,
+            color = color,
+            iconSize = iconSize,
+            iconPadding = iconPadding,
+            background = background,
+        )
+        RoundButton(
+            icon = Res.drawable.forward,
+            onClick = mediaPlayer::next,
+            color = color,
+            iconSize = iconSize,
+            iconPadding = iconPadding,
+            background = background,
         )
     }
 }

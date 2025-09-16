@@ -44,6 +44,8 @@ class PlaybackViewModel(
         saveHistory()
         if (mediaPlayerManager.playInBackground.not()) {
             mediaPlayerManager.release()
+        }
+        if (mediaPlayerManager.singleReciter()) {
             val lastPlayedVerseId = mediaPlayerManager.selectedVerseId
             recitationRepository.recitationState.value.setFirstVerse(lastPlayedVerseId)
         }

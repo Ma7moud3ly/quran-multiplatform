@@ -35,11 +35,11 @@ data class PlaybackStates(
 
 sealed interface SlideControls {
     data object ShowControls : SlideControls
-    data object ShowReciter : SlideControls
+    data object ShowTitle : SlideControls
     data object ShowVerse : SlideControls
     data object HideAll : SlideControls
 }
 
 val SlideControls.showControls: Boolean get() = this is SlideControls.ShowControls
 val SlideControls.showVerse: Boolean get() = this !is SlideControls.HideAll
-val SlideControls.showReciter: Boolean get() = this is SlideControls.ShowReciter
+val SlideControls.showTitle: Boolean get() = showControls || this is SlideControls.ShowTitle

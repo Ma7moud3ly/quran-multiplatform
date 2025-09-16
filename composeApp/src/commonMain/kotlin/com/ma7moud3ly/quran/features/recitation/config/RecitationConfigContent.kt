@@ -22,6 +22,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
@@ -40,6 +42,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -59,6 +62,8 @@ import com.ma7moud3ly.quran.model.RecitationState
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.model.isDistributed
+import com.ma7moud3ly.quran.model.isRepetitive
+import com.ma7moud3ly.quran.model.isSequential
 import com.ma7moud3ly.quran.model.isShuffling
 import com.ma7moud3ly.quran.model.isSingleReciter
 import com.ma7moud3ly.quran.model.testChapter
@@ -75,6 +80,7 @@ import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.ScreenHeader
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import com.ma7moud3ly.quran.ui.isCompactDevice
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
@@ -95,10 +101,12 @@ import quran.composeapp.generated.resources.reciter_more
 import quran.composeapp.generated.resources.settings_background
 import quran.composeapp.generated.resources.settings_background_description
 import quran.composeapp.generated.resources.settings_change_reciter
-import quran.composeapp.generated.resources.settings_distributed
+import quran.composeapp.generated.resources.settings_mode_distributed
+import quran.composeapp.generated.resources.settings_mode_repetitive
+import quran.composeapp.generated.resources.settings_mode_sequential
+import quran.composeapp.generated.resources.settings_mode_shuffled
 import quran.composeapp.generated.resources.settings_reel
 import quran.composeapp.generated.resources.settings_reel_description
-import quran.composeapp.generated.resources.settings_shuffled
 
 
 @Preview
@@ -239,7 +247,7 @@ internal fun RecitationConfigScreenContent(
         }
 
 
-        if (reciters().size > 1) ShuffleMode(recitationState)
+        if (reciters().size > 1) PlaybackMode(recitationState)
 
         if (platform.isMobile && isCompactDevice()) {
             HorizontalDivider()
@@ -270,7 +278,7 @@ private fun SectionReciters(
     var playbackMode by remember { state.playbackModeState }
 
     fun initMultipleReciterMode() {
-        playbackMode = PlaybackMode.Repetitive
+        playbackMode = PlaybackMode.Distributed
         onPickReciter()
     }
 
@@ -492,7 +500,7 @@ private fun SectionRange(
 }
 
 @Composable
-private fun ShuffleMode(
+private fun PlaybackMode(
     recitationState: () -> RecitationState
 ) {
     val state = recitationState()
@@ -503,46 +511,26 @@ private fun ShuffleMode(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
     ) {
         SettingsLabel(Res.string.settings_change_reciter)
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Text(
-                text = stringResource(Res.string.settings_shuffled),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary,
-                textAlign = TextAlign.Justify
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            MySwitch(
-                enabled = { playbackMode.isShuffling },
-                onToggle = { enable ->
-                    playbackMode = if (enable) PlaybackMode.Shuffling
-                    else PlaybackMode.Repetitive
-                }
-            )
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Text(
-                text = stringResource(Res.string.settings_distributed),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary,
-                textAlign = TextAlign.Justify
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            MySwitch(
-                enabled = { playbackMode.isDistributed },
-                onToggle = { enable ->
-                    playbackMode = if (enable) PlaybackMode.Distributed
-                    else PlaybackMode.Repetitive
-                }
-            )
-        }
+        ItemPlaybackMode(
+            text = Res.string.settings_mode_distributed,
+            enabled = { playbackMode.isDistributed },
+            onClick = { playbackMode = PlaybackMode.Distributed }
+        )
+        ItemPlaybackMode(
+            text = Res.string.settings_mode_shuffled,
+            enabled = { playbackMode.isShuffling },
+            onClick = { playbackMode = PlaybackMode.Shuffling }
+        )
+        ItemPlaybackMode(
+            text = Res.string.settings_mode_sequential,
+            enabled = { playbackMode.isSequential },
+            onClick = { playbackMode = PlaybackMode.Sequential }
+        )
+        ItemPlaybackMode(
+            text = Res.string.settings_mode_repetitive,
+            enabled = { playbackMode.isRepetitive },
+            onClick = { playbackMode = PlaybackMode.Repetitive }
+        )
     }
 }
 
@@ -642,6 +630,31 @@ private fun Footer(
 }
 
 @Composable
+private fun ItemPlaybackMode(
+    text: StringResource,
+    enabled: () -> Boolean,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text(
+            text = stringResource(text),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onPrimary,
+            textAlign = TextAlign.Justify
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        MyRadioButton(
+            enabled = enabled,
+            onChecked = onClick
+        )
+    }
+}
+
+@Composable
 private fun MySwitch(
     enabled: () -> Boolean,
     onToggle: (Boolean) -> Unit
@@ -655,6 +668,26 @@ private fun MySwitch(
             uncheckedTrackColor = Color.Transparent,
             uncheckedBorderColor = MaterialTheme.colorScheme.onPrimary
         ),
+        modifier = Modifier.scale(0.9f),
         onCheckedChange = onToggle
+    )
+}
+
+
+@Composable
+private fun MyRadioButton(
+    enabled: () -> Boolean,
+    onChecked: () -> Unit
+) {
+    RadioButton(
+        selected = enabled(),
+        colors = RadioButtonDefaults.colors(
+            selectedColor = MaterialTheme.colorScheme.secondary,
+            unselectedColor = MaterialTheme.colorScheme.onPrimary,
+            disabledSelectedColor = Color.Unspecified,
+            disabledUnselectedColor = Color.Unspecified
+        ),
+        modifier = Modifier.scale(1.1f),
+        onClick = onChecked
     )
 }

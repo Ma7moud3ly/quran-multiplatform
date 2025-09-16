@@ -91,6 +91,15 @@ class VersesManager(
 
 
     /**
+     * Retrieves the currently selected [Verse].
+     *
+     * @return The currently selected [Verse], or `null` if no verse is selected.
+     */
+    fun getCurrentVerse(): Verse? {
+        return _selectedVerse.value
+    }
+
+    /**
      * Retrieves the next verse in the sequence after the currently selected verse.
      *
      * @return The next [Verse] if it exists, otherwise `null` if the current verse is the last one.
@@ -158,10 +167,11 @@ class VersesManager(
      * A delay is introduced to allow UI updates if needed.
      */
     suspend fun reset() {
-        Log.v(TAG, " reset to initialVerse ${initialVerse.id}")
+        Log.v(TAG, " reset")
+        val currentVerse = getCurrentVerse()
         _selectedVerse.emit(null)
-        delay(1000)
-        _selectedVerse.emit(initialVerse)
+        delay(200)
+        _selectedVerse.emit(currentVerse)
     }
 
     companion object {
