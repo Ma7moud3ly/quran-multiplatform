@@ -1,12 +1,14 @@
 package com.ma7moud3ly.quran.features.search
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,6 +24,7 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,12 +36,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -56,16 +59,17 @@ import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.features.home.index.ItemChapterIndex
 import com.ma7moud3ly.quran.features.home.index.testChaptersIndex
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
-import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.features.search.reciter.ItemReciter
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.SearchQuery
 import com.ma7moud3ly.quran.model.SearchResult
+import com.ma7moud3ly.quran.model.SearchState
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
+import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.ScreenHeader
 import com.ma7moud3ly.quran.ui.hafsBoldFamily
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
@@ -148,15 +152,30 @@ internal fun SearchScreenContent(
     val includeChapters = rememberSaveable { mutableStateOf(true) }
     val includeReciters = rememberSaveable { mutableStateOf(true) }
 
-    val resultsCount by derivedStateOf {
-        if (verses == null && chapters == null && reciters == null) null
-        else {
-            var count = 0
-            if (includeVerses.value) verses?.size?.let { count += it }
-            if (includeChapters.value) chapters?.size?.let { count += it }
-            if (includeReciters.value) reciters?.size?.let { count += it }
-            count
-        }
+    var searchState by remember { mutableStateOf<SearchState>(SearchState.Loading) }
+    LaunchedEffect(Unit) {
+        snapshotFlow { Triple(verses, chapters, reciters) }
+            .collect { (verses, chapters, reciters) ->
+                val state =
+                    if (verses == null &&
+                        chapters == null &&
+                        reciters == null
+                    ) {
+                        SearchState.Idle
+                    } else {
+                        var count = 0
+                        if (includeVerses.value) verses?.size?.let { count += it }
+                        if (includeChapters.value) chapters?.size?.let { count += it }
+                        if (includeReciters.value) reciters?.size?.let { count += it }
+                        SearchState.HasResult(count)
+                    }
+                searchState = state
+            }
+    }
+
+    fun onInitSearch(query: SearchQuery) {
+        searchState = SearchState.Loading
+        onSearch(query)
     }
 
     MyScreen(
@@ -166,7 +185,7 @@ internal fun SearchScreenContent(
                 chapters = includeChapters,
                 reciters = includeReciters,
                 onClose = { uiEvents(SearchEvents.OnBack) },
-                onSearch = onSearch
+                onSearch = ::onInitSearch
             )
         },
         modifier = Modifier.padding(16.dp),
@@ -174,25 +193,44 @@ internal fun SearchScreenContent(
         space = 16.dp
     ) {
 
-        resultsCount?.let { count ->
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Text(
-                    text = stringResource(Res.string.search_results),
-                    style = MaterialTheme.typography.bodyLarge
-                )
-                Text(
-                    text = count.toString(),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.tertiary
-                )
+        when (val it = searchState) {
+            is SearchState.HasResult -> {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        text = stringResource(Res.string.search_results),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = it.count.toString(),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.tertiary
+                    )
+                }
+            }
+
+            is SearchState.Idle -> {}
+            is SearchState.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(
+                        color = MaterialTheme.colorScheme.secondary,
+                        modifier = Modifier.size(30.dp)
+                    )
+                }
             }
         }
+
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.weight(1f)
         ) {
+            item {
+
+            }
             if (includeChapters.value) {
                 items(chapters.orEmpty()) {
                     ItemChapterIndex(
@@ -209,11 +247,11 @@ internal fun SearchScreenContent(
                 }
             }
             if (includeReciters.value) {
-                item{
+                item {
                     FlowRow(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ){
+                    ) {
                         reciters?.forEach {
                             ItemReciter(
                                 reciter = it,

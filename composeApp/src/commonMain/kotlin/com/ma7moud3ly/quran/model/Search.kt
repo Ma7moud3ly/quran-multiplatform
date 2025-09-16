@@ -16,3 +16,9 @@ data class SearchResult(
     val selectionBegin: Int,
     val selectionEnd: Int
 )
+
+sealed interface SearchState {
+    data object Idle : SearchState
+    data object Loading : SearchState
+    data class HasResult(val count: Int) : SearchState
+}

@@ -493,7 +493,12 @@ private fun SectionRange(
             Spacer(Modifier.weight(1f))
             MySwitch(
                 enabled = { singleVerse },
-                onToggle = { singleVerse = singleVerse.not() }
+                onToggle = {
+                    singleVerse = it
+                    if (singleVerse && state.isSingleReciterMode().not()) {
+                        state.setPlaybackMode(PlaybackMode.Repetitive)
+                    }
+                }
             )
         }
     }
@@ -504,28 +509,30 @@ private fun PlaybackMode(
     recitationState: () -> RecitationState
 ) {
     val state = recitationState()
-    if (state.singleVerseState.value) return
+    val singleVerse by remember { state.singleVerseState }
     var playbackMode by remember { state.playbackModeState }
     HorizontalDivider()
     Column(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
     ) {
         SettingsLabel(Res.string.settings_change_reciter)
-        ItemPlaybackMode(
-            text = Res.string.settings_mode_distributed,
-            enabled = { playbackMode.isDistributed },
-            onClick = { playbackMode = PlaybackMode.Distributed }
-        )
-        ItemPlaybackMode(
-            text = Res.string.settings_mode_shuffled,
-            enabled = { playbackMode.isShuffling },
-            onClick = { playbackMode = PlaybackMode.Shuffling }
-        )
-        ItemPlaybackMode(
-            text = Res.string.settings_mode_sequential,
-            enabled = { playbackMode.isSequential },
-            onClick = { playbackMode = PlaybackMode.Sequential }
-        )
+        if (singleVerse.not()) {
+            ItemPlaybackMode(
+                text = Res.string.settings_mode_distributed,
+                enabled = { playbackMode.isDistributed },
+                onClick = { playbackMode = PlaybackMode.Distributed }
+            )
+            ItemPlaybackMode(
+                text = Res.string.settings_mode_shuffled,
+                enabled = { playbackMode.isShuffling },
+                onClick = { playbackMode = PlaybackMode.Shuffling }
+            )
+            ItemPlaybackMode(
+                text = Res.string.settings_mode_sequential,
+                enabled = { playbackMode.isSequential },
+                onClick = { playbackMode = PlaybackMode.Sequential }
+            )
+        }
         ItemPlaybackMode(
             text = Res.string.settings_mode_repetitive,
             enabled = { playbackMode.isRepetitive },
