@@ -61,10 +61,11 @@ data class Recitation(
     fun getUniqueId(): String {
         val reciter = "${currentReciter.id}-${currentReciter.getQuality(playLocally)}"
         val recitersCount = reciters.size
+        val playbackMode = playbackMode.toInt
         val chapter = chapter.id
         val source = if (playLocally) "local" else "remote"
-        val mode = if (screenMode == ScreenMode.Normal) "normal" else "tv"
-        return "$reciter-$recitersCount-$chapter-$source-$mode"
+        val screenMode = if (this@Recitation.screenMode == ScreenMode.Normal) "normal" else "tv"
+        return "$reciter-$recitersCount-$chapter-$source-$playbackMode-$screenMode"
     }
 
     fun setOnlineDatasource() {

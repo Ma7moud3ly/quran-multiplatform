@@ -160,18 +160,31 @@ class VersesManager(
         }
     }
 
+
     /**
-     * Resets the selected verse to the [initialVerse].
-     * This involves temporarily emitting `null` for [selectedVerse] before re-emitting the [initialVerse].
-     * This is invoked when the reciter is changed during playback.
-     * A delay is introduced to allow UI updates if needed.
+     * Resets the currently selected verse.
+     * This is typically used to re-trigger observers of the [selectedVerse] Flow
+     * by emitting `null` and then re-emitting the current verse after a short delay.
+     * This can be useful for scenarios where a UI refresh is needed for the same selected verse.
      */
-    suspend fun reset() {
-        Log.v(TAG, " reset")
-        val currentVerse = getCurrentVerse()
+    suspend fun resetCurrent() {
+        Log.v(TAG, " resetCurrent")
+        val currentVerse = _selectedVerse.value
         _selectedVerse.emit(null)
         delay(200)
         _selectedVerse.emit(currentVerse)
+    }
+
+    /**
+     * Resets the selected verse to the [initialVerse].
+     * This involves temporarily emitting `null` for [selectedVerse] before re-emitting the [initialVerse].
+     * A delay is introduced to allow UI updates if needed.
+     */
+    suspend fun resetToBegin() {
+        Log.v(TAG, " resetToBegin")
+        _selectedVerse.emit(null)
+        delay(200)
+        _selectedVerse.emit(initialVerse)
     }
 
     companion object {

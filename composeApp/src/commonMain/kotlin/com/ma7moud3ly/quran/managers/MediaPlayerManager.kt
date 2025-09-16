@@ -396,7 +396,7 @@ class MediaPlayerManager(
                         true
                     } else {
                         val hasNextReciter = recitation.nextForwardReciter()
-                        if (hasNextReciter) versesManager.reset()
+                        if (hasNextReciter) versesManager.resetToBegin()
                         hasNextReciter
                     }
                 }
@@ -418,7 +418,7 @@ class MediaPlayerManager(
                 PlaybackMode.Repetitive -> {
                     if (versesManager.hasNext() || recitation.hasNextReciter()) {
                         val hasMore = if (recitation.hasNextReciter()) {
-                            versesManager.reset()
+                            versesManager.resetCurrent()
                             recitation.nextForwardReciter()
                         } else {
                             recitation.rotateReciters()
@@ -457,7 +457,7 @@ class MediaPlayerManager(
                         true
                     } else {
                         val previousReciter = recitation.previousReciter()
-                        if (previousReciter) versesManager.reset()
+                        if (previousReciter) versesManager.resetToBegin()
                         Log.v(TAG, "previousReciter $previousReciter")
                         previousReciter
                     }
@@ -484,7 +484,7 @@ class MediaPlayerManager(
                 PlaybackMode.Repetitive -> {
                     if (recitation.hasPreviousReciter()) {
                         recitation.rotateBackReciters()
-                        versesManager.reset()
+                        versesManager.resetCurrent()
                         true
                     } else {
                         val previousVerse = versesManager.previousVerseInRange()
