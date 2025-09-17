@@ -98,6 +98,7 @@ import quran.composeapp.generated.resources.recite_start
 import quran.composeapp.generated.resources.recite_verse
 import quran.composeapp.generated.resources.reciter
 import quran.composeapp.generated.resources.reciter_add_multiple
+import quran.composeapp.generated.resources.reciters
 import quran.composeapp.generated.resources.reciters_clear
 import quran.composeapp.generated.resources.reciters_more
 import quran.composeapp.generated.resources.settings_background
@@ -291,7 +292,17 @@ private fun SectionReciters(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        SettingsLabel(Res.string.reciter)
+        Row(modifier = Modifier.fillMaxWidth().padding(start = 8.dp)) {
+            val text = if (reciters.size <= 1) stringResource(Res.string.reciter)
+            else stringResource(Res.string.reciters, reciters.size)
+            Text(
+                text = "۞ $text",
+                style = MaterialTheme.typography.titleSmall,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+        }
         if (playbackMode.isSingleReciter) {
             ItemReciter(
                 reciter = reciters.firstOrNull(),
@@ -320,8 +331,14 @@ private fun SectionReciters(
                         onClick = { onRemoveReciter(reciter) }
                     )
                 }
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 MiniReciter(
-                    text = stringResource(Res.string.reciters_more) + " (${reciters.size})",
+                    text = stringResource(Res.string.reciters_more),
                     color = MaterialTheme.colorScheme.onSecondary,
                     background = MaterialTheme.colorScheme.secondary,
                     onClick = onPickReciter
@@ -362,7 +379,7 @@ private fun MiniReciter(
             Text(
                 text = text,
                 style = MaterialTheme.typography.bodyMedium,
-                fontSize = if (isCompactDevice()) 10.sp else 14.sp,
+                fontSize = if (isCompactDevice()) 12.sp else 14.sp,
                 fontWeight = FontWeight.Medium,
                 color = color
             )

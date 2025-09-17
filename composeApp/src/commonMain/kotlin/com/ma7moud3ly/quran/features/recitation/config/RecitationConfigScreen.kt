@@ -66,26 +66,23 @@ fun RecitationConfigScreen(
         )
 
         coroutineScope.launch {
-            val reciter = reciters.first()
             val event = if (viewModel.platformSupportDownloading()) {
                 if (recitationState.isMultipleReciterMode()) {
                     RecitationEvents.StartOnline
-                } else if (reciter.canDownload && viewModel.isFullyDownloaded(recitation)) {
+                } else if (viewModel.isFullyDownloaded(recitation)) {
                     RecitationEvents.StartLocally
-                } else if (reciter.canListen && viewModel.isFullyCachedCached(recitation)) {
+                } else if (viewModel.isFullyCachedCached(recitation)) {
                     RecitationEvents.StartOnline
-                } else if (reciter.canDownload) {
+                } else {
                     RecitationEvents.ConfirmDownload
-                } else if (reciter.canListen) {
-                    RecitationEvents.StartOnline
-                } else null
-            } else if (reciter.canListen) {
+                }
+            } else {
                 RecitationEvents.StartOnline
-            } else null
+            }
 
             if (event.playOnline) recitation.setOnlineDatasource()
             viewModel.setRecitation(recitation)
-            if (event != null) recitationEvents(event)
+            recitationEvents(event)
         }
     }
 

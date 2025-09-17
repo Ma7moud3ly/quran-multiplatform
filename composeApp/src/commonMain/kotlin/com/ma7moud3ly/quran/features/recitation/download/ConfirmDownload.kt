@@ -76,7 +76,7 @@ fun ConfirmDownloadDialog(
 ) {
     val recitation by recitationFlow.collectAsState(null)
     if (recitation == null) return
-    val reciter  = recitation!!.currentReciter
+    val reciter = recitation!!.currentReciter
     LaunchedEffect(reciter) {
         Log.i("ConfirmDownloadDialogContent", "recitation: $reciter")
     }
@@ -113,7 +113,7 @@ fun ConfirmDownloadDialog(
             value = reciter.downloadQuality
         )
 
-        if (reciter.canListen) Text(
+        Text(
             text = stringResource(Res.string.download_deny_message),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.error
@@ -128,7 +128,7 @@ fun ConfirmDownloadDialog(
                 onClick = onDownload,
                 modifier = Modifier.weight(0.5f)
             )
-            if (reciter.canListen) MyButton(
+            MyButton(
                 text = Res.string.download_deny,
                 onClick = onPlayOnline,
                 color = MaterialTheme.colorScheme.onPrimary,

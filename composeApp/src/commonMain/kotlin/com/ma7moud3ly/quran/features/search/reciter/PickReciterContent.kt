@@ -141,14 +141,9 @@ internal fun PickReciterDialogContent(
         var query by remember { mutableStateOf("") }
         val filteredList by remember(query, allReciters) {
             derivedStateOf {
-                allReciters.filter {
-                    if (query.isEmpty()) {
-                        if (selectMultiple) it.canListen else true
-                    } else {
-                        (if (selectMultiple) it.canListen else true) &&
-                                it.name.contains(query.trim(), ignoreCase = true)
-                    }
-                }
+                val query = query.trim()
+                if (query.isEmpty()) allReciters
+                else allReciters.filter { it.name.contains(query) }
             }
         }
         Column(

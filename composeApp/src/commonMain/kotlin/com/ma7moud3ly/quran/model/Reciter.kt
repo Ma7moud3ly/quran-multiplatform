@@ -11,16 +11,6 @@ data class Reciter(
     val download: List<Quality> = listOf()
 ) {
     /**
-     * Indicates whether the first available listening quality is different from the first available download quality.
-     */
-    val hasConflictedQualities: Boolean get() = listenQuality != downloadQuality
-
-    /**
-     * Indicates whether there are any available qualities for listening.
-     */
-    val canListen: Boolean get() = listen.isNotEmpty()
-
-    /**
      * The quality level of the first available listening option.
      */
     val listenQuality: Int get() = listen.firstOrNull()?.quality ?: -1
@@ -35,11 +25,6 @@ data class Reciter(
      * Format: "quran/[id]/128"
      */
     val listenStorageDirectory: String get() = "quran/$id/$listenQuality"
-
-    /**
-     * Indicates whether there are any available qualities for downloading.
-     */
-    val canDownload: Boolean get() = download.isNotEmpty()
 
     /**
      * The quality level of the first available download option.

@@ -2,9 +2,6 @@ package com.ma7moud3ly.quran.data.impl
 
 import com.ma7moud3ly.quran.data.repository.RecitersRepository
 import com.ma7moud3ly.quran.model.Reciter
-import com.ma7moud3ly.quran.platform.Platform
-import com.ma7moud3ly.quran.platform.isIos
-import com.ma7moud3ly.quran.platform.isWasmJs
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,8 +12,7 @@ import quran.composeapp.generated.resources.Res
 
 @Single
 class RecitersRepositoryImpl(
-    private val dispatcher: CoroutineDispatcher,
-    private val platform: Platform
+    private val dispatcher: CoroutineDispatcher
 ) : RecitersRepository {
 
     companion object {
@@ -40,10 +36,6 @@ class RecitersRepositoryImpl(
             if (recitersMap.isEmpty()) {
                 val jsonString = Res.readBytes("files/reciters/reciters.json").decodeToString()
                 val list = Json.decodeFromString<List<Reciter>>(jsonString)
-                    .filter {
-                        if (platform.isIos || platform.isWasmJs) it.canListen
-                        else true
-                    }
                 recitersMap = list.associateBy { it.id }
             }
             recitersMap.values.toList()

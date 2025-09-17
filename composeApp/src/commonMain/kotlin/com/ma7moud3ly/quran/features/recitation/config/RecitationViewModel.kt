@@ -14,7 +14,6 @@ import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.model.Recitation
 import com.ma7moud3ly.quran.model.Reciter
-import com.ma7moud3ly.quran.model.isSingleReciter
 import com.ma7moud3ly.quran.model.toPlaybackMode
 import com.ma7moud3ly.quran.platform.Log
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -124,14 +123,12 @@ class RecitationViewModel(
     val reciters = mutableStateListOf<Reciter>()
 
     fun addReciter(ids: List<String>) {
-        val state = recitationState.value
         reciters.clear()
         viewModelScope.launch {
             val moreReciters = recitersRepository.getReciters(ids)
-            val single = state.getPlaybackMode().isSingleReciter
             moreReciters.forEach { reciter ->
                 if (reciters.contains(reciter).not()) {
-                    if (single || reciter.canListen) reciters.add(reciter)
+                     reciters.add(reciter)
                 }
             }
             reciters.firstOrNull()?.let { getDownloadedChapters(it) }
@@ -190,15 +187,9 @@ class RecitationViewModel(
 
     private suspend fun getDownloadedChapters(reciter: Reciter) {
         if (downloadsRepository.platformSupportDownloading) {
-            val ids1 = downloadsRepository.getDownloadedChapters(
+            val ids = downloadsRepository.getDownloadedChapters(
                 reciterPath = reciter.downloadStorageDirectory
-            )
-            val ids2 = if (reciter.hasConflictedQualities) {
-                downloadsRepository.getDownloadedChapters(
-                    reciterPath = reciter.listenStorageDirectory
-                )
-            } else emptyList()
-            val ids = (ids1 + ids2).toSet()
+            ).toSet()
             val chapters = chaptersRepository.getChapters(ids)
             downloadedChapters.clear()
             downloadedChapters.addAll(chapters)

@@ -78,6 +78,7 @@
     <string name="recite_permission_required">لا يمكنك التشغيل في الخلفية بدون تفعيل  notifications permission</string>
 
     <string name="reciter">القـارئ</string>
+    <string name="reciters">القراء (%1$s)</string>
     <string name="reciter_add_multiple">أضف أكثر من قارئ</string>
     <string name="reciter_add_all">إضافة القراء</string>
     <string name="reciters_more">أضف المزيد</string>
