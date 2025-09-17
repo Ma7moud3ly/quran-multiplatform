@@ -8,6 +8,7 @@
 **/*.log
 **/google-services.json
 build_all.ps1
+build_wasmJs.ps1
 fastlane/*.xml
 fastlane/README.md
 xcuserdata

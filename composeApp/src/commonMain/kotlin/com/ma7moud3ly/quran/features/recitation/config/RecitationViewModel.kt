@@ -143,6 +143,11 @@ class RecitationViewModel(
         if (reciters.size <= 1) recitationState.value.setPlaybackMode(PlaybackMode.Single)
     }
 
+    fun clearReciters() {
+        reciters.clear()
+        recitationState.value.setPlaybackMode(PlaybackMode.Single)
+    }
+
     fun saveLastReciters() {
         if (reciters.isNotEmpty()) {
             settingsRepository.saveLastReciters(reciters)

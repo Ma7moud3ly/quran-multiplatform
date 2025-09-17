@@ -8,6 +8,7 @@ sealed interface ConfigEvents {
     data object OnBack : ConfigEvents
     data object PickChapters : ConfigEvents
     data object PickReciters : ConfigEvents
+    data object ClearReciters : ConfigEvents
     data class RemoveReciter(val reciter: Reciter) : ConfigEvents
     data class SelectChapter(val chapter: Chapter) : ConfigEvents
     data class InitRecitation(val mode: ScreenMode) : ConfigEvents

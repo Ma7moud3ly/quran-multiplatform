@@ -80,7 +80,8 @@
     <string name="reciter">القـارئ</string>
     <string name="reciter_add_multiple">أضف أكثر من قارئ</string>
     <string name="reciter_add_all">إضافة القراء</string>
-    <string name="reciter_more">أضف المزيد</string>
+    <string name="reciters_more">أضف المزيد</string>
+    <string name="reciters_clear">حذف الكل</string>
 
     <string name="search">بحث</string>
     <string name="search_chapters">السور</string>

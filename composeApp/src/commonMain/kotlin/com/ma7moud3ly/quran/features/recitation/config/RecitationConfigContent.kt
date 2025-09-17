@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -46,6 +47,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -57,9 +59,9 @@ import com.ma7moud3ly.quran.features.search.reciter.ItemReciter
 import com.ma7moud3ly.quran.features.settings.SettingsLabel
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.PlaybackMode
-import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.RecitationState
 import com.ma7moud3ly.quran.model.Reciter
+import com.ma7moud3ly.quran.model.ScreenMode
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.model.isDistributed
 import com.ma7moud3ly.quran.model.isRepetitive
@@ -76,7 +78,6 @@ import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.MyButton
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
-import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.ScreenHeader
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import com.ma7moud3ly.quran.ui.isCompactDevice
@@ -97,7 +98,8 @@ import quran.composeapp.generated.resources.recite_start
 import quran.composeapp.generated.resources.recite_verse
 import quran.composeapp.generated.resources.reciter
 import quran.composeapp.generated.resources.reciter_add_multiple
-import quran.composeapp.generated.resources.reciter_more
+import quran.composeapp.generated.resources.reciters_clear
+import quran.composeapp.generated.resources.reciters_more
 import quran.composeapp.generated.resources.settings_background
 import quran.composeapp.generated.resources.settings_background_description
 import quran.composeapp.generated.resources.settings_change_reciter
@@ -181,10 +183,11 @@ internal fun RecitationConfigScreenContent(
     ) {
         if (isCompactDevice()) {
             SectionReciters(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp),
                 reciters = reciters,
                 recitationState = recitationState,
                 onPickReciter = { uiEvents(ConfigEvents.PickReciters) },
+                onClearReciters = { uiEvents(ConfigEvents.ClearReciters) },
                 onRemoveReciter = { uiEvents(ConfigEvents.RemoveReciter(it)) }
             )
             HorizontalDivider()
@@ -219,6 +222,7 @@ internal fun RecitationConfigScreenContent(
                         reciters = reciters,
                         recitationState = recitationState,
                         onPickReciter = { uiEvents(ConfigEvents.PickReciters) },
+                        onClearReciters = { uiEvents(ConfigEvents.ClearReciters) },
                         onRemoveReciter = { uiEvents(ConfigEvents.RemoveReciter(it)) }
                     )
                 }
@@ -270,6 +274,7 @@ private fun SectionReciters(
     recitationState: () -> RecitationState,
     reciters: () -> List<Reciter>,
     onPickReciter: () -> Unit,
+    onClearReciters: () -> Unit,
     onRemoveReciter: (Reciter) -> Unit
 ) {
     val state = recitationState()
@@ -302,20 +307,30 @@ private fun SectionReciters(
         } else {
             FlowRow(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(
+                    space = 8.dp,
+                    alignment = Alignment.CenterHorizontally
+                ),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 reciters.forEach { reciter ->
                     MiniReciter(
                         text = reciter.name,
-                        onIconClick = { onRemoveReciter(reciter) }
+                        onIconClick = { onRemoveReciter(reciter) },
+                        onClick = { onRemoveReciter(reciter) }
                     )
                 }
                 MiniReciter(
-                    text = stringResource(Res.string.reciter_more),
+                    text = stringResource(Res.string.reciters_more) + " (${reciters.size})",
                     color = MaterialTheme.colorScheme.onSecondary,
                     background = MaterialTheme.colorScheme.secondary,
                     onClick = onPickReciter
+                )
+                if (reciters.size > 3) MiniReciter(
+                    text = stringResource(Res.string.reciters_clear),
+                    color = MaterialTheme.colorScheme.onSecondary,
+                    background = MaterialTheme.colorScheme.error,
+                    onClick = onClearReciters
                 )
             }
         }
@@ -331,26 +346,34 @@ private fun MiniReciter(
     onClick: (() -> Unit)? = null,
     onIconClick: (() -> Unit)? = null,
 ) {
-    MySurfaceRow(
+    Surface(
         color = background,
-        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-        space = 8.dp,
-        verticalAlignment = Alignment.CenterVertically,
-        onClick = onClick
+        modifier = Modifier.clickable(
+            enabled = onClick != null,
+            onClick = { onClick?.invoke() }
+        ),
+        shape = RoundedCornerShape(8.dp),
     ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.titleSmall,
-            fontSize = 12.sp,
-            color = color
-        )
-        onIconClick?.let {
-            Icon(
-                imageVector = icon,
-                contentDescription = "",
-                modifier = Modifier.clip(CircleShape).clickable(onClick = it),
-                tint = MaterialTheme.colorScheme.error
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp)
+        ) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.bodyMedium,
+                fontSize = if (isCompactDevice()) 10.sp else 14.sp,
+                fontWeight = FontWeight.Medium,
+                color = color
             )
+            onIconClick?.let {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = "",
+                    modifier = Modifier.size(18.dp).clip(CircleShape).clickable(onClick = it),
+                    tint = MaterialTheme.colorScheme.error
+                )
+            }
         }
     }
 }

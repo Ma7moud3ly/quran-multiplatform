@@ -133,6 +133,10 @@ fun RecitationConfigScreen(
                     viewModel.removeReciter(it.reciter)
                 }
 
+                is ConfigEvents.ClearReciters -> {
+                    viewModel.clearReciters()
+                }
+
                 is ConfigEvents.SelectChapter -> {
                     viewModel.getChapter(it.chapter.id)
                 }
