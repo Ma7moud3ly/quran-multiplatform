@@ -6,7 +6,9 @@ data class SearchQuery(
     val verses: Boolean,
     val chapters: Boolean,
     val reciters: Boolean
-)
+) {
+    val noSource: Boolean = !verses && !chapters && !reciters
+}
 
 data class SearchResult(
     val chapterId: Int,
@@ -22,3 +24,13 @@ sealed interface SearchState {
     data object Loading : SearchState
     data class HasResult(val count: Int) : SearchState
 }
+
+data class SearchStateTrigger(
+    val verses: List<SearchResult>?,
+    val chapters: List<Chapter>?,
+    val reciters: List<Reciter>?,
+    val includeVerses: Boolean,
+    val includeChapters: Boolean,
+    val includeReciters: Boolean
+)
+

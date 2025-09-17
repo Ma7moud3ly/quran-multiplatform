@@ -37,6 +37,7 @@ data class RecitationState(
     fun getPlaybackMode() = playbackModeState.value
 
     fun isSingleReciterMode() = playbackModeState.value.isSingleReciter
+    fun isMultipleReciterMode() = playbackModeState.value.isSingleReciter.not()
 
     fun setPlaybackMode(value: PlaybackMode) {
         playbackModeState.value = value

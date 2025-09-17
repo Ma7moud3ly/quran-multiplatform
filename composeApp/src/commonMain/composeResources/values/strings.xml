@@ -79,6 +79,7 @@
 
     <string name="reciter">القـارئ</string>
     <string name="reciter_add_multiple">أضف أكثر من قارئ</string>
+    <string name="reciter_add_all">إضافة القراء</string>
     <string name="reciter_more">أضف المزيد</string>
 
     <string name="search">بحث</string>

@@ -65,6 +65,7 @@ import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.SearchQuery
 import com.ma7moud3ly.quran.model.SearchResult
 import com.ma7moud3ly.quran.model.SearchState
+import com.ma7moud3ly.quran.model.SearchStateTrigger
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.MyScreen
@@ -152,28 +153,37 @@ internal fun SearchScreenContent(
     val includeChapters = rememberSaveable { mutableStateOf(true) }
     val includeReciters = rememberSaveable { mutableStateOf(true) }
 
-    var searchState by remember { mutableStateOf<SearchState>(SearchState.Loading) }
+    var searchState by remember { mutableStateOf<SearchState>(SearchState.Idle) }
     LaunchedEffect(Unit) {
-        snapshotFlow { Triple(verses, chapters, reciters) }
-            .collect { (verses, chapters, reciters) ->
-                val state =
-                    if (verses == null &&
-                        chapters == null &&
-                        reciters == null
-                    ) {
-                        SearchState.Idle
-                    } else {
-                        var count = 0
-                        if (includeVerses.value) verses?.size?.let { count += it }
-                        if (includeChapters.value) chapters?.size?.let { count += it }
-                        if (includeReciters.value) reciters?.size?.let { count += it }
-                        SearchState.HasResult(count)
-                    }
-                searchState = state
-            }
+        snapshotFlow {
+            SearchStateTrigger(
+                verses = verses,
+                chapters = chapters,
+                reciters = reciters,
+                includeVerses = includeVerses.value,
+                includeChapters = includeChapters.value,
+                includeReciters = includeReciters.value
+            )
+        }.collect { trigger ->
+            val state =
+                if (trigger.verses == null &&
+                    trigger.chapters == null &&
+                    trigger.reciters == null
+                ) {
+                    SearchState.Idle
+                } else {
+                    var count = 0
+                    if (trigger.includeVerses) verses?.size?.let { count += it }
+                    if (trigger.includeChapters) chapters?.size?.let { count += it }
+                    if (trigger.includeReciters) reciters?.size?.let { count += it }
+                    SearchState.HasResult(count)
+                }
+            searchState = state
+        }
     }
 
     fun onInitSearch(query: SearchQuery) {
+        if (query.noSource) return
         searchState = SearchState.Loading
         onSearch(query)
     }

@@ -16,10 +16,7 @@ sealed interface ConfigEvents {
 sealed interface RecitationEvents {
     data object OnBack : RecitationEvents
     data class ChaptersDialog(val chapterId: Int?) : RecitationEvents
-    data class RecitersDialog(
-        val reciterId: String?,
-        val filter: Boolean
-    ) : RecitationEvents
+    data class RecitersDialog(val selectMultiple: Boolean) : RecitationEvents
 
     data object ConfirmDownload : RecitationEvents
     data object StartOnline : RecitationEvents

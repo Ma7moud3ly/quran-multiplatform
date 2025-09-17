@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -208,8 +209,7 @@ fun AppGraph(
 
                         is RecitationEvents.RecitersDialog -> {
                             val route = AppRoutes.Recitation.Pick.Reciter(
-                                reciterId = it.reciterId,
-                                filter = it.filter
+                                selectMultiple = it.selectMultiple
                             )
                             navController.navigate(route)
                         }
@@ -242,13 +242,14 @@ fun AppGraph(
         }
 
         dialog<AppRoutes.Recitation.Pick.Reciter> {
-            val reciterRoute = it.toRoute<AppRoutes.Recitation.Pick.Reciter>()
+            val selectMultiple = it.toRoute<AppRoutes.Recitation.Pick.Reciter>().selectMultiple
+            val reciterIds = remember { viewModel.reciters.map { r -> r.id } }
             PickReciterDialog(
-                selectedReciterId = reciterRoute.reciterId.orEmpty(),
-                filterReciters = reciterRoute.filter,
+                selectedReciterIds = reciterIds,
+                selectMultiple = selectMultiple,
                 onBack = { navController.popBackStack() },
-                onSelectReciter = { reciter ->
-                    viewModel.addReciter(reciter.id)
+                onSelectReciter = { reciters ->
+                    viewModel.addReciter(reciters)
                     navController.popBackStack()
                 }
             )

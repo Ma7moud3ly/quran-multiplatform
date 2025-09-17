@@ -82,7 +82,7 @@ class RecitationViewModel(
         }
 
         if (config.reciterId != null) {
-            addReciter(config.reciterId, clear = true)
+            addReciter(listOf(config.reciterId))
         } else if (config.canChangeChapter) {
             getLastReciters()
         }
@@ -123,19 +123,16 @@ class RecitationViewModel(
 
     val reciters = mutableStateListOf<Reciter>()
 
-    fun addReciter(id: String, clear: Boolean = false) {
+    fun addReciter(ids: List<String>) {
         val state = recitationState.value
-        if (clear) {
-            reciters.clear()
-            state.setPlaybackMode(PlaybackMode.Single)
-        }
+        reciters.clear()
         viewModelScope.launch {
-            val reciter = recitersRepository.getReciter(id) ?: return@launch
+            val moreReciters = recitersRepository.getReciters(ids)
             val single = state.getPlaybackMode().isSingleReciter
-            if (single) reciters.clear()
-            if (reciters.contains(reciter).not()) {
-                if (single) reciters.add(reciter)
-                else if (reciter.canListen) reciters.add(reciter)
+            moreReciters.forEach { reciter ->
+                if (reciters.contains(reciter).not()) {
+                    if (single || reciter.canListen) reciters.add(reciter)
+                }
             }
             reciters.firstOrNull()?.let { getDownloadedChapters(it) }
         }

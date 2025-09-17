@@ -495,7 +495,7 @@ private fun SectionRange(
                 enabled = { singleVerse },
                 onToggle = {
                     singleVerse = it
-                    if (singleVerse && state.isSingleReciterMode().not()) {
+                    if (singleVerse && state.isMultipleReciterMode()) {
                         state.setPlaybackMode(PlaybackMode.Repetitive)
                     }
                 }

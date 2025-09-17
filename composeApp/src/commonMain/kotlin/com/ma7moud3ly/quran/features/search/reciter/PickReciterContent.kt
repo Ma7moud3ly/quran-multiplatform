@@ -1,7 +1,9 @@
 package com.ma7moud3ly.quran.features.search.reciter
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -10,6 +12,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,6 +22,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -26,17 +31,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
 import com.ma7moud3ly.quran.features.search.SearchBox
+import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.DialogHeader
+import com.ma7moud3ly.quran.ui.MyButton
 import com.ma7moud3ly.quran.ui.MyDialog
 import com.ma7moud3ly.quran.ui.MySurfaceRow
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.recite_reciter_select
+import quran.composeapp.generated.resources.reciter_add_all
 import quran.composeapp.generated.resources.search
 import quran.composeapp.generated.resources.search_reciter_hint
 
@@ -45,7 +52,9 @@ import quran.composeapp.generated.resources.search_reciter_hint
 private fun PickReciterDialogPreview() {
     AppTheme(darkTheme = true) {
         PickReciterDialogContent(
-            list = testReciters,
+            allReciters = testReciters,
+            selectMultiple = true,
+            selectedReciterIds = listOf("1", "2"),
             onSelectReciter = {},
             onBack = {}
         )
@@ -57,7 +66,9 @@ private fun PickReciterDialogPreview() {
 private fun PickReciterDialogPreviewLight() {
     AppTheme(darkTheme = false) {
         PickReciterDialogContent(
-            list = testReciters,
+            allReciters = testReciters,
+            selectMultiple = true,
+            selectedReciterIds = listOf("1", "2"),
             onSelectReciter = {},
             onBack = {}
         )
@@ -66,12 +77,43 @@ private fun PickReciterDialogPreviewLight() {
 
 @Composable
 internal fun PickReciterDialogContent(
-    list: List<Reciter>,
-    filterReciters: Boolean = false,
-    selectedReciterId: String = "",
-    onSelectReciter: (Reciter) -> Unit,
+    allReciters: List<Reciter>,
+    selectMultiple: Boolean,
+    selectedReciterIds: List<String>,
+    onSelectReciter: (List<String>) -> Unit,
     onBack: () -> Unit
 ) {
+
+    val listState = rememberLazyListState()
+    LaunchedEffect(allReciters, selectedReciterIds) {
+        if (selectedReciterIds.isNotEmpty() && allReciters.isNotEmpty()) {
+            // find the index of first selected reciter (according to the order of allReciters)
+            // and then scroll to it
+            for (index in 0..allReciters.size - 1) {
+                val reciter = allReciters[index]
+                if (selectedReciterIds.contains(reciter.id)) {
+                    listState.scrollToItem(index)
+                    break
+                }
+            }
+        }
+    }
+    val selectedReciters = remember { mutableStateSetOf<String>() }
+    LaunchedEffect(Unit) {
+        selectedReciters.addAll(selectedReciterIds)
+    }
+
+    fun addReciter(reciterId: String) {
+        if (selectMultiple) {
+            if (selectedReciters.contains(reciterId)) {
+                selectedReciters.remove(reciterId)
+            } else {
+                selectedReciters.add(reciterId)
+            }
+        } else {
+            onSelectReciter(listOf(reciterId))
+        }
+    }
 
     MyDialog(
         onDismissRequest = onBack,
@@ -81,24 +123,29 @@ internal fun PickReciterDialogContent(
                 onBack = onBack
             )
         },
+        footer = {
+            if (selectMultiple) Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                MyButton(
+                    text = Res.string.reciter_add_all,
+                    onClick = { onSelectReciter(selectedReciters.toList()) },
+                    enabled = { selectedReciters.isNotEmpty() }
+                )
+            }
+        },
         modifier = Modifier.padding(16.dp),
     ) {
-        val listState = rememberLazyListState()
-        LaunchedEffect(list, selectedReciterId) {
-            if (selectedReciterId.isNotEmpty() && list.isNotEmpty()) {
-                val index = list.indexOfFirst { it.id == selectedReciterId }
-                if (index > 0) listState.scrollToItem(index)
-            }
-        }
-
         var query by remember { mutableStateOf("") }
-        val filteredList by remember(query, list) {
+        val filteredList by remember(query, allReciters) {
             derivedStateOf {
-                list.filter {
+                allReciters.filter {
                     if (query.isEmpty()) {
-                        if (filterReciters) it.canListen else true
+                        if (selectMultiple) it.canListen else true
                     } else {
-                        (if (filterReciters) it.canListen else true) &&
+                        (if (selectMultiple) it.canListen else true) &&
                                 it.name.contains(query.trim(), ignoreCase = true)
                     }
                 }
@@ -121,7 +168,9 @@ internal fun PickReciterDialogContent(
                 items(filteredList) {
                     ItemReciter(
                         reciter = it,
-                        onClick = { onSelectReciter(it) }
+                        showCheckBox = selectMultiple,
+                        selected = { selectedReciters.contains(it.id) },
+                        onClick = { addReciter(it.id) }
                     )
                 }
             }
@@ -134,12 +183,16 @@ internal fun PickReciterDialogContent(
 internal fun ItemReciter(
     reciter: Reciter?,
     modifier: Modifier = Modifier.fillMaxWidth(),
+    selected: () -> Boolean = { false },
     showArrow: Boolean = false,
+    showCheckBox: Boolean = false,
     color: Color = MaterialTheme.colorScheme.onPrimary,
     onClick: (() -> Unit)?,
 ) {
+    val isSelected = selected()
     MySurfaceRow(
-        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        color = if (isSelected) MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
+        else MaterialTheme.colorScheme.surfaceContainerHigh,
         modifier = modifier.padding(8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(
@@ -166,5 +219,17 @@ internal fun ItemReciter(
             contentDescription = "",
             tint = color
         )
+        if (showCheckBox) {
+            Spacer(modifier = Modifier.weight(1f))
+            Checkbox(
+                checked = isSelected,
+                onCheckedChange = null,
+                colors = CheckboxDefaults.colors(
+                    checkedColor = MaterialTheme.colorScheme.secondary,
+                    checkmarkColor = MaterialTheme.colorScheme.onSecondary,
+                    uncheckedColor = MaterialTheme.colorScheme.tertiary
+                )
+            )
+        }
     }
 }

@@ -43,7 +43,7 @@ object AppRoutes {
             data class Chapter(val chapterId: Int? = null)
 
             @Serializable
-            data class Reciter(val reciterId: String?, val filter: Boolean)
+            data class Reciter(val selectMultiple: Boolean)
         }
     }
 

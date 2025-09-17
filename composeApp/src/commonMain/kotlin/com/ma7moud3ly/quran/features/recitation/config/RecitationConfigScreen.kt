@@ -68,7 +68,7 @@ fun RecitationConfigScreen(
         coroutineScope.launch {
             val reciter = reciters.first()
             val event = if (viewModel.platformSupportDownloading()) {
-                if (recitationState.isSingleReciterMode().not()) {
+                if (recitationState.isMultipleReciterMode()) {
                     RecitationEvents.StartOnline
                 } else if (reciter.canDownload && viewModel.isFullyDownloaded(recitation)) {
                     RecitationEvents.StartLocally
@@ -124,8 +124,7 @@ fun RecitationConfigScreen(
 
                 is ConfigEvents.PickReciters -> {
                     val event = RecitationEvents.RecitersDialog(
-                        reciterId = reciters.lastOrNull()?.id,
-                        filter = recitationState.isSingleReciterMode().not()
+                        selectMultiple = recitationState.isMultipleReciterMode()
                     )
                     recitationEvents(event)
                 }
