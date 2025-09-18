@@ -91,6 +91,9 @@ kotlin {
 
             implementation(libs.ktor.client.core)
             implementation(libs.okio)
+
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
         }
         androidMain.dependencies {
             implementation(compose.preview)

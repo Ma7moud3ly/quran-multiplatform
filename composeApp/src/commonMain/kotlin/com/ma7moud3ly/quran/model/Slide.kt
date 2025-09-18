@@ -41,5 +41,5 @@ sealed interface SlideControls {
 }
 
 val SlideControls.showControls: Boolean get() = this is SlideControls.ShowControls
-val SlideControls.showVerse: Boolean get() = this !is SlideControls.HideAll
+val SlideControls.showVerse: Boolean get() = this is ShowVerse || this is ShowTitle
 val SlideControls.showTitle: Boolean get() = showControls || this is SlideControls.ShowTitle

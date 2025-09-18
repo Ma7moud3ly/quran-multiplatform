@@ -9,6 +9,7 @@ import com.ma7moud3ly.quran.data.repository.SlidesRepository
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
 import com.ma7moud3ly.quran.managers.SlidesManager
 import com.ma7moud3ly.quran.managers.VersesManager
+import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.getPlaybackVideos
 import kotlinx.coroutines.flow.Flow
@@ -83,11 +84,11 @@ internal val testRecitationState = RecitationState(
     firstVerse = 1,
     lastVerse = 7,
     reelMode = true,
-    playbackMode = PlaybackMode.Single,
     playInBackground = false,
     canChangeChapter = true,
     canChangeReciter = true,
-    canChangeVerse = true
+    canChangeVerse = true,
+    playbackMode = PlaybackMode.Sequential
 )
 
 internal val testReadingSettings = ReadingSettings()

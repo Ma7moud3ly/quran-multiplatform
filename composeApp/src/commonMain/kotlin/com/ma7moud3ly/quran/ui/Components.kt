@@ -30,6 +30,7 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -44,6 +45,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,6 +64,7 @@ fun MySurface(
     color: Color = MaterialTheme.colorScheme.surface,
     contentAlignment: Alignment = Alignment.Center,
     modifier: Modifier = Modifier,
+    border: BorderStroke? = null,
     surfaceModifier: Modifier = Modifier,
     shadowElevation: Dp = 0.dp,
     onClick: (() -> Unit)? = null,
@@ -70,6 +73,7 @@ fun MySurface(
     Surface(
         shape = shape,
         color = color,
+        border = border,
         modifier = surfaceModifier,
         shadowElevation = shadowElevation,
         enabled = onClick != null,
@@ -295,6 +299,30 @@ fun MyButtonSmall(
 }
 
 @Composable
+fun ButtonSmall(
+    text: String,
+    background: Color = MaterialTheme.colorScheme.surfaceContainerHigh,
+    color: Color = MaterialTheme.colorScheme.onPrimary,
+    onClick: (() -> Unit)? = null,
+) {
+    MySurface(
+        onClick = onClick,
+        color = background,
+        cornerRadius = 8.dp,
+        modifier = Modifier.padding(horizontal = 4.dp),
+        shape = RoundedCornerShape(8.dp),
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyMedium,
+            fontSize = if (isCompactDevice()) 12.sp else 14.sp,
+            fontWeight = FontWeight.Medium,
+            color = color
+        )
+    }
+}
+
+@Composable
 internal fun RoundButton(
     icon: DrawableResource,
     iconSize: Dp = 22.dp,
@@ -343,7 +371,6 @@ internal fun RoundButton(
         )
     }
 }
-
 
 
 @Composable

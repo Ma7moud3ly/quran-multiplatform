@@ -1,7 +1,9 @@
 [
   {
     "id": "shatry",
+    "image": "shatry.jpg",
     "name": "أبو بكر الشاطري",
+    "name_short": "الشاطري",
     "listen": [
       {
         "quality": 64,
@@ -21,7 +23,9 @@
   },
   {
     "id": "ajamy",
+    "image": "ajamy.jpg",
     "name": "أحمد بن علي العجمي",
+    "name_short": "العجمي",
     "listen": [
       {
         "quality": 64,
@@ -41,7 +45,9 @@
   },
   {
     "id": "minshawi/murattal",
+    "image": "minshawi.jpg",
     "name": "محمد صديق المنشاوي – مرتل",
+    "name_short": "المنشاوي – مرتل",
     "listen": [
       {
         "quality": 64,
@@ -73,7 +79,9 @@
   },
   {
     "id": "minshawi/moalem",
+    "image": "minshawi.jpg",
     "name": "محمد صديق المنشاوي – معلم",
+    "name_short": "المنشاوي – معلم",
     "listen": [
       {
         "quality": 128,
@@ -93,7 +101,9 @@
   },
   {
     "id": "minshawi/mogawwad",
+    "image": "minshawi.jpg",
     "name": "محمد صديق المنشاوي – مجود",
+    "name_short": "المنشاوي – مجود",
     "listen": [
       {
         "quality": 64,
@@ -121,7 +131,9 @@
   },
   {
     "id": "basit/murattal",
+    "image": "basit.jpg",
     "name": "عبد الباسط عبد الصمد – مرتل",
+    "name_short": "عبد الباسط – مرتل",
     "listen": [
       {
         "quality": 64,
@@ -149,7 +161,9 @@
   },
   {
     "id": "basit/mogawwad",
+    "image": "basit.jpg",
     "name": "عبد الباسط عبد الصمد – مجود",
+    "name_short": "عبد الباسط – مجود",
     "listen": [
       {
         "quality": 64,
@@ -173,7 +187,9 @@
   },
   {
     "id": "hosary/murattal",
+    "image": "hosary.jpg",
     "name": "محمود خليل الحصري – مرتل",
+    "name_short": "الحصري – مرتل",
     "listen": [
       {
         "quality": 64,
@@ -193,7 +209,9 @@
   },
   {
     "id": "hosary/qasr",
+    "image": "hosary.jpg",
     "name": "محمود خليل الحصري – قصر",
+    "name_short": "الحصري – قصر",
     "listen": [
       {
         "quality": 64,
@@ -213,7 +231,9 @@
   },
   {
     "id": "hosary/mogawwad",
+    "image": "hosary.jpg",
     "name": "محمود خليل الحصري – مجود",
+    "name_short": "الحصري – مجود",
     "listen": [
       {
         "quality": 64,
@@ -233,7 +253,9 @@
   },
   {
     "id": "hosary/moalem",
+    "image": "hosary.jpg",
     "name": "محمود خليل الحصري – معلم",
+    "name_short": "الحصري – معلم",
     "listen": [
       {
         "quality": 128,
@@ -257,7 +279,9 @@
   },
   {
     "id": "hosary/warsh",
+    "image": "hosary.jpg",
     "name": "محمود خليل الحصري – رواية ورش",
+    "name_short": "الحصري – ورش",
     "listen": [
       {
         "quality": 64,
@@ -273,7 +297,9 @@
   },
   {
     "id": "hosary/qaloon",
+    "image": "hosary.jpg",
     "name": "محمود خليل الحصري – رواية قالون",
+    "name_short": "الحصري – قالون",
     "listen": [
       {
         "quality": 32,
@@ -293,7 +319,9 @@
   },
   {
     "id": "tablawi",
+    "image": "tablawi.jpg",
     "name": "محمد محمود الطبلاوي",
+    "name_short": "الطبلاوي",
     "listen": [
       {
         "quality": 64,
@@ -309,6 +337,7 @@
   },
   {
     "id": "banna",
+    "image": "banna.jpg",
     "listen": [
       {
         "quality": 32,
@@ -316,6 +345,7 @@
       }
     ],
     "name": "محمود علي البنا – مرتل",
+    "name_short": "البنا - مرتل",
     "download": [
       {
         "quality": 32,
@@ -325,6 +355,7 @@
   },
   {
     "id": "mostafa_ismail",
+    "image": "mostafa_ismail.jpg",
     "name": "مصطفي إسماعيل",
     "listen": [
       {
@@ -345,6 +376,7 @@
   },
   {
     "id": "gebreel",
+    "image": "gebreel.jpg",
     "name": "محمد جبريل",
     "listen": [
       {
@@ -361,6 +393,7 @@
   },
   {
     "id": "n3eina3",
+    "image": "n3eina3.jpg",
     "name": "أحمد نعينع - مرتل",
     "listen": [
       {
@@ -381,7 +414,9 @@
   },
   {
     "id": "sweasy",
+    "image": "sweasy.jpg",
     "name": "علي حجاج السويسي",
+    "name_short": "السويسي",
     "listen": [
       {
         "quality": 128,
@@ -401,7 +436,9 @@
   },
   {
     "id": "maher/murattal",
+    "image": "maher.jpg",
     "name": "ماهر المعيقلي - مرتل",
+    "name_short": "المعيقلي - مرتل",
     "listen": [
       {
         "quality": 128,
@@ -433,7 +470,9 @@
   },
   {
     "id": "maher/mogawwad",
+    "image": "maher.jpg",
     "name": "ماهر المعيقلي - مجود",
+    "name_short": "المعيقلي - مجود",
     "listen": [
       {
         "quality": 96,
@@ -449,7 +488,9 @@
   },
   {
     "id": "hozayfi",
+    "image": "hozayfi.jpg",
     "name": "علي عبد الرحمن الحذيفي",
+    "name_short": "الحذيفي",
     "listen": [
       {
         "quality": 128,
@@ -473,7 +514,9 @@
   },
   {
     "id": "afasy",
-    "name": "مشاري العفاسي",
+    "image": "afasy.jpg",
+    "name": "مشاري راشد العفاسي",
+    "name_short": "العفاسي",
     "listen": [
       {
         "quality": 128,
@@ -493,6 +536,7 @@
   },
   {
     "id": "fares-abbad",
+    "image": "fares-abbad.jpg",
     "name": "فارس عباد",
     "listen": [
       {
@@ -513,6 +557,7 @@
   },
   {
     "id": "ghamdy",
+    "image": "ghamdy.jpg",
     "name": "سعد الغامدي",
     "listen": [
       {
@@ -529,6 +574,7 @@
   },
   {
     "id": "tawfeeq-alsayegh",
+    "image": "tawfeeq-alsayegh.jpg",
     "name": "توفيق الصائغ",
     "listen": [
       {
@@ -545,7 +591,9 @@
   },
   {
     "id": "shoreim",
+    "image": "shoreim.jpg",
     "name": "سعود الشريم",
+    "name_short": "الشريم",
     "listen": [
       {
         "quality": 64,
@@ -561,7 +609,9 @@
   },
   {
     "id": "sudais",
+    "image": "sudais.jpg",
     "name": "عبد الرحمن السديس",
+    "name_short": "السديس",
     "listen": [
       {
         "quality": 192,
@@ -581,7 +631,9 @@
   },
   {
     "id": "qetamy",
+    "image": "qetamy.jpg",
     "name": "ناصر القطامي",
+    "name_short": "القطامي",
     "listen": [
       {
         "quality": 128,
@@ -597,7 +649,9 @@
   },
   {
     "id": "dosari",
+    "image": "dosari.jpg",
     "name": "ياسر الدوسري",
+    "name_short": "الدوسري",
     "listen": [
       {
         "quality": 128,
@@ -617,6 +671,7 @@
   },
   {
     "id": "refa3y",
+    "image": "refa3y.jpg",
     "name": "هاني الرفاعي",
     "listen": [
       {
@@ -633,6 +688,7 @@
   },
   {
     "id": "salama",
+    "image": "salama.jpg",
     "name": "ياسر سلامة",
     "listen": [
       {
@@ -649,6 +705,7 @@
   },
   {
     "id": "slaa7-bo-khater",
+    "image": "slaa7-bo-khater.jpg",
     "name": "صلاح بوخاطر",
     "listen": [
       {
@@ -665,6 +722,7 @@
   },
   {
     "id": "ayoub",
+    "image": "ayoub.jpg",
     "name": "محمد أيوب",
     "listen": [
       {
@@ -693,7 +751,9 @@
   },
   {
     "id": "jabir",
+    "image": "jabir.jpg",
     "name": "علي عبد الله جابر",
+    "name_short": "علي جابر",
     "listen": [
       {
         "quality": 64,
@@ -713,7 +773,9 @@
   },
   {
     "id": "matrood",
+    "image": "matrood.jpg",
     "name": "عبد الله المطرود",
+    "name_short": "المطرود",
     "listen": [
       {
         "quality": 128,
@@ -733,6 +795,7 @@
   },
   {
     "id": "akhdar",
+    "image": "akhdar.jpg",
     "name": "إبراهيم الأخضر",
     "listen": [
       {
@@ -749,6 +812,7 @@
   },
   {
     "id": "bedir",
+    "image": "bedir.jpg",
     "name": "صلاح البدير",
     "listen": [
       {
@@ -769,6 +833,7 @@
   },
   {
     "id": "qasem",
+    "image": "qasem.jpg",
     "name": "عبد المحسن القاسم",
     "listen": [
       {
@@ -785,6 +850,7 @@
   },
   {
     "id": "basfar",
+    "image": "basfar.jpg",
     "name": "عبد الله بصفر - مجود",
     "listen": [
       {
@@ -809,7 +875,9 @@
   },
   {
     "id": "johany",
+    "image": "johany.jpg",
     "name": "عبد الله الجهني",
+    "name_short": "الجهني",
     "listen": [
       {
         "quality": 128,
@@ -825,6 +893,7 @@
   },
   {
     "id": "mansory",
+    "image": "mansory.jpg",
     "name": "كريم منصوري – مجود",
     "listen": [
       {
@@ -845,6 +914,7 @@
   },
   {
     "id": "abdulkareem",
+    "image": "abdulkareem.jpg",
     "name": "محمد عبد الكريم",
     "listen": [
       {
@@ -865,7 +935,9 @@
   },
   {
     "id": "ibrahim-dosari/warsh",
+    "image": "ibrahim-dosari.jpg",
     "name": "إبراهيم الدوسري – ورش عن نافع",
+    "name_short": "إبراهيم الدوسري – ورش",
     "listen": [
       {
         "quality": 128,
@@ -885,6 +957,7 @@
   },
   {
     "id": "alaqmy",
+    "image": "alaqmy.jpg",
     "name": "أكرم العلاقمي",
     "listen": [
       {
@@ -905,7 +978,9 @@
   },
   {
     "id": "teneagy",
+    "image": "teneagy.jpg",
     "name": "خليفة الطنيجي",
+    "name_short": "الطنيجي",
     "listen": [
       {
         "quality": 64,
@@ -921,6 +996,7 @@
   },
   {
     "id": "yasin",
+    "image": "yasin.jpg",
     "name": "سهل ياسين",
     "listen": [
       {
@@ -941,6 +1017,7 @@
   },
   {
     "id": "berhizkar",
+    "image": "berhizkar.jpg",
     "name": "شهريار برهيز كار",
     "listen": [
       {
@@ -961,6 +1038,7 @@
   },
   {
     "id": "alhashem",
+    "image": "alhashem.jpg",
     "name": "صلاح الهاشم",
     "listen": [
       {
@@ -981,7 +1059,9 @@
   },
   {
     "id": "translation-en",
+    "image": "translation-en.jpg",
     "name": "مصحف مترجم – إنجليزي",
+    "name_short": "ترجمة إنجليزي",
     "listen": [
       {
         "quality": 192,
@@ -1001,7 +1081,9 @@
   },
   {
     "id": "translation-az",
+    "image": "translation-az.jpg",
     "name": "مصحف مترجم – أذربيجاني",
+    "name_short": "ترجمة أذربيجاني",
     "listen": [
       {
         "quality": 64,
@@ -1021,7 +1103,9 @@
   },
   {
     "id": "translation-ur",
+    "image": "translation-ur.jpg",
     "name": "مصحف مترجم – أردو",
+    "name_short": "ترجمة أردو",
     "listen": [
       {
         "quality": 46,

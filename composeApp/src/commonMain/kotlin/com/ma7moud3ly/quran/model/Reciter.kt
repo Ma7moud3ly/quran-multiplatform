@@ -1,15 +1,30 @@
 package com.ma7moud3ly.quran.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
 @Serializable
 data class Reciter(
     val id: String,
+    private val image: String = "",
+    @SerialName("name_short")
+    private val nameShort: String? = null,
     val name: String = "",
     val listen: List<Quality> = listOf(),
     val download: List<Quality> = listOf()
 ) {
+
+    /**
+     * The short name of the reciter. If `nameShort` is not available, it defaults to the full `name`.
+     */
+    val shortName: String get() = nameShort ?: name
+
+    /**
+     * The URL of the reciter's image.
+     */
+    val imageUrl: String get() = "https://raw.githubusercontent.com/Ma7moud3ly/quran-multiplatform/refs/heads/main/images/reciters/$image"
+
     /**
      * The quality level of the first available listening option.
      */
