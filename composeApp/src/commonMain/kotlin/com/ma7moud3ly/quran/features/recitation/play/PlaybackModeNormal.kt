@@ -1,6 +1,5 @@
 package com.ma7moud3ly.quran.features.recitation.play
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,12 +22,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -55,7 +51,6 @@ import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.arabicIslamicFontFamily
 import com.ma7moud3ly.quran.ui.isCompactDevice
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -155,12 +150,14 @@ fun NormalPlayback(
                 )
             } else HeaderInReelMode(
                 mediaPlayer = mediaPlayerManager,
-                onSettings = { uiEvents(PlaybackEvents.OpenSettings) },
                 onBack = { uiEvents(PlaybackEvents.Back) }
             )
         },
         bottomBar = {
-            VersesScrollbar(versesManager = versesManager)
+            VersesScrollbar(
+                versesManager = versesManager,
+                enabled = mediaPlayerManager.canPickAnyVerse
+            )
         },
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
@@ -170,8 +167,9 @@ fun NormalPlayback(
             VersesMode.Multiple -> {
                 SectionMultiVerses(
                     chapter = mediaPlayerManager.getChapter(),
-                    versesManager = versesManager,
                     font = settings.font,
+                    versesManager = versesManager,
+                    enabled = mediaPlayerManager.canPickAnyVerse,
                     showDivider = mediaPlayerManager.isReelMode.not(),
                     onCopyVerse = ::showCopiedMessage,
                 )
@@ -181,6 +179,7 @@ fun NormalPlayback(
                 SectionSingleVerse(
                     versesManager = versesManager,
                     showNavigation = false,
+                    enabled = mediaPlayerManager.canPickAnyVerse,
                     font = settings.font,
                     onCopyVerse = ::showCopiedMessage,
                 )
@@ -205,6 +204,8 @@ private fun Header(
     Column {
         if (isCompactDevice()) MediumTopAppBar(
             modifier = Modifier.padding(vertical = 0.dp, horizontal = 8.dp),
+            collapsedHeight = 50.dp,
+            expandedHeight = 90.dp,
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.background
             ),
@@ -212,14 +213,14 @@ private fun Header(
                 SuraName(
                     chapterName = chapterName,
                     onClick = onBack,
-                    iconSize = 24.dp,
-                    fontSize = 24.sp
+                    iconSize = 22.dp,
+                    fontSize = 22.sp
                 )
             },
             title = {
                 ReciterName(
                     reciterName = reciter.name,
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     modifier = Modifier.fillMaxWidth(0.95f),
                     textModifier = Modifier.weight(1f)
                 )
@@ -240,14 +241,14 @@ private fun Header(
                 SuraName(
                     chapterName = chapterName,
                     onClick = onBack,
-                    iconSize = 28.dp,
-                    fontSize = 28.sp
+                    iconSize = 25.dp,
+                    fontSize = 25.sp
                 )
             },
             title = {
                 ReciterName(
                     reciterName = reciter.name,
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp, horizontal = 8.dp)
@@ -270,21 +271,12 @@ private fun Header(
 @Composable
 private fun HeaderInReelMode(
     mediaPlayer: MediaPlayerManager,
-    onSettings: () -> Unit,
     onBack: () -> Unit
 ) {
-
-    var showControls by remember { mutableStateOf(true) }
     val reciter by remember { mediaPlayer.reciter }
-    LaunchedEffect(showControls) {
-        if (showControls) {
-            delay(5000)
-            showControls = false
-        }
-    }
-
     Column {
         TopAppBar(
+            expandedHeight = 45.dp,
             modifier = Modifier.padding(vertical = 0.dp, horizontal = 8.dp),
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.background
@@ -294,34 +286,21 @@ private fun HeaderInReelMode(
                     chapterName = mediaPlayer.chapterName,
                     icon = null,
                     onClick = onBack,
-                    iconSize = 25.dp,
-                    fontSize = 25.sp
+                    iconSize = 22.dp,
+                    fontSize = 22.sp
                 )
             },
             title = {
-                Row(
+                Text(
+                    text = reciter.name,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
-                ) {
-                    Text(
-                        text = reciter.name,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier
-                            .weight(1f)
-                            .clickable { showControls = showControls.not() },
-                        overflow = TextOverflow.Ellipsis,
-                        textAlign = TextAlign.End,
-                        fontSize = 14.sp,
-                        maxLines = 1
-                    )
-                    if (showControls) RoundButton(
-                        icon = Res.drawable.settings,
-                        iconSize = 24.dp,
-                        onClick = onSettings
-                    )
-                }
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.End,
+                    fontSize = 12.sp,
+                    maxLines = 1
+                )
             }
         )
         HorizontalDivider()
@@ -368,7 +347,7 @@ private fun ReciterName(
             maxLines = 1,
             autoSize = TextAutoSize.StepBased(
                 maxFontSize = fontSize,
-                minFontSize = 12.sp
+                minFontSize = 10.sp
             ),
             overflow = TextOverflow.Ellipsis,
         )

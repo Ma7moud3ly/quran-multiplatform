@@ -14,7 +14,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,7 +29,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.managers.VersesManager
 import com.ma7moud3ly.quran.model.AppFont
@@ -89,6 +87,7 @@ internal fun SectionMultiVerses(
     font: AppFont,
     versesManager: VersesManager,
     showDivider: Boolean = true,
+    enabled: Boolean = true,
     onCopyVerse: () -> Unit,
     onNextChapter: (() -> Unit)? = null,
     onPreviousChapter: (() -> Unit)? = null
@@ -131,6 +130,7 @@ internal fun SectionMultiVerses(
                 font = font,
                 textAlign = TextAlign.Justify,
                 onCopyVerse = onCopyVerse,
+                enabled = enabled,
                 current = { verse.id == selectedVerse?.id },
                 onClick = { versesManager.selectVerse(verse) }
             )
@@ -153,6 +153,7 @@ internal fun ItemVerse(
     verse: Verse,
     current: () -> Boolean,
     font: AppFont,
+    enabled: Boolean = true,
     autoSize: Boolean = false,
     textAlign: TextAlign = TextAlign.Justify,
     onClick: () -> Unit,
@@ -193,6 +194,7 @@ internal fun ItemVerse(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
                 .combinedClickable(
+                    enabled = enabled,
                     onClick = onClick,
                     onLongClick = ::copyVerse,
                     interactionSource = interactionSource,

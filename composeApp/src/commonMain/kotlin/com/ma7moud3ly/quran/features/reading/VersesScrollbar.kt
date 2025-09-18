@@ -48,6 +48,7 @@ private fun VersesScrollbarPreview() {
 @Composable
 internal fun VersesScrollbar(
     modifier: Modifier = Modifier.fillMaxWidth().navigationBarsPadding(),
+    enabled: Boolean = true,
     versesManager: VersesManager
 ) {
     val selectedVerse by versesManager.selectedVerse.collectAsState(null)
@@ -70,6 +71,7 @@ internal fun VersesScrollbar(
                 item {
                     ItemNumber(
                         verseNumber = verse.verseNumber,
+                        enabled = enabled,
                         selected = { verse.id == selectedVerse?.id },
                         onSelect = { versesManager.selectVerse(verse) }
                     )
@@ -83,6 +85,7 @@ internal fun VersesScrollbar(
 @Composable
 private fun ItemNumber(
     verseNumber: String,
+    enabled: Boolean,
     selected: () -> Boolean,
     onSelect: () -> Unit
 ) {
@@ -91,7 +94,7 @@ private fun ItemNumber(
         color = Color.Transparent,
         modifier = Modifier.clickable(
             onClick = onSelect,
-            enabled = true,
+            enabled = enabled,
             indication = null,
             interactionSource = interactionSource
         )

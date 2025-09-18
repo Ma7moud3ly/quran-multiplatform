@@ -29,7 +29,6 @@ import com.ma7moud3ly.quran.ui.isCompactDevice
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
-
 @Preview
 @Composable
 private fun SectionSingleVersePreview() {
@@ -66,6 +65,7 @@ private fun SectionSingleVersePreviewLight() {
 internal fun ColumnScope.SectionSingleVerse(
     versesManager: VersesManager,
     showNavigation: Boolean = true,
+    enabled: Boolean = true,
     font: AppFont,
     onCopyVerse: () -> Unit
 ) {
@@ -100,6 +100,7 @@ internal fun ColumnScope.SectionSingleVerse(
                     verse = it,
                     current = { false },
                     textAlign = TextAlign.Center,
+                    enabled = enabled,
                     autoSize = true,
                     font = font,
                     onCopyVerse = onCopyVerse,

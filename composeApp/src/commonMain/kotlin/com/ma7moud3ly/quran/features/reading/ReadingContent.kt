@@ -246,7 +246,8 @@ private fun Header(
                     chapterName = chapterName,
                     onClick = onBack,
                     iconSize = 24.dp,
-                    fontSize = 24.sp
+                    fontSize = 24.sp,
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                 )
             }, actions = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -279,6 +280,7 @@ private fun Header(
 internal fun SuraName(
     chapterName: String,
     color: Color = MaterialTheme.colorScheme.onPrimary,
+    modifier: Modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
     background: Color = MaterialTheme.colorScheme.surface,
     iconSize: Dp = 24.dp,
     icon: DrawableResource? = Res.drawable.menu,
@@ -289,7 +291,7 @@ internal fun SuraName(
         shape = RoundedCornerShape(24.dp),
         space = 8.dp,
         color = background,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = modifier,
         onClick = onClick
     ) {
         icon?.let {

@@ -169,7 +169,7 @@ fun TvPlayback(
     LaunchedEffect(Unit) {
         snapshotFlow {
             PlaybackStates(controls, slide, isPlaying, selectedVerse)
-        }.debounce(3000).collect { (controls, _, _) ->
+        }.debounce(5000).collect { (controls, _, _) ->
             if (controls.showControls) {
                 slidesManager.toggleSlideControls()
             }

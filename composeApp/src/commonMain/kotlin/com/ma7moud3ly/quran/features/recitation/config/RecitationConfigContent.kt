@@ -366,7 +366,7 @@ private fun AddReciterButton(
             style = MaterialTheme.typography.bodyLarge,
             fontSize = 12.sp,
             color = MaterialTheme.colorScheme.onPrimary,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(8.dp)
         )
     }
 }

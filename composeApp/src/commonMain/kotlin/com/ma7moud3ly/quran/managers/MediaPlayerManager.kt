@@ -74,6 +74,7 @@ class MediaPlayerManager(
     val isNormalScreenMode get() = recitation.screenMode == ScreenMode.Normal
     val isReelMode get() = recitation.reelMode
     val playInBackground get() = recitation.playInBackground
+    val playbackMode get() = recitation.playbackMode
     val chapterName get() = recitation.chapter.chapterFullName()
     val reciter = mutableStateOf(Reciter(""))
     val selectedVerseId get() = versesManager.selectedVerseId
@@ -82,6 +83,22 @@ class MediaPlayerManager(
     private val loops get() = recitation.loops
     private var hasReleased: Boolean = true
 
+
+    /**
+     * Determines if any verse can be selected during playback.
+     *
+     * This is generally true for sequential or repetitive playback modes.
+     * In other modes, verse selection is restricted because it could ruin
+     * the order of reciters.
+     */
+    val canPickAnyVerse: Boolean
+        get() = when (playbackMode) {
+            PlaybackMode.Single,
+            PlaybackMode.Sequential,
+            PlaybackMode.Repetitive -> true
+
+            else -> false
+        }
 
     /** Mutable state indicating if a verse is currently being downloaded. */
     val isDownloadingVerse = mutableStateOf(false)
@@ -115,7 +132,7 @@ class MediaPlayerManager(
             return
         }
         recitation = newRecitation
-        Log.i(TAG, "initPlayBack - ${recitation.playbackMode}")
+        Log.i(TAG, "initPlayBack - $playbackMode")
         hasReleased = false
         versesManager = VersesManager(
             verses = recitation.chapter.verses,
@@ -222,7 +239,7 @@ class MediaPlayerManager(
     private suspend fun downloadNextVerse(): Boolean {
         val nextVerse: Verse?
         val reciter: Reciter?
-        when (recitation.playbackMode) {
+        when (playbackMode) {
             PlaybackMode.Single -> {
                 nextVerse = versesManager.getNextVerse()
                 reciter = recitation.currentReciter
@@ -382,7 +399,7 @@ class MediaPlayerManager(
     fun next(finishOnLastVerse: Boolean = false) {
         playerCoroutineScope.launch {
             pause()
-            val hasMore = when (recitation.playbackMode) {
+            val hasMore = when (playbackMode) {
                 PlaybackMode.Single -> {
                     val nextVerse = versesManager.nextForwardVerse()
                     nextVerse
@@ -441,7 +458,7 @@ class MediaPlayerManager(
     fun previous(finishOnLastVerse: Boolean = false) {
         playerCoroutineScope.launch {
             pause()
-            val hasPrevious = when (recitation.playbackMode) {
+            val hasPrevious = when (playbackMode) {
                 PlaybackMode.Single -> {
                     val previousVerse = versesManager.previousVerseInRange()
                     Log.v(TAG, "previousVerse $previousVerse")
