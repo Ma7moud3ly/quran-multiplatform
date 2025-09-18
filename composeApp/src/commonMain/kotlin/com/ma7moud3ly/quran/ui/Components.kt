@@ -67,6 +67,7 @@ fun MySurface(
     border: BorderStroke? = null,
     surfaceModifier: Modifier = Modifier,
     shadowElevation: Dp = 0.dp,
+    tonalElevation: Dp = 0.dp,
     onClick: (() -> Unit)? = null,
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -76,6 +77,7 @@ fun MySurface(
         border = border,
         modifier = surfaceModifier,
         shadowElevation = shadowElevation,
+        tonalElevation = tonalElevation,
         enabled = onClick != null,
         onClick = { onClick?.invoke() },
     ) {
@@ -302,6 +304,7 @@ fun MyButtonSmall(
 fun ButtonSmall(
     text: String,
     background: Color = MaterialTheme.colorScheme.surfaceContainerHigh,
+    modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.onPrimary,
     onClick: (() -> Unit)? = null,
 ) {
@@ -309,7 +312,7 @@ fun ButtonSmall(
         onClick = onClick,
         color = background,
         cornerRadius = 8.dp,
-        modifier = Modifier.padding(horizontal = 4.dp),
+        modifier = modifier,
         shape = RoundedCornerShape(8.dp),
     ) {
         Text(

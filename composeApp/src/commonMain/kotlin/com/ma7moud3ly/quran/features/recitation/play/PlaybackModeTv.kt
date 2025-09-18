@@ -169,7 +169,7 @@ fun TvPlayback(
     LaunchedEffect(Unit) {
         snapshotFlow {
             PlaybackStates(controls, slide, isPlaying, selectedVerse)
-        }.debounce(5000).collect { (controls, _, _) ->
+        }.debounce(3000).collect { (controls, _, _) ->
             if (controls.showControls) {
                 slidesManager.toggleSlideControls()
             }
@@ -224,8 +224,10 @@ fun TvPlayback(
                 }
             }
         ) {
-            Column(
-                modifier = Modifier.zIndex(2f)
+            Header(
+                mediaPlayer = mediaPlayerManager,
+                modifier = Modifier.fillMaxWidth()
+                    .zIndex(2f)
                     .statusBarsPadding()
                     .align(Alignment.TopCenter)
                     .padding(
@@ -234,22 +236,22 @@ fun TvPlayback(
                         bottom = 36.dp,
                         top = if (mediaPlayerManager.isReelMode) 8.dp else 24.dp
                     ),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Header(
+                slide = { slide },
+                slideControls = { controls },
+                onBack = { uiEvents(PlaybackEvents.Back) }
+            )
+
+            if (controls.showControls) {
+                SectionControls(
                     mediaPlayer = mediaPlayerManager,
-                    modifier = Modifier.fillMaxWidth(),
-                    slide = { slide },
-                    slideControls = { controls },
-                    onBack = { uiEvents(PlaybackEvents.Back) }
+                    iconSize = 32.dp,
+                    iconPadding = 6.dp,
+                    modifier = Modifier
+                        .zIndex(2f)
+                        .align(Alignment.Center)
                 )
-                if (controls.showControls) {
-                    SectionControls(
-                        mediaPlayer = mediaPlayerManager
-                    )
-                }
             }
+
             if (isPreview) {
                 Image(
                     painter = painterResource(slide.video.thumbnail),
@@ -322,7 +324,7 @@ private fun Header(
     val background = Color.White.copy(alpha = 0.3f)
     val color = slide().color
     val isDownloading by remember { mediaPlayer.isDownloadingVerse }
-    val reciterName by remember { mediaPlayer.reciterName }
+    val reciter by remember { mediaPlayer.reciter }
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
@@ -346,7 +348,7 @@ private fun Header(
             Spacer(Modifier.width(8.dp))
         }
         Text(
-            text = reciterName,
+            text = reciter.name,
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(end = 8.dp),
             maxLines = 1,
@@ -359,8 +361,8 @@ private fun Header(
                 icon = Res.drawable.close,
                 background = background,
                 color = color,
-                iconSize = 24.dp,
-                iconPadding = 6.dp,
+                iconSize = 22.dp,
+                iconPadding = 4.dp,
                 onClick = onBack
             )
         }

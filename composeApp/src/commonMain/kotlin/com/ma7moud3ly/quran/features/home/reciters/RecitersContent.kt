@@ -1,26 +1,40 @@
 package com.ma7moud3ly.quran.features.home.reciters
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ma7moud3ly.quran.features.home.index.IndexNumber
+import androidx.compose.ui.zIndex
+import coil3.compose.rememberAsyncImagePainter
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.ui.AppTheme
-import com.ma7moud3ly.quran.ui.MySurfaceRow
+import com.ma7moud3ly.quran.ui.MySurface
+import com.ma7moud3ly.quran.ui.RoundButton
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import quran.composeapp.generated.resources.Res
+import quran.composeapp.generated.resources.close
+import quran.composeapp.generated.resources.icon
 
 val testReciters = listOf(
     Reciter(
@@ -72,16 +86,18 @@ internal fun RecitersPage(
     list: List<Reciter>,
     onOpenReciter: (Reciter) -> Unit
 ) {
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(0.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+    LazyVerticalGrid(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+        columns = GridCells.Adaptive(160.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        itemsIndexed(list) { index, reciter ->
+        items(list) { reciter ->
             ItemReciter(
-                index = index + 1,
-                reciter = reciter,
+                name = reciter.name,
+                imageUrl = reciter.imageUrl,
+                modifier = Modifier.aspectRatio(0.9f),
                 onClick = { onOpenReciter(reciter) }
             )
         }
@@ -89,42 +105,63 @@ internal fun RecitersPage(
 }
 
 @Composable
-private fun ItemReciter(
-    index: Int,
-    reciter: Reciter,
-    onClick: () -> Unit
+fun ItemReciter(
+    modifier: Modifier,
+    name: String,
+    imageUrl: String,
+    showRemove: Boolean = false,
+    onRemove: () -> Unit = {},
+    onClick: () -> Unit,
 ) {
-    MySurfaceRow(
-        onClick = onClick,
-        modifier = Modifier.fillMaxWidth().padding(
-            horizontal = 8.dp,
-            vertical = 4.dp
-        ),
-        color = MaterialTheme.colorScheme.surface,
-        surfaceModifier = Modifier,
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalAlignment = Alignment.CenterVertically
+    MySurface(
+        color = MaterialTheme.colorScheme.primary,
+        shape = RoundedCornerShape(8.dp),
+        shadowElevation = 3.dp,
+        border = BorderStroke(1.dp, Color.White),
+        surfaceModifier = modifier,
+        modifier = Modifier.fillMaxSize(),
+        onClick = onClick
     ) {
-        IndexNumber(
-            number = index,
-            color = MaterialTheme.colorScheme.background
+        if (showRemove) RoundButton(
+            icon = Res.drawable.close,
+            iconSize = 18.dp,
+            iconPadding = 3.dp,
+            background = Color.White,
+            color = MaterialTheme.colorScheme.error,
+            onClick = onRemove,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(4.dp)
+                .zIndex(2f)
         )
-        Column {
-            BasicText(
-                text = reciter.name,
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    fontWeight = FontWeight.Normal
+        Column(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = rememberAsyncImagePainter(
+                    model = imageUrl,
+                    placeholder = painterResource(Res.drawable.icon),
+                    error = painterResource(Res.drawable.icon)
                 ),
+                contentDescription = name,
+                modifier = Modifier.fillMaxWidth().weight(1f),
+                contentScale = ContentScale.FillWidth
+            )
+            BasicText(
+                text = name,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 12.sp,
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onPrimary
+                ),
+                // overflow = TextOverflow.StartEllipsis,
                 maxLines = 1,
                 autoSize = TextAutoSize.StepBased(
                     minFontSize = 8.sp,
-                    maxFontSize = 14.sp
+                    maxFontSize = 11.sp
                 ),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(4.dp)
             )
-
         }
     }
 }
-

@@ -161,7 +161,7 @@ internal fun PickReciterDialogContent(
                 state = listState
             ) {
                 items(filteredList) {
-                    ItemReciter(
+                    ItemMiniReciter(
                         reciter = it,
                         showCheckBox = selectMultiple,
                         selected = { selectedReciters.contains(it.id) },
@@ -175,7 +175,7 @@ internal fun PickReciterDialogContent(
 
 
 @Composable
-internal fun ItemReciter(
+internal fun ItemMiniReciter(
     reciter: Reciter?,
     modifier: Modifier = Modifier.fillMaxWidth(),
     selected: () -> Boolean = { false },

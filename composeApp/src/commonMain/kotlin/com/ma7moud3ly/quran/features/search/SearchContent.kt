@@ -59,7 +59,7 @@ import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.features.home.index.ItemChapterIndex
 import com.ma7moud3ly.quran.features.home.index.testChaptersIndex
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
-import com.ma7moud3ly.quran.features.search.reciter.ItemReciter
+import com.ma7moud3ly.quran.features.search.reciter.ItemMiniReciter
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.SearchQuery
@@ -263,7 +263,7 @@ internal fun SearchScreenContent(
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         reciters?.forEach {
-                            ItemReciter(
+                            ItemMiniReciter(
                                 reciter = it,
                                 modifier = Modifier,
                                 onClick = {

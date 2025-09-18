@@ -75,7 +75,7 @@ class MediaPlayerManager(
     val isReelMode get() = recitation.reelMode
     val playInBackground get() = recitation.playInBackground
     val chapterName get() = recitation.chapter.chapterFullName()
-    val reciterName = mutableStateOf("")
+    val reciter = mutableStateOf(Reciter(""))
     val selectedVerseId get() = versesManager.selectedVerseId
     val currentVerseState get() = versesManager.selectedVerse
     private val canChangeReciter get() = recitation.canChangeReciter(versesManager.selectedRangeIndex)
@@ -156,11 +156,9 @@ class MediaPlayerManager(
         recitationJob?.cancel()
         recitationJob = playerCoroutineScope.launch {
             recitation.reciterFlow.collect {
-                if (it == null) {
-                    reciterName.value = ""
-                } else {
+                reciter.value = it ?: Reciter("")
+                if (it != null) {
                     Log.v(TAG, "current-reciter - ${it.name}")
-                    reciterName.value = it.name
                 }
             }
         }
@@ -368,7 +366,7 @@ class MediaPlayerManager(
      * @param verse The verse to play.
      */
     suspend fun play(verse: Verse): Boolean {
-        Log.i(TAG, "play ${reciterName.value} - ${verse.id}")
+        Log.i(TAG, "play ${reciter.value.name} - ${verse.id}")
         return if (recitation.playLocally) playLocalVerse(verse)
         else playRemoteVerse(verse)
     }

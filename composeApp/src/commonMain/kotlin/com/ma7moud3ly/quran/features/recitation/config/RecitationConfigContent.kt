@@ -1,7 +1,6 @@
 package com.ma7moud3ly.quran.features.recitation.config
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -18,8 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -48,18 +44,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
-import coil3.compose.rememberAsyncImagePainter
+import com.ma7moud3ly.quran.features.home.reciters.ItemReciter
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
 import com.ma7moud3ly.quran.features.reading.SuraName
 import com.ma7moud3ly.quran.features.recitation.config.verses.SelectVerseNumberDialog
 import com.ma7moud3ly.quran.features.search.chapter.ItemChapter
-import com.ma7moud3ly.quran.features.search.reciter.ItemReciter
 import com.ma7moud3ly.quran.features.settings.SettingsLabel
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.PlaybackMode
@@ -84,18 +77,14 @@ import com.ma7moud3ly.quran.ui.MyButton
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurface
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
-import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.ScreenHeader
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import com.ma7moud3ly.quran.ui.isCompactDevice
 import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.close
 import quran.composeapp.generated.resources.downloaded
-import quran.composeapp.generated.resources.icon
 import quran.composeapp.generated.resources.recite
 import quran.composeapp.generated.resources.recite_chapter
 import quran.composeapp.generated.resources.recite_mode_normal
@@ -107,6 +96,7 @@ import quran.composeapp.generated.resources.recite_range_to
 import quran.composeapp.generated.resources.recite_start
 import quran.composeapp.generated.resources.recite_verse
 import quran.composeapp.generated.resources.reciter
+import quran.composeapp.generated.resources.reciter_add_all
 import quran.composeapp.generated.resources.reciter_add_multiple
 import quran.composeapp.generated.resources.reciters
 import quran.composeapp.generated.resources.reciters_clear
@@ -294,17 +284,18 @@ private fun SectionReciters(
     var playbackMode by remember { state.playbackModeState }
 
     fun initMultipleReciterMode() {
-        playbackMode = PlaybackMode.Distributed
+        if (playbackMode.isSingleReciter) playbackMode = PlaybackMode.Distributed
         onPickReciter()
     }
 
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = if (reciters.size < 2) Alignment.Start
+        else Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(8.dp),
+            modifier = Modifier.fillMaxWidth().padding(start = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             val text = if (reciters.size <= 1) stringResource(Res.string.reciter)
@@ -319,105 +310,46 @@ private fun SectionReciters(
             Spacer(Modifier.weight(1f))
             if (reciters.size > 1) ButtonSmall(
                 text = stringResource(Res.string.reciters_clear),
+                modifier = Modifier.padding(horizontal = 4.dp),
                 color = MaterialTheme.colorScheme.onSecondary,
                 background = MaterialTheme.colorScheme.error,
                 onClick = onClearReciters
             )
         }
-        if (playbackMode.isSingleReciter) {
-            ItemReciter(
-                reciter = reciters.firstOrNull(),
-                showArrow = canChangeReciter,
-                onClick = if (canChangeReciter) onPickReciter else null
-            )
-            if (reciters.size == 1) ButtonSmall(
-                text = stringResource(Res.string.reciter_add_multiple),
-                color = MaterialTheme.colorScheme.onSecondary,
-                background = MaterialTheme.colorScheme.secondary,
-                onClick = ::initMultipleReciterMode
-            )
-        } else {
-            FlowRow(
-                modifier = Modifier,
-                horizontalArrangement = Arrangement.spacedBy(space = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                reciters.forEach { reciter ->
-                    ItemReciterWithImage(
-                        reciter = reciter,
-                        modifier = Modifier.width(110.dp).height(130.dp),
-                        onClick = { onRemoveReciter(reciter) }
-                    )
-                }
-                ItemReciterAdd(
+        FlowRow(
+            modifier = Modifier,
+            horizontalArrangement = Arrangement.spacedBy(space = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            reciters.forEach { reciter ->
+                ItemReciter(
+                    name = reciter.shortName,
+                    imageUrl = reciter.imageUrl,
+                    showRemove = true,
                     modifier = Modifier.width(110.dp).height(130.dp),
-                    onClick = onPickReciter
+                    onRemove = { onRemoveReciter(reciter) },
+                    onClick = { onRemoveReciter(reciter) }
                 )
             }
+            AddReciterButton(
+                text = if (reciters.isEmpty()) Res.string.reciter_add_all
+                else if (reciters.size == 1) Res.string.reciter_add_multiple
+                else Res.string.reciters_more,
+                modifier = Modifier.width(110.dp).height(130.dp),
+                onClick = {
+                    if (reciters.isEmpty()) onPickReciter()
+                    else initMultipleReciterMode()
+                }
+            )
+
         }
     }
 }
 
-@Composable
-private fun ItemReciterWithImage(
-    modifier: Modifier,
-    reciter: Reciter,
-    onClick: () -> Unit
-) {
-    MySurface(
-        color = MaterialTheme.colorScheme.surface,
-        shape = RoundedCornerShape(8.dp),
-        shadowElevation = 4.dp,
-        surfaceModifier = modifier,
-        modifier = Modifier.fillMaxSize(),
-        onClick = onClick
-    ) {
-        RoundButton(
-            icon = Res.drawable.close,
-            iconSize = 18.dp,
-            iconPadding = 3.dp,
-            background = Color.White,
-            color = MaterialTheme.colorScheme.error,
-            onClick = onClick,
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(8.dp)
-                .zIndex(2f)
-        )
-        Column(modifier = Modifier.fillMaxSize()) {
-            Image(
-                painter = rememberAsyncImagePainter(
-                    model = reciter.imageUrl,
-                    placeholder = painterResource(Res.drawable.icon),
-                    error = painterResource(Res.drawable.icon)
-                ),
-                contentDescription = reciter.name,
-                modifier = Modifier.fillMaxWidth().weight(1f),
-                contentScale = ContentScale.FillWidth
-            )
-            BasicText(
-                text = reciter.shortName,
-                style = MaterialTheme.typography.bodySmall.copy(
-                    fontSize = 12.sp,
-                    textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.onPrimary
-                ),
-               // overflow = TextOverflow.StartEllipsis,
-                maxLines = 1,
-                autoSize = TextAutoSize.StepBased(
-                    minFontSize = 8.sp,
-                    maxFontSize = 12.sp
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 4.dp)
-            )
-        }
-    }
-}
 
 @Composable
-private fun ItemReciterAdd(
+private fun AddReciterButton(
+    text: StringResource,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -429,10 +361,10 @@ private fun ItemReciterAdd(
         onClick = onClick
     ) {
         Text(
-            text = stringResource(Res.string.reciters_more),
+            text = stringResource(text),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.bodyLarge,
-            fontSize = 14.sp,
+            fontSize = 12.sp,
             color = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier.fillMaxWidth()
         )
