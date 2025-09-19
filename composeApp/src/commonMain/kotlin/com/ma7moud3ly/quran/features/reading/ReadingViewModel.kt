@@ -10,7 +10,6 @@ import com.ma7moud3ly.quran.data.repository.ChaptersRepository
 import com.ma7moud3ly.quran.data.repository.HistoryRepository
 import com.ma7moud3ly.quran.data.repository.SettingsRepository
 import com.ma7moud3ly.quran.managers.VersesManager
-import com.ma7moud3ly.quran.model.AppSettings
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.ReadingSettings
@@ -33,7 +32,7 @@ class ReadingViewModel(
 ) : ViewModel() {
 
     private var selectedVerseId: Int? =
-        savedStateHandle.toRoute<AppRoutes.ReadingScreen>().selectedVerseId
+        savedStateHandle.toRoute<AppRoutes.ReadingScreen>().verseId
     private var chapterId: Int = savedStateHandle.toRoute<AppRoutes.ReadingScreen>().chapterId
 
     private val _chapterFlow = MutableStateFlow<Chapter?>(null)

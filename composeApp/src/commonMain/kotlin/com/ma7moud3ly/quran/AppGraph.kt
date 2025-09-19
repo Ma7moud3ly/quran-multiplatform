@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -38,6 +39,7 @@ private const val TAG = "AppGraph"
 @Composable
 fun AppGraph(
     navController: NavHostController = rememberNavController(),
+    onNavHostReady: suspend (NavController) -> Unit = {},
     viewModel: RecitationViewModel = koinViewModel(),
     openPlaybackScreen: Boolean,
 ) {
@@ -47,6 +49,10 @@ fun AppGraph(
             delay(500)
             navController.navigate(AppRoutes.Recitation.Playback)
         }
+    }
+
+    LaunchedEffect(navController) {
+        onNavHostReady(navController)
     }
 
     NavHost(
@@ -80,7 +86,7 @@ fun AppGraph(
                             val rout = if (history.isReading) {
                                 AppRoutes.ReadingScreen(
                                     chapterId = history.chapterId,
-                                    selectedVerseId = history.verseId
+                                    verseId = history.verseId
                                 )
                             } else {
                                 viewModel.setRecitation(it.history)
