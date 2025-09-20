@@ -123,6 +123,7 @@ fun DialogHeader(
     icon: ImageVector = Icons.Default.Close,
     color: Color = MaterialTheme.colorScheme.onPrimary,
     textAlign: TextAlign = TextAlign.Center,
+    actions: @Composable () -> Unit = {},
     onBack: () -> Unit
 ) {
     Column {
@@ -132,6 +133,7 @@ fun DialogHeader(
                 .padding(horizontal = 8.dp, vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            actions()
             Text(
                 text = text,
                 style = MaterialTheme.typography.titleMedium,

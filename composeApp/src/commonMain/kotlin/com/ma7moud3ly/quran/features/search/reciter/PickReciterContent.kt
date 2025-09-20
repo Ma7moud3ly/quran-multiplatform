@@ -99,8 +99,14 @@ internal fun PickReciterDialogContent(
         }
     }
     val selectedReciters = remember { mutableStateSetOf<String>() }
+    val selectAll by remember(selectedReciters.size) { derivedStateOf { selectedReciters.size == allReciters.size } }
     LaunchedEffect(Unit) {
         selectedReciters.addAll(selectedReciterIds)
+    }
+
+    fun selectAll(all: Boolean) {
+        if (all) selectedReciters.addAll(allReciters.map { it.id })
+        else selectedReciters.clear()
     }
 
     fun addReciter(reciterId: String) {
@@ -120,6 +126,19 @@ internal fun PickReciterDialogContent(
         header = {
             DialogHeader(
                 text = stringResource(Res.string.search),
+                actions = {
+                    if (selectMultiple) {
+                        Checkbox(
+                            checked = selectAll,
+                            onCheckedChange = ::selectAll,
+                            colors = CheckboxDefaults.colors(
+                                checkedColor = MaterialTheme.colorScheme.secondary,
+                                checkmarkColor = MaterialTheme.colorScheme.onSecondary,
+                                uncheckedColor = MaterialTheme.colorScheme.onPrimary
+                            )
+                        )
+                    }
+                },
                 onBack = onBack
             )
         },
@@ -155,8 +174,9 @@ internal fun PickReciterDialogContent(
                 showKeyboard = false,
                 onSearch = { query = it }
             )
+
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
                 modifier = Modifier.weight(1f),
                 state = listState
             ) {
@@ -222,7 +242,7 @@ internal fun ItemMiniReciter(
                 colors = CheckboxDefaults.colors(
                     checkedColor = MaterialTheme.colorScheme.secondary,
                     checkmarkColor = MaterialTheme.colorScheme.onSecondary,
-                    uncheckedColor = MaterialTheme.colorScheme.tertiary
+                    uncheckedColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
