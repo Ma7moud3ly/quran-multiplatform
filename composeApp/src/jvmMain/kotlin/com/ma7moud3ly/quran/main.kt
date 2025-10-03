@@ -1,7 +1,12 @@
 package com.ma7moud3ly.quran
 
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberWindowState
 import com.ma7moud3ly.quran.di.AppModule
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -18,7 +23,11 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         title = stringResource(Res.string.app_name),
-        icon = painterResource(Res.drawable.logo)
+        icon = painterResource(Res.drawable.logo),
+        state = rememberWindowState(
+            position = WindowPosition.Aligned(Alignment.Center),
+            size = DpSize(650.dp, 750.dp),
+        )
     ) {
         App()
     }

@@ -117,6 +117,7 @@ kotlin {
         wasmJsMain.dependencies {
             implementation(libs.ktor.client.js)
             implementation(libs.okio.fakefilesystem)
+            implementation(npm("@js-joda/core", "5.6.3"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -281,6 +282,18 @@ dependencies {
     add("kspIosX64", libs.koin.ksp.compiler) // Example for iosX64
     add("kspIosArm64", libs.koin.ksp.compiler)
     add("kspIosSimulatorArm64", libs.koin.ksp.compiler)
+}
+
+afterEvaluate {
+    tasks.matching { it.name == "kspDefaultDebugKotlinAndroid" }.configureEach {
+        dependsOn(
+            "generateResourceAccessorsForAndroidDefaultDebug",
+            "generateResourceAccessorsForAndroidMain",
+            "generateActualResourceCollectorsForAndroidMain",
+            "generateResourceAccessorsForAndroidDefault",
+            "generateResourceAccessorsForAndroidDebug"
+        )
+    }
 }
 
 // Trigger Common Metadata Generation from Native tasks
