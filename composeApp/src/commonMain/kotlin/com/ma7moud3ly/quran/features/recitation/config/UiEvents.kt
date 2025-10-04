@@ -9,6 +9,7 @@ sealed interface ConfigEvents {
     data object PickChapters : ConfigEvents
     data object PickReciters : ConfigEvents
     data object ClearReciters : ConfigEvents
+    data object PickTvBackground : ConfigEvents
     data class RemoveReciter(val reciter: Reciter) : ConfigEvents
     data class SelectChapter(val chapter: Chapter) : ConfigEvents
     data class InitRecitation(val mode: ScreenMode) : ConfigEvents
@@ -18,7 +19,7 @@ sealed interface RecitationEvents {
     data object OnBack : RecitationEvents
     data class ChaptersDialog(val chapterId: Int?) : RecitationEvents
     data class RecitersDialog(val selectMultiple: Boolean) : RecitationEvents
-
+    data object TvBackgroundDialog : RecitationEvents
     data object ConfirmDownload : RecitationEvents
     data object StartOnline : RecitationEvents
     data object StartLocally : RecitationEvents

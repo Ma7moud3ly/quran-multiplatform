@@ -2,7 +2,7 @@ package com.ma7moud3ly.quran.di
 
 import com.ma7moud3ly.quran.managers.DownloadManager
 import com.ma7moud3ly.quran.platform.Platform
-import com.ma7moud3ly.quran.platform.PlaybackVideos
+import com.ma7moud3ly.quran.platform.BackgroundVideos
 import com.ma7moud3ly.quran.platform.createSettings
 import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.getPlatformFileSystem
@@ -22,7 +22,7 @@ import org.koin.core.annotation.Single
 class AppModule {
 
     @Single
-    fun providePlaybackVideos(): PlaybackVideos = getPlaybackVideos()
+    fun providePlaybackVideos(): BackgroundVideos = getPlaybackVideos()
 
     @Single
     fun providePlatform(): Platform = getPlatform()

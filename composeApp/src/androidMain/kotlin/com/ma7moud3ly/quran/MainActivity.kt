@@ -15,6 +15,8 @@ import androidx.core.view.WindowCompat
 import com.ma7moud3ly.quran.features.settings.SettingsViewModel
 import com.ma7moud3ly.quran.platform.AndroidApp
 import com.ma7moud3ly.quran.ui.themeColors
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.dialogs.init
 import org.koin.compose.viewmodel.koinViewModel
 
 class MainActivity : ComponentActivity() {
@@ -23,6 +25,7 @@ class MainActivity : ComponentActivity() {
         val openPlaybackScreen = intent.getBooleanExtra(
             PlaybackService.OPEN_PLAY_BACK, false
         )
+        FileKit.init(this)
         setContent {
             val viewModel: SettingsViewModel = koinViewModel()
             ConfigureSystemBars(viewModel = viewModel)

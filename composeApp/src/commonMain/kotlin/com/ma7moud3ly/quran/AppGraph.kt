@@ -22,6 +22,7 @@ import com.ma7moud3ly.quran.features.reading.ReadingScreen
 import com.ma7moud3ly.quran.features.recitation.config.RecitationConfigScreen
 import com.ma7moud3ly.quran.features.recitation.config.RecitationEvents
 import com.ma7moud3ly.quran.features.recitation.config.RecitationViewModel
+import com.ma7moud3ly.quran.features.recitation.config.background.TvBackgroundDialog
 import com.ma7moud3ly.quran.features.recitation.download.ConfirmDownloadDialog
 import com.ma7moud3ly.quran.features.recitation.download.DownloadDialog
 import com.ma7moud3ly.quran.features.recitation.play.PlaybackScreen
@@ -220,6 +221,11 @@ fun AppGraph(
                             navController.navigate(route)
                         }
 
+                        is RecitationEvents.TvBackgroundDialog -> {
+                            val route = AppRoutes.Recitation.Pick.TvBackground
+                            navController.navigate(route)
+                        }
+
                         is RecitationEvents.ConfirmDownload -> {
                             navController.navigate(AppRoutes.Recitation.Download.Confirm)
                         }
@@ -257,6 +263,17 @@ fun AppGraph(
                 onSelectReciter = { reciters ->
                     viewModel.addReciter(reciters)
                     navController.popBackStack()
+                }
+            )
+        }
+
+        dialog<AppRoutes.Recitation.Pick.TvBackground> {
+            TvBackgroundDialog(
+                onDismiss = {
+                    navController.popBackStack(
+                        AppRoutes.Recitation.Pick.TvBackground::class,
+                        inclusive = true
+                    )
                 }
             )
         }

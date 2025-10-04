@@ -94,6 +94,11 @@ kotlin {
 
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor)
+
+            implementation(libs.filekit.core)
+            implementation(libs.filekit.dialogs)
+            implementation(libs.filekit.dialogs.compose)
+            implementation(libs.filekit.coil)
         }
         androidMain.dependencies {
             implementation(compose.preview)
@@ -292,6 +297,16 @@ afterEvaluate {
             "generateActualResourceCollectorsForAndroidMain",
             "generateResourceAccessorsForAndroidDefault",
             "generateResourceAccessorsForAndroidDebug"
+        )
+    }
+
+    tasks.named("kspGmsReleaseKotlinAndroid") {
+        dependsOn(
+            "generateResourceAccessorsForAndroidGmsRelease",
+            "generateResourceAccessorsForAndroidMain",
+            "generateActualResourceCollectorsForAndroidMain",
+            "generateResourceAccessorsForAndroidGms",
+            "generateResourceAccessorsForAndroidRelease"
         )
     }
 }

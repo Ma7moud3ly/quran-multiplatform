@@ -17,7 +17,7 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
-import com.ma7moud3ly.quran.model.MyVideo
+import com.ma7moud3ly.quran.model.Video
 
 private const val TAG = "VideoPlayer"
 
@@ -26,7 +26,7 @@ private const val TAG = "VideoPlayer"
 actual fun VideoPlayer(
     modifier: Modifier,
     state: VideoPlayerState,
-    video: () -> MyVideo
+    video: () -> Video
 ) {
     val context = LocalContext.current
     val currentVideo = video()
@@ -34,6 +34,7 @@ actual fun VideoPlayer(
         ExoPlayer.Builder(context).build().apply {
             repeatMode = Player.REPEAT_MODE_ONE
             prepare()
+            volume = 0f
             playWhenReady = true
         }
     }
@@ -41,33 +42,33 @@ actual fun VideoPlayer(
     LaunchedEffect(currentVideo, exoPlayer) {
         val item = MediaItem.fromUri(currentVideo.path.toUri())
         exoPlayer.setMediaItem(item)
-        Log.v(TAG,"play = ${currentVideo.path}")
+        Log.v(TAG, "play = ${currentVideo.path}")
     }
 
     LaunchedEffect(Unit) {
         state.play = {
             exoPlayer.play()
-            Log.v(TAG,"play")
+            Log.v(TAG, "play")
         }
         state.pause = {
             exoPlayer.pause()
-            Log.v(TAG,"pause")
+            Log.v(TAG, "pause")
         }
     }
 
     LifecycleResumeEffect(LocalLifecycleOwner) {
         exoPlayer.play()
-        Log.v(TAG,"LifecycleResumeEffect-play")
+        Log.v(TAG, "LifecycleResumeEffect-play")
         onPauseOrDispose {
             exoPlayer.pause()
-            Log.v(TAG,"LifecycleResumeEffect-pause")
+            Log.v(TAG, "LifecycleResumeEffect-pause")
         }
     }
 
     DisposableEffect(LocalLifecycleOwner) {
         onDispose {
             exoPlayer.release()
-            Log.v(TAG,"release")
+            Log.v(TAG, "release")
         }
     }
 

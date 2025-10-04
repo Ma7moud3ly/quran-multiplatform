@@ -35,6 +35,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.close
 import quran.composeapp.generated.resources.icon
+import quran.composeapp.generated.resources.placeholder
 
 val testReciters = listOf(
     Reciter(
@@ -138,8 +139,8 @@ fun ItemReciter(
             Image(
                 painter = rememberAsyncImagePainter(
                     model = imageUrl,
-                    placeholder = painterResource(Res.drawable.icon),
-                    error = painterResource(Res.drawable.icon)
+                    placeholder = painterResource(Res.drawable.placeholder),
+                    error = painterResource(Res.drawable.placeholder)
                 ),
                 contentDescription = name,
                 modifier = Modifier.fillMaxWidth().weight(1f),
@@ -152,7 +153,6 @@ fun ItemReciter(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onPrimary
                 ),
-                // overflow = TextOverflow.StartEllipsis,
                 maxLines = 1,
                 autoSize = TextAutoSize.StepBased(
                     minFontSize = 8.sp,

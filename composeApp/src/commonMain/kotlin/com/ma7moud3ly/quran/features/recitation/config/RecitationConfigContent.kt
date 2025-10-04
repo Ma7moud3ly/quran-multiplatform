@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -51,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.features.home.reciters.ItemReciter
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
 import com.ma7moud3ly.quran.features.reading.SuraName
+import com.ma7moud3ly.quran.features.recitation.config.background.ItemBackground
 import com.ma7moud3ly.quran.features.recitation.config.verses.SelectVerseNumberDialog
 import com.ma7moud3ly.quran.features.search.chapter.ItemChapter
 import com.ma7moud3ly.quran.features.settings.SettingsLabel
@@ -59,6 +61,7 @@ import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.model.RecitationState
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.ScreenMode
+import com.ma7moud3ly.quran.model.TvBackground
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.model.isDistributed
 import com.ma7moud3ly.quran.model.isRepetitive
@@ -101,15 +104,18 @@ import quran.composeapp.generated.resources.reciter_add_multiple
 import quran.composeapp.generated.resources.reciters
 import quran.composeapp.generated.resources.reciters_clear
 import quran.composeapp.generated.resources.reciters_more
-import quran.composeapp.generated.resources.settings_background
-import quran.composeapp.generated.resources.settings_background_description
 import quran.composeapp.generated.resources.settings_change_reciter
 import quran.composeapp.generated.resources.settings_mode_distributed
 import quran.composeapp.generated.resources.settings_mode_repetitive
 import quran.composeapp.generated.resources.settings_mode_sequential
 import quran.composeapp.generated.resources.settings_mode_shuffled
+import quran.composeapp.generated.resources.settings_play_in_bg
+import quran.composeapp.generated.resources.settings_play_in_bg_description
 import quran.composeapp.generated.resources.settings_reel
 import quran.composeapp.generated.resources.settings_reel_description
+import quran.composeapp.generated.resources.settings_tv_bg
+import quran.composeapp.generated.resources.settings_tv_bg_add
+import quran.composeapp.generated.resources.settings_tv_bg_description
 
 
 @Preview
@@ -260,11 +266,15 @@ internal fun RecitationConfigScreenContent(
                 recitationState().reelModeState
             )
         }
+
         if (platform.isAndroid) {
             HorizontalDivider()
-            SectionPlayInBackground(
-                recitationState().playInBgState
+            SectionTvBackground(
+                tvBackgroundState = recitationState().tvBackgroundState,
+                onPickTvBackground = { uiEvents(ConfigEvents.PickTvBackground) }
             )
+            HorizontalDivider()
+            SectionPlayInBackground(recitationState().playInBgState)
         }
     }
 }
@@ -279,7 +289,6 @@ private fun SectionReciters(
     onRemoveReciter: (Reciter) -> Unit
 ) {
     val state = recitationState()
-    val canChangeReciter by remember { state.canChangeReciterState }
     val reciters = reciters()
     var playbackMode by remember { state.playbackModeState }
 
@@ -331,7 +340,7 @@ private fun SectionReciters(
                     onClick = { onRemoveReciter(reciter) }
                 )
             }
-            AddReciterButton(
+            AddItemButton(
                 text = if (reciters.isEmpty()) Res.string.reciter_add_all
                 else if (reciters.size == 1) Res.string.reciter_add_multiple
                 else Res.string.reciters_more,
@@ -348,7 +357,7 @@ private fun SectionReciters(
 
 
 @Composable
-private fun AddReciterButton(
+fun AddItemButton(
     text: StringResource,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
@@ -586,6 +595,39 @@ private fun SectionReelMode(reelModeState: MutableState<Boolean>) {
 }
 
 @Composable
+private fun SectionTvBackground(
+    tvBackgroundState: MutableState<TvBackground?>,
+    onPickTvBackground: () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            SettingsLabel(Res.string.settings_tv_bg)
+            Text(
+                text = stringResource(Res.string.settings_tv_bg_description),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onPrimary,
+                textAlign = TextAlign.Start
+            )
+        }
+        val background = tvBackgroundState.value
+        if (background != null) ItemBackground(
+            modifier = Modifier.size(width = 85.dp, height = 100.dp),
+            tvBackground = background,
+            static = false,
+            onClick = onPickTvBackground
+        ) else AddItemButton(
+            text = Res.string.settings_tv_bg_add,
+            modifier = Modifier.size(width = 80.dp, height = 90.dp),
+            onClick = onPickTvBackground
+        )
+    }
+}
+
+@Composable
 private fun SectionPlayInBackground(playInBgState: MutableState<Boolean>) {
     Column(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
@@ -595,7 +637,7 @@ private fun SectionPlayInBackground(playInBgState: MutableState<Boolean>) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            SettingsLabel(Res.string.settings_background)
+            SettingsLabel(Res.string.settings_play_in_bg)
             Spacer(modifier = Modifier.weight(1f))
             MySwitch(
                 enabled = { playInBgState.value },
@@ -603,7 +645,7 @@ private fun SectionPlayInBackground(playInBgState: MutableState<Boolean>) {
             )
         }
         Text(
-            text = stringResource(Res.string.settings_background_description),
+            text = stringResource(Res.string.settings_play_in_bg_description),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onPrimary,
             textAlign = TextAlign.Justify

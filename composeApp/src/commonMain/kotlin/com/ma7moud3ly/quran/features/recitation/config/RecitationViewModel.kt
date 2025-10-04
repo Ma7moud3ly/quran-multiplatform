@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ma7moud3ly.quran.AppRoutes
+import com.ma7moud3ly.quran.data.repository.BackgroundsRepository
 import com.ma7moud3ly.quran.data.repository.ChaptersRepository
 import com.ma7moud3ly.quran.data.repository.DownloadsRepository
 import com.ma7moud3ly.quran.data.repository.RecitationRepository
@@ -32,14 +33,24 @@ class RecitationViewModel(
     private val recitersRepository: RecitersRepository,
     private val downloadsRepository: DownloadsRepository,
     private val recitationRepository: RecitationRepository,
-    private val settingsRepository: SettingsRepository
+    private val settingsRepository: SettingsRepository,
+    private val backgroundsRepository: BackgroundsRepository
 ) : ViewModel() {
 
     val recitationState = recitationRepository.recitationState
 
+    init {
+        viewModelScope.launch {
+            backgroundsRepository.initBackgrounds()
+            backgroundsRepository.selectedBackgroundFlow.collect { value ->
+                if (value != null) recitationState.value.setTvBackground(value)
+            }
+        }
+    }
+
     val recitationFlow: StateFlow<Recitation?> = recitationRepository.recitationFlow.stateIn(
         scope = viewModelScope,
-        started = SharingStarted.Companion.WhileSubscribed(5000),
+        started = SharingStarted.WhileSubscribed(5000),
         initialValue = null
     )
 
@@ -128,7 +139,7 @@ class RecitationViewModel(
             val moreReciters = recitersRepository.getReciters(ids)
             moreReciters.forEach { reciter ->
                 if (reciters.contains(reciter).not()) {
-                     reciters.add(reciter)
+                    reciters.add(reciter)
                 }
             }
             reciters.firstOrNull()?.let { getDownloadedChapters(it) }

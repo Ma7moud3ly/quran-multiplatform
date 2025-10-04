@@ -119,6 +119,10 @@ fun RecitationConfigScreen(
                     recitationEvents(RecitationEvents.ChaptersDialog(chapter?.id))
                 }
 
+                is ConfigEvents.PickTvBackground -> {
+                    recitationEvents(RecitationEvents.TvBackgroundDialog)
+                }
+
                 is ConfigEvents.PickReciters -> {
                     val event = RecitationEvents.RecitersDialog(
                         selectMultiple = recitationState.isMultipleReciterMode()

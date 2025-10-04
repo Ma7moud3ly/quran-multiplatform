@@ -3,7 +3,7 @@ package com.ma7moud3ly.quran.platform
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.ma7moud3ly.quran.model.MyVideo
+import com.ma7moud3ly.quran.model.Video
 
 
 /**
@@ -14,7 +14,7 @@ import com.ma7moud3ly.quran.model.MyVideo
 expect fun VideoPlayer(
     modifier: Modifier = Modifier,
     state: VideoPlayerState,
-    video: () -> MyVideo
+    video: () -> Video
 )
 
 data class VideoPlayerState(val playing: Boolean) {

@@ -4,17 +4,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import com.ma7moud3ly.quran.model.MyVideo
-import org.jetbrains.compose.resources.painterResource
+import com.ma7moud3ly.quran.model.Video
 
 @Composable
 actual fun VideoPlayer(
     modifier: Modifier,
     state: VideoPlayerState,
-    video: () -> MyVideo
+    video: () -> Video
 ) {
     Image(
-        painter = painterResource(video().thumbnail),
+        painter = video().getPainter(),
         contentDescription = null,
         modifier = modifier,
         contentScale = ContentScale.Crop

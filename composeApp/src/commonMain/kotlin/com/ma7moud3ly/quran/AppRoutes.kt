@@ -59,6 +59,10 @@ object AppRoutes {
             @Serializable
             @SerialName("reciters")
             data class Reciter(val selectMultiple: Boolean)
+
+            @Serializable
+            @SerialName("tv-background")
+            data object TvBackground
         }
     }
 

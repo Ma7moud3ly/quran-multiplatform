@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.ma7moud3ly.quran.data.repository.HistoryRepository
 import com.ma7moud3ly.quran.data.repository.RecitationRepository
 import com.ma7moud3ly.quran.data.repository.SettingsRepository
+import com.ma7moud3ly.quran.managers.BackgroundsManager
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
-import com.ma7moud3ly.quran.managers.SlidesManager
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.RecitationSettings
 import com.ma7moud3ly.quran.model.ScreenMode
@@ -28,11 +28,11 @@ class PlaybackViewModel(
     private val historyRepository: HistoryRepository,
     private val recitationRepository: RecitationRepository,
     private val mediaPlayerManager: MediaPlayerManager,
-    private val slidesManager: SlidesManager,
+    private val backgroundsManager: BackgroundsManager,
 ) : ViewModel() {
 
     fun getMediaPlayerManager() = mediaPlayerManager
-    fun getSlidesManager() = slidesManager
+    fun getBgManager() = backgroundsManager
 
     init {
         mediaPlayerManager.initPlayBack()

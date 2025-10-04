@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.UIKitView
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.ma7moud3ly.quran.model.MyVideo
+import com.ma7moud3ly.quran.model.Video
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.AVFoundation.AVLayerVideoGravityResizeAspectFill
 import platform.AVFoundation.AVPlayer
@@ -25,7 +25,7 @@ private const val TAG = "VideoPlayer"
 actual fun VideoPlayer(
     modifier: Modifier,
     state: VideoPlayerState,
-    video: () -> MyVideo
+    video: () -> Video
 ) {
     val currentVideo = video()
     val player: AVPlayer = remember(currentVideo) {

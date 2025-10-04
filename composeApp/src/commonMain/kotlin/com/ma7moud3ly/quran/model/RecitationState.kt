@@ -11,6 +11,8 @@ data class RecitationState(
     private val lastVerse: Int = 1,
     private val singleVerse: Boolean = canChangeVerse.not(),
     private val reelMode: Boolean = false,
+    private val recitations: List<Recitation> = emptyList(),
+    private val tvBackground: TvBackground? = null,
     private val playInBackground: Boolean = false,
     private val playbackMode: PlaybackMode = PlaybackMode.Single
 ) {
@@ -24,6 +26,7 @@ data class RecitationState(
     val singleVerseState = mutableStateOf(singleVerse)
     val reelModeState = mutableStateOf(reelMode)
     val playbackModeState = mutableStateOf(playbackMode)
+    val tvBackgroundState = mutableStateOf(tvBackground)
     val playInBgState = mutableStateOf(playInBackground)
 
     fun getReelMode() = reelModeState.value
@@ -53,6 +56,10 @@ data class RecitationState(
 
     fun setSingleVerse(value: Boolean) {
         singleVerseState.value = value
+    }
+
+    fun setTvBackground(value: TvBackground) {
+        tvBackgroundState.value = value
     }
 
     fun setContentLock(

@@ -1,9 +1,9 @@
 package com.ma7moud3ly.quran.platform
 
-import com.ma7moud3ly.quran.model.TvSlide
+import com.ma7moud3ly.quran.model.TvBackground
 
-interface PlaybackVideos {
-    val slides: List<TvSlide>
+interface BackgroundVideos {
+    val backgrounds: List<TvBackground>
 }
 
-expect fun getPlaybackVideos(): PlaybackVideos
+expect fun getPlaybackVideos(): BackgroundVideos

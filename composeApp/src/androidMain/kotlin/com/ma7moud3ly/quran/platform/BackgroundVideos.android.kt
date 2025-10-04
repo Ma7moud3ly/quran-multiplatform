@@ -3,8 +3,8 @@ package com.ma7moud3ly.quran.platform
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.ma7moud3ly.quran.model.MyVideo
-import com.ma7moud3ly.quran.model.TvSlide
+import com.ma7moud3ly.quran.model.AppVideo
+import com.ma7moud3ly.quran.model.TvBackground
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.video10_thumbnail
 import quran.composeapp.generated.resources.video11_thumbnail
@@ -31,16 +31,16 @@ import quran.composeapp.generated.resources.video7_thumbnail
 import quran.composeapp.generated.resources.video8_thumbnail
 import quran.composeapp.generated.resources.video9_thumbnail
 
-class AndroidPlaybackVideos : PlaybackVideos {
-    override val slides: List<TvSlide> = androidSlides
+class AndroidBackgroundVideos : BackgroundVideos {
+    override val backgrounds: List<TvBackground> = androidSlides
 }
 
-actual fun getPlaybackVideos(): PlaybackVideos = AndroidPlaybackVideos()
+actual fun getPlaybackVideos(): BackgroundVideos = AndroidBackgroundVideos()
 
 private val androidSlides = listOf(
-    TvSlide(
+    TvBackground(
         id = "video1",
-        video = MyVideo(
+        video = AppVideo(
             name = "video1.mp4",
             thumbnail = Res.drawable.video1_thumbnail
         ),
@@ -48,18 +48,18 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video2",
-        video = MyVideo(
+        video = AppVideo(
             name = "video2.mp4",
             thumbnail = Res.drawable.video2_thumbnail
         ),
         background = Color.White.copy(alpha = 0.2f),
         alignment = Alignment.Center
     ),
-    TvSlide(
+    TvBackground(
         id = "video3",
-        video = MyVideo(
+        video = AppVideo(
             name = "video3.mp4",
             thumbnail = Res.drawable.video3_thumbnail
         ),
@@ -68,9 +68,9 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video4",
-        video = MyVideo(
+        video = AppVideo(
             name = "video4.mp4",
             thumbnail = Res.drawable.video4_thumbnail
         ),
@@ -78,9 +78,9 @@ private val androidSlides = listOf(
         color = Color.White,
         alignment = Alignment.Center
     ),
-    TvSlide(
+    TvBackground(
         id = "video5",
-        video = MyVideo(
+        video = AppVideo(
             name = "video5.mp4",
             thumbnail = Res.drawable.video5_thumbnail
         ),
@@ -88,9 +88,9 @@ private val androidSlides = listOf(
         color = Color.Black,
         alignment = Alignment.Center
     ),
-    TvSlide(
+    TvBackground(
         id = "video6",
-        video = MyVideo(
+        video = AppVideo(
             name = "video6.mp4",
             thumbnail = Res.drawable.video6_thumbnail
         ),
@@ -99,9 +99,9 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video7",
-        video = MyVideo(
+        video = AppVideo(
             name = "video7.mp4",
             thumbnail = Res.drawable.video7_thumbnail
         ),
@@ -110,9 +110,9 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingTop = 150.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video8",
-        video = MyVideo(
+        video = AppVideo(
             name = "video8.mp4",
             thumbnail = Res.drawable.video8_thumbnail
         ),
@@ -120,9 +120,9 @@ private val androidSlides = listOf(
         alignment = Alignment.BottomCenter,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video9",
-        video = MyVideo(
+        video = AppVideo(
             name = "video9.mp4",
             thumbnail = Res.drawable.video9_thumbnail
         ),
@@ -131,9 +131,9 @@ private val androidSlides = listOf(
         alignment = Alignment.BottomCenter,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video10",
-        video = MyVideo(
+        video = AppVideo(
             name = "video10.mp4",
             thumbnail = Res.drawable.video10_thumbnail
         ),
@@ -142,9 +142,9 @@ private val androidSlides = listOf(
         alignment = Alignment.BottomCenter,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video11",
-        video = MyVideo(
+        video = AppVideo(
             name = "video11.mp4",
             thumbnail = Res.drawable.video11_thumbnail
         ),
@@ -152,9 +152,9 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingBottom = 150.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video12",
-        video = MyVideo(
+        video = AppVideo(
             name = "video12.mp4",
             thumbnail = Res.drawable.video12_thumbnail
         ),
@@ -162,9 +162,9 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingBottom = 200.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video13",
-        video = MyVideo(
+        video = AppVideo(
             name = "video13.mp4",
             thumbnail = Res.drawable.video13_thumbnail
         ),
@@ -172,9 +172,9 @@ private val androidSlides = listOf(
         alignment = Alignment.TopCenter,
         paddingTop = 120.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video14",
-        video = MyVideo(
+        video = AppVideo(
             name = "video14.mp4",
             thumbnail = Res.drawable.video14_thumbnail
         ),
@@ -182,9 +182,9 @@ private val androidSlides = listOf(
         alignment = Alignment.TopCenter,
         paddingTop = 120.dp,
     ),
-    TvSlide(
+    TvBackground(
         id = "video15",
-        video = MyVideo(
+        video = AppVideo(
             name = "video15.mp4",
             thumbnail = Res.drawable.video15_thumbnail
         ),
@@ -192,9 +192,9 @@ private val androidSlides = listOf(
         alignment = Alignment.TopCenter,
         paddingTop = 150.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video16",
-        video = MyVideo(
+        video = AppVideo(
             name = "video16.mp4",
             thumbnail = Res.drawable.video16_thumbnail
         ),
@@ -203,9 +203,9 @@ private val androidSlides = listOf(
         alignment = Alignment.TopCenter,
         paddingTop = 150.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video17",
-        video = MyVideo(
+        video = AppVideo(
             name = "video17.mp4",
             thumbnail = Res.drawable.video17_thumbnail
         ),
@@ -213,9 +213,9 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video18",
-        video = MyVideo(
+        video = AppVideo(
             name = "video18.mp4",
             thumbnail = Res.drawable.video18_thumbnail
         ),
@@ -223,9 +223,9 @@ private val androidSlides = listOf(
         alignment = Alignment.Center,
         paddingBottom = 150.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video19",
-        video = MyVideo(
+        video = AppVideo(
             name = "video19.mp4",
             thumbnail = Res.drawable.video19_thumbnail
         ),
@@ -233,9 +233,9 @@ private val androidSlides = listOf(
         color = Color.Black,
         alignment = Alignment.Center
     ),
-    TvSlide(
+    TvBackground(
         id = "video20",
-        video = MyVideo(
+        video = AppVideo(
             name = "video20.mp4",
             thumbnail = Res.drawable.video20_thumbnail
         ),
@@ -243,9 +243,9 @@ private val androidSlides = listOf(
         alignment = Alignment.BottomCenter,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video21",
-        video = MyVideo(
+        video = AppVideo(
             name = "video21.mp4",
             thumbnail = Res.drawable.video21_thumbnail
         ),
@@ -253,9 +253,9 @@ private val androidSlides = listOf(
         alignment = Alignment.BottomCenter,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video22",
-        video = MyVideo(
+        video = AppVideo(
             name = "video22.mp4",
             thumbnail = Res.drawable.video22_thumbnail
         ),
@@ -263,9 +263,9 @@ private val androidSlides = listOf(
         alignment = Alignment.BottomCenter,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video23",
-        video = MyVideo(
+        video = AppVideo(
             name = "video23.mp4",
             thumbnail = Res.drawable.video23_thumbnail
         ),
@@ -273,9 +273,9 @@ private val androidSlides = listOf(
         alignment = Alignment.BottomCenter,
         paddingBottom = 100.dp
     ),
-    TvSlide(
+    TvBackground(
         id = "video24",
-        video = MyVideo(
+        video = AppVideo(
             name = "video24.mp4",
             thumbnail = Res.drawable.video24_thumbnail
         ),

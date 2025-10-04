@@ -44,8 +44,11 @@
     <string name="settings_mode_repetitive">تكرار الآية الواحدة بكل القراء</string>
     <string name="settings_reel">وضع Reel</string>
     <string name="settings_reel_description">تغير حجم مشغل الآيات إلي 9:16 حتي يتوافق مع أبعاد الريلز علي مواقع التواصل الإجتماعي إذا أردت تصوير الشاشة.</string>
-    <string name="settings_background">تشغيل في الخلفية</string>
-    <string name="settings_background_description">السماح بتشغيل التلاوة عند قفل الشاشة أو نزول التطبيق في الخلفية</string>
+    <string name="settings_tv_bg">الخلفية المتحركة</string>
+    <string name="settings_tv_bg_add">إضافة خلفية</string>
+    <string name="settings_tv_bg_description">الخلفيات المتحركة للتلاوة في وضع التلفاز</string>
+    <string name="settings_play_in_bg">تشغيل في الخلفية</string>
+    <string name="settings_play_in_bg_description">السماح بتشغيل التلاوة عند قفل الشاشة أو نزول التطبيق في الخلفية</string>
     <string name="settings_font_size">حجم الخط</string>
     <string name="settings_font_type">نوع الخط</string>
     <string name="settings_mode">عرض الآيات</string>

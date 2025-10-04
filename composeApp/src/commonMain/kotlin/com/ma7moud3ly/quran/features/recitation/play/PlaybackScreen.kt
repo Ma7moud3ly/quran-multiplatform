@@ -63,7 +63,7 @@ fun PlaybackScreen(
             )
         } else {
             TvPlayback(
-                slidesManager = viewModel.getSlidesManager(),
+                backgroundsManager = viewModel.getBgManager(),
                 mediaPlayerManager = mediaPlayerManager,
                 uiEvents = ::uiEvents
             )

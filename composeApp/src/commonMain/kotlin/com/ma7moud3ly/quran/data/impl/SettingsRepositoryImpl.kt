@@ -7,7 +7,6 @@ import com.ma7moud3ly.quran.model.AppFont
 import com.ma7moud3ly.quran.model.PreferenceKeys
 import com.ma7moud3ly.quran.model.PreferenceKeys.READING_VERSES_MODE
 import com.ma7moud3ly.quran.model.PreferenceKeys.RECITATION_VERSES_MODE
-import com.ma7moud3ly.quran.model.PreferenceKeys.TV_SLIDE_ID
 import com.ma7moud3ly.quran.model.ReadingSettings
 import com.ma7moud3ly.quran.model.RecitationSettings
 import com.ma7moud3ly.quran.model.Reciter
@@ -168,12 +167,6 @@ class SettingsRepositoryImpl(
     override val recitationSettingsFlow: Flow<RecitationSettings> =
         _recitationSettingsFlow.asStateFlow()
 
-    override val tvSlide: String
-        get() = platformSettings.getString(TV_SLIDE_ID, "")
-
-    override fun setTvSlide(value: String) {
-        platformSettings.putString(TV_SLIDE_ID, value)
-    }
 
     override fun saveLastReciters(reciters: List<Reciter>) {
         val ids = reciters.joinToString(",") { it.id }

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.WebElementView
-import com.ma7moud3ly.quran.model.MyVideo
+import com.ma7moud3ly.quran.model.Video
 import kotlinx.browser.document
 import org.w3c.dom.HTMLVideoElement
 
@@ -13,7 +13,7 @@ import org.w3c.dom.HTMLVideoElement
 actual fun VideoPlayer(
     modifier: Modifier,
     state: VideoPlayerState,
-    video: () -> MyVideo
+    video: () -> Video
 ) {
     val video = video()
     WebElementView(
