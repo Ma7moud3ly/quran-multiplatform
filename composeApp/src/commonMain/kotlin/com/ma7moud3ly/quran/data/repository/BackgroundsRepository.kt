@@ -1,5 +1,6 @@
 package com.ma7moud3ly.quran.data.repository
 
+import androidx.compose.runtime.MutableState
 import com.ma7moud3ly.quran.model.TvBackground
 import kotlinx.coroutines.flow.Flow
 
@@ -9,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
  */
 interface BackgroundsRepository {
     val backgroundsFlow: Flow<List<TvBackground>>
-    val selectedBackgroundFlow: Flow<TvBackground?>
+    val selectedBackground: MutableState<TvBackground>
     suspend fun initBackgrounds()
     fun getBackgrounds(): List<TvBackground>
     fun getSelectedBackground(): TvBackground

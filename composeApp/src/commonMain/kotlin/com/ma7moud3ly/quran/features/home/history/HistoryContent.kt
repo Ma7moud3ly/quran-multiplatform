@@ -35,7 +35,7 @@ import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import com.ma7moud3ly.quran.ui.suraNameFontFamily
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.aspect_ratio
 import quran.composeapp.generated.resources.audio_file

@@ -1,5 +1,6 @@
 package com.ma7moud3ly.quran.data.impl
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import com.ma7moud3ly.quran.data.repository.BackgroundsRepository
 import com.ma7moud3ly.quran.model.PreferenceKeys.TV_BACKGROUND_ID
@@ -54,12 +55,10 @@ class BackgroundsRepositoryImpl(
      */
     override val backgroundsFlow: Flow<List<TvBackground>> = _backgroundsFlow.asStateFlow()
 
-    private val _selectedBackgroundFlow = MutableStateFlow<TvBackground?>(null)
-
     /**
      * A flow of the currently selected TV background.
      */
-    override val selectedBackgroundFlow: Flow<TvBackground?> = _selectedBackgroundFlow.asStateFlow()
+    override val selectedBackground = mutableStateOf(backgroundVideos.backgrounds.first())
 
 
     /**
@@ -125,7 +124,7 @@ class BackgroundsRepositoryImpl(
             backgrounds.addAll(userBackgrounds)
             backgrounds.addAll(appBackgrounds)
             _backgroundsFlow.value = backgrounds
-            _selectedBackgroundFlow.value = getSelectedBackground()
+            selectedBackground.value = getSelectedBackground()
         }
     }
 
@@ -149,7 +148,7 @@ class BackgroundsRepositoryImpl(
      */
     override fun selectBackground(tvBackground: TvBackground) {
         Log.v(TAG, "set-last-background: ${tvBackground.id}")
-        _selectedBackgroundFlow.value = tvBackground
+        selectedBackground.value = tvBackground
         platformSettings.putString(TV_BACKGROUND_ID, tvBackground.id)
     }
 

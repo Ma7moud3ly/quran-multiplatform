@@ -45,7 +45,7 @@ import com.ma7moud3ly.quran.ui.MySurface
 import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.ScreenHeader
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.close
 import quran.composeapp.generated.resources.settings_tv_bg

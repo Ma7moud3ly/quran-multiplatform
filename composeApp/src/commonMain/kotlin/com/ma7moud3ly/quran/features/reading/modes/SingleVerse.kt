@@ -26,7 +26,7 @@ import com.ma7moud3ly.quran.model.testVersesManager
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.SwipeableBox
 import com.ma7moud3ly.quran.ui.isCompactDevice
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 
 @Preview

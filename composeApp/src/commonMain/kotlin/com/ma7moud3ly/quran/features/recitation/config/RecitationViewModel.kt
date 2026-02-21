@@ -1,6 +1,7 @@
 package com.ma7moud3ly.quran.features.recitation.config
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ma7moud3ly.quran.AppRoutes
@@ -15,6 +16,7 @@ import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.PlaybackMode
 import com.ma7moud3ly.quran.model.Recitation
 import com.ma7moud3ly.quran.model.Reciter
+import com.ma7moud3ly.quran.model.TvBackground
 import com.ma7moud3ly.quran.model.toPlaybackMode
 import com.ma7moud3ly.quran.platform.Log
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -42,9 +44,10 @@ class RecitationViewModel(
     init {
         viewModelScope.launch {
             backgroundsRepository.initBackgrounds()
-            backgroundsRepository.selectedBackgroundFlow.collect { value ->
-                if (value != null) recitationState.value.setTvBackground(value)
-            }
+            snapshotFlow { backgroundsRepository.selectedBackground.value }
+                .collect { value: TvBackground ->
+                    recitationState.value.setTvBackground(value)
+                }
         }
     }
 

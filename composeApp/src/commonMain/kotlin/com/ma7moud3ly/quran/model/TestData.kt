@@ -99,8 +99,7 @@ private class TestBackgroundsRepoImpl() : BackgroundsRepository {
     override val backgroundsFlow: Flow<List<TvBackground>>
         get() = flow { getPlaybackVideos().backgrounds }
 
-    override val selectedBackgroundFlow: Flow<TvBackground>
-        get() = flow { TvBackground() }
+    override val selectedBackground = mutableStateOf(getPlaybackVideos().backgrounds.first())
 
     override fun getBackgrounds(): List<TvBackground> {
         return getPlaybackVideos().backgrounds

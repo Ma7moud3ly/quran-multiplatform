@@ -26,7 +26,7 @@ fun main() = application {
         icon = painterResource(Res.drawable.logo),
         state = rememberWindowState(
             position = WindowPosition.Aligned(Alignment.Center),
-            size = DpSize(650.dp, 750.dp),
+            size = DpSize(750.dp, 750.dp),
         )
     ) {
         App()

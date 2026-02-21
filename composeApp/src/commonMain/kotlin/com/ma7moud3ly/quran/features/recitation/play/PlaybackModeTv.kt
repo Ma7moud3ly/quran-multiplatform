@@ -1,11 +1,18 @@
 package com.ma7moud3ly.quran.features.recitation.play
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -22,6 +29,7 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -38,9 +46,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -48,38 +60,49 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import coil3.compose.rememberAsyncImagePainter
 import com.ma7moud3ly.quran.features.reading.SuraName
 import com.ma7moud3ly.quran.features.reading.modes.formatVerse
 import com.ma7moud3ly.quran.managers.BackgroundsManager
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
+import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.PlaybackStates
+import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.TvBackground
 import com.ma7moud3ly.quran.model.TvControls
 import com.ma7moud3ly.quran.model.Verse
 import com.ma7moud3ly.quran.model.showControls
-import com.ma7moud3ly.quran.model.showTitle
-import com.ma7moud3ly.quran.model.showVerse
+import com.ma7moud3ly.quran.model.showHeader
+import com.ma7moud3ly.quran.model.showReciter
+import com.ma7moud3ly.quran.model.showVerseContent
 import com.ma7moud3ly.quran.model.testBackgroundsManager
 import com.ma7moud3ly.quran.model.testMediaPlayerManager
 import com.ma7moud3ly.quran.model.testMediaPlayerManagerInReelMode
 import com.ma7moud3ly.quran.platform.MyBackHandler
 import com.ma7moud3ly.quran.platform.ShowFullScreen
 import com.ma7moud3ly.quran.platform.VideoPlayer
+import com.ma7moud3ly.quran.platform.isJvm
 import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.platform.rememberVideoPlayerState
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.LocalPlatform
+import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.SwipeableBox
+import com.ma7moud3ly.quran.ui.isCompactDevice
 import com.ma7moud3ly.quran.ui.tvFontFamily
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.back
 import quran.composeapp.generated.resources.close
 import quran.composeapp.generated.resources.forward
+import quran.composeapp.generated.resources.icon
 import quran.composeapp.generated.resources.pause
 import quran.composeapp.generated.resources.play
 
@@ -148,7 +171,7 @@ fun TvPlayback(
     val videoPlayerState = rememberVideoPlayerState()
     val selectedVerse by mediaPlayerManager.currentVerseState.collectAsState(null)
     val isPlaying by remember { mediaPlayerManager.isPlaying }
-    var background by remember { backgroundsManager.selectedBackground }
+    val background by remember { backgroundsManager.selectedBackground }
     var controls by remember { backgroundsManager.tvControls }
     val coroutineScope = rememberCoroutineScope()
     val slidesListState = rememberLazyListState()
@@ -162,7 +185,15 @@ fun TvPlayback(
     }
 
     LaunchedEffect(Unit) {
-        if (mediaPlayerManager.isReelMode) backgroundsManager.toggleBackgroundControls()
+        if (mediaPlayerManager.isReelMode) {
+            if (mediaPlayerManager.singleReciter()) {
+                backgroundsManager.showReciter()
+                delay(5000)
+                backgroundsManager.showVerseContent()
+            } else {
+                backgroundsManager.showVerseContent()
+            }
+        }
     }
 
     LaunchedEffect(Unit) {
@@ -188,7 +219,7 @@ fun TvPlayback(
     }
 
     Scaffold(
-        modifier = Modifier.fillMaxWidth().background(Color.Red),
+        modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.background
     ) {
         SwipeableBox(
@@ -202,11 +233,15 @@ fun TvPlayback(
                 ),
             onSwipeRight = {
                 mediaPlayerManager.next()
-                backgroundsManager.showVerse()
+                if (backgroundsManager.hideAllControls) {
+                    backgroundsManager.showVerseContent()
+                }
             },
             onSwipeLeft = {
                 mediaPlayerManager.previous()
-                backgroundsManager.showVerse()
+                if (backgroundsManager.hideAllControls) {
+                    backgroundsManager.showVerseContent()
+                }
             },
             onSwipeUp = {
                 backgroundsManager.nextBackground {
@@ -233,7 +268,7 @@ fun TvPlayback(
                         start = 16.dp,
                         end = 16.dp,
                         bottom = 36.dp,
-                        top = if (mediaPlayerManager.isReelMode) 8.dp else 24.dp
+                        top = 16.dp
                     ),
                 tvBackground = { background },
                 tvControls = { controls },
@@ -248,6 +283,20 @@ fun TvPlayback(
                     modifier = Modifier
                         .zIndex(2f)
                         .align(Alignment.Center)
+                )
+            }
+
+
+            if (controls.showReciter) {
+                RecitationDetails(
+                    reciter = { mediaPlayerManager.reciter.value },
+                    background = background,
+                    chapter = mediaPlayerManager.getChapter(),
+                    modifier = Modifier
+                        .zIndex(2f)
+                        .fillMaxWidth(if (isCompactDevice()) 1f else 0.6f)
+                        .align(Alignment.BottomCenter)
+                        .padding(bottom = 100.dp)
                 )
             }
 
@@ -277,9 +326,9 @@ fun TvPlayback(
                         bottom = background.paddingBottom
                     )
             ) {
-                if (controls.showVerse && selectedVerse != null) {
+                if (controls.showVerseContent) {
                     ItemVerse(
-                        verse = { selectedVerse!! },
+                        verse = { selectedVerse },
                         background = background.background,
                         color = background.color
                     )
@@ -317,7 +366,7 @@ private fun Header(
     onBack: () -> Unit
 ) {
     val controls = tvControls()
-    if (controls.showTitle.not()) return
+    if (controls.showHeader.not()) return
     val backgroundColor = Color.White.copy(alpha = 0.3f)
     val color = tvBackground().color
     val isDownloading by remember { mediaPlayer.isDownloadingVerse }
@@ -331,7 +380,7 @@ private fun Header(
             chapterName = mediaPlayer.chapterName,
             background = if (controls.showControls) backgroundColor
             else Color.Transparent,
-            fontSize = 24.sp,
+            fontSize = 20.sp,
             color = color,
             icon = null,
             onClick = onBack
@@ -350,7 +399,7 @@ private fun Header(
             modifier = Modifier.padding(end = 8.dp),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            fontSize = 12.sp,
+            fontSize = 11.sp,
             color = color,
         )
         if (controls.showControls) {
@@ -369,11 +418,12 @@ private fun Header(
 
 @Composable
 private fun ItemVerse(
-    verse: () -> Verse,
+    verse: () -> Verse?,
     color: Color,
     background: Color,
     modifier: Modifier = Modifier
 ) {
+    val verse = verse() ?: return
     val platform = LocalPlatform.current
     Surface(
         color = background,
@@ -381,7 +431,7 @@ private fun ItemVerse(
         modifier = modifier
     ) {
         Text(
-            text = formatVerse(verse()),
+            text = formatVerse(verse),
             textAlign = TextAlign.Justify,
             fontFamily = tvFontFamily(),
             fontSize = if (platform.isMobile) 16.sp else 20.sp,
@@ -498,6 +548,112 @@ private fun SectionControls(
             iconSize = iconSize,
             iconPadding = iconPadding,
             background = background,
+        )
+    }
+}
+
+@Composable
+private fun RecitationDetails(
+    modifier: Modifier = Modifier,
+    reciter: () -> Reciter,
+    background: TvBackground,
+    chapter: Chapter
+) {
+    val reciter = reciter()
+    val color = background.color
+    val platform = LocalPlatform.current
+    MySurfaceRow(
+        surfaceModifier = modifier,
+        color = background.background,
+        cornerRadius = if (isCompactDevice()) 0.dp else 8.dp,
+        modifier = Modifier.padding(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        ReciterImage(
+            imageUrl = reciter.imageUrl,
+            placeholder = Res.drawable.icon,
+            borderWidth = 3.dp,
+            size = 70.dp
+        )
+        Column {
+            Text(
+                text = reciter.name,
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.Medium,
+                color = color,
+                maxLines = 1,
+                fontSize = 13.sp,
+            )
+            if (platform.isJvm) Spacer(Modifier.height(8.dp))
+            Text(
+                text = "سورة ${chapter.name}",
+                style = MaterialTheme.typography.bodySmall,
+                color = color,
+                maxLines = 1,
+                fontSize = 13.sp,
+            )
+        }
+    }
+}
+
+@Composable
+fun ReciterImage(
+    modifier: Modifier = Modifier,
+    imageUrl: String,
+    placeholder: DrawableResource,
+    size: Dp = 100.dp,
+    borderWidth: Dp = 6.dp
+) {
+    val infiniteTransition = rememberInfiniteTransition(label = "borderRotation")
+    val rotation by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 3000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "rotation"
+    )
+
+    Box(
+        modifier = modifier.size(size + borderWidth * 2),
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .size(size + borderWidth * 2)
+                .graphicsLayer { rotationZ = rotation }
+                .border(
+                    width = borderWidth,
+                    brush = Brush.sweepGradient(
+                        listOf(
+                            Color(0xFFFFFFFF),
+                            Color(0xFFFFFFFF),
+                            Color(0xFFFFFFFF),
+                            Color(0xFFFFFFFF),
+                            Color(0xFF3CA113),
+                            Color(0xFFFFFFFF),
+                            Color(0xFFFFFFFF),
+                            Color(0xFFFFFFFF),
+                            Color(0xFFFFFFFF)
+                        )
+                    ),
+                    shape = CircleShape
+                )
+        )
+
+        Image(
+            painter = rememberAsyncImagePainter(
+                model = imageUrl,
+                placeholder = painterResource(placeholder),
+                error = painterResource(placeholder)
+            ),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(size)
+                .clip(CircleShape)
         )
     }
 }

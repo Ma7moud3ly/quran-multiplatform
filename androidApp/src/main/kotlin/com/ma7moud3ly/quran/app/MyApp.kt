@@ -1,4 +1,4 @@
-package com.ma7moud3ly.quran
+package com.ma7moud3ly.quran.app
 
 import android.app.Application
 import com.ma7moud3ly.quran.di.AppModule

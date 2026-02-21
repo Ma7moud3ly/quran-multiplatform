@@ -85,7 +85,8 @@ import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import com.ma7moud3ly.quran.ui.isCompactDevice
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
+import com.ma7moud3ly.quran.platform.isWasmJs
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.downloaded
 import quran.composeapp.generated.resources.recite
@@ -658,39 +659,50 @@ private fun Footer(
     enabled: () -> Boolean = { true },
     onStart: (ScreenMode) -> Unit
 ) {
+    val platform = LocalPlatform.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
             .navigationBarsPadding(),
         verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (isCompactDevice()) Text(
-            text = stringResource(Res.string.recite_start),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onPrimary,
-            modifier = Modifier.padding(start = 8.dp)
-        )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(
-                space = 8.dp,
-                alignment = Alignment.CenterHorizontally
-            ),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        if (platform.isWasmJs) {
             MyButton(
-                text = Res.string.recite_mode_normal,
-                modifier = Modifier,//.weight(0.5f),
+                text = Res.string.recite_start,
+                modifier = Modifier.fillMaxWidth(0.5f),
                 onClick = { onStart(ScreenMode.Normal) },
                 enabled = enabled
             )
-            MyButton(
-                text = Res.string.recite_mode_tv,
-                modifier = Modifier,//.weight(0.5f),
-                onClick = { onStart(ScreenMode.Tv) },
-                enabled = enabled
+        } else {
+            if (isCompactDevice()) Text(
+                text = stringResource(Res.string.recite_start),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onPrimary,
+                modifier = Modifier.padding(start = 8.dp)
             )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(
+                    space = 8.dp,
+                    alignment = Alignment.CenterHorizontally
+                ),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                MyButton(
+                    text = Res.string.recite_mode_normal,
+                    modifier = Modifier,
+                    onClick = { onStart(ScreenMode.Normal) },
+                    enabled = enabled
+                )
+                MyButton(
+                    text = Res.string.recite_mode_tv,
+                    modifier = Modifier,
+                    onClick = { onStart(ScreenMode.Tv) },
+                    enabled = enabled
+                )
+            }
         }
     }
 }
