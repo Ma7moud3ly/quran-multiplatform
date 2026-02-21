@@ -22,7 +22,7 @@ class BackgroundsManager(
     val backgrounds: List<TvBackground> get() = backgroundsRepository.getBackgrounds()
 
     /** The currently selected TV background. */
-    val selectedBackground = mutableStateOf(backgrounds.first())
+    val selectedBackground = backgroundsRepository.selectedBackground
 
     /** The current state of the background controls (e.g., show controls, show reciter). */
     val tvControls = mutableStateOf<TvControls>(TvControls.ShowControls)
@@ -32,17 +32,9 @@ class BackgroundsManager(
 
     init {
         val background = backgroundsRepository.getSelectedBackground()
-        selectedBackground.value = background
         selectedBackgroundIndex = backgrounds.indexOf(background)
     }
 
-
-    /**
-     * Saves the ID of the currently selected background to the settings.
-     */
-    private fun saveBackground() {
-        backgroundsRepository.selectBackground(selectedBackground.value)
-    }
 
     /**
      * Selects a specific background to be displayed.
@@ -50,8 +42,7 @@ class BackgroundsManager(
      * @param background The [TvBackground] to select.
      */
     fun selectBackground(background: TvBackground) {
-        selectedBackground.value = background
-        saveBackground()
+        backgroundsRepository.selectBackground(background)
     }
 
     /**
@@ -63,9 +54,9 @@ class BackgroundsManager(
     fun nextBackground(onBackgroundChanged: (backgroundIndex: Int) -> Unit) {
         if (selectedBackgroundIndex < backgrounds.size - 1) selectedBackgroundIndex++
         else selectedBackgroundIndex = 0
-        selectedBackground.value = backgrounds[selectedBackgroundIndex]
         onBackgroundChanged(selectedBackgroundIndex)
-        saveBackground()
+        val background = backgrounds[selectedBackgroundIndex]
+        backgroundsRepository.selectBackground(background)
     }
 
     /**
@@ -77,9 +68,9 @@ class BackgroundsManager(
     fun previousBackground(onBackgroundChanged: (backgroundIndex: Int) -> Unit) {
         if (selectedBackgroundIndex > 0) selectedBackgroundIndex--
         else selectedBackgroundIndex = backgrounds.size - 1
-        selectedBackground.value = backgrounds[selectedBackgroundIndex]
         onBackgroundChanged(selectedBackgroundIndex)
-        saveBackground()
+        val background = backgrounds[selectedBackgroundIndex]
+        backgroundsRepository.selectBackground(background)
     }
 
 
@@ -89,21 +80,28 @@ class BackgroundsManager(
      */
     fun toggleBackgroundControls() {
         tvControls.value = when (tvControls.value) {
-            is TvControls.ShowControls -> TvControls.ShowTitle
-            is TvControls.ShowTitle -> TvControls.ShowVerse
-            is TvControls.ShowVerse -> TvControls.HideAll
+            is TvControls.ShowControls -> TvControls.ShowHeader
+            is TvControls.ShowHeader -> TvControls.ShowVerse
+            is TvControls.ShowVerse -> TvControls.ShowReciter
+            is TvControls.ShowReciter -> TvControls.HideAll
             else -> TvControls.ShowControls
         }
     }
 
     /**
-     * Shows the verse information if the controls are currently hidden.
+     * Shows the verse content.
      */
-    fun showVerse() {
-        if (tvControls.value is TvControls.HideAll) {
-            tvControls.value = TvControls.ShowVerse
-        }
+    fun showVerseContent() {
+        tvControls.value = TvControls.ShowVerse
     }
+
+    /**
+     * Shows Recitation details.
+     */
+    fun showReciter() {
+        tvControls.value = TvControls.ShowReciter
+    }
+
 
     /**
      * Sets the background controls to the 'ShowControls' state.
@@ -111,6 +109,8 @@ class BackgroundsManager(
     fun showControls() {
         tvControls.value = TvControls.ShowControls
     }
+
+    val hideAllControls: Boolean get() = tvControls.value is TvControls.HideAll
 
 }
 
