@@ -27,7 +27,7 @@ import com.ma7moud3ly.quran.ui.MyMiniDialog
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.download
 import quran.composeapp.generated.resources.download_audio_quality

@@ -58,5 +58,3 @@ private fun ConfigureSystemBars(viewModel: SettingsViewModel) {
         }
     }
 }
-
-
