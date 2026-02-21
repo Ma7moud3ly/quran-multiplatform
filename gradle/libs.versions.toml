@@ -3,8 +3,8 @@
 foundation = "1.10.1"
 project-packageName = "com.ma7moud3ly.quran"
 project-vendor = "github.com/Ma7moud3ly"
-project-versionCode = "5"
-project-versionName = "1.0.0" #also update at commonMain/composeResources/values/strings
+project-versionCode = "6"
+project-versionName = "1.0.1" #also update at commonMain/composeResources/values/strings
 android-compileSdk = "36"
 android-minSdk = "24"
 android-targetSdk = "36"
