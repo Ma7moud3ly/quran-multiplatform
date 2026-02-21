@@ -75,9 +75,9 @@ platform :android do
 
     version = ENV["GITHUB_REF_NAME"] || "dev"
     apk_file = if is_tag
-                 Dir["../composeApp/build/outputs/apk/default/release/*.apk"].first
+                 Dir["../androidApp/build/outputs/apk/default/release/*.apk"].first
                else
-                 Dir["../composeApp/build/outputs/apk/default/debug/*.apk"].first
+                 Dir["../androidApp/build/outputs/apk/default/debug/*.apk"].first
                end
     UI.user_error!("APK not found at expected path") if apk_file.nil?
 
