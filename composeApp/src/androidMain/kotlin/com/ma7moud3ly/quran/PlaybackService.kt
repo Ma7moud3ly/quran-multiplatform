@@ -73,24 +73,24 @@ class PlaybackService : Service() {
         return when (intent?.action) {
             ACTION_STOP_PLAYBACK -> {
                 stopPlaybackServiceAndRelease()
-                return START_NOT_STICKY
+                START_NOT_STICKY
             }
 
             ACTION_HIDE_PLAYBACK_NOTIFICATION -> {
                 stopPlaybackService()
-                return START_NOT_STICKY
+                START_NOT_STICKY
             }
 
             ACTION_PAUSE_PLAYBACK -> {
                 mediaPlayerManager.pause()
                 updateNotification()
-                return START_STICKY
+                START_STICKY
             }
 
             ACTION_RESUME_PLAYBACK -> {
                 mediaPlayerManager.resume()
                 updateNotification()
-                return START_STICKY
+                START_STICKY
             }
 
             else -> START_STICKY
