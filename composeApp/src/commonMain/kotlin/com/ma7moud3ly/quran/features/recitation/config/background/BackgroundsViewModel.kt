@@ -13,7 +13,7 @@ class BackgroundsViewModel(
 ) : ViewModel() {
 
     val backgroundsFlow = backgroundsRepository.backgroundsFlow
-    val selectedBackgroundFlow = backgroundsRepository.selectedBackgroundFlow
+    val selectedBackground = backgroundsRepository.selectedBackground
 
     fun selectBackground(tvBackground: TvBackground) {
         backgroundsRepository.selectBackground(tvBackground)

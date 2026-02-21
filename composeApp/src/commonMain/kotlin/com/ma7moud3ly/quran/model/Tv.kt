@@ -56,18 +56,20 @@ data class UserVideo(
 
 data class PlaybackStates(
     val tvControls: TvControls,
-    val background: TvBackground,
+    val background: TvBackground?,
     val isPlaying: Boolean,
     val selectedVerse: Verse?
 )
 
 sealed interface TvControls {
     data object ShowControls : TvControls
-    data object ShowTitle : TvControls
+    data object ShowHeader : TvControls
     data object ShowVerse : TvControls
+    data object ShowReciter : TvControls
     data object HideAll : TvControls
 }
 
 val TvControls.showControls: Boolean get() = this is TvControls.ShowControls
-val TvControls.showVerse: Boolean get() = this is TvControls.ShowVerse || this is TvControls.ShowTitle
-val TvControls.showTitle: Boolean get() = showControls || this is TvControls.ShowTitle
+val TvControls.showVerseContent: Boolean get() = this is TvControls.ShowVerse || this is TvControls.ShowHeader
+val TvControls.showReciter: Boolean get() = this is TvControls.ShowReciter
+val TvControls.showHeader: Boolean get() = showControls || this is TvControls.ShowHeader

@@ -3,6 +3,7 @@ package com.ma7moud3ly.quran.features.recitation.config.background
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import org.koin.compose.viewmodel.koinViewModel
 
 
@@ -12,12 +13,12 @@ fun TvBackgroundDialog(
     onDismiss: () -> Unit
 ) {
     val backgrounds by viewModel.backgroundsFlow.collectAsState(listOf())
-    val selectBackground by viewModel.selectedBackgroundFlow.collectAsState(null)
+    val selectedBackground by remember { viewModel.selectedBackground }
 
     TvBackgroundContent(
         backgrounds = backgrounds,
         onDismiss = onDismiss,
-        selectedBackground = { selectBackground },
+        selectedBackground = { selectedBackground },
         onSelectBackground = {
             viewModel.selectBackground(it)
             onDismiss()
