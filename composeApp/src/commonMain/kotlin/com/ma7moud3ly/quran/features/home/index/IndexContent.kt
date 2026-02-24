@@ -110,7 +110,7 @@ internal fun ItemChapterIndex(
     ) {
         IndexNumber(
             number = chapter.id,
-            color = MaterialTheme.colorScheme.background
+            color = MaterialTheme.colorScheme.background,
         )
         Column(
             modifier = Modifier.weight(1f),
@@ -153,15 +153,17 @@ internal fun ItemChapterIndex(
         }
         RoundButton(
             icon = Res.drawable.audio_file,
+            color = MaterialTheme.colorScheme.onPrimary,
             background = MaterialTheme.colorScheme.surfaceContainerHigh,
             onClick = onPlay,
-            iconSize = 24.dp
+            iconSize = 20.dp,
+            iconPadding = 12.dp
         )
     }
 }
 
 @Composable
-fun IndexNumber(
+private fun IndexNumber(
     number: Int,
     color: Color = MaterialTheme.colorScheme.background,
     size: Dp = 50.dp

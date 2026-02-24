@@ -252,7 +252,7 @@ private fun Header(
             }, actions = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
 
-                    if (isContinueMode.not()) RoundButton(
+                    RoundButton(
                         icon = Res.drawable.audio_file,
                         onClick = onPlay
                     )

@@ -77,6 +77,7 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.ma7moud3ly.quran.ui.MySurfaceRow
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.app_name
 import quran.composeapp.generated.resources.app_repo
@@ -166,9 +167,9 @@ fun HomeScreenContent(
             )
         },
         bottomBar = {
-            if (showAppBars) {
+           /* if (showAppBars) {
                 SectionSupport(Modifier.fillMaxWidth().navigationBarsPadding())
-            }
+            }*/
         }
     ) {
         Row(
@@ -255,16 +256,23 @@ private fun Header(
                 }
             },
             actions = {
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                MySurfaceRow(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+
+                ) {
                     RoundButton(
                         icon = Res.drawable.search,
                         onClick = onOpenSearch,
+                        background = Color.Transparent,
                         iconSize = 20.dp,
                         iconPadding = 6.dp
                     )
                     RoundButton(
                         icon = Res.drawable.settings,
                         onClick = onOpenSettings,
+                        background = Color.Transparent,
                         iconSize = 20.dp,
                         iconPadding = 6.dp
                     )
@@ -279,7 +287,6 @@ private fun Header(
     }
 }
 
-@Preview
 @Composable
 private fun SideMenu(
     pagerState: PagerState,
