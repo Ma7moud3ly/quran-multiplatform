@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.libs
 import java.util.Properties
 
 plugins {
@@ -94,12 +95,16 @@ android {
 
 dependencies {
     implementation(projects.composeApp)
+    implementation(libs.compose.material3)
     implementation(libs.compose.preview)
     implementation(libs.androidx.activity.compose)
 
     implementation(libs.koin.core)
     implementation(libs.koin.compose)
     implementation(libs.koin.compose.viewmodel)
+
+    implementation(libs.filekit.core)
+    implementation(libs.filekit.dialogs)
 
     "gmsImplementation"(platform(libs.firebase.bom))
     "gmsImplementation"(libs.firebase.crashlytics.ktx)
