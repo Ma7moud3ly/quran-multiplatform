@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -48,18 +47,19 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ma7moud3ly.quran.features.home.history.HistoryPage
-import com.ma7moud3ly.quran.features.home.history.testHistory
+import com.ma7moud3ly.quran.features.home.bookmarks.BookmarksPage
+import com.ma7moud3ly.quran.features.home.bookmarks.testBookmarks
 import com.ma7moud3ly.quran.features.home.index.ChaptersIndexPage
 import com.ma7moud3ly.quran.features.home.index.testChaptersIndex
 import com.ma7moud3ly.quran.features.home.reciters.RecitersPage
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
+import com.ma7moud3ly.quran.model.Bookmark
 import com.ma7moud3ly.quran.model.Chapter
-import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.platform.MyBackHandler
 import com.ma7moud3ly.quran.platform.isMobile
@@ -67,6 +67,7 @@ import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.LocalPlatform
 import com.ma7moud3ly.quran.ui.MyScreen
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
+import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.isCompactDevice
 import kotlinx.coroutines.flow.Flow
@@ -76,13 +77,12 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import com.ma7moud3ly.quran.ui.MySurfaceRow
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.app_name
 import quran.composeapp.generated.resources.app_repo
 import quran.composeapp.generated.resources.app_version
 import quran.composeapp.generated.resources.github
+import quran.composeapp.generated.resources.history
 import quran.composeapp.generated.resources.home_search
 import quran.composeapp.generated.resources.home_settings
 import quran.composeapp.generated.resources.home_slogan
@@ -92,7 +92,6 @@ import quran.composeapp.generated.resources.logo
 import quran.composeapp.generated.resources.search
 import quran.composeapp.generated.resources.settings
 
-
 @Preview
 @Composable
 private fun HomeScreenPreview() {
@@ -100,8 +99,8 @@ private fun HomeScreenPreview() {
         HomeScreenContent(
             chapters = { testChaptersIndex },
             reciters = { testReciters },
-            historyFlow = flow { testHistory },
-            onDeleteHistory = {},
+            bookmarksFlow = flow { testBookmarks },
+            onDeleteBookmark = {},
             uiEvents = {}
         )
     }
@@ -114,8 +113,8 @@ private fun HomeScreenPreviewLight() {
         HomeScreenContent(
             chapters = { testChaptersIndex },
             reciters = { testReciters },
-            historyFlow = flow { testHistory },
-            onDeleteHistory = {},
+            bookmarksFlow = flow { testBookmarks },
+            onDeleteBookmark = {},
             uiEvents = {}
         )
     }
@@ -126,15 +125,15 @@ private fun HomeScreenPreviewLight() {
 fun HomeScreenContent(
     chapters: () -> List<Chapter>,
     reciters: () -> List<Reciter>,
-    historyFlow: Flow<List<History>>,
-    onDeleteHistory: (History) -> Unit,
+    bookmarksFlow: Flow<List<Bookmark>>,
+    onDeleteBookmark: (Bookmark) -> Unit,
     uiEvents: (HomeEvents) -> Unit
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
         rememberTopAppBarState()
     )
     val showAppBars = isCompactDevice()
-    val pagerState = rememberPagerState(pageCount = { 3 })
+    val pagerState = rememberPagerState(pageCount = { HomeTab.entries.size })
     val coroutineScope = rememberCoroutineScope()
     fun isRecitersPage() = pagerState.currentPage == HomeTab.Reciters.index
 
@@ -164,12 +163,13 @@ fun HomeScreenContent(
                     uiEvents(HomeEvents.OpenSettings(reading = isRecitersPage().not()))
                 },
                 onOpenSearch = { uiEvents(HomeEvents.Search) },
+                onOpenHistory = { uiEvents(HomeEvents.OpenHistory) },
             )
         },
         bottomBar = {
-           /* if (showAppBars) {
-                SectionSupport(Modifier.fillMaxWidth().navigationBarsPadding())
-            }*/
+            /* if (showAppBars) {
+                 SectionSupport(Modifier.fillMaxWidth().navigationBarsPadding())
+             }*/
         }
     ) {
         Row(
@@ -211,13 +211,13 @@ fun HomeScreenContent(
                         )
                     }
 
-                    HomeTab.History.index -> {
-                        val history by historyFlow.collectAsState(listOf())
-                        HistoryPage(
-                            list = history,
-                            onDeleteHistory = onDeleteHistory,
-                            onOpenHistory = {
-                                uiEvents(HomeEvents.OpenHistory(it))
+                    HomeTab.Bookmarks.index -> {
+                        val bookmarks by bookmarksFlow.collectAsState(listOf())
+                        BookmarksPage(
+                            list = bookmarks,
+                            onDeleteBookmark = onDeleteBookmark,
+                            onOpenBookmark = {
+                                uiEvents(HomeEvents.OpenBookmark(it))
                             }
                         )
                     }
@@ -233,12 +233,13 @@ private fun Header(
     scrollBehavior: TopAppBarScrollBehavior,
     pagerState: PagerState,
     onOpenSearch: () -> Unit,
+    onOpenHistory: () -> Unit,
     onOpenSettings: () -> Unit
 ) {
     Column {
         TopAppBar(
             modifier = Modifier.fillMaxWidth(),
-            colors = TopAppBarDefaults.mediumTopAppBarColors(
+            colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.background,
                 scrolledContainerColor = MaterialTheme.colorScheme.background
             ),
@@ -265,6 +266,13 @@ private fun Header(
                     RoundButton(
                         icon = Res.drawable.search,
                         onClick = onOpenSearch,
+                        background = Color.Transparent,
+                        iconSize = 20.dp,
+                        iconPadding = 6.dp
+                    )
+                    RoundButton(
+                        icon = Res.drawable.history,
+                        onClick = onOpenHistory,
                         background = Color.Transparent,
                         iconSize = 20.dp,
                         iconPadding = 6.dp
@@ -316,7 +324,7 @@ private fun SideMenu(
         )
         SectionSupport(Modifier)
 
-        homeTabs.forEach { tab ->
+        HomeTab.entries.forEach { tab ->
             ItemTab(
                 text = tab.title,
                 selected = tab.index == pagerState.currentPage,
@@ -352,7 +360,6 @@ private fun Logo(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SectionTabs(
     pagerState: PagerState,
@@ -360,6 +367,7 @@ private fun SectionTabs(
 ) {
     val coroutineScope = rememberCoroutineScope()
     val selectedTabIndex by remember { derivedStateOf { pagerState.currentPage } }
+
     PrimaryTabRow(
         modifier = modifier,
         selectedTabIndex = selectedTabIndex,
@@ -372,7 +380,7 @@ private fun SectionTabs(
             )
         }
     ) {
-        homeTabs.forEach { tab ->
+        HomeTab.entries.forEach { tab ->
             ItemTab(
                 text = tab.title,
                 selected = tab.index == selectedTabIndex,

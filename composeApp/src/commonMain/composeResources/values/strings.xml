@@ -6,7 +6,10 @@
     <string name="home_slogan">القرآن\nالكريم</string>
     <string name="home_index">السور</string>
     <string name="home_reciters">القراء</string>
+    <string name="home_bookmarks">العلامات</string>
+    <string name="home_bookmarks_empty">لا يوجد علامات محفوظة</string>
     <string name="home_history">السجل</string>
+    <string name="home_history_empty">لم تقرأ أو تستمع إلي أي شئ</string>
     <string name="home_search">البحث</string>
     <string name="home_settings">الضبط</string>
     <string name="home_support">الدعم</string>
@@ -107,6 +110,8 @@
     <string name="download_require_internet">لابد أن تكون متصلاً بالإنترنت</string>
     <string name="download_deny">تشغيل أونلاين</string>
     <string name="download_deny_message">أو يمكنك التشغيل أونلاين بدون تحميل</string>
+
+    <string name="bookmark_add">إضافة علامة</string>
 
     <string name="copied">تم نسخة الآية</string>
     <string name="ok">موافق</string>

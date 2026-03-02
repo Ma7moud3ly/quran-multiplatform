@@ -59,6 +59,7 @@ import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.audio_file
+import quran.composeapp.generated.resources.bookmark
 import quran.composeapp.generated.resources.copied
 import quran.composeapp.generated.resources.fullscreen
 import quran.composeapp.generated.resources.fullscreen_exit
@@ -167,9 +168,19 @@ fun ReadingScreenContent(
                     onToggleScreen = { showFullScreen = showFullScreen.not() },
                     onOpenSettings = { uiEvents(ReadingEvents.OpenSettings) },
                     onBack = { uiEvents(ReadingEvents.Back) },
+                    onAddBookmark = {
+                        val event = ReadingEvents.AddBookmark(
+                            chapterId = chapter.id,
+                            verseId = versesManager.selectedVerseId
+                        )
+                        uiEvents(event)
+                    },
                     onPlay = {
-                        val verseId = versesManager.selectedVerseId
-                        uiEvents(ReadingEvents.PlayVerse(verseId))
+                        val event = ReadingEvents.PlayVerse(
+                            chapterId = chapter.id,
+                            verseId = versesManager.selectedVerseId
+                        )
+                        uiEvents(event)
                     }
                 )
             }
@@ -190,8 +201,8 @@ fun ReadingScreenContent(
                     chapter = chapter,
                     font = settings.font,
                     onClick = { /*showFullScreen = showFullScreen.not()*/ },
-                    onNextChapter = { uiEvents(ReadingEvents.NextChapter) },
-                    onPreviousChapter = { uiEvents(ReadingEvents.PreviousChapter) },
+                    onNextChapter = { uiEvents(ReadingEvents.NextChapter(chapter.id + 1)) },
+                    onPreviousChapter = { uiEvents(ReadingEvents.PreviousChapter(chapter.id - 1)) },
                 )
             }
 
@@ -201,8 +212,8 @@ fun ReadingScreenContent(
                     font = settings.font,
                     versesManager = versesManager,
                     onCopyVerse = ::showCopiedMessage,
-                    onNextChapter = { uiEvents(ReadingEvents.NextChapter) },
-                    onPreviousChapter = { uiEvents(ReadingEvents.PreviousChapter) },
+                    onNextChapter = { uiEvents(ReadingEvents.NextChapter(chapter.id + 1)) },
+                    onPreviousChapter = { uiEvents(ReadingEvents.PreviousChapter(chapter.id - 1)) },
                 )
             }
 
@@ -227,6 +238,7 @@ private fun Header(
     fullScreen: () -> Boolean,
     onToggleScreen: () -> Unit,
     onOpenSettings: () -> Unit,
+    onAddBookmark: () -> Unit,
     onPlay: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -255,6 +267,10 @@ private fun Header(
                     RoundButton(
                         icon = Res.drawable.audio_file,
                         onClick = onPlay
+                    )
+                    RoundButton(
+                        icon = Res.drawable.bookmark,
+                        onClick = onAddBookmark
                     )
                     RoundButton(
                         icon = Res.drawable.settings,

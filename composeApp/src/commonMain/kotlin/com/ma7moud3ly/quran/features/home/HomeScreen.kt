@@ -16,8 +16,8 @@ fun HomeScreen(
     HomeScreenContent(
         chapters = { chapters },
         reciters = { reciters },
-        historyFlow = viewModel.historyFlow,
-        onDeleteHistory = viewModel::deleteHistory,
+        bookmarksFlow = viewModel.bookmarksFlow,
+        onDeleteBookmark = viewModel::deleteBookmark,
         uiEvents = uiEvents
     )
 }

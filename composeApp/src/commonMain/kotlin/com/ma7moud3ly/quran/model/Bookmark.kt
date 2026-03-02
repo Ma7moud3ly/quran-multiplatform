@@ -6,38 +6,17 @@ import kotlinx.datetime.number
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
 import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
 
 @Serializable
-data class History(
-    val timeStamp: Long = getTimeMillis(),
-    val date: String = getCurrentFormattedTime(),
-    val type: Int = READING,
+data class Bookmark(
     val verseId: Int,
     val chapterId: Int,
-    val chapterName: String,
-    val reciterId: String? = null,
-    val reciterName: String? = null,
-    private val screenMode: Int? = null,
-    val reelMode: Boolean = false,
-    val playInBackground: Boolean = false,
-    val playLocally: Boolean = false,
-    val playbackMode: Int = PlaybackMode.Single.toInt,
+    val date: String = getCurrentFormattedTime(),
+    val timeStamp: Long = getTimeMillis(),
 ) {
-    val id: String
-        get() = if (isReading) chapterId.toString()
-        else "$chapterId-$reciterId-$screenMode"
-
-    val screenModeName: ScreenMode
-        get() = if (screenMode == 1) ScreenMode.Normal
-        else ScreenMode.Tv
-
-    val isNormalScreen: Boolean get() = screenMode == 1
-
-    val isReading: Boolean get() = type == 1
+    val id get() = chapterId.toString()
 
     companion object {
-
         private fun getCurrentFormattedTime(): String {
             val now = Clock.System.now()
             val localDateTime = now.toLocalDateTime(TimeZone.currentSystemDefault())
@@ -51,8 +30,6 @@ data class History(
             val minuteString = if (minute < 10) "0$minute" else minute.toString()
             return "$displayHour:$minuteString $period  $day-$month-$year"
         }
-
-        const val READING = 1
-        const val LISTENING = 2
     }
 }
+

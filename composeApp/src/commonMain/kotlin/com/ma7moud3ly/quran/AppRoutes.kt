@@ -19,14 +19,24 @@ object AppRoutes {
     data object SearchScreen
 
     @Serializable
+    @SerialName("history")
+    data object HistoryScreen
+
+    @Serializable
     @SerialName("reading")
     data class ReadingScreen(
         val chapterId: Int,
         val verseId: Int? = null
     )
 
-    object Recitation {
+    @Serializable
+    @SerialName("bookmarks")
+    data class BookmarksDialog(
+        val chapterId: Int,
+        val verseId: Int
+    )
 
+    object Recitation {
         @Serializable
         @SerialName("recitation")
         data class Config(
