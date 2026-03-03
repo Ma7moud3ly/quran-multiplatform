@@ -23,7 +23,7 @@ import com.ma7moud3ly.quran.platform.Log
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.DialogHeader
 import com.ma7moud3ly.quran.ui.MyButton
-import com.ma7moud3ly.quran.ui.MyMiniDialog
+import com.ma7moud3ly.quran.ui.MyAlertDialog
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.jetbrains.compose.resources.stringResource
@@ -81,7 +81,7 @@ fun ConfirmDownloadDialog(
         Log.i("ConfirmDownloadDialogContent", "recitation: $reciter")
     }
 
-    MyMiniDialog(
+    MyAlertDialog(
         onDismissRequest = onDismiss,
         space = 8.dp,
         modifier = Modifier.padding(16.dp),

@@ -16,6 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.ma7moud3ly.quran.features.about.AboutAppDialog
 import com.ma7moud3ly.quran.features.history.HistoryScreen
 import com.ma7moud3ly.quran.features.home.HomeEvents
 import com.ma7moud3ly.quran.features.home.HomeScreen
@@ -98,7 +99,11 @@ fun AppGraph(
                         }
 
                         is HomeEvents.OpenHistory -> {
-                            navController.navigate(AppRoutes.HistoryScreen)
+                            navController.navigate(AppRoutes.HistoryDialog)
+                        }
+
+                        is HomeEvents.OpenAbout -> {
+                            navController.navigate(AppRoutes.AboutDialog)
                         }
 
                         is HomeEvents.PlayChapter -> {
@@ -169,7 +174,7 @@ fun AppGraph(
             )
         }
 
-        composable<AppRoutes.HistoryScreen> {
+        dialog<AppRoutes.HistoryDialog> {
             HistoryScreen(
                 onOpenHistory = { history ->
                     val rout = if (history.isReading) {
@@ -187,6 +192,12 @@ fun AppGraph(
                     }
                 },
                 onBack = { navController.popBackStack() }
+            )
+        }
+
+        dialog<AppRoutes.AboutDialog> {
+            AboutAppDialog(
+                onDismiss = { navController.popBackStack() }
             )
         }
 
@@ -239,10 +250,7 @@ fun AppGraph(
         }
 
         dialog<AppRoutes.BookmarksDialog> {
-            val route = it.toRoute<AppRoutes.BookmarksDialog>()
             AddBookmarkDialog(
-                chapterId = route.chapterId,
-                verseId = route.verseId,
                 onDismiss = { navController.popBackStack() }
             )
         }

@@ -20,7 +20,11 @@ object AppRoutes {
 
     @Serializable
     @SerialName("history")
-    data object HistoryScreen
+    data object HistoryDialog
+
+    @Serializable
+    @SerialName("about")
+    data object AboutDialog
 
     @Serializable
     @SerialName("reading")

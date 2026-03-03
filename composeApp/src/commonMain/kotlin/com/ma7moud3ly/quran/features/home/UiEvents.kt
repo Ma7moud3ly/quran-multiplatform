@@ -8,6 +8,7 @@ sealed interface HomeEvents {
     data object Back : HomeEvents
     data object Search : HomeEvents
     data object OpenHistory : HomeEvents
+    data object OpenAbout : HomeEvents
     data class OpenChapter(val chapter: Chapter) : HomeEvents
     data class PlayChapter(val chapter: Chapter) : HomeEvents
     data class OpenReciter(val reciter: Reciter) : HomeEvents

@@ -53,7 +53,7 @@ import com.ma7moud3ly.quran.features.home.reciters.ItemReciter
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
 import com.ma7moud3ly.quran.features.reading.SuraName
 import com.ma7moud3ly.quran.features.recitation.config.background.ItemBackground
-import com.ma7moud3ly.quran.features.recitation.config.verses.SelectVerseNumberDialog
+import com.ma7moud3ly.quran.features.recitation.config.verses.VerseSelectorDialog
 import com.ma7moud3ly.quran.features.search.chapter.ItemChapter
 import com.ma7moud3ly.quran.features.settings.SettingsLabel
 import com.ma7moud3ly.quran.model.Chapter
@@ -97,6 +97,8 @@ import quran.composeapp.generated.resources.recite_range
 import quran.composeapp.generated.resources.recite_range_from
 import quran.composeapp.generated.resources.recite_range_single
 import quran.composeapp.generated.resources.recite_range_to
+import quran.composeapp.generated.resources.recite_select_begin
+import quran.composeapp.generated.resources.recite_select_end
 import quran.composeapp.generated.resources.recite_start
 import quran.composeapp.generated.resources.recite_verse
 import quran.composeapp.generated.resources.reciter
@@ -440,18 +442,25 @@ private fun SectionRange(
 ) {
     val chapter = selectedChapter() ?: return
     val state = recitationState()
-    val start = state.firstVerseState
-    val end = state.lastVerseState
+    var start by remember { state.firstVerseState }
+    var end by remember { state.lastVerseState }
     val canChangeVerse = state.canChangeVerseState.value
     var selectStartNumber by remember { mutableStateOf<Boolean?>(null) }
     var singleVerse by rememberSaveable { state.singleVerseState }
 
-    if (selectStartNumber != null) {
-        SelectVerseNumberDialog(
+    selectStartNumber?.let { selectStart ->
+        VerseSelectorDialog(
             start = start,
             end = end,
-            selectStart = selectStartNumber!!,
+            selectStart = selectStart,
+            title = if (selectStart) Res.string.recite_select_begin
+            else Res.string.recite_select_end,
             limit = chapter.count,
+            onConfirm = { newStart, newEnd ->
+                if (selectStart) start = newStart
+                else end = newEnd
+                selectStartNumber = null
+            },
             onDismiss = { selectStartNumber = null }
         )
     }
@@ -482,7 +491,7 @@ private fun SectionRange(
                 enabled = canChangeVerse
             ) {
                 Text(
-                    text = start.value.asVerseNumber(),
+                    text = start.asVerseNumber(),
                     fontFamily = hafsSmartFamily(),
                     fontSize = 45.sp,
                     color = if (canChangeVerse) MaterialTheme.colorScheme.secondary
@@ -500,7 +509,7 @@ private fun SectionRange(
                     color = Color.Transparent
                 ) {
                     Text(
-                        text = end.value.asVerseNumber(),
+                        text = end.asVerseNumber(),
                         fontFamily = hafsSmartFamily(),
                         fontSize = 45.sp,
                         color = MaterialTheme.colorScheme.secondary,

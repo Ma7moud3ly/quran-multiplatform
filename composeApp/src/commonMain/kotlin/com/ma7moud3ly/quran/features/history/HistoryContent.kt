@@ -26,23 +26,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.ma7moud3ly.quran.features.home.bookmarks.EmptyItems
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.DialogHeader
+import com.ma7moud3ly.quran.ui.MyDialog
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import com.ma7moud3ly.quran.ui.suraNameFontFamily
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import com.ma7moud3ly.quran.features.home.bookmarks.EmptyItems
-import com.ma7moud3ly.quran.ui.MyScreen
-import com.ma7moud3ly.quran.ui.ScreenHeader
 import org.jetbrains.compose.resources.stringResource
 import quran.composeapp.generated.resources.Res
 import quran.composeapp.generated.resources.aspect_ratio
@@ -117,11 +117,12 @@ internal fun HistoryScreenContent(
         onPauseOrDispose { }
     }
 
-    MyScreen(
+    MyDialog(
         space = 8.dp,
         modifier = Modifier.padding(8.dp),
-        topBar = {
-            ScreenHeader(
+        onDismissRequest = onBack,
+        header = {
+            DialogHeader(
                 text = stringResource(Res.string.home_history),
                 textAlign = TextAlign.Center,
                 onBack = onBack

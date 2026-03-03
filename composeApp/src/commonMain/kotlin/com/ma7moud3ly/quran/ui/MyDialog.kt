@@ -76,7 +76,7 @@ fun MyDialog(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyMiniDialog(
+fun MyAlertDialog(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     background: Color = MaterialTheme.colorScheme.background,
