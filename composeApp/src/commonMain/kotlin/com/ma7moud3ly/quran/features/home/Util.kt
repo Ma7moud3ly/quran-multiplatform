@@ -1,10 +1,10 @@
 package com.ma7moud3ly.quran.features.home
 
 import org.jetbrains.compose.resources.StringResource
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.home_bookmarks
-import quran.composeapp.generated.resources.home_index
-import quran.composeapp.generated.resources.home_reciters
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.home_bookmarks
+import com.ma7moud3ly.quran.resources.home_index
+import com.ma7moud3ly.quran.resources.home_reciters
 
 enum class HomeTab(
     val title: StringResource,

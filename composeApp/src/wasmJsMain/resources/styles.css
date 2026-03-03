@@ -8,7 +8,7 @@ html, body {
 
 @font-face {
     font-family: 'SurahNameV4';
-    src: url('composeResources/quran.composeapp.generated.resources/font/surah_name_v4.ttf') format('truetype');
+    src: url('composeResources/com.ma7moud3ly.quran.resources/font/surah_name_v4.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -16,7 +16,7 @@ html, body {
 
 @font-face {
     font-family: 'Basmeallah2';
-    src: url('composeResources/quran.composeapp.generated.resources/font/basmeallah2.ttf') format('truetype');
+    src: url('composeResources/com.ma7moud3ly.quran.resources/font/basmeallah2.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -24,7 +24,7 @@ html, body {
 
 @font-face {
     font-family: 'HafsSmartRegular';
-    src: url('composeResources/quran.composeapp.generated.resources/font/hafs_smart_regular.ttf') format('truetype');
+    src: url('composeResources/com.ma7moud3ly.quran.resources/font/hafs_smart_regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -32,7 +32,7 @@ html, body {
 
 @font-face {
     font-family: 'CairoRegular';
-    src: url('composeResources/quran.composeapp.generated.resources/font/cairo_regular.ttf') format('truetype');
+    src: url('composeResources/com.ma7moud3ly.quran.resources/font/cairo_regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -40,7 +40,7 @@ html, body {
 
 @font-face {
     font-family: 'UthmanicHafsBold';
-    src: url('composeResources/quran.composeapp.generated.resources/font/uthmanic_hafs_bold.ttf') format('truetype');
+    src: url('composeResources/com.ma7moud3ly.quran.resources/font/uthmanic_hafs_bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: block;

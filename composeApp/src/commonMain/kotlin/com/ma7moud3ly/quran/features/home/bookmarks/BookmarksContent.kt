@@ -42,10 +42,10 @@ import com.ma7moud3ly.quran.ui.suraNameFontFamily
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.bookmark
-import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.home_bookmarks_empty
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.bookmark
+import com.ma7moud3ly.quran.resources.close
+import com.ma7moud3ly.quran.resources.home_bookmarks_empty
 
 val testBookmarks = listOf(
     Bookmark(

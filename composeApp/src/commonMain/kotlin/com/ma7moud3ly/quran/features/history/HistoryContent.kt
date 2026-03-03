@@ -44,16 +44,16 @@ import com.ma7moud3ly.quran.ui.suraNameFontFamily
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.aspect_ratio
-import quran.composeapp.generated.resources.audio_file
-import quran.composeapp.generated.resources.bookmark
-import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.home_history
-import quran.composeapp.generated.resources.home_history_empty
-import quran.composeapp.generated.resources.multiple_verses
-import quran.composeapp.generated.resources.tv
-import quran.composeapp.generated.resources.visibility_off
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.aspect_ratio
+import com.ma7moud3ly.quran.resources.audio_file
+import com.ma7moud3ly.quran.resources.bookmark
+import com.ma7moud3ly.quran.resources.close
+import com.ma7moud3ly.quran.resources.home_history
+import com.ma7moud3ly.quran.resources.home_history_empty
+import com.ma7moud3ly.quran.resources.multiple_verses
+import com.ma7moud3ly.quran.resources.tv
+import com.ma7moud3ly.quran.resources.visibility_off
 
 val testHistory = listOf(
     History(

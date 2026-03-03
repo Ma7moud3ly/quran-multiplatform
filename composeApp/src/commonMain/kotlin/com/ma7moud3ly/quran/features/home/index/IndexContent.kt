@@ -29,12 +29,12 @@ import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.suraNameFontFamily
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.audio_file
-import quran.composeapp.generated.resources.index_madina
-import quran.composeapp.generated.resources.index_mecca
-import quran.composeapp.generated.resources.index_verse
-import quran.composeapp.generated.resources.index_verses
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.audio_file
+import com.ma7moud3ly.quran.resources.index_madina
+import com.ma7moud3ly.quran.resources.index_mecca
+import com.ma7moud3ly.quran.resources.index_verse
+import com.ma7moud3ly.quran.resources.index_verses
 
 internal val testChaptersIndex = listOf(
     Chapter(1, "الفاتحة", "", "meccan", count = 7),

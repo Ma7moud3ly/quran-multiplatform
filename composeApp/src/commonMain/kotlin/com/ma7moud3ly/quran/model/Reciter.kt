@@ -23,7 +23,7 @@ data class Reciter(
     /**
      * The URL of the reciter's image.
      */
-    val imageUrl: String get() = "https://raw.githubusercontent.com/Ma7moud3ly/quran-multiplatform/refs/heads/main/images/reciters/$image"
+    val imageUrl: String get() = "https://raw.githubusercontent.com/Ma7moud3ly/quran-planet/refs/heads/main/images/reciters/$image"
 
     /**
      * The quality level of the first available listening option.

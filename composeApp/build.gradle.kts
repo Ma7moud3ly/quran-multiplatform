@@ -143,7 +143,7 @@ kotlin {
 }
 
 compose.resources {
-    packageOfResClass = "quran.composeapp.generated.resources"
+    packageOfResClass = "${libs.versions.project.packageName.get()}.resources"
 }
 
 compose.desktop {

@@ -98,13 +98,13 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.back
-import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.forward
-import quran.composeapp.generated.resources.icon
-import quran.composeapp.generated.resources.pause
-import quran.composeapp.generated.resources.play
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.back
+import com.ma7moud3ly.quran.resources.close
+import com.ma7moud3ly.quran.resources.forward
+import com.ma7moud3ly.quran.resources.icon
+import com.ma7moud3ly.quran.resources.pause
+import com.ma7moud3ly.quran.resources.play
 
 
 @Preview

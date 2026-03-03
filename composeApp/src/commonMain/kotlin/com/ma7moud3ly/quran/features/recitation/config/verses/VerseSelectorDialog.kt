@@ -41,9 +41,9 @@ import com.ma7moud3ly.quran.ui.MySurface
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.ok
-import quran.composeapp.generated.resources.recite_select_begin
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.ok
+import com.ma7moud3ly.quran.resources.recite_select_begin
 
 @Preview
 @Composable

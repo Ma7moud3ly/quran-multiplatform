@@ -4,8 +4,8 @@
 
 - 🤖 [Android (Google Play)](https://play.google.com/store/apps/details?id=com.ma7moud3ly.quran)
 - 🍎 iOS (App Store) *(coming soon)*
-- 🌐 [Web Version](https://quran-multiplatform.web.app/)
-- 📦 [Latest Release (GitHub)](https://github.com/ma7moud3ly/quran-multiplatform/releases)
+- 🌐 [Web Version](https://quraan-planet.web.app/)
+- 📦 [Latest Release (GitHub)](https://github.com/ma7moud3ly/quran-planet/releases)
 
 ---
 

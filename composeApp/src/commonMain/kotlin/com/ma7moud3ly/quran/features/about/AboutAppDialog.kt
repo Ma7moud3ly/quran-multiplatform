@@ -26,15 +26,15 @@ import com.ma7moud3ly.quran.ui.MyAlertDialog
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.app_link_facebook
-import quran.composeapp.generated.resources.app_link_github
-import quran.composeapp.generated.resources.app_link_instagram
-import quran.composeapp.generated.resources.app_name
-import quran.composeapp.generated.resources.app_version
-import quran.composeapp.generated.resources.facebook
-import quran.composeapp.generated.resources.github
-import quran.composeapp.generated.resources.instagram
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.app_link_facebook
+import com.ma7moud3ly.quran.resources.app_link_github
+import com.ma7moud3ly.quran.resources.app_link_instagram
+import com.ma7moud3ly.quran.resources.app_name
+import com.ma7moud3ly.quran.resources.app_version
+import com.ma7moud3ly.quran.resources.facebook
+import com.ma7moud3ly.quran.resources.github
+import com.ma7moud3ly.quran.resources.instagram
 
 @Preview
 @Composable

@@ -9,8 +9,8 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.logo
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.logo
 
 data class TvBackground(
     val id: String = "",

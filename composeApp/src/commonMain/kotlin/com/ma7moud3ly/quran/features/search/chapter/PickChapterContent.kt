@@ -33,10 +33,10 @@ import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.suraNameFontFamily
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.recite_chapter_select
-import quran.composeapp.generated.resources.search
-import quran.composeapp.generated.resources.search_chapter_hint
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.recite_chapter_select
+import com.ma7moud3ly.quran.resources.search
+import com.ma7moud3ly.quran.resources.search_chapter_hint
 
 @Preview
 @Composable

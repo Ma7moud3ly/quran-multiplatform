@@ -11,9 +11,9 @@ import com.ma7moud3ly.quran.platform.Toast
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.getString
 import org.koin.compose.viewmodel.koinViewModel
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.bookmark_add
-import quran.composeapp.generated.resources.bookmark_added
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.bookmark_add
+import com.ma7moud3ly.quran.resources.bookmark_added
 
 @Composable
 fun AddBookmarkDialog(

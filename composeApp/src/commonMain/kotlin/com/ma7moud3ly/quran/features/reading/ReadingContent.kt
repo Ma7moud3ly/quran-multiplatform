@@ -57,14 +57,14 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.audio_file
-import quran.composeapp.generated.resources.bookmark
-import quran.composeapp.generated.resources.copied
-import quran.composeapp.generated.resources.fullscreen
-import quran.composeapp.generated.resources.fullscreen_exit
-import quran.composeapp.generated.resources.menu
-import quran.composeapp.generated.resources.settings
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.audio_file
+import com.ma7moud3ly.quran.resources.bookmark
+import com.ma7moud3ly.quran.resources.copied
+import com.ma7moud3ly.quran.resources.fullscreen
+import com.ma7moud3ly.quran.resources.fullscreen_exit
+import com.ma7moud3ly.quran.resources.menu
+import com.ma7moud3ly.quran.resources.settings
 
 
 @Preview
