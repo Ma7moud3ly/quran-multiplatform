@@ -12,7 +12,6 @@ import com.ma7moud3ly.quran.resources.video13_thumbnail
 import com.ma7moud3ly.quran.resources.video14_thumbnail
 import com.ma7moud3ly.quran.resources.video15_thumbnail
 import com.ma7moud3ly.quran.resources.video1_thumbnail
-import com.ma7moud3ly.quran.resources.video24_thumbnail
 import com.ma7moud3ly.quran.resources.video3_thumbnail
 import com.ma7moud3ly.quran.resources.video4_thumbnail
 import com.ma7moud3ly.quran.resources.video5_thumbnail
@@ -150,16 +149,5 @@ private val androidSlides = listOf(
         background = Color.White.copy(alpha = 0.08f),
         alignment = Alignment.TopCenter,
         paddingTop = 150.dp
-    ),
-    TvBackground(
-        id = "video24",
-        video = AppVideo(
-            name = "video24.mp4",
-            thumbnail = Res.drawable.video24_thumbnail
-        ),
-        background = Color.White.copy(alpha = 0.5f),
-        color = Color.Black,
-        alignment = Alignment.TopCenter,
-        paddingTop = 110.dp
     )
 )

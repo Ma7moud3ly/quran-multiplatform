@@ -63,13 +63,15 @@ data class PlaybackStates(
 
 sealed interface TvControls {
     data object ShowControls : TvControls
-    data object ShowHeader : TvControls
+    data object ShowVerseAndHeader : TvControls
     data object ShowVerse : TvControls
+    data object ShowVerseAndChapter : TvControls
     data object ShowReciter : TvControls
     data object HideAll : TvControls
 }
 
 val TvControls.showControls: Boolean get() = this is TvControls.ShowControls
-val TvControls.showVerseContent: Boolean get() = this is TvControls.ShowVerse || this is TvControls.ShowHeader
+val TvControls.showVerseAndHeader: Boolean get() = this is TvControls.ShowVerseAndHeader
+val TvControls.showVerse: Boolean get() = this is TvControls.ShowVerse
+val TvControls.showVerseAndReciter: Boolean get() = this is TvControls.ShowVerseAndChapter
 val TvControls.showReciter: Boolean get() = this is TvControls.ShowReciter
-val TvControls.showHeader: Boolean get() = showControls || this is TvControls.ShowHeader

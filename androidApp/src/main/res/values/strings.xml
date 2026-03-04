@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">القرآن الكريم</string>
+    <string name="app_name">كوكب القرآن</string>
     <string name="playback_play">تشغيل</string>
     <string name="playback_stop">إيقاف التشغيل</string>
     <string name="playback_pause">إيقاف مؤقت</string>
