@@ -1,4 +1,4 @@
-# Quran App - تطبيق القرآن الكريم
+# Quran Planet - تطبيق كوكب القرآن
 
 ## 📥 Download التحميل
 
@@ -9,9 +9,9 @@
 
 ---
 
-✨ Quran App: A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
+✨ Quran Planet: A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
 
-✨ تطبيق القران الكريم: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
+✨ تطبيق كوكب القران: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
 .
 <image src="images/banner.png">
 
@@ -26,7 +26,7 @@
 🎧 استماع مباشر أو تحميل التلاوات للاستماع بدون إنترنت.  
 📜 عرض الآيات بشكل متصل، منفصل، أو آية واحدة حسب اختيارك.  
 🎤 تشغيل التلاوة في وضع متعدد القراء يمكنك من سماع نفس الآيات بعدة قراء مختلفين أو التبديل بين القراء مع كل آية.  
-🌟 نظام عرض التلاوة بشمل مميز بخلفيات وفيديوهات مميزة.  
+🌟 نظام عرض التلاوة مع خلفيات وفيديوهات مميزة.  
 🖥️ واجهة بسيطة وسهلة الاستخدام لتجعل تجربة قراءة القرآن ممتعة وهادئة.
 
 
