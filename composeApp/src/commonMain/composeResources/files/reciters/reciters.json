@@ -7,10 +7,18 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/abubakr-alshatery-64"
+      },
+      {
+        "quality": 64,
         "id": "Abu_Bakr_Ash-Shaatree"
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/abubakr-alshatery-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/64kb----quran----6236---ayaat-----__verse--by---verse----_-by----alshatery----_370"
@@ -29,10 +37,18 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/al-ajamy-64"
+      },
+      {
+        "quality": 64,
         "id": "Ahmed_ibn_Ali_al-Ajamy"
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/al-ajamy-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/64kb---al3agamy-------64------kb---mp3------------quran----6236---ayaat-----__"
@@ -65,7 +81,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/minshawi-murattal-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/minshawi-murattal-64"
       },
       {
         "quality": 128,
@@ -84,11 +100,19 @@
     "name_short": "المنشاوي – معلم",
     "listen": [
       {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/minshawi-teacher-32"
+      },
+      {
         "quality": 128,
         "id": "Minshawy_Teacher"
       }
     ],
     "download": [
+      {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/minshawi-teacher-32"
+      },
       {
         "quality": 128,
         "id": "https://archive.org/download/128_kb---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by-"
@@ -121,7 +145,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/minshawi-mogawwad-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/minshawi-mogawwad-64"
       },
       {
         "quality": 192,
@@ -151,7 +175,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/abdulbasit-morattal-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/abdulbasit-morattal-64"
       },
       {
         "quality": 192,
@@ -177,7 +201,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/abdulbasit-mojawwad-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/abdulbasit-mojawwad-64"
       },
       {
         "quality": 128,
@@ -193,6 +217,10 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-murattal-64"
+      },
+      {
+        "quality": 64,
         "id": "Husary"
       },
       {
@@ -201,6 +229,10 @@
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-murattal-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/64kb___--mp3-----quran----6236---ayaat-----__verse--by---verse----_-by---alhos"
@@ -225,7 +257,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/alhosary-qasr-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/alhosary-qasr-64"
       }
     ]
   },
@@ -237,10 +269,18 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-mogawwad-64"
+      },
+      {
+        "quality": 64,
         "id": "Husary_Mujawwad"
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-mogawwad-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/64kb----quran----6236---ayaat-----__verse--by---verse----_-by---alhosary---mog_167"
@@ -258,6 +298,10 @@
     "name_short": "الحصري – معلم",
     "listen": [
       {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-teacher-64"
+      },
+      {
         "quality": 128,
         "id": "Hussary.teacher"
       },
@@ -271,6 +315,10 @@
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alhosary-teacher-64"
+      },
       {
         "quality": 128,
         "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--alhosary-teacher-without-repeat-kids-128kb--ever"
@@ -291,7 +339,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/alhosary-warsh-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/alhosary-warsh-64"
       }
     ]
   },
@@ -309,7 +357,7 @@
     "download": [
       {
         "quality": 32,
-        "id": "https://github.com/quran-by-verses/alhosary-qaloon-32/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/alhosary-qaloon-32"
       },
       {
         "quality": 32,
@@ -325,10 +373,18 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/altablawy-64"
+      },
+      {
+        "quality": 64,
         "id": "Mohammad_al_Tablaway"
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/altablawy-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/64kb__---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by-"
@@ -341,12 +397,20 @@
     "listen": [
       {
         "quality": 32,
+        "id": "https://github.com/quran-by-verses/albanna-32"
+      },
+      {
+        "quality": 32,
         "id": "Banna"
       }
     ],
     "name": "محمود علي البنا – مرتل",
     "name_short": "البنا - مرتل",
     "download": [
+      {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/albanna-32"
+      },
       {
         "quality": 32,
         "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--albanna--morattal---every-sorah-in-folder-114-file"
@@ -370,7 +434,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/mostafa-ismail-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/mostafa-ismail-128"
       }
     ]
   },
@@ -381,10 +445,18 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/muhammad-jibreel-64"
+      },
+      {
+        "quality": 64,
         "id": "Muhammad_Jibreel"
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/muhammad-jibreel-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/64kb-quran----6236---ayaat-----__verse--by---verse----_-by--mohammad----gebree"
@@ -404,7 +476,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/ahmad-n3eana3-morattal-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/ahmad-n3eana3-morattal-128"
       },
       {
         "quality": 128,
@@ -426,7 +498,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/ali-haggag-alseweasy-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/ali-haggag-alseweasy-128"
       },
       {
         "quality": 128,
@@ -456,11 +528,11 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/maher_almuaiqly-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-128"
       },
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly-64"
       },
       {
         "quality": 128,
@@ -482,7 +554,7 @@
     "download": [
       {
         "quality": 96,
-        "id": "https://github.com/quran-by-verses/maher_almuaiqly_mogawwad-96/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/maher_almuaiqly_mogawwad-96"
       }
     ]
   },
@@ -492,6 +564,10 @@
     "name": "علي عبد الرحمن الحذيفي",
     "name_short": "الحذيفي",
     "listen": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/alhozifi-128"
+      },
       {
         "quality": 128,
         "id": "Hudhaify"
@@ -508,6 +584,10 @@
     "download": [
       {
         "quality": 128,
+        "id": "https://github.com/quran-by-verses/alhozifi-128"
+      },
+      {
+        "quality": 128,
         "id": "https://archive.org/download/128kb--quran----6236---ayaat-----__verse--by---verse----_-by--alhozifi-------f_443"
       }
     ]
@@ -520,6 +600,10 @@
     "listen": [
       {
         "quality": 128,
+        "id": "https://github.com/quran-by-verses/mishary-alafasy-128"
+      },
+      {
+        "quality": 128,
         "id": "Alafasy"
       },
       {
@@ -528,6 +612,10 @@
       }
     ],
     "download": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/mishary-alafasy-128"
+      },
       {
         "quality": 128,
         "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--mshari-al3afasi--every-sorah-in-folder-114-file"
@@ -547,7 +635,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/fares-abbad-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/fares-abbad-64"
       },
       {
         "quality": 64,
@@ -561,13 +649,21 @@
     "name": "سعد الغامدي",
     "listen": [
       {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/saad-alghamdy-32"
+      },
+      {
         "quality": 40,
         "id": "Ghamadi"
       }
     ],
     "download": [
       {
-        "quality": 40,
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/saad-alghamdy-32"
+      },
+      {
+        "quality": 32,
         "id": "https://archive.org/download/6236-full-quran-6236-ayah-by--sa3d-alghamdy--every-sorah-in-folder-114-file"
       }
     ]
@@ -585,7 +681,7 @@
     "download": [
       {
         "quality": 96,
-        "id": "https://github.com/quran-by-verses/tawfeeq-alsayegh-96/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/tawfeeq-alsayegh-96"
       }
     ]
   },
@@ -597,10 +693,18 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/alshoream-64"
+      },
+      {
+        "quality": 64,
         "id": "Saood_ash-Shuraym"
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/alshoream-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/KORAN-6236-full-quran-6236-ayah-by--ALSHOREAM--every-sorah-in-folder-114-file"
@@ -615,6 +719,10 @@
     "listen": [
       {
         "quality": 192,
+        "id": "https://github.com/quran-by-verses/alsudais-192"
+      },
+      {
+        "quality": 192,
         "id": "Abdurrahmaan_As-Sudais"
       },
       {
@@ -623,6 +731,10 @@
       }
     ],
     "download": [
+      {
+        "quality": 192,
+        "id": "https://github.com/quran-by-verses/alsudais-192"
+      },
       {
         "quality": 192,
         "id": "https://archive.org/download/192------kb---mp3------------quran----6236---ayaat-----__verse--by---verse----"
@@ -637,10 +749,18 @@
     "listen": [
       {
         "quality": 128,
+        "id": "https://github.com/quran-by-verses/naser-alqetamy-128"
+      },
+      {
+        "quality": 128,
         "id": "Nasser_Alqatami"
       }
     ],
     "download": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/naser-alqetamy-128"
+      },
       {
         "quality": 128,
         "id": "https://archive.org/download/6236--aya---ayat---128kb---naser--alqetamy--by--verse--by--verse---full---mosh"
@@ -661,7 +781,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/yaser-aldosry-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/yaser-aldosry-128"
       },
       {
         "quality": 128,
@@ -676,10 +796,18 @@
     "listen": [
       {
         "quality": 192,
+        "id": "https://github.com/quran-by-verses/hany-alrefa3y-192"
+      },
+      {
+        "quality": 192,
         "id": "Hani_Rifai"
       }
     ],
     "download": [
+      {
+        "quality": 192,
+        "id": "https://github.com/quran-by-verses/hany-alrefa3y-192"
+      },
       {
         "quality": 192,
         "id": "https://archive.org/download/6236--ayah--ayat---mp3-------192kb---hany--alrefa3y-----quran----6236---ayaat-"
@@ -693,10 +821,18 @@
     "listen": [
       {
         "quality": 128,
+        "id": "https://github.com/quran-by-verses/yasser-salama-128"
+      },
+      {
+        "quality": 128,
         "id": "Yaser_Salamah"
       }
     ],
     "download": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/yasser-salama-128"
+      },
       {
         "quality": 128,
         "id": "https://archive.org/download/6236--aya---ayat---128kb---yaser--salama--by--al7adr--by--verse--by--verse---f"
@@ -716,7 +852,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/slaa7-bo-khater-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/slaa7-bo-khater-128"
       }
     ]
   },
@@ -725,6 +861,10 @@
     "image": "ayoub.jpg",
     "name": "محمد أيوب",
     "listen": [
+      {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/mohammad-ayoob-32"
+      },
       {
         "quality": 32,
         "id": "Muhammad_Ayyoub"
@@ -739,6 +879,10 @@
       }
     ],
     "download": [
+      {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/mohammad-ayoob-32"
+      },
       {
         "quality": 32,
         "id": "https://archive.org/download/6236__full-quran-6236-ayah-by--mohammad-ayyoob---every-sorah-in-folder-114-file"
@@ -763,7 +907,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/ali-abdallah-gaber-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/ali-abdallah-gaber-64"
       },
       {
         "quality": 64,
@@ -785,7 +929,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/abdallah-almatrood-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/abdallah-almatrood-128"
       },
       {
         "quality": 128,
@@ -800,10 +944,18 @@
     "listen": [
       {
         "quality": 32,
+        "id": "https://github.com/quran-by-verses/ibraheem-alakhdar-32"
+      },
+      {
+        "quality": 32,
         "id": "Ibrahim_Akhdar"
       }
     ],
     "download": [
+      {
+        "quality": 32,
+        "id": "https://github.com/quran-by-verses/ibraheem-alakhdar-32"
+      },
       {
         "quality": 32,
         "id": "https://archive.org/download/6236--aya---ayat---32kb---ibraheem---alakhdar---by--verse--by--verse---full---"
@@ -823,7 +975,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/salah-albedir-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/salah-albedir-128"
       },
       {
         "quality": 128,
@@ -838,10 +990,18 @@
     "listen": [
       {
         "quality": 192,
+        "id": "https://github.com/quran-by-verses/abd-almohsen-alqasem-192"
+      },
+      {
+        "quality": 192,
         "id": "Muhsin_Al_Qasim"
       }
     ],
     "download": [
+      {
+        "quality": 192,
+        "id": "https://github.com/quran-by-verses/abd-almohsen-alqasem-192"
+      },
       {
         "quality": 192,
         "id": "https://archive.org/download/192kb---quran----6236---ayaat-----__verse--by---verse----_-by--abd--amuhsin--a_353"
@@ -855,6 +1015,10 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/abdullah-basfar-mogawwad-64"
+      },
+      {
+        "quality": 64,
         "id": "Abdullah_Basfar"
       },
       {
@@ -863,6 +1027,10 @@
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/abdullah-basfar-mogawwad-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/full-quran-6236-ayah-by--abd-allah-basfar-mogawwad--64kb--verse-by-verse"
@@ -881,10 +1049,18 @@
     "listen": [
       {
         "quality": 128,
+        "id": "https://github.com/quran-by-verses/abdullah-algohany-128"
+      },
+      {
+        "quality": 128,
         "id": "Abdullaah_3awwaad_Al-Juhaynee"
       }
     ],
     "download": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/abdullah-algohany-128"
+      },
       {
         "quality": 128,
         "id": "https://archive.org/download/128kb----6236--ayah---quran-128_126"
@@ -904,7 +1080,7 @@
     "download": [
       {
         "quality": 40,
-        "id": "https://github.com/quran-by-verses/kreem-mansoory-40/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/kreem-mansoory-40"
       },
       {
         "quality": 40,
@@ -925,7 +1101,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/mohammad-abdalkareem-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/mohammad-abdalkareem-128"
       },
       {
         "quality": 128,
@@ -941,6 +1117,10 @@
     "listen": [
       {
         "quality": 128,
+        "id": "https://github.com/quran-by-verses/ibrahem-aldosry-warsh-128"
+      },
+      {
+        "quality": 128,
         "id": "warsh_dossary"
       },
       {
@@ -949,6 +1129,10 @@
       }
     ],
     "download": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/ibrahem-aldosry-warsh-128"
+      },
       {
         "quality": 128,
         "id": "https://archive.org/download/6236--aya---ayat---128kb---ibraheem---aldosry--by---warsh---by--verse--by--ver"
@@ -968,7 +1152,7 @@
     "download": [
       {
         "quality": 128,
-        "id": "https://github.com/quran-by-verses/akram-al3alaqmy-128/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/akram-al3alaqmy-128"
       },
       {
         "quality": 128,
@@ -984,10 +1168,18 @@
     "listen": [
       {
         "quality": 64,
+        "id": "https://github.com/quran-by-verses/khalifah-alteneagy-64"
+      },
+      {
+        "quality": 64,
         "id": "tunaiji"
       }
     ],
     "download": [
+      {
+        "quality": 64,
+        "id": "https://github.com/quran-by-verses/khalifah-alteneagy-64"
+      },
       {
         "quality": 64,
         "id": "https://archive.org/download/6236--_-_aya----ayat---64kb--khalifa--alteneagy---moratal---by--verse--by--ver"
@@ -997,8 +1189,12 @@
   {
     "id": "yasin",
     "image": "yasin.jpg",
-    "name": "سهل ياسين",
+    "name": "سهل ياسين - رواية ورش",
     "listen": [
+      {
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/sahl-yaseen-warsh-128"
+      },
       {
         "quality": 64,
         "id": "warsh_yassin"
@@ -1006,8 +1202,8 @@
     ],
     "download": [
       {
-        "quality": 64,
-        "id": "https://archive.org/download/128kb---mp3------------quran----6236---ayaat-----__verse--by---verse----_-by--_382"
+        "quality": 128,
+        "id": "https://github.com/quran-by-verses/sahl-yaseen-warsh-128"
       },
       {
         "quality": 128,
@@ -1028,7 +1224,7 @@
     "download": [
       {
         "quality": 48,
-        "id": "https://github.com/quran-by-verses/shehrayar-berhizkar-48/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/shehrayar-berhizkar-48"
       },
       {
         "quality": 48,
@@ -1049,7 +1245,7 @@
     "download": [
       {
         "quality": 32,
-        "id": "https://github.com/quran-by-verses/salah-alhashim-32/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/salah-alhashim-32"
       },
       {
         "quality": 32,
@@ -1071,7 +1267,7 @@
     "download": [
       {
         "quality": 192,
-        "id": "https://github.com/quran-by-verses/quran-translation-english-192/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/quran-translation-english-192"
       },
       {
         "quality": 192,
@@ -1093,7 +1289,7 @@
     "download": [
       {
         "quality": 64,
-        "id": "https://github.com/quran-by-verses/quran-translation-az-64/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/quran-translation-az-64"
       },
       {
         "quality": 64,
@@ -1115,7 +1311,7 @@
     "download": [
       {
         "quality": 46,
-        "id": "https://github.com/quran-by-verses/quran-translation-ur-46/releases/download/v1.0.0"
+        "id": "https://github.com/quran-by-verses/quran-translation-ur-46"
       },
       {
         "quality": 46,

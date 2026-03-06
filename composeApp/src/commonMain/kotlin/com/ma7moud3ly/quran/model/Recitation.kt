@@ -23,18 +23,19 @@ data class Recitation(
         require(reciters.isNotEmpty()) { println("reciters can't be empty") }
     }
 
-    private val rotationFactor: Int = {
-        if (playbackMode.isDistributed) {
-            val n = lastVerse + 1 - firstVerse
-            val k = reciters.size
-            if (n < k) 1
-            else {
-                val ceil = (n + k - 1) / k       // ceiling division
-                val last = n - (k - 1) * ceil    // last slot if we use ceil
-                if (last <= 0) n / k else ceil
-            }
-        } else 1
-    }.invoke()
+    private val rotationFactor: Int
+        get() {
+            return if (playbackMode.isDistributed) {
+                val n = lastVerse + 1 - firstVerse
+                val k = reciters.size
+                if (n < k) 1
+                else {
+                    val ceil = (n + k - 1) / k       // ceiling division
+                    val last = n - (k - 1) * ceil    // last slot if we use ceil
+                    if (last <= 0) n / k else ceil
+                }
+            } else 1
+        }
 
     private var reciterIndex = 0
     val currentReciter: Reciter get() = reciters[reciterIndex]
