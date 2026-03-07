@@ -1,5 +1,6 @@
 package com.ma7moud3ly.quran.features.about
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,11 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.ma7moud3ly.quran.features.home.Logo
-import com.ma7moud3ly.quran.ui.AppTheme
-import com.ma7moud3ly.quran.ui.MyAlertDialog
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
 import com.ma7moud3ly.quran.resources.Res
 import com.ma7moud3ly.quran.resources.app_link_facebook
 import com.ma7moud3ly.quran.resources.app_link_github
@@ -35,6 +30,11 @@ import com.ma7moud3ly.quran.resources.app_version
 import com.ma7moud3ly.quran.resources.facebook
 import com.ma7moud3ly.quran.resources.github
 import com.ma7moud3ly.quran.resources.instagram
+import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.MyAlertDialog
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Preview
 @Composable
@@ -66,11 +66,10 @@ internal fun AboutAppDialog(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Logo(size = 70.dp, animated = false)
+            Logo(size = 80.dp, animated = false)
             Text(
                 text = stringResource(Res.string.app_name),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurface
             )
             Text(
@@ -108,12 +107,11 @@ internal fun AboutAppDialog(
 @Composable
 private fun SocialMediaIcon(
     icon: DrawableResource,
-    size: Dp = 32.dp
+    size: Dp = 28.dp
 ) {
-    Icon(
+    Image(
         painter = painterResource(icon),
         contentDescription = "",
-        tint = MaterialTheme.colorScheme.onPrimary,
         modifier = Modifier.size(size)
     )
 }

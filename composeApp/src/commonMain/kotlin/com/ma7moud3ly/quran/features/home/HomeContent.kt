@@ -6,6 +6,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -412,13 +413,9 @@ internal fun Logo(
         // Logo
         Surface(
             shape = CircleShape,
-            color = color,
-            /* border = BorderStroke(
-                 width = 0.5.dp,
-                 color = MaterialTheme.colorScheme.onPrimary
-             )*/
+            color = color
         ) {
-            Icon(
+            Image(
                 painter = painterResource(Res.drawable.logo),
                 contentDescription = "logo",
                 modifier = Modifier
@@ -428,7 +425,6 @@ internal fun Logo(
                         enabled = animated,
                         onClick = { showAnimation = showAnimation.not() }
                     ),
-                tint = MaterialTheme.colorScheme.onPrimary
             )
         }
 
