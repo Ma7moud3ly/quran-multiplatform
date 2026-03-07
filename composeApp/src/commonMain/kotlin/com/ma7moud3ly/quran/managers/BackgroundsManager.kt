@@ -80,9 +80,10 @@ class BackgroundsManager(
      */
     fun toggleBackgroundControls() {
         tvControls.value = when (tvControls.value) {
-            is TvControls.ShowControls -> TvControls.ShowHeader
-            is TvControls.ShowHeader -> TvControls.ShowVerse
-            is TvControls.ShowVerse -> TvControls.ShowReciter
+            is TvControls.ShowControls -> TvControls.ShowVerseAndHeader
+            is TvControls.ShowVerseAndHeader -> TvControls.ShowVerse
+            is TvControls.ShowVerse -> TvControls.ShowVerseAndChapter
+            is TvControls.ShowVerseAndChapter -> TvControls.ShowReciter
             is TvControls.ShowReciter -> TvControls.HideAll
             else -> TvControls.ShowControls
         }

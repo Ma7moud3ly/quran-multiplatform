@@ -1,16 +1,21 @@
 <resources>
-    <string name="app_name">القرآن الكريم</string>
-    <string name="app_version">V1.0</string>
-    <string name="app_repo">https://github.com/Ma7moud3ly/quran-multiplatform</string>
+    <string name="app_name">كوكب القرآن</string>
+    <string name="app_name_en">Quran Planet</string>
+    <string name="app_version">V2.0</string>
+    <string name="app_link_github">https://github.com/Ma7moud3ly/quran-planet</string>
+    <string name="app_link_instagram">https://instagram.com/alquran.planet</string>
+    <string name="app_link_facebook">https://www.facebook.com/share/1GtsVQoofD</string>
 
-    <string name="home_slogan">القرآن\nالكريم</string>
+    <string name="home_slogan">Quran Planet\nكوكب القرآن</string>
     <string name="home_index">السور</string>
     <string name="home_reciters">القراء</string>
+    <string name="home_bookmarks">العلامات</string>
+    <string name="home_bookmarks_empty">لا يوجد علامات محفوظة</string>
     <string name="home_history">السجل</string>
+    <string name="home_history_empty">لم تقرأ أو تستمع إلي أي شئ</string>
     <string name="home_search">البحث</string>
     <string name="home_settings">الضبط</string>
-    <string name="home_support">الدعم</string>
-    <string name="home_support_long">للمقترحات والدعم</string>
+    <string name="home_about">تابعنا</string>
 
     <string name="index_title">السور</string>
     <string name="index_history">السجل</string>
@@ -107,6 +112,9 @@
     <string name="download_require_internet">لابد أن تكون متصلاً بالإنترنت</string>
     <string name="download_deny">تشغيل أونلاين</string>
     <string name="download_deny_message">أو يمكنك التشغيل أونلاين بدون تحميل</string>
+
+    <string name="bookmark_add">إضافة علامة</string>
+    <string name="bookmark_added">تم إضافة علامة لسورة %1$s الآية %2$s</string>
 
     <string name="copied">تم نسخة الآية</string>
     <string name="ok">موافق</string>

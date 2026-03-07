@@ -10,13 +10,13 @@ import org.koin.core.logger.Level
 import org.koin.ksp.generated.module
 
 
-class MyApp : Application() {
+class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
         AndroidApp.init(this)
         startKoin {
             androidLogger(Level.DEBUG) // Or Level.INFO, Level.ERROR
-            androidContext(this@MyApp)
+            androidContext(this@AndroidApp)
             modules(AppModule().module)
         }
     }

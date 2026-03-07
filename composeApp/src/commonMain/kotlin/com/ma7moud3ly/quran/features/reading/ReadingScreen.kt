@@ -16,10 +16,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun ReadingScreen(
     viewModel: ReadingViewModel = koinViewModel(),
-    onSelectChapter: (Int) -> Unit,
-    onPlayVerse: (Int, Int) -> Unit,
-    onSettings: () -> Unit,
-    onBack: () -> Unit
+    readingEvents: (ReadingEvents) -> Unit
 ) {
     val chapter by viewModel.chapterFlow.collectAsState()
     val versesManager by remember { viewModel.versesManager }
@@ -48,15 +45,7 @@ fun ReadingScreen(
             chapter = chapter,
             versesManager = versesManager!!,
             appSettings = { settings },
-            uiEvents = {
-                when (it) {
-                    is ReadingEvents.Back -> onBack()
-                    is ReadingEvents.OpenSettings -> onSettings()
-                    is ReadingEvents.NextChapter -> onSelectChapter(chapter.id + 1)
-                    is ReadingEvents.PlayVerse -> onPlayVerse(chapter.id, it.verseId)
-                    is ReadingEvents.PreviousChapter -> onSelectChapter(chapter.id - 1)
-                }
-            }
+            uiEvents = readingEvents
         )
     }
 }

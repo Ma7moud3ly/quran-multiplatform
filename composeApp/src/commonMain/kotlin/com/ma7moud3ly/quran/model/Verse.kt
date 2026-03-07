@@ -51,7 +51,7 @@ data class Verse(
  * @receiver The integer representing the verse number.
  */
 fun Int.asVerseNumber(): String {
-    if (this < 1 || this > 286) return ""
+    if (this !in 1..286) return ""
     // The Unicode values are sequential.
     // \uE95A is the character for number 1.
     // So, for number 'n', the character is \uE95A + (n - 1)

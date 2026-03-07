@@ -16,9 +16,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.ma7moud3ly.quran.features.about.AboutAppDialog
+import com.ma7moud3ly.quran.features.history.HistoryScreen
 import com.ma7moud3ly.quran.features.home.HomeEvents
 import com.ma7moud3ly.quran.features.home.HomeScreen
+import com.ma7moud3ly.quran.features.reading.ReadingEvents
 import com.ma7moud3ly.quran.features.reading.ReadingScreen
+import com.ma7moud3ly.quran.features.reading.bookmarks.AddBookmarkDialog
 import com.ma7moud3ly.quran.features.recitation.config.RecitationConfigScreen
 import com.ma7moud3ly.quran.features.recitation.config.RecitationEvents
 import com.ma7moud3ly.quran.features.recitation.config.RecitationViewModel
@@ -82,21 +86,24 @@ fun AppGraph(
                             navController.navigate(route)
                         }
 
-                        is HomeEvents.OpenHistory -> {
-                            val history = it.history
-                            val rout = if (history.isReading) {
-                                AppRoutes.ReadingScreen(
-                                    chapterId = history.chapterId,
-                                    verseId = history.verseId
-                                )
-                            } else {
-                                viewModel.setRecitation(it.history)
-                                AppRoutes.Recitation.Playback
-                            }
+                        is HomeEvents.OpenBookmark -> {
+                            val bookmark = it.bookmark
+                            val route = AppRoutes.ReadingScreen(
+                                chapterId = bookmark.chapterId,
+                                verseId = bookmark.verseId
+                            )
                             coroutineScope.launch {
                                 delay(100)
-                                navController.navigate(rout)
+                                navController.navigate(route)
                             }
+                        }
+
+                        is HomeEvents.OpenHistory -> {
+                            navController.navigate(AppRoutes.HistoryDialog)
+                        }
+
+                        is HomeEvents.OpenAbout -> {
+                            navController.navigate(AppRoutes.AboutDialog)
                         }
 
                         is HomeEvents.PlayChapter -> {
@@ -167,29 +174,84 @@ fun AppGraph(
             )
         }
 
+        dialog<AppRoutes.HistoryDialog> {
+            HistoryScreen(
+                onOpenHistory = { history ->
+                    val rout = if (history.isReading) {
+                        AppRoutes.ReadingScreen(
+                            chapterId = history.chapterId,
+                            verseId = history.verseId
+                        )
+                    } else {
+                        viewModel.setRecitation(history)
+                        AppRoutes.Recitation.Playback
+                    }
+                    coroutineScope.launch {
+                        delay(100)
+                        navController.navigate(rout)
+                    }
+                },
+                onBack = { navController.popBackStack() }
+            )
+        }
+
+        dialog<AppRoutes.AboutDialog> {
+            AboutAppDialog(
+                onDismiss = { navController.popBackStack() }
+            )
+        }
+
         composable<AppRoutes.ReadingScreen> {
             ReadingScreen(
-                onBack = {
-                    navController.popBackStack()
-                },
-                onSettings = {
-                    navController.navigate(AppRoutes.SettingsScreen())
-                },
-                onPlayVerse = { chapterId, verseId ->
-                    val route = AppRoutes.Recitation.Config(
-                        chapterId = chapterId,
-                        verseId = verseId,
-                        canChangeVerse = true,
-                        canChangeChapter = false
-                    )
-                    navController.navigate(route)
-                },
-                onSelectChapter = { chapterId ->
-                    val route = AppRoutes.ReadingScreen(chapterId)
-                    navController.navigate(route) {
-                        popUpTo(AppRoutes.HomeScreen)
+                readingEvents = {
+                    when (it) {
+                        is ReadingEvents.Back -> {
+                            navController.popBackStack()
+                        }
+
+                        is ReadingEvents.OpenSettings -> {
+                            navController.navigate(AppRoutes.SettingsScreen())
+                        }
+
+                        is ReadingEvents.AddBookmark -> {
+                            val route = AppRoutes.BookmarksDialog(
+                                chapterId = it.chapterId,
+                                verseId = it.verseId
+                            )
+                            navController.navigate(route)
+                        }
+
+                        is ReadingEvents.PlayVerse -> {
+                            val route = AppRoutes.Recitation.Config(
+                                chapterId = it.chapterId,
+                                verseId = it.verseId,
+                                canChangeVerse = true,
+                                canChangeChapter = false
+                            )
+                            navController.navigate(route)
+                        }
+
+                        is ReadingEvents.NextChapter -> {
+                            val route = AppRoutes.ReadingScreen(it.chapterId)
+                            navController.navigate(route) {
+                                popUpTo(AppRoutes.HomeScreen)
+                            }
+                        }
+
+                        is ReadingEvents.PreviousChapter -> {
+                            val route = AppRoutes.ReadingScreen(it.chapterId)
+                            navController.navigate(route) {
+                                popUpTo(AppRoutes.HomeScreen)
+                            }
+                        }
                     }
                 }
+            )
+        }
+
+        dialog<AppRoutes.BookmarksDialog> {
+            AddBookmarkDialog(
+                onDismiss = { navController.popBackStack() }
             )
         }
 

@@ -55,15 +55,15 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.back
-import quran.composeapp.generated.resources.copied
-import quran.composeapp.generated.resources.forward
-import quran.composeapp.generated.resources.pause
-import quran.composeapp.generated.resources.play
-import quran.composeapp.generated.resources.reciter_name
-import quran.composeapp.generated.resources.settings
-import quran.composeapp.generated.resources.tv
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.back
+import com.ma7moud3ly.quran.resources.copied
+import com.ma7moud3ly.quran.resources.forward
+import com.ma7moud3ly.quran.resources.pause
+import com.ma7moud3ly.quran.resources.play
+import com.ma7moud3ly.quran.resources.reciter_name
+import com.ma7moud3ly.quran.resources.settings
+import com.ma7moud3ly.quran.resources.tv
 
 
 @Preview

@@ -1,5 +1,6 @@
-package com.ma7moud3ly.quran
+package com.ma7moud3ly.quran.app
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,19 +13,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.ma7moud3ly.quran.App
 import com.ma7moud3ly.quran.features.settings.SettingsViewModel
 import com.ma7moud3ly.quran.platform.AndroidApp
 import com.ma7moud3ly.quran.ui.themeColors
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.dialogs.init
 import org.koin.compose.viewmodel.koinViewModel
+import java.util.Locale
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val openPlaybackScreen = intent.getBooleanExtra(
-            PlaybackService.OPEN_PLAY_BACK, false
-        )
+        val openPlaybackScreen = intent.getBooleanExtra(PlaybackService.OPEN_PLAY_BACK, false)
         FileKit.init(this)
         setContent {
             val viewModel: SettingsViewModel = koinViewModel()
@@ -36,6 +37,13 @@ class MainActivity : ComponentActivity() {
         }
         AndroidApp.window = window
     }
+
+
+    override fun attachBaseContext(newBase: Context) {
+        val locale = Locale.forLanguageTag("ar")
+        val config = newBase.resources.configuration.apply { setLocale(locale) }
+        super.attachBaseContext(newBase.createConfigurationContext(config))
+    }
 }
 
 @Suppress("DEPRECATION")
@@ -43,7 +51,6 @@ class MainActivity : ComponentActivity() {
 private fun ConfigureSystemBars(viewModel: SettingsViewModel) {
     val darkTheme by viewModel.darkModeFlow.collectAsState()
     val systemBarsColor = themeColors(darkTheme).background.toArgb()
-
     val view = LocalView.current
     val window = LocalActivity.current?.window
     if (view.isInEditMode.not() && window != null) {

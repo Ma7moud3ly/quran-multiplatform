@@ -12,9 +12,9 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.ksp.generated.module
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.app_name
-import quran.composeapp.generated.resources.logo
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.app_name
+import com.ma7moud3ly.quran.resources.logo
 
 fun main() = application {
     startKoin {

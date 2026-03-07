@@ -23,7 +23,7 @@ data class Reciter(
     /**
      * The URL of the reciter's image.
      */
-    val imageUrl: String get() = "https://raw.githubusercontent.com/Ma7moud3ly/quran-multiplatform/refs/heads/main/images/reciters/$image"
+    val imageUrl: String get() = "https://raw.githubusercontent.com/Ma7moud3ly/quran-planet/refs/heads/main/images/reciters/$image"
 
     /**
      * The quality level of the first available listening option.
@@ -33,7 +33,15 @@ data class Reciter(
     /**
      * The base URL for the first available listening option.
      */
-    val listenBaseUrl: String get() = listen.firstOrNull()?.qualityBaseUrl.orEmpty()
+    val listenBaseUrl: String
+        get() {
+            val item = listen.first()
+            return if (item.hostedOnGithub) {
+                "${item.id}/raw/refs/heads/main/verses"
+            } else {
+                "https://quran.ksu.edu.sa/ayat/mp3/${id}_${item.quality}kbps"
+            }
+        }
 
     /**
      * The storage directory path for listened recitations of this reciter at the [listenQuality].
@@ -47,9 +55,17 @@ data class Reciter(
     val downloadQuality: Int get() = download.firstOrNull()?.quality ?: -1
 
     /**
-     * The ID (often part of the base URL) for the first available download option.
+     * The base URL for the first available download option.
      */
-    val downloadBaseUrl: String get() = download.firstOrNull()?.id.orEmpty()
+    val downloadBaseUrl: String
+        get() {
+            val item = download.first()
+            return if (item.hostedOnGithub) {
+                "${item.id}/releases/download/v1.0.0"
+            } else {
+                "https://quran.ksu.edu.sa/ayat/mp3/${id}_${item.quality}kbps"
+            }
+        }
 
     /**
      * The storage directory path for downloaded recitations of this reciter at the [downloadQuality].
@@ -76,10 +92,3 @@ data class Quality(
 ) {
     val hostedOnGithub: Boolean get() = id.startsWith("https://github.com/")
 }
-
-/** The base URL for streaming audio of this quality**/
-val Quality.qualityBaseUrl: String
-    get() =
-        if (this.hostedOnGithub) "$id/raw/refs/heads/main/verses"
-        else "https://quran.ksu.edu.sa/ayat/mp3/${id}_${quality}kbps"
-

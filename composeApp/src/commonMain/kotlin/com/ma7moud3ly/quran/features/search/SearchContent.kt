@@ -82,13 +82,13 @@ import kotlinx.coroutines.flow.flowOf
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.audio_file
-import quran.composeapp.generated.resources.search_chapters
-import quran.composeapp.generated.resources.search_hint
-import quran.composeapp.generated.resources.search_reciters
-import quran.composeapp.generated.resources.search_results
-import quran.composeapp.generated.resources.search_verses
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.audio_file
+import com.ma7moud3ly.quran.resources.search_chapters
+import com.ma7moud3ly.quran.resources.search_hint
+import com.ma7moud3ly.quran.resources.search_reciters
+import com.ma7moud3ly.quran.resources.search_results
+import com.ma7moud3ly.quran.resources.search_verses
 
 private val testSearchResultLists = listOf(
     SearchResult(

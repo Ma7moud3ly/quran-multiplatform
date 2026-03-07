@@ -5,20 +5,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.ma7moud3ly.quran.model.AppVideo
 import com.ma7moud3ly.quran.model.TvBackground
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.video11_thumbnail
-import quran.composeapp.generated.resources.video12_thumbnail
-import quran.composeapp.generated.resources.video13_thumbnail
-import quran.composeapp.generated.resources.video14_thumbnail
-import quran.composeapp.generated.resources.video15_thumbnail
-import quran.composeapp.generated.resources.video1_thumbnail
-import quran.composeapp.generated.resources.video24_thumbnail
-import quran.composeapp.generated.resources.video3_thumbnail
-import quran.composeapp.generated.resources.video4_thumbnail
-import quran.composeapp.generated.resources.video5_thumbnail
-import quran.composeapp.generated.resources.video6_thumbnail
-import quran.composeapp.generated.resources.video7_thumbnail
-import quran.composeapp.generated.resources.video9_thumbnail
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.video11_thumbnail
+import com.ma7moud3ly.quran.resources.video12_thumbnail
+import com.ma7moud3ly.quran.resources.video13_thumbnail
+import com.ma7moud3ly.quran.resources.video14_thumbnail
+import com.ma7moud3ly.quran.resources.video15_thumbnail
+import com.ma7moud3ly.quran.resources.video1_thumbnail
+import com.ma7moud3ly.quran.resources.video3_thumbnail
+import com.ma7moud3ly.quran.resources.video4_thumbnail
+import com.ma7moud3ly.quran.resources.video5_thumbnail
+import com.ma7moud3ly.quran.resources.video6_thumbnail
+import com.ma7moud3ly.quran.resources.video7_thumbnail
+import com.ma7moud3ly.quran.resources.video9_thumbnail
 
 class AndroidBackgroundVideos : BackgroundVideos {
     override val backgrounds: List<TvBackground> = androidSlides
@@ -150,16 +149,5 @@ private val androidSlides = listOf(
         background = Color.White.copy(alpha = 0.08f),
         alignment = Alignment.TopCenter,
         paddingTop = 150.dp
-    ),
-    TvBackground(
-        id = "video24",
-        video = AppVideo(
-            name = "video24.mp4",
-            thumbnail = Res.drawable.video24_thumbnail
-        ),
-        background = Color.White.copy(alpha = 0.5f),
-        color = Color.Black,
-        alignment = Alignment.TopCenter,
-        paddingTop = 110.dp
     )
 )

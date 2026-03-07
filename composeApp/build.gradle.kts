@@ -142,6 +142,9 @@ kotlin {
     }
 }
 
+compose.resources {
+    packageOfResClass = "${libs.versions.project.packageName.get()}.resources"
+}
 
 compose.desktop {
     application {
@@ -149,7 +152,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Exe, TargetFormat.Msi, TargetFormat.Dmg, TargetFormat.Deb)
-            packageName = "Quran App"
+            packageName = "Quran Planet"
             packageVersion = libs.versions.project.versionName.get()
             vendor = libs.versions.project.vendor.get()
             val commonIcon = "src/commonMain/composeResources/drawable/icon.ico"

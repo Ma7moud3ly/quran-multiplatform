@@ -1,4 +1,4 @@
-package com.ma7moud3ly.quran.features.home.history
+package com.ma7moud3ly.quran.features.history
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -12,6 +12,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.History
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -22,28 +25,35 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.ma7moud3ly.quran.features.home.bookmarks.EmptyItems
 import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.History
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.ui.AppTheme
+import com.ma7moud3ly.quran.ui.DialogHeader
+import com.ma7moud3ly.quran.ui.MyDialog
 import com.ma7moud3ly.quran.ui.MySurfaceColumn
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
 import com.ma7moud3ly.quran.ui.suraNameFontFamily
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.aspect_ratio
-import quran.composeapp.generated.resources.audio_file
-import quran.composeapp.generated.resources.book_mark
-import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.multiple_verses
-import quran.composeapp.generated.resources.tv
-import quran.composeapp.generated.resources.visibility_off
+import org.jetbrains.compose.resources.stringResource
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.aspect_ratio
+import com.ma7moud3ly.quran.resources.audio_file
+import com.ma7moud3ly.quran.resources.bookmark
+import com.ma7moud3ly.quran.resources.close
+import com.ma7moud3ly.quran.resources.home_history
+import com.ma7moud3ly.quran.resources.home_history_empty
+import com.ma7moud3ly.quran.resources.multiple_verses
+import com.ma7moud3ly.quran.resources.tv
+import com.ma7moud3ly.quran.resources.visibility_off
 
 val testHistory = listOf(
     History(
@@ -66,33 +76,37 @@ val testHistory = listOf(
 
 @Preview
 @Composable
-private fun HistoryPagePreview() {
+private fun HistoryScreenContentPreview() {
     AppTheme {
-        HistoryPage(
+        HistoryScreenContent(
             list = testHistory,
             onDeleteHistory = {},
-            onOpenHistory = {}
+            onOpenHistory = {},
+            onBack = {}
         )
     }
 }
 
 @Preview
 @Composable
-private fun HistoryPagePreviewLight() {
+private fun HistoryScreenContentPreviewLight() {
     AppTheme(darkTheme = false) {
-        HistoryPage(
+        HistoryScreenContent(
             list = testHistory,
             onDeleteHistory = {},
-            onOpenHistory = {}
+            onOpenHistory = {},
+            onBack = {}
         )
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun HistoryPage(
+internal fun HistoryScreenContent(
     list: List<History>,
     onDeleteHistory: (History) -> Unit,
-    onOpenHistory: (History) -> Unit
+    onOpenHistory: (History) -> Unit,
+    onBack: () -> Unit
 ) {
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
@@ -102,19 +116,38 @@ internal fun HistoryPage(
         }
         onPauseOrDispose { }
     }
-    LazyColumn(
-        state = listState,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(0.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        items(list) {
-            ItemHistory(
-                history = it,
-                onDelete = { onDeleteHistory(it) },
-                onClick = { onOpenHistory(it) }
+
+    MyDialog(
+        space = 8.dp,
+        modifier = Modifier.padding(8.dp),
+        onDismissRequest = onBack,
+        header = {
+            DialogHeader(
+                text = stringResource(Res.string.home_history),
+                textAlign = TextAlign.Center,
+                onBack = onBack
             )
+        }
+    ) {
+        if (list.isEmpty()) {
+            EmptyItems(
+                title = stringResource(Res.string.home_history_empty),
+                icon = Icons.Outlined.History
+            )
+        } else LazyColumn(
+            state = listState,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(0.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(list) {
+                ItemHistory(
+                    history = it,
+                    onDelete = { onDeleteHistory(it) },
+                    onClick = { onOpenHistory(it) }
+                )
+            }
         }
     }
 }
@@ -142,7 +175,7 @@ private fun ItemHistory(
         ) {
             Icon(
                 painter = painterResource(
-                    if (history.isReading) Res.drawable.book_mark
+                    if (history.isReading) Res.drawable.bookmark
                     else Res.drawable.audio_file
                 ),
                 contentDescription = "",

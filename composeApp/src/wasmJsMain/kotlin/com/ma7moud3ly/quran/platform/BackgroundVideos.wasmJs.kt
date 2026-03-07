@@ -4,19 +4,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import com.ma7moud3ly.quran.model.AppVideo
 import com.ma7moud3ly.quran.model.TvBackground
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.video0_thumbnail_wasm
-import quran.composeapp.generated.resources.video10_thumbnail_wasm
-import quran.composeapp.generated.resources.video11_thumbnail_wasm
-import quran.composeapp.generated.resources.video1_thumbnail_wasm
-import quran.composeapp.generated.resources.video2_thumbnail_wasm
-import quran.composeapp.generated.resources.video3_thumbnail_wasm
-import quran.composeapp.generated.resources.video4_thumbnail_wasm
-import quran.composeapp.generated.resources.video5_thumbnail_wasm
-import quran.composeapp.generated.resources.video6_thumbnail_wasm
-import quran.composeapp.generated.resources.video7_thumbnail_wasm
-import quran.composeapp.generated.resources.video8_thumbnail_wasm
-import quran.composeapp.generated.resources.video9_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.video0_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video10_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video11_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video1_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video2_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video3_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video4_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video5_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video6_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video7_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video8_thumbnail_wasm
+import com.ma7moud3ly.quran.resources.video9_thumbnail_wasm
 
 class WasmJsBackgroundVideos : BackgroundVideos {
     // drawables at src/wasmJsMain/composeResources/drawable

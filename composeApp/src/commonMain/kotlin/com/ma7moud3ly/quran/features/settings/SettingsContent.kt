@@ -60,20 +60,20 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.continues_verses
-import quran.composeapp.generated.resources.multiple_verses
-import quran.composeapp.generated.resources.settings_font_size
-import quran.composeapp.generated.resources.settings_font_type
-import quran.composeapp.generated.resources.settings_mode
-import quran.composeapp.generated.resources.settings_mode_continues
-import quran.composeapp.generated.resources.settings_mode_multiple
-import quran.composeapp.generated.resources.settings_mode_single
-import quran.composeapp.generated.resources.settings_night
-import quran.composeapp.generated.resources.settings_of_reading
-import quran.composeapp.generated.resources.settings_of_recitation
-import quran.composeapp.generated.resources.settings_save
-import quran.composeapp.generated.resources.single_verse
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.continues_verses
+import com.ma7moud3ly.quran.resources.multiple_verses
+import com.ma7moud3ly.quran.resources.settings_font_size
+import com.ma7moud3ly.quran.resources.settings_font_type
+import com.ma7moud3ly.quran.resources.settings_mode
+import com.ma7moud3ly.quran.resources.settings_mode_continues
+import com.ma7moud3ly.quran.resources.settings_mode_multiple
+import com.ma7moud3ly.quran.resources.settings_mode_single
+import com.ma7moud3ly.quran.resources.settings_night
+import com.ma7moud3ly.quran.resources.settings_of_reading
+import com.ma7moud3ly.quran.resources.settings_of_recitation
+import com.ma7moud3ly.quran.resources.settings_save
+import com.ma7moud3ly.quran.resources.single_verse
 
 
 @Preview

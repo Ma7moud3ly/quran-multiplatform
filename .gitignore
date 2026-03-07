@@ -3,6 +3,7 @@
 .gradle
 *.zip
 *.apk
+*.aab
 **/build/
 **/keys
 **/*.log
