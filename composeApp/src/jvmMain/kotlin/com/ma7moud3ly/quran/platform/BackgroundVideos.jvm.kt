@@ -5,16 +5,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.ma7moud3ly.quran.model.AppVideo
 import com.ma7moud3ly.quran.model.TvBackground
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.video1_thumbnail_jvm
-import quran.composeapp.generated.resources.video2_thumbnail_jvm
-import quran.composeapp.generated.resources.video3_thumbnail_jvm
-import quran.composeapp.generated.resources.video4_thumbnail_jvm
-import quran.composeapp.generated.resources.video5_thumbnail_jvm
-import quran.composeapp.generated.resources.video6_thumbnail_jvm
-import quran.composeapp.generated.resources.video7_thumbnail_jvm
-import quran.composeapp.generated.resources.video8_thumbnail_jvm
-import quran.composeapp.generated.resources.video9_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.video1_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video2_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video3_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video4_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video5_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video6_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video7_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video8_thumbnail_jvm
+import com.ma7moud3ly.quran.resources.video9_thumbnail_jvm
 
 class JvmBackgroundVideos : BackgroundVideos {
     // drawables at src/jvmMain/composeResources/drawable

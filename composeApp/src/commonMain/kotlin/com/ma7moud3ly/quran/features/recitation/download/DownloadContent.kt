@@ -35,13 +35,13 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.download_audio_quality
-import quran.composeapp.generated.resources.download_cancel
-import quran.composeapp.generated.resources.download_size
-import quran.composeapp.generated.resources.download_size_mb
-import quran.composeapp.generated.resources.recite_chapter
-import quran.composeapp.generated.resources.reciter
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.download_audio_quality
+import com.ma7moud3ly.quran.resources.download_cancel
+import com.ma7moud3ly.quran.resources.download_size
+import com.ma7moud3ly.quran.resources.download_size_mb
+import com.ma7moud3ly.quran.resources.recite_chapter
+import com.ma7moud3ly.quran.resources.reciter
 
 private const val TAG = "DownloadProgressDialog"
 

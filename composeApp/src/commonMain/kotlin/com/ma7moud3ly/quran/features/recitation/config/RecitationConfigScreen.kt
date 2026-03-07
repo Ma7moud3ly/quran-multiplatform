@@ -13,8 +13,8 @@ import com.ma7moud3ly.quran.model.Recitation
 import com.ma7moud3ly.quran.platform.rememberNotificationsPermissionsState
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.recite_permission_required
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.recite_permission_required
 
 private const val TAG = "RecitationConfigScreen"
 

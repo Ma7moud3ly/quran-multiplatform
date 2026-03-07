@@ -15,7 +15,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,30 +30,31 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.model.asVerseNumber
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.DialogHeader
-import com.ma7moud3ly.quran.ui.MyMiniDialog
+import com.ma7moud3ly.quran.ui.MyAlertDialog
 import com.ma7moud3ly.quran.ui.MySurface
 import com.ma7moud3ly.quran.ui.hafsSmartFamily
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.ok
-import quran.composeapp.generated.resources.recite_select_begin
-import quran.composeapp.generated.resources.recite_select_end
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.ok
+import com.ma7moud3ly.quran.resources.recite_select_begin
 
 @Preview
 @Composable
-private fun VerseNumberDialogPreview() {
+private fun VerseSelectorDialogPreview() {
     AppTheme(darkTheme = true) {
-        SelectVerseNumberDialog(
-            start = remember { mutableStateOf(1) },
-            end = remember { mutableStateOf(7) },
+        VerseSelectorDialog(
+            start = 1,
+            end = 7,
             limit = 7,
             selectStart = true,
+            onConfirm = { _, _ -> },
             onDismiss = {}
         )
     }
@@ -62,13 +62,14 @@ private fun VerseNumberDialogPreview() {
 
 @Preview
 @Composable
-private fun VerseNumberDialogPreviewLight() {
+private fun VerseSelectorDialogPreviewLight() {
     AppTheme(darkTheme = false) {
-        SelectVerseNumberDialog(
-            start = remember { mutableStateOf(1) },
-            end = remember { mutableStateOf(7) },
+        VerseSelectorDialog(
+            start = 1,
+            end = 7,
             limit = 7,
             selectStart = true,
+            onConfirm = { _, _ -> },
             onDismiss = {}
         )
     }
@@ -76,31 +77,38 @@ private fun VerseNumberDialogPreviewLight() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SelectVerseNumberDialog(
-    start: MutableState<Int>,
-    end: MutableState<Int>,
+fun VerseSelectorDialog(
+    start: Int,
+    end: Int,
     limit: Int,
     selectStart: Boolean,
+    showKeyboard: Boolean = true,
+    title: StringResource = Res.string.recite_select_begin,
+    onConfirm: (Int, Int) -> Unit,
     onDismiss: () -> Unit
 ) {
 
     val current by remember {
         derivedStateOf {
             when (selectStart) {
-                true -> start.value
-                false -> end.value
+                true -> start
+                false -> end
             }
         }
     }
 
-    val startValue = remember(selectStart) {
-        if (!selectStart) start.value
-        else 1
+    var startValue by remember(selectStart) {
+        mutableStateOf(
+            if (!selectStart) start
+            else 1
+        )
     }
 
-    val endValue = remember(selectStart) {
-        if (selectStart) end.value
-        else limit
+    var endValue by remember(selectStart) {
+        mutableStateOf(
+            if (selectStart) end
+            else limit
+        )
     }
 
     var number by remember { mutableStateOf<Int?>(current) }
@@ -150,26 +158,25 @@ fun SelectVerseNumberDialog(
     }
 
     fun commit(value: Int) {
-        if (selectStart) start.value = value
-        else end.value = value
-        if (start.value > end.value) end.value = limit
+        if (selectStart) startValue = value
+        else endValue = value
+        if (startValue > endValue) endValue = limit
     }
 
 
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-        keyboardController?.show()
+        if (showKeyboard) {
+            focusRequester.requestFocus()
+            keyboardController?.show()
+        }
     }
 
-    MyMiniDialog(
+    MyAlertDialog(
         onDismissRequest = onDismiss,
         modifier = Modifier.padding(16.dp),
         header = {
             DialogHeader(
-                text = stringResource(
-                    if (selectStart) Res.string.recite_select_begin
-                    else Res.string.recite_select_end
-                ),
+                text = stringResource(title),
                 onBack = onDismiss
             )
         },
@@ -209,7 +216,7 @@ fun SelectVerseNumberDialog(
         Button(
             onClick = {
                 if (number != null) commit(number!!)
-                onDismiss()
+                onConfirm(startValue, endValue)
             },
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
             enabled = number != null,

@@ -32,10 +32,10 @@ import com.ma7moud3ly.quran.ui.MySurface
 import com.ma7moud3ly.quran.ui.RoundButton
 import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.icon
-import quran.composeapp.generated.resources.placeholder
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.close
+import com.ma7moud3ly.quran.resources.icon
+import com.ma7moud3ly.quran.resources.placeholder
 
 val testReciters = listOf(
     Reciter(

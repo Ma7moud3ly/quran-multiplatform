@@ -10,25 +10,25 @@ import com.ma7moud3ly.quran.platform.getPlatform
 import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.platform.isWasmJs
 import org.jetbrains.compose.resources.Font
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.arabic_islamic_quran
-import quran.composeapp.generated.resources.basmeallah2
-import quran.composeapp.generated.resources.cairo_black
-import quran.composeapp.generated.resources.cairo_bold
-import quran.composeapp.generated.resources.cairo_light
-import quran.composeapp.generated.resources.cairo_medium
-import quran.composeapp.generated.resources.cairo_regular
-import quran.composeapp.generated.resources.cairo_thin
-import quran.composeapp.generated.resources.elgharib_noon_hafs
-import quran.composeapp.generated.resources.hafs_smart_regular
-import quran.composeapp.generated.resources.noto_kufi_black
-import quran.composeapp.generated.resources.noto_kufi_bold
-import quran.composeapp.generated.resources.noto_kufi_light
-import quran.composeapp.generated.resources.noto_kufi_medium
-import quran.composeapp.generated.resources.noto_kufi_regular
-import quran.composeapp.generated.resources.noto_kufi_thin
-import quran.composeapp.generated.resources.surah_name_v4
-import quran.composeapp.generated.resources.uthmanic_hafs_bold
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.arabic_islamic_quran
+import com.ma7moud3ly.quran.resources.basmeallah2
+import com.ma7moud3ly.quran.resources.cairo_black
+import com.ma7moud3ly.quran.resources.cairo_bold
+import com.ma7moud3ly.quran.resources.cairo_light
+import com.ma7moud3ly.quran.resources.cairo_medium
+import com.ma7moud3ly.quran.resources.cairo_regular
+import com.ma7moud3ly.quran.resources.cairo_thin
+import com.ma7moud3ly.quran.resources.elgharib_noon_hafs
+import com.ma7moud3ly.quran.resources.hafs_smart_regular
+import com.ma7moud3ly.quran.resources.noto_kufi_black
+import com.ma7moud3ly.quran.resources.noto_kufi_bold
+import com.ma7moud3ly.quran.resources.noto_kufi_light
+import com.ma7moud3ly.quran.resources.noto_kufi_medium
+import com.ma7moud3ly.quran.resources.noto_kufi_regular
+import com.ma7moud3ly.quran.resources.noto_kufi_thin
+import com.ma7moud3ly.quran.resources.surah_name_v4
+import com.ma7moud3ly.quran.resources.uthmanic_hafs_bold
 
 @Composable
 fun notoKufiFontFamily() = FontFamily(

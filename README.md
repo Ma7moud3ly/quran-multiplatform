@@ -1,17 +1,17 @@
-# Quran App - تطبيق القرآن الكريم
+# Quran Planet - تطبيق كوكب القرآن
 
 ## 📥 Download التحميل
 
 - 🤖 [Android (Google Play)](https://play.google.com/store/apps/details?id=com.ma7moud3ly.quran)
 - 🍎 iOS (App Store) *(coming soon)*
-- 🌐 [Web Version](https://quran-multiplatform.web.app/)
-- 📦 [Latest Release (GitHub)](https://github.com/ma7moud3ly/quran-multiplatform/releases)
+- 🌐 [Web Version](https://quraan-planet.web.app/)
+- 📦 [Latest Release (GitHub)](https://github.com/ma7moud3ly/quran-planet/releases)
 
 ---
 
-✨ Quran App: A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
+✨ Quran Planet: A free and open-source cross-platform application for mobile, web, and desktop that allows simplified and smooth reading of the Quran and listening to recitations from dozens of well-known reciters.
 
-✨ تطبيق القران الكريم: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
+✨ تطبيق كوكب القران: تطبيق مجاني ومفتوح المصدر متعدد المنصات يعمل علي الموبايل والويب وسطح المكتب ويتيح قراءة القراءن بشكل مبسط وسلس وسماع العديد من القراء المعروفين
 .
 <image src="images/banner.png">
 
@@ -26,7 +26,7 @@
 🎧 استماع مباشر أو تحميل التلاوات للاستماع بدون إنترنت.  
 📜 عرض الآيات بشكل متصل، منفصل، أو آية واحدة حسب اختيارك.  
 🎤 تشغيل التلاوة في وضع متعدد القراء يمكنك من سماع نفس الآيات بعدة قراء مختلفين أو التبديل بين القراء مع كل آية.  
-🌟 نظام عرض التلاوة بشمل مميز بخلفيات وفيديوهات مميزة.  
+🌟 نظام عرض التلاوة مع خلفيات وفيديوهات مميزة.  
 🖥️ واجهة بسيطة وسهلة الاستخدام لتجعل تجربة قراءة القرآن ممتعة وهادئة.
 
 
@@ -88,7 +88,7 @@ The Android app provides a native experience on Android devices and tablets.
 
 **Light Mode:**
 <div>
-<img src="images/android/android1_light.png" width="200"/>
+<img src="images/android/android1_light.jpg" width="200"/>
 &nbsp;&nbsp;&nbsp;
 <img src="images/android/android3_light.png" width="200"/>
 &nbsp;&nbsp;&nbsp;
@@ -128,13 +128,20 @@ Requires google-services.json to be placed at:
 
 The app can be packaged into platform-specific installers (`.deb`, `.exe`, `.dmg`) for desktop.
 
-**Light Mode:**
 <div>
 <img src="images/desktop/desktop1-windows.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="images/desktop/desktop3-windows.png" width="250"/>
+<img src="images/desktop/desktop2-windows.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="images/desktop/desktop8-windows.png" width="250"/>
+<img src="images/desktop/desktop4-windows.png" width="250"/>
+</div>
+
+<div>
+<img src="images/desktop/desktop5-windows.png" width="250"/>
+&nbsp;&nbsp;&nbsp;
+<img src="images/desktop/desktop6-windows.png" width="250"/>
+&nbsp;&nbsp;&nbsp;
+<img src="images/desktop/desktop7-windows.png" width="250"/>
 </div>
 
 **How to Build:**
@@ -155,22 +162,20 @@ Outputs will be in:
 The app can be built for the web using WebAssembly (WasmJs),  
 allowing it to run directly in modern browsers without plugins.
 
-**Dark Mode:**
-<div>
-<img src="images/web/web2-dark.png" width="250"/>
-&nbsp;&nbsp;&nbsp;
-<img src="images/web/web3-dark.png" width="250"/>
-&nbsp;&nbsp;&nbsp;
-<img src="images/web/web4-dark.png" width="250"/>
-</div>
-
-**Light Mode:**
 <div>
 <img src="images/web/web1-light.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="images/web/web6-light.png" width="250"/>
+<img src="images/web/web2-light.png" width="250"/>
 &nbsp;&nbsp;&nbsp;
-<img src="images/web/web6-dark.png" width="250"/>
+<img src="images/web/web3-light.png" width="250"/>
+</div>
+
+<div>
+<img src="images/web/web4-light.png" width="250"/>
+&nbsp;&nbsp;&nbsp;
+<img src="images/web/web5-light.png" width="250"/>
+&nbsp;&nbsp;&nbsp;
+<img src="images/web/web6-light.png" width="250"/>
 </div>
 
 **How to Build:**

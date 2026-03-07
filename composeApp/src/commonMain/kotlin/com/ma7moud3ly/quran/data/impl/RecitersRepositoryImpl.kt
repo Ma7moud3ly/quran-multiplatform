@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import org.koin.core.annotation.Single
-import quran.composeapp.generated.resources.Res
+import com.ma7moud3ly.quran.resources.Res
 
 @Single
 class RecitersRepositoryImpl(

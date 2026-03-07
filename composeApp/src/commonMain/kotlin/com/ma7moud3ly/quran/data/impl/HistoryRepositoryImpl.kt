@@ -26,6 +26,7 @@ class HistoryRepositoryImpl(
 
     companion object {
         private const val TAG = "HistoryRepository"
+        private const val MAX_HISTORY_SIZE = 20
     }
 
     @OptIn(ExperimentalSerializationApi::class, ExperimentalSettingsApi::class)
@@ -53,6 +54,11 @@ class HistoryRepositoryImpl(
     override suspend fun saveHistory(history: History) {
         Log.v(TAG," saveHistory: $history")
         withContext(dispatcher) {
+            // If it's a new entry, and we're at capacity, remove the oldest
+            if (!historyMap.containsKey(history.id) && historyMap.size >= MAX_HISTORY_SIZE) {
+                val oldest = historyMap.values.minByOrNull { it.timeStamp }
+                oldest?.let { historyMap.remove(it.id) }
+            }
             historyMap[history.id] = history
             saveHistoryMap()
             _historyFlow.emit(getHistory())

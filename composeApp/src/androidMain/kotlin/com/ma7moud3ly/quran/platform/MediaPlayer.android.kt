@@ -7,8 +7,18 @@ import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.os.Build
 import androidx.core.content.ContextCompat
-import com.ma7moud3ly.quran.PlaybackService
 import com.ma7moud3ly.quran.model.MediaFile
+
+object PlaybackConstants {
+    private const val PACKAGE = "com.ma7moud3ly.quran"
+    const val PLAYBACK_SERVICE_CLASS = "com.ma7moud3ly.quran.app.PlaybackService"
+    const val ACTION_STOP_PLAYBACK = "$PACKAGE.ACTION_STOP_PLAYBACK"
+    const val ACTION_PAUSE_PLAYBACK = "$PACKAGE.ACTION_PAUSE_PLAYBACK"
+    const val ACTION_RESUME_PLAYBACK = "$PACKAGE.ACTION_RESUME_PLAYBACK"
+    const val ACTION_HIDE_PLAYBACK_NOTIFICATION = "$PACKAGE.HIDE_PLAYBACK_NOTIFICATION"
+    const val ACTION_OPEN_PLAYBACK = "$PACKAGE.OPEN_PLAYBACK"
+}
+
 
 actual class MediaPlayer : MediaPlayer.OnCompletionListener {
     private var onComplete: (() -> Unit)? = null
@@ -85,7 +95,9 @@ actual class MediaPlayer : MediaPlayer.OnCompletionListener {
         if (isNotificationsPermissionGranted) {
             // Audio focus should be requested by start() before service is started
             // Or ensure service requests focus if it controls playback initiation
-            val serviceIntent = Intent(context, PlaybackService::class.java)
+            val serviceIntent = Intent().apply {
+                setClassName(context.packageName, PlaybackConstants.PLAYBACK_SERVICE_CLASS)
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 ContextCompat.startForegroundService(context, serviceIntent)
             } else {
@@ -96,18 +108,21 @@ actual class MediaPlayer : MediaPlayer.OnCompletionListener {
 
     actual fun hideBackgroundNotification() {
         val context = AndroidApp.getContext() ?: return
-        val stopIntent = Intent(context, PlaybackService::class.java).apply {
-            action = PlaybackService.ACTION_HIDE_PLAYBACK_NOTIFICATION
+        val stopIntent = Intent().apply {
+            setClassName(context.packageName, PlaybackConstants.PLAYBACK_SERVICE_CLASS)
+            action = PlaybackConstants.ACTION_HIDE_PLAYBACK_NOTIFICATION
         }
         context.stopService(stopIntent)
     }
 
     actual fun releaseBackgroundService() {
-        val context = AndroidApp.getContext()
-        val stopIntent = Intent(context, PlaybackService::class.java).apply {
-            action = PlaybackService.ACTION_STOP_PLAYBACK
+        val context = AndroidApp.getContext() ?: return
+        val stopIntent = Intent().apply {
+            setClassName(context.packageName, PlaybackConstants.PLAYBACK_SERVICE_CLASS)
+            action = PlaybackConstants.ACTION_STOP_PLAYBACK
+
         }
-        context?.stopService(stopIntent)
+        context.stopService(stopIntent)
     }
 
     companion object {

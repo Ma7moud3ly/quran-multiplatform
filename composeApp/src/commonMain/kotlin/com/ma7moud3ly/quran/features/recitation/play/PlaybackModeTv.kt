@@ -7,8 +7,9 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
+import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -47,15 +48,21 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -69,24 +76,29 @@ import com.ma7moud3ly.quran.model.Chapter
 import com.ma7moud3ly.quran.model.PlaybackStates
 import com.ma7moud3ly.quran.model.Reciter
 import com.ma7moud3ly.quran.model.TvBackground
-import com.ma7moud3ly.quran.model.TvControls
 import com.ma7moud3ly.quran.model.Verse
 import com.ma7moud3ly.quran.model.showControls
-import com.ma7moud3ly.quran.model.showHeader
 import com.ma7moud3ly.quran.model.showReciter
-import com.ma7moud3ly.quran.model.showVerseContent
+import com.ma7moud3ly.quran.model.showVerse
+import com.ma7moud3ly.quran.model.showVerseAndHeader
+import com.ma7moud3ly.quran.model.showVerseAndReciter
 import com.ma7moud3ly.quran.model.testBackgroundsManager
 import com.ma7moud3ly.quran.model.testMediaPlayerManager
 import com.ma7moud3ly.quran.model.testMediaPlayerManagerInReelMode
 import com.ma7moud3ly.quran.platform.MyBackHandler
 import com.ma7moud3ly.quran.platform.ShowFullScreen
 import com.ma7moud3ly.quran.platform.VideoPlayer
-import com.ma7moud3ly.quran.platform.isJvm
 import com.ma7moud3ly.quran.platform.isMobile
 import com.ma7moud3ly.quran.platform.rememberVideoPlayerState
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.back
+import com.ma7moud3ly.quran.resources.close
+import com.ma7moud3ly.quran.resources.forward
+import com.ma7moud3ly.quran.resources.icon
+import com.ma7moud3ly.quran.resources.pause
+import com.ma7moud3ly.quran.resources.play
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.LocalPlatform
-import com.ma7moud3ly.quran.ui.MySurfaceRow
 import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.SwipeableBox
 import com.ma7moud3ly.quran.ui.isCompactDevice
@@ -97,14 +109,6 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.back
-import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.forward
-import quran.composeapp.generated.resources.icon
-import quran.composeapp.generated.resources.pause
-import quran.composeapp.generated.resources.play
 
 
 @Preview
@@ -258,11 +262,13 @@ fun TvPlayback(
                 }
             }
         ) {
-            Header(
+            if (controls.showControls ||
+                controls.showVerseAndHeader
+            ) Header(
                 mediaPlayer = mediaPlayerManager,
                 modifier = Modifier.fillMaxWidth()
-                    .zIndex(2f)
                     .statusBarsPadding()
+                    .zIndex(2f)
                     .align(Alignment.TopCenter)
                     .padding(
                         start = 16.dp,
@@ -271,10 +277,11 @@ fun TvPlayback(
                         top = 16.dp
                     ),
                 tvBackground = { background },
-                tvControls = { controls },
+                showControls = controls.showControls,
                 onBack = { uiEvents(PlaybackEvents.Back) }
             )
 
+            // Show Controls
             if (controls.showControls) {
                 SectionControls(
                     mediaPlayer = mediaPlayerManager,
@@ -284,14 +291,32 @@ fun TvPlayback(
                         .zIndex(2f)
                         .align(Alignment.Center)
                 )
+
+                SectionBackgrounds(
+                    backgrounds = backgroundsManager.backgrounds,
+                    listState = slidesListState,
+                    selectedBackground = { background },
+                    onSelect = backgroundsManager::selectBackground,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .align(Alignment.BottomCenter)
+                        .zIndex(2f)
+                        .padding(
+                            top = 48.dp,
+                            bottom = 16.dp,
+                            start = 16.dp,
+                            end = 16.dp
+                        )
+                )
             }
 
-
+            // Show Reciter view
             if (controls.showReciter) {
                 RecitationDetails(
                     reciter = { mediaPlayerManager.reciter.value },
                     background = background,
                     chapter = mediaPlayerManager.getChapter(),
+                    isPlaying = { isPlaying },
                     modifier = Modifier
                         .zIndex(2f)
                         .fillMaxWidth(if (isCompactDevice()) 1f else 0.6f)
@@ -300,6 +325,60 @@ fun TvPlayback(
                 )
             }
 
+            if (controls.showVerseAndHeader ||
+                controls.showVerse
+            ) {
+                Column(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .zIndex(3f)
+                        .align(background.alignment)
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp,
+                            top = background.paddingTop,
+                            bottom = background.paddingBottom
+                        )
+                ) {
+                    ItemVerse(
+                        verse = { selectedVerse },
+                        background = background.background,
+                        color = background.color
+                    )
+                }
+            }
+
+            if (controls.showVerseAndReciter) {
+                Column(
+                    modifier = Modifier.zIndex(2f)
+                        .align(Alignment.Center)
+                        .padding(horizontal = 24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Box(
+                        modifier = Modifier.weight(0.4f),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        SuraName(
+                            chapterName = mediaPlayerManager.chapterName,
+                            background = Color.Transparent,
+                            fontSize = 32.sp,
+                            color = Color.White,
+                            icon = null
+                        )
+                    }
+                    Box(Modifier.weight(0.6f)) {
+                        ItemVerse(
+                            verse = { selectedVerse },
+                            fontSize = if (LocalPlatform.current.isMobile) 18.sp else 22.sp,
+                            background = Color.Transparent,
+                            color = Color.White
+                        )
+                    }
+                }
+            }
+
+            /// Video Player
             if (isPreview) {
                 Image(
                     painter = background.video.getPainter(),
@@ -314,44 +393,6 @@ fun TvPlayback(
                     modifier = Modifier.fillMaxSize()
                 )
             }
-
-            Column(
-                modifier = Modifier
-                    .wrapContentSize()
-                    .align(background.alignment)
-                    .padding(
-                        start = 16.dp,
-                        end = 16.dp,
-                        top = background.paddingTop,
-                        bottom = background.paddingBottom
-                    )
-            ) {
-                if (controls.showVerseContent) {
-                    ItemVerse(
-                        verse = { selectedVerse },
-                        background = background.background,
-                        color = background.color
-                    )
-                }
-            }
-
-            if (controls.showControls) {
-                SectionBackgrounds(
-                    backgrounds = backgroundsManager.backgrounds,
-                    listState = slidesListState,
-                    selectedBackground = { background },
-                    onSelect = backgroundsManager::selectBackground,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.BottomCenter)
-                        .padding(
-                            top = 48.dp,
-                            bottom = 16.dp,
-                            start = 16.dp,
-                            end = 16.dp
-                        )
-                )
-            }
         }
     }
 }
@@ -361,12 +402,10 @@ fun TvPlayback(
 private fun Header(
     modifier: Modifier,
     mediaPlayer: MediaPlayerManager,
-    tvControls: () -> TvControls,
+    showControls: Boolean,
     tvBackground: () -> TvBackground,
     onBack: () -> Unit
 ) {
-    val controls = tvControls()
-    if (controls.showHeader.not()) return
     val backgroundColor = Color.White.copy(alpha = 0.3f)
     val color = tvBackground().color
     val isDownloading by remember { mediaPlayer.isDownloadingVerse }
@@ -378,7 +417,7 @@ private fun Header(
     ) {
         SuraName(
             chapterName = mediaPlayer.chapterName,
-            background = if (controls.showControls) backgroundColor
+            background = if (showControls) backgroundColor
             else Color.Transparent,
             fontSize = 20.sp,
             color = color,
@@ -402,7 +441,7 @@ private fun Header(
             fontSize = 11.sp,
             color = color,
         )
-        if (controls.showControls) {
+        if (showControls) {
             RoundButton(
                 icon = Res.drawable.close,
                 background = backgroundColor,
@@ -421,10 +460,10 @@ private fun ItemVerse(
     verse: () -> Verse?,
     color: Color,
     background: Color,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    fontSize: TextUnit = if (LocalPlatform.current.isMobile) 16.sp else 20.sp,
 ) {
     val verse = verse() ?: return
-    val platform = LocalPlatform.current
     Surface(
         color = background,
         shape = RoundedCornerShape(8.dp),
@@ -434,7 +473,7 @@ private fun ItemVerse(
             text = formatVerse(verse),
             textAlign = TextAlign.Justify,
             fontFamily = tvFontFamily(),
-            fontSize = if (platform.isMobile) 16.sp else 20.sp,
+            fontSize = fontSize,
             lineHeight = 2.em,
             color = color,
             modifier = Modifier
@@ -555,93 +594,138 @@ private fun SectionControls(
 @Composable
 private fun RecitationDetails(
     modifier: Modifier = Modifier,
+    isPlaying: () -> Boolean,
     reciter: () -> Reciter,
     background: TvBackground,
     chapter: Chapter
 ) {
     val reciter = reciter()
-    val color = background.color
-    val platform = LocalPlatform.current
-    MySurfaceRow(
-        surfaceModifier = modifier,
-        color = background.background,
-        cornerRadius = if (isCompactDevice()) 0.dp else 8.dp,
-        modifier = Modifier.padding(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    val color = Color.White
+
+    Row(
+        modifier = modifier
+            .padding(6.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(background.background)
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         ReciterImage(
             imageUrl = reciter.imageUrl,
             placeholder = Res.drawable.icon,
             borderWidth = 3.dp,
-            size = 70.dp
+            size = 66.dp,
+            animate = isPlaying()
         )
-        Column {
+
+        Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
             Text(
                 text = reciter.name,
                 style = MaterialTheme.typography.bodySmall,
-                fontWeight = FontWeight.Medium,
+                fontWeight = FontWeight.SemiBold,
                 color = color,
                 maxLines = 1,
                 fontSize = 13.sp,
             )
-            if (platform.isJvm) Spacer(Modifier.height(8.dp))
             Text(
                 text = "سورة ${chapter.name}",
                 style = MaterialTheme.typography.bodySmall,
-                color = color,
+                color = color.copy(alpha = 0.65f),
                 maxLines = 1,
-                fontSize = 13.sp,
+                fontSize = 12.sp,
             )
         }
     }
 }
 
 @Composable
-fun ReciterImage(
+private fun ReciterImage(
     modifier: Modifier = Modifier,
     imageUrl: String,
     placeholder: DrawableResource,
     size: Dp = 100.dp,
-    borderWidth: Dp = 6.dp
+    borderWidth: Dp = 3.dp,
+    animate: Boolean = true
 ) {
-    val infiniteTransition = rememberInfiniteTransition(label = "borderRotation")
-    val rotation by infiniteTransition.animateFloat(
+    val infiniteTransition = rememberInfiniteTransition(label = "rings")
+
+    val rotationOuter by infiniteTransition.animateFloat(
         initialValue = 0f,
-        targetValue = 360f,
+        targetValue = if (animate) 360f else 0f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 3000, easing = LinearEasing),
+            animation = tween(4000, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
         ),
-        label = "rotation"
+        label = "outerRing"
     )
 
+    val rotationInner by infiniteTransition.animateFloat(
+        initialValue = if (animate) 360f else 0f,
+        targetValue = 0f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(2800, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "innerRing"
+    )
+
+    val gap = 4.dp
+    val ringSpacing = 5.dp
+    val innerRingSize = size + (gap + borderWidth) * 2
+    val outerRingSize = innerRingSize + (ringSpacing + borderWidth) * 2
+
     Box(
-        modifier = modifier.size(size + borderWidth * 2),
+        modifier = modifier.size(outerRingSize),
         contentAlignment = Alignment.Center
     ) {
-        Box(
+        Canvas(
             modifier = Modifier
-                .size(size + borderWidth * 2)
-                .graphicsLayer { rotationZ = rotation }
-                .border(
-                    width = borderWidth,
-                    brush = Brush.sweepGradient(
-                        listOf(
-                            Color(0xFFFFFFFF),
-                            Color(0xFFFFFFFF),
-                            Color(0xFFFFFFFF),
-                            Color(0xFFFFFFFF),
-                            Color(0xFF3CA113),
-                            Color(0xFFFFFFFF),
-                            Color(0xFFFFFFFF),
-                            Color(0xFFFFFFFF),
-                            Color(0xFFFFFFFF)
-                        )
-                    ),
-                    shape = CircleShape
+                .size(outerRingSize)
+                .graphicsLayer { rotationZ = rotationOuter }
+        ) {
+            val strokePx = borderWidth.toPx()
+            val radius = (outerRingSize.toPx() - strokePx) / 2f
+            val sweepAngle = 60f
+            val gapAngle = 30f
+            var startAngle = 0f
+            while (startAngle < 360f) {
+                drawArc(
+                    brush = Brush.sweepGradient(listOf(Color(0xFF3CA113), Color(0xFF7ED957))),
+                    startAngle = startAngle,
+                    sweepAngle = sweepAngle,
+                    useCenter = false,
+                    style = Stroke(width = strokePx, cap = StrokeCap.Round),
+                    topLeft = Offset(strokePx / 2, strokePx / 2),
+                    size = Size(radius * 2, radius * 2)
                 )
-        )
+                startAngle += sweepAngle + gapAngle
+            }
+        }
+
+        Canvas(
+            modifier = Modifier
+                .size(innerRingSize)
+                .graphicsLayer { rotationZ = rotationInner }
+        ) {
+            val strokePx = borderWidth.toPx()
+            val radius = (innerRingSize.toPx() - strokePx) / 2f
+            val sweepAngle = 100f
+            val gapAngle = 20f
+            var startAngle = 0f
+            while (startAngle < 360f) {
+                drawArc(
+                    color = Color(0xFF3CA113).copy(alpha = 0.5f),
+                    startAngle = startAngle,
+                    sweepAngle = sweepAngle,
+                    useCenter = false,
+                    style = Stroke(width = strokePx, cap = StrokeCap.Round),
+                    topLeft = Offset(strokePx / 2, strokePx / 2),
+                    size = Size(radius * 2, radius * 2)
+                )
+                startAngle += sweepAngle + gapAngle
+            }
+        }
 
         Image(
             painter = rememberAsyncImagePainter(
@@ -657,4 +741,3 @@ fun ReciterImage(
         )
     }
 }
-

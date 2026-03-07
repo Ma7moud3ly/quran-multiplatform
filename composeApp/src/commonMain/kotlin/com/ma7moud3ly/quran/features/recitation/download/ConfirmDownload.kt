@@ -23,20 +23,20 @@ import com.ma7moud3ly.quran.platform.Log
 import com.ma7moud3ly.quran.ui.AppTheme
 import com.ma7moud3ly.quran.ui.DialogHeader
 import com.ma7moud3ly.quran.ui.MyButton
-import com.ma7moud3ly.quran.ui.MyMiniDialog
+import com.ma7moud3ly.quran.ui.MyAlertDialog
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.download
-import quran.composeapp.generated.resources.download_audio_quality
-import quran.composeapp.generated.resources.download_deny
-import quran.composeapp.generated.resources.download_deny_message
-import quran.composeapp.generated.resources.download_message
-import quran.composeapp.generated.resources.ok
-import quran.composeapp.generated.resources.recite_chapter
-import quran.composeapp.generated.resources.reciter
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.download
+import com.ma7moud3ly.quran.resources.download_audio_quality
+import com.ma7moud3ly.quran.resources.download_deny
+import com.ma7moud3ly.quran.resources.download_deny_message
+import com.ma7moud3ly.quran.resources.download_message
+import com.ma7moud3ly.quran.resources.ok
+import com.ma7moud3ly.quran.resources.recite_chapter
+import com.ma7moud3ly.quran.resources.reciter
 
 
 @Preview
@@ -81,7 +81,7 @@ fun ConfirmDownloadDialog(
         Log.i("ConfirmDownloadDialogContent", "recitation: $reciter")
     }
 
-    MyMiniDialog(
+    MyAlertDialog(
         onDismissRequest = onDismiss,
         space = 8.dp,
         modifier = Modifier.padding(16.dp),

@@ -41,11 +41,11 @@ import com.ma7moud3ly.quran.ui.MyDialog
 import com.ma7moud3ly.quran.ui.MySurfaceRow
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.recite_reciter_select
-import quran.composeapp.generated.resources.reciter_add_all
-import quran.composeapp.generated.resources.search
-import quran.composeapp.generated.resources.search_reciter_hint
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.recite_reciter_select
+import com.ma7moud3ly.quran.resources.reciter_add_all
+import com.ma7moud3ly.quran.resources.search
+import com.ma7moud3ly.quran.resources.search_reciter_hint
 
 @Preview
 @Composable

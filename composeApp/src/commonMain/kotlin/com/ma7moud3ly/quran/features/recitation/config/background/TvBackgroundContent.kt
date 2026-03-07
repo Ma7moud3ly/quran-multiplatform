@@ -46,10 +46,10 @@ import com.ma7moud3ly.quran.ui.RoundButton
 import com.ma7moud3ly.quran.ui.ScreenHeader
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.close
-import quran.composeapp.generated.resources.settings_tv_bg
-import quran.composeapp.generated.resources.settings_tv_bg_add
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.close
+import com.ma7moud3ly.quran.resources.settings_tv_bg
+import com.ma7moud3ly.quran.resources.settings_tv_bg_add
 
 @Preview
 @Composable

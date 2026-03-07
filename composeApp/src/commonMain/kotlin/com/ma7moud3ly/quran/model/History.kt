@@ -38,7 +38,6 @@ data class History(
 
     companion object {
 
-        @OptIn(ExperimentalTime::class)
         private fun getCurrentFormattedTime(): String {
             val now = Clock.System.now()
             val localDateTime = now.toLocalDateTime(TimeZone.currentSystemDefault())

@@ -4,13 +4,13 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.ma7moud3ly.quran.model.AppFont
 import org.koin.core.annotation.Single
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.amiri_quran_colored
-import quran.composeapp.generated.resources.elgharib_noon_hafs
-import quran.composeapp.generated.resources.hafs_smart_regular
-import quran.composeapp.generated.resources.indopak
-import quran.composeapp.generated.resources.uthmanic_hafs_bold
-import quran.composeapp.generated.resources.uthmanic_hafs_v22
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.amiri_quran_colored
+import com.ma7moud3ly.quran.resources.elgharib_noon_hafs
+import com.ma7moud3ly.quran.resources.hafs_smart_regular
+import com.ma7moud3ly.quran.resources.indopak
+import com.ma7moud3ly.quran.resources.uthmanic_hafs_bold
+import com.ma7moud3ly.quran.resources.uthmanic_hafs_v22
 
 /**
  * Manages available fonts within the application.

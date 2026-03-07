@@ -1,4 +1,4 @@
-package com.ma7moud3ly.quran
+package com.ma7moud3ly.quran.app
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -12,6 +12,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.core.app.NotificationCompat
 import com.ma7moud3ly.quran.managers.MediaPlayerManager
 import com.ma7moud3ly.quran.platform.Log
+import com.ma7moud3ly.quran.platform.PlaybackConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
@@ -31,11 +32,6 @@ class PlaybackService : Service() {
         private const val TAG = "PlaybackService"
         const val NOTIFICATION_ID = 1
         const val CHANNEL_ID = "PlaybackServiceChannel"
-        private const val PACKAGE = "com.ma7moud3ly.quran"
-        const val ACTION_STOP_PLAYBACK = "$PACKAGE.ACTION_STOP_PLAYBACK"
-        const val ACTION_PAUSE_PLAYBACK = "$PACKAGE.ACTION_PAUSE_PLAYBACK"
-        const val ACTION_RESUME_PLAYBACK = "$PACKAGE.ACTION_RESUME_PLAYBACK"
-        const val ACTION_HIDE_PLAYBACK_NOTIFICATION = "$PACKAGE.HIDE_PLAYBACK_NOTIFICATION"
         const val OPEN_PLAY_BACK = "open_playback_screen"
     }
 
@@ -71,23 +67,23 @@ class PlaybackService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         return when (intent?.action) {
-            ACTION_STOP_PLAYBACK -> {
+            PlaybackConstants.ACTION_STOP_PLAYBACK -> {
                 stopPlaybackServiceAndRelease()
                 START_NOT_STICKY
             }
 
-            ACTION_HIDE_PLAYBACK_NOTIFICATION -> {
+            PlaybackConstants.ACTION_HIDE_PLAYBACK_NOTIFICATION -> {
                 stopPlaybackService()
                 START_NOT_STICKY
             }
 
-            ACTION_PAUSE_PLAYBACK -> {
+            PlaybackConstants.ACTION_PAUSE_PLAYBACK -> {
                 mediaPlayerManager.pause()
                 updateNotification()
                 START_STICKY
             }
 
-            ACTION_RESUME_PLAYBACK -> {
+            PlaybackConstants.ACTION_RESUME_PLAYBACK -> {
                 mediaPlayerManager.resume()
                 updateNotification()
                 START_STICKY
@@ -117,8 +113,9 @@ class PlaybackService : Service() {
 
     private fun createNotification(): Notification {
         Log.v(TAG, "createNotification")
-        val notificationIntent = Intent(this, MainActivity::class.java).apply {
+        val notificationIntent = Intent(PlaybackConstants.ACTION_OPEN_PLAYBACK).apply {
             putExtra(OPEN_PLAY_BACK, true)
+            setPackage(packageName)
         }
 
         val pendingIntent = PendingIntent.getActivity(
@@ -128,7 +125,7 @@ class PlaybackService : Service() {
 
         // Intent for the "Stop" action
         val stopPlaybackIntent = Intent(this, PlaybackService::class.java).apply {
-            action = ACTION_STOP_PLAYBACK
+            action = PlaybackConstants.ACTION_STOP_PLAYBACK
         }
         val stopPlaybackPendingIntent = PendingIntent.getService(
             this, 0, stopPlaybackIntent,
@@ -137,7 +134,7 @@ class PlaybackService : Service() {
 
         // Intent for the "pause" action
         val pausePlaybackIntent = Intent(this, PlaybackService::class.java).apply {
-            action = ACTION_PAUSE_PLAYBACK
+            action = PlaybackConstants.ACTION_PAUSE_PLAYBACK
         }
         val pausePlaybackPendingIntent = PendingIntent.getService(
             this, 0, pausePlaybackIntent,
@@ -146,7 +143,7 @@ class PlaybackService : Service() {
 
         // Intent for the "resume" action
         val resumePlaybackIntent = Intent(this, PlaybackService::class.java).apply {
-            action = ACTION_RESUME_PLAYBACK
+            action = PlaybackConstants.ACTION_RESUME_PLAYBACK
         }
         val resumePlaybackPendingIntent = PendingIntent.getService(
             this, 0, resumePlaybackIntent,
@@ -155,7 +152,7 @@ class PlaybackService : Service() {
 
 
         val deleteIntent = Intent(this, PlaybackService::class.java).apply {
-            action = ACTION_STOP_PLAYBACK
+            action = PlaybackConstants.ACTION_STOP_PLAYBACK
         }
         val deletePendingIntent = PendingIntent.getService(
             this,

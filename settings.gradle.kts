@@ -1,4 +1,4 @@
-rootProject.name = "Quran"
+rootProject.name = "Quran-Planet"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

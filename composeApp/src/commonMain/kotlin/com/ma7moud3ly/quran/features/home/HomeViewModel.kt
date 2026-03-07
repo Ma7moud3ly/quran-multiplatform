@@ -2,10 +2,10 @@ package com.ma7moud3ly.quran.features.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ma7moud3ly.quran.data.repository.BookmarksRepository
 import com.ma7moud3ly.quran.data.repository.ChaptersRepository
-import com.ma7moud3ly.quran.data.repository.HistoryRepository
 import com.ma7moud3ly.quran.data.repository.RecitersRepository
-import com.ma7moud3ly.quran.model.History
+import com.ma7moud3ly.quran.model.Bookmark
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
@@ -16,20 +16,20 @@ import org.koin.android.annotation.KoinViewModel
 class HomeViewModel(
     private val chaptersRepository: ChaptersRepository,
     private val recitersRepository: RecitersRepository,
-    private val historyRepository: HistoryRepository
+    private val bookmarksRepository: BookmarksRepository
 ) : ViewModel() {
 
     init {
         viewModelScope.launch {
-            historyRepository.initHistory()
+            bookmarksRepository.initBookmarks()
         }
     }
 
-    val historyFlow = historyRepository.historyFlow
+    val bookmarksFlow = bookmarksRepository.bookmarksFlow
 
-    fun deleteHistory(history: History) {
+    fun deleteBookmark(bookmark: Bookmark) {
         viewModelScope.launch {
-            historyRepository.deleteHistory(history)
+            bookmarksRepository.deleteBookmark(bookmark)
         }
     }
 
@@ -43,6 +43,5 @@ class HomeViewModel(
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = emptyList()
     )
-
 
 }

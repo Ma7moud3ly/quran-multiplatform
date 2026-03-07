@@ -53,7 +53,7 @@ import com.ma7moud3ly.quran.features.home.reciters.ItemReciter
 import com.ma7moud3ly.quran.features.home.reciters.testReciters
 import com.ma7moud3ly.quran.features.reading.SuraName
 import com.ma7moud3ly.quran.features.recitation.config.background.ItemBackground
-import com.ma7moud3ly.quran.features.recitation.config.verses.SelectVerseNumberDialog
+import com.ma7moud3ly.quran.features.recitation.config.verses.VerseSelectorDialog
 import com.ma7moud3ly.quran.features.search.chapter.ItemChapter
 import com.ma7moud3ly.quran.features.settings.SettingsLabel
 import com.ma7moud3ly.quran.model.Chapter
@@ -87,36 +87,38 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.ma7moud3ly.quran.platform.isWasmJs
-import quran.composeapp.generated.resources.Res
-import quran.composeapp.generated.resources.downloaded
-import quran.composeapp.generated.resources.recite
-import quran.composeapp.generated.resources.recite_chapter
-import quran.composeapp.generated.resources.recite_mode_normal
-import quran.composeapp.generated.resources.recite_mode_tv
-import quran.composeapp.generated.resources.recite_range
-import quran.composeapp.generated.resources.recite_range_from
-import quran.composeapp.generated.resources.recite_range_single
-import quran.composeapp.generated.resources.recite_range_to
-import quran.composeapp.generated.resources.recite_start
-import quran.composeapp.generated.resources.recite_verse
-import quran.composeapp.generated.resources.reciter
-import quran.composeapp.generated.resources.reciter_add_all
-import quran.composeapp.generated.resources.reciter_add_multiple
-import quran.composeapp.generated.resources.reciters
-import quran.composeapp.generated.resources.reciters_clear
-import quran.composeapp.generated.resources.reciters_more
-import quran.composeapp.generated.resources.settings_change_reciter
-import quran.composeapp.generated.resources.settings_mode_distributed
-import quran.composeapp.generated.resources.settings_mode_repetitive
-import quran.composeapp.generated.resources.settings_mode_sequential
-import quran.composeapp.generated.resources.settings_mode_shuffled
-import quran.composeapp.generated.resources.settings_play_in_bg
-import quran.composeapp.generated.resources.settings_play_in_bg_description
-import quran.composeapp.generated.resources.settings_reel
-import quran.composeapp.generated.resources.settings_reel_description
-import quran.composeapp.generated.resources.settings_tv_bg
-import quran.composeapp.generated.resources.settings_tv_bg_add
-import quran.composeapp.generated.resources.settings_tv_bg_description
+import com.ma7moud3ly.quran.resources.Res
+import com.ma7moud3ly.quran.resources.downloaded
+import com.ma7moud3ly.quran.resources.recite
+import com.ma7moud3ly.quran.resources.recite_chapter
+import com.ma7moud3ly.quran.resources.recite_mode_normal
+import com.ma7moud3ly.quran.resources.recite_mode_tv
+import com.ma7moud3ly.quran.resources.recite_range
+import com.ma7moud3ly.quran.resources.recite_range_from
+import com.ma7moud3ly.quran.resources.recite_range_single
+import com.ma7moud3ly.quran.resources.recite_range_to
+import com.ma7moud3ly.quran.resources.recite_select_begin
+import com.ma7moud3ly.quran.resources.recite_select_end
+import com.ma7moud3ly.quran.resources.recite_start
+import com.ma7moud3ly.quran.resources.recite_verse
+import com.ma7moud3ly.quran.resources.reciter
+import com.ma7moud3ly.quran.resources.reciter_add_all
+import com.ma7moud3ly.quran.resources.reciter_add_multiple
+import com.ma7moud3ly.quran.resources.reciters
+import com.ma7moud3ly.quran.resources.reciters_clear
+import com.ma7moud3ly.quran.resources.reciters_more
+import com.ma7moud3ly.quran.resources.settings_change_reciter
+import com.ma7moud3ly.quran.resources.settings_mode_distributed
+import com.ma7moud3ly.quran.resources.settings_mode_repetitive
+import com.ma7moud3ly.quran.resources.settings_mode_sequential
+import com.ma7moud3ly.quran.resources.settings_mode_shuffled
+import com.ma7moud3ly.quran.resources.settings_play_in_bg
+import com.ma7moud3ly.quran.resources.settings_play_in_bg_description
+import com.ma7moud3ly.quran.resources.settings_reel
+import com.ma7moud3ly.quran.resources.settings_reel_description
+import com.ma7moud3ly.quran.resources.settings_tv_bg
+import com.ma7moud3ly.quran.resources.settings_tv_bg_add
+import com.ma7moud3ly.quran.resources.settings_tv_bg_description
 
 
 @Preview
@@ -440,18 +442,25 @@ private fun SectionRange(
 ) {
     val chapter = selectedChapter() ?: return
     val state = recitationState()
-    val start = state.firstVerseState
-    val end = state.lastVerseState
+    var start by remember { state.firstVerseState }
+    var end by remember { state.lastVerseState }
     val canChangeVerse = state.canChangeVerseState.value
     var selectStartNumber by remember { mutableStateOf<Boolean?>(null) }
     var singleVerse by rememberSaveable { state.singleVerseState }
 
-    if (selectStartNumber != null) {
-        SelectVerseNumberDialog(
+    selectStartNumber?.let { selectStart ->
+        VerseSelectorDialog(
             start = start,
             end = end,
-            selectStart = selectStartNumber!!,
+            selectStart = selectStart,
+            title = if (selectStart) Res.string.recite_select_begin
+            else Res.string.recite_select_end,
             limit = chapter.count,
+            onConfirm = { newStart, newEnd ->
+                if (selectStart) start = newStart
+                else end = newEnd
+                selectStartNumber = null
+            },
             onDismiss = { selectStartNumber = null }
         )
     }
@@ -482,7 +491,7 @@ private fun SectionRange(
                 enabled = canChangeVerse
             ) {
                 Text(
-                    text = start.value.asVerseNumber(),
+                    text = start.asVerseNumber(),
                     fontFamily = hafsSmartFamily(),
                     fontSize = 45.sp,
                     color = if (canChangeVerse) MaterialTheme.colorScheme.secondary
@@ -500,7 +509,7 @@ private fun SectionRange(
                     color = Color.Transparent
                 ) {
                     Text(
-                        text = end.value.asVerseNumber(),
+                        text = end.asVerseNumber(),
                         fontFamily = hafsSmartFamily(),
                         fontSize = 45.sp,
                         color = MaterialTheme.colorScheme.secondary,
